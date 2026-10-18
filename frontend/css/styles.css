@@ -1,0 +1,153 @@
+/* --- Paleta de colores Artesanal Frutitos --- */
+:root {
+    --mermelada-rojo: #9b1919;   /* Rojo profundo de fresa (Botones, Acentos) */
+    --mermelada-oscuro: #5e0b0b; /* Rojo vino (Navbar) */
+    --hoja-verde: #2b8a3e;       /* Verde natural (Éxito, OK) */
+    
+    --fondo-beige: #f5efe6;      /* Beige cálido (Fondo general) */
+    --texto-marron: #4a3b32;     /* Marrón suave para textos */
+    --blanco-tarjeta: #ffffff;   /* Blanco puro para las tarjetas */
+}
+
+body {
+    background-color: var(--fondo-beige);
+    color: var(--texto-marron);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: var(--texto-marron);
+}
+
+/* --- Barra de Navegación --- */
+.navbar-frutitos {
+    background-color: var(--mermelada-oscuro) !important;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+.navbar-frutitos .navbar-brand,
+.navbar-frutitos .nav-link {
+    color: white !important;
+    font-weight: 500;
+}
+.navbar-frutitos .nav-link:hover {
+    color: #ffb3b3 !important;
+}
+
+/* --- ESTILOS EXCLUSIVOS DEL LOGIN --- */
+.login-body {
+    background-color: var(--blanco-tarjeta);
+    overflow: hidden; /* Evita scroll en la pantalla de login */
+}
+
+/* Panel izquierdo con la imagen del Login */
+.bg-login-image {
+    background-image: linear-gradient(to right, rgba(30, 5, 5, 0.8), rgba(94, 11, 11, 0.5)), url('../img/fondo-fresa.jpg');
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+
+/* Forzar textos blancos en el login */
+.bg-login-image h1, 
+.bg-login-image p {
+    color: #ffffff !important;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.8);
+}
+.bg-login-image .text-white-50 {
+    color: rgba(255, 255, 255, 0.8) !important;
+}
+
+/* Panel derecho del Login */
+.bg-login-form {
+    background-color: #fafafa;
+}
+
+/* Inputs del login */
+.form-control:focus {
+    border-color: var(--mermelada-rojo);
+    box-shadow: 0 0 0 0.25rem rgba(155, 25, 25, 0.25);
+}
+
+/* --- ESTILOS DEL DASHBOARD (Banner e Info) --- */
+.hero-dashboard {
+    /* AQUÍ ESTÁ LA MAGIA: Cambiamos el nombre de la imagen a fondo-dashboard.jpg */
+    background-image: linear-gradient(to right, rgba(40, 10, 5, 0.9) 0%, rgba(40, 10, 5, 0.7) 45%, rgba(0, 0, 0, 0.1) 100%), url('../img/fondo-dashboard.jpeg');
+    background-size: cover;
+    background-position: right center;
+    color: white;
+    padding: 4rem 3rem;
+    border-radius: 15px;
+    margin-bottom: 2rem;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    min-height: 300px;
+    display: flex;
+    align-items: center;
+}
+.hero-dashboard h1, 
+.hero-dashboard p {
+    color: white !important;
+}
+
+/* Ajuste del banner para celulares */
+@media (max-width: 768px) {
+    .hero-dashboard {
+        /* Bajamos la opacidad del fondo negro (0.5 y 0.7) para que la foto se vea */
+        background-image: linear-gradient(rgba(30, 5, 5, 0.5), rgba(0, 0, 0, 0.7)), url('../img/fondo-dashboard.jpeg');
+        background-position: center;
+        padding: 2.5rem 1.5rem;
+        min-height: auto;
+        text-align: center;
+    }
+    
+    /* Le ponemos una sombra fuerte al texto en celular para que resalte sobre la foto */
+    .hero-dashboard h1,
+    .hero-dashboard p {
+        text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.9) !important;
+    }
+}
+
+/* --- TARJETAS Y BOTONES --- */
+.card-kpi {
+    border: none;
+    border-radius: 10px;
+    background-color: var(--blanco-tarjeta);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+    transition: transform 0.2s;
+}
+.card-kpi:hover {
+    transform: translateY(-5px);
+}
+
+/* Bordes de acento */
+.border-fresa { border-left: 5px solid var(--mermelada-rojo) !important; }
+.border-verde { border-left: 5px solid var(--hoja-verde) !important; }
+
+/* Botón principal */
+.btn-fresa {
+    background-color: var(--mermelada-rojo);
+    color: white;
+    border: none;
+    font-weight: bold;
+    box-shadow: 0 4px 6px rgba(155, 25, 25, 0.2);
+    transition: all 0.3s ease;
+}
+.btn-fresa:hover {
+    background-color: var(--mermelada-oscuro);
+    color: white;
+    box-shadow: 0 6px 12px rgba(155, 25, 25, 0.4);
+    transform: translateY(-1px);
+}
+
+/* --- TABLAS --- */
+.card {
+    background-color: var(--blanco-tarjeta);
+    border-radius: 10px;
+}
+.table th {
+    background-color: var(--mermelada-oscuro);
+    color: white;
+    font-weight: 500;
+}
+.table td {
+    color: var(--texto-marron);
+}
