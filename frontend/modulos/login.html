@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Frutitos de Casa ERP</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body class="login-body">
+
+    <div class="container-fluid p-0">
+        <div class="row g-0 min-vh-100">
+            
+            <!-- LADO IZQUIERDO: Imagen (Oculto en celular) -->
+            <div class="col-md-7 d-none d-md-flex bg-login-image align-items-center justify-content-center">
+                <div class="text-white text-center p-5" style="z-index: 2; position: relative;">
+                    <h1 class="display-4 fw-bold mb-3">Frutitos de Casa</h1>
+                    <p class="lead fs-4">El sabor artesanal, ahora digitalizado.</p>
+                    <p class="text-white-50 mt-4">Sistema de Planificación de Recursos Empresariales (ERP)</p>
+                </div>
+            </div>
+
+            <!-- LADO DERECHO: Formulario con Tarjeta Flotante -->
+            <div class="col-12 col-md-5 d-flex align-items-center justify-content-center bg-login-form-mobile">
+                <!-- Esta es la tarjeta que flotará en celular -->
+                <div class="login-card w-100" style="max-width: 420px;">
+                    
+                    <div class="text-center mb-4">
+                        <img src="../img/fresa-logo.png" alt="Fresa Frutitos de Casa" class="logo-fresa">
+                        <h2 class="fw-bold mt-2" style="color: var(--mermelada-rojo);">Bienvenido</h2>
+                        <p class="text-muted small">Ingresa tus credenciales para acceder</p>
+                    </div>
+
+                    <form action="dashboard.html">
+                        <!-- Usuario -->
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control form-control-lg" id="usuario" placeholder="Usuario" required>
+                            <label for="usuario">Usuario</label>
+                        </div>
+                        
+                        <!-- Contraseña con el "Ojito" -->
+                        <div class="form-floating mb-3 position-relative">
+                            <input type="password" class="form-control form-control-lg" id="password" placeholder="Contraseña" required style="padding-right: 45px;">
+                            <label for="password">Contraseña</label>
+                            <span class="position-absolute top-50 end-0 translate-middle-y me-3" style="cursor: pointer; z-index: 5;" id="togglePassword">
+                                <i class="bi bi-eye-slash text-muted" id="eyeIcon"></i>
+                            </span>
+                        </div>
+
+                        <!-- Recordar y Olvidar -->
+                        <div class="d-flex justify-content-between align-items-center mb-4">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="recordar">
+                                <label class="form-check-label text-muted small" for="recordar">Recordarme</label>
+                            </div>
+                            <a href="#" class="text-decoration-none small" style="color: var(--mermelada-rojo);">¿Olvidaste tu contraseña?</a>
+                        </div>
+
+                        <!-- Botón Ingresar -->
+                        <button type="submit" class="btn btn-fresa w-100 btn-lg py-3 mb-3" style="font-size: 1.1rem;">
+                            Iniciar Sesión
+                        </button>
+                    </form>
+
+                    <!-- Divisor -->
+                    <div class="d-flex align-items-center mb-3">
+                        <hr class="flex-grow-1 text-muted">
+                        <span class="px-3 text-muted small">O</span>
+                        <hr class="flex-grow-1 text-muted">
+                    </div>
+
+                    <!-- Botón de Google -->
+                    <button type="button" class="btn btn-outline-secondary w-100 btn-lg py-2 d-flex align-items-center justify-content-center bg-white" style="border-radius: 8px; border-color: #ddd; color: #555; font-size: 1rem;">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="24px" height="24px" class="me-2">
+                            <path fill="#FFC107" d="M43.611,20.083H42V20H24v8h11.303c-1.649,4.657-6.08,8-11.303,8c-6.627,0-12-5.373-12-12c0-6.627,5.373-12,12-12c3.059,0,5.842,1.154,7.961,3.039l5.657-5.657C34.046,6.053,29.268,4,24,4C12.955,4,4,12.955,4,24c0,11.045,8.955,20,20,20c11.045,0,20-8.955,20-20C44,22.659,43.862,21.35,43.611,20.083z"/>
+                            <path fill="#FF3D00" d="M6.306,14.691l6.571,4.819C14.655,15.108,18.961,12,24,12c3.059,0,5.842,1.154,7.961,3.039l5.657-5.657C34.046,6.053,29.268,4,24,4C16.318,4,9.656,8.337,6.306,14.691z"/>
+                            <path fill="#4CAF50" d="M24,44c5.166,0,9.86-1.977,13.409-5.192l-6.19-5.238C29.211,35.091,26.715,36,24,36c-5.202,0-9.619-3.317-11.283-7.946l-6.522,5.025C9.505,39.556,16.227,44,24,44z"/>
+                            <path fill="#1976D2" d="M43.611,20.083H42V20H24v8h11.303c-0.792,2.237-2.231,4.166-4.087,5.571c0.001-0.001,0.002-0.001,0.003-0.002l6.19,5.238C36.971,39.205,44,34,44,24C44,22.659,43.862,21.35,43.611,20.083z"/>
+                        </svg>
+                        Continuar con Google
+                    </button>
+
+                    <!-- Enlace de Registro -->
+                    <div class="text-center mt-4">
+                        <span class="text-muted small">¿No tienes una cuenta? </span>
+                        <a href="#" class="text-decoration-none small fw-bold" style="color: var(--mermelada-rojo);">Regístrate aquí</a>
+                    </div>
+
+                    <!-- Volver al inicio -->
+                    <div class="text-center mt-4">
+                        <a href="../index.html" class="text-decoration-none text-muted small">
+                            <i class="bi bi-arrow-left"></i> Volver a la página principal
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript para el ojito -->
+    <script>
+        const togglePassword = document.querySelector('#togglePassword');
+        const password = document.querySelector('#password');
+        const eyeIcon = document.querySelector('#eyeIcon');
+
+        togglePassword.addEventListener('click', function (e) {
+            const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+            password.setAttribute('type', type);
+            eyeIcon.classList.toggle('bi-eye');
+            eyeIcon.classList.toggle('bi-eye-slash');
+        });
+    </script>
+
+</body>
+</html>

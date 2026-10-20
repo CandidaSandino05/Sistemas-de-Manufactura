@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Políticas - Frutitos de Casa</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body style="background-color: var(--fondo-beige); display: flex; flex-direction: column; min-height: 100vh;">
+
+        <!-- Menú Público  -->
+    <nav class="navbar navbar-expand-lg navbar-frutitos navbar-dark">
+        <div class="container px-4">
+            <a class="navbar-brand fw-bold" href="../index.html">Frutitos de Casa</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuPublico">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="menuPublico">
+                <ul class="navbar-nav ms-auto gap-2 align-items-center">
+                    <li class="nav-item"><a class="nav-link text-white" href="../index.html#nosotros">Nosotros</a></li>
+                    <li class="nav-item"><a class="nav-link text-white" href="../index.html#valores">Valores</a></li>
+                    <!-- Como estamos en politicas, se marca como activo -->
+                    <li class="nav-item"><a class="nav-link text-white fw-bold border-bottom border-light" href="politicas.html">Políticas</a></li>
+                    <li class="nav-item"><a class="nav-link text-white" href="legal.html">Legal</a></li>
+                    <li class="nav-item ms-lg-4">
+                        <a href="login.html" class="btn btn-light text-dark fw-bold rounded-pill px-4 shadow-sm">
+                            <i class="bi bi-box-arrow-in-right me-2"></i> Acceder
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Contenido de Políticas -->
+    <div class="container py-5 my-4 flex-grow-1">
+        <div class="text-center mb-5">
+            <h1 class="fw-bold" style="color: var(--mermelada-rojo);">Políticas de la Planta</h1>
+            <p class="text-muted">Conoce los lineamientos bajo los cuales operamos para garantizar la excelencia.</p>
+            <div style="width: 50px; height: 3px; background-color: var(--hoja-verde); margin: 10px auto;"></div>
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div class="accordion" id="accordionPoliticas">
+                    
+                    <!-- Política 1: Calidad -->
+                    <div class="accordion-item mb-3 shadow-sm rounded" style="border: 2px dashed #d4c5b0 !important; background-color: #fffdfa; overflow: hidden;">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#poli1" style="background-color: transparent; color: var(--texto-marron);">
+                                <i class="bi bi-file-earmark-check me-2" style="color: var(--mermelada-rojo);"></i> Política de Calidad
+                            </button>
+                        </h2>
+                        <div id="poli1" class="accordion-collapse collapse show" data-bs-parent="#accordionPoliticas">
+                            <!-- Fondo blanco puro y padding amplio -->
+                            <div class="accordion-body bg-white" style="padding: 2.5rem;">
+                                <h6 class="text-uppercase fw-bold mb-3" style="color: var(--mermelada-rojo); letter-spacing: 1px; font-size: 0.85rem;">Nuestro Compromiso</h6>
+                                <p class="text-muted" style="line-height: 1.9; font-size: 1.05rem; text-align: justify;">
+                                    En Frutitos de Casa entendemos que la calidad es el pilar de nuestra identidad. Por ello, nos comprometemos a elaborar mermeladas que no solo cumplan, sino que superen las expectativas de sabor y textura de nuestros clientes. Para lograrlo, aplicamos un estricto control en cada una de las etapas productivas: desde la selección visual de la fruta, pasando por el pesaje exacto de los ingredientes según nuestra receta maestra, hasta la verificación final del sellado, color y consistencia. Cada frasco que sale de nuestra planta es el resultado de un proceso vigilado, garantizando un producto uniforme, delicioso y de la más alta calidad artesanal.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Política 2: Inocuidad -->
+                    <div class="accordion-item mb-3 shadow-sm rounded" style="border: 2px dashed #b8e0c2 !important; background-color: #fffdfa; overflow: hidden;">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#poli2" style="background-color: transparent; color: var(--texto-marron);">
+                                <i class="bi bi-shield-check me-2" style="color: var(--hoja-verde);"></i> Política de Inocuidad Alimentaria y Trazabilidad
+                            </button>
+                        </h2>
+                        <div id="poli2" class="accordion-collapse collapse" data-bs-parent="#accordionPoliticas">
+                            <div class="accordion-body bg-white" style="padding: 2.5rem;">
+                                <h6 class="text-uppercase fw-bold mb-3" style="color: var(--hoja-verde); letter-spacing: 1px; font-size: 0.85rem;">Seguridad y Trazabilidad</h6>
+                                <p class="text-muted" style="line-height: 1.9; font-size: 1.05rem; text-align: justify;">
+                                    La salud de nuestros consumidores es nuestra máxima prioridad. Garantizamos la inocuidad de nuestras mermeladas implementando rigurosos protocolos de higiene, un proceso de cocción estandarizado a altas temperaturas durante 145 minutos por lote, y un envasado hermético que asegura la conservación del producto por 12 meses. Además, gracias a la implementación de nuestro sistema ERP, ejecutamos una trazabilidad bidireccional completa mediante el código de lote <strong>F-DDMMAA-NN</strong>. Esto nos permite rastrear el historial de cada frasco, desde el proveedor de la fresa y la orden de fabricación, hasta el cliente final que lo recibe, asegurando una respuesta inmediata y precisa ante cualquier eventualidad.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Política 3: Ambiental -->
+                    <div class="accordion-item mb-3 shadow-sm rounded" style="border: 2px dashed #d4c5b0 !important; background-color: #fffdfa; overflow: hidden;">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#poli3" style="background-color: transparent; color: var(--texto-marron);">
+                                <i class="bi bi-globe me-2" style="color: var(--mermelada-rojo);"></i> Política Ambiental
+                            </button>
+                        </h2>
+                        <div id="poli3" class="accordion-collapse collapse" data-bs-parent="#accordionPoliticas">
+                            <div class="accordion-body bg-white" style="padding: 2.5rem;">
+                                <h6 class="text-uppercase fw-bold mb-3" style="color: var(--mermelada-rojo); letter-spacing: 1px; font-size: 0.85rem;">Sostenibilidad</h6>
+                                <p class="text-muted" style="line-height: 1.9; font-size: 1.05rem; text-align: justify;">
+                                    Somos conscientes del impacto que genera la manufactura y estamos comprometidos con el desarrollo sostenible. En nuestra planta promovemos el uso racional de los recursos, optimizando el consumo de agua y gas durante el proceso de cocción. Asimismo, priorizamos la compra de frutas a proveedores locales para reducir nuestra huella de carbono. Nos preocupamos por gestionar de forma responsable los desechos orgánicos generados en la selección de la fruta, y fomentamos el reciclaje de nuestros envases de vidrio, buscando siempre un equilibrio entre la tradición artesanal y el cuidado del medio ambiente.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                
+                                <div class="text-center mt-5">
+                    <a href="../index.html" class="btn btn-outline-secondary rounded-pill px-4">
+                        <i class="bi bi-arrow-left me-2"></i> Volver a la Página Principal
+                    </a> 
+                </div>
+            </div>
+        </div>
+    </div>
+
+            <!-- Línea final  -->
+            <div class="border-top border-secondary pt-4 mt-2 text-center">
+                <p class="small mb-1">&copy; 2026 Frutitos de Casa. Todos los derechos reservados.</p>
+                <p class="small mb-0 text-secondary" style="opacity: 0.7;">Proyecto Integrador - Ingeniería de Sistemas</p>
+            </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

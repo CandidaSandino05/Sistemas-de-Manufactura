@@ -9,31 +9,60 @@
 </head>
 <body>
 
+    <!-- Menú de Navegación (Desktop normal, Móvil lateral) -->
     <nav class="navbar navbar-expand-lg navbar-frutitos navbar-dark">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="dashboard.html">Frutitos de Casa ERP</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuPrincipal">
+        <div class="container-fluid px-4">
+            <a class="navbar-brand fw-bold" href="dashboard.html">Frutitos de Casa ERP</a>
+            
+            <!-- Botón de hamburguesa para celular -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#menuLateral">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="menuPrincipal">
-                <ul class="navbar-nav me-auto">
-                    <li class="nav-item"><a class="nav-link" href="ventas.html">Ventas</a></li>
-                    <li class="nav-item"><a class="nav-link" href="inventario.html">Inventario</a></li>
-                    <li class="nav-item"><a class="nav-link" href="fabricacion.html">Fabricación</a></li>
-                    <li class="nav-item"><a class="nav-link" href="compras.html">Compras</a></li>
-                    <li class="nav-item"><a class="nav-link" href="calidad.html">Calidad</a></li>
+
+            <!-- MENÚ DE COMPUTADORA (Se oculta en celular) -->
+            <div class="collapse navbar-collapse d-none d-lg-block" id="menuDesktop">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0 gap-2 ms-lg-4">
+                    <li class="nav-item"><a class="nav-link px-3" href="ventas.html">Ventas</a></li>
+                    <li class="nav-item"><a class="nav-link px-3" href="inventario.html">Inventario</a></li>
+                    <li class="nav-item"><a class="nav-link px-3" href="fabricacion.html">Fabricación</a></li>
+                    <li class="nav-item"><a class="nav-link px-3" href="compras.html">Compras</a></li>
+                    <li class="nav-item"><a class="nav-link px-3" href="calidad.html">Calidad</a></li>
                 </ul>
                 <div class="d-flex align-items-center mt-2 mt-lg-0 gap-3">
-    <span class="navbar-text text-white mb-0 d-flex align-items-center">
-        <span class="me-2" style="font-size: 1.2rem;">👤</span> <!-- Icono de perfil -->
-        <span style="font-weight: 500;">Admin</span>
-    </span>
-    <!-- Botón "píldora" un poco más estilizado -->
-    <a href="../index.html" class="btn btn-outline-light btn-sm rounded-pill px-3">Salir</a>
-</div>
+                    <span class="navbar-text text-white mb-0 d-flex align-items-center">
+                        <span class="me-2">👤</span> Admin
+                    </span>
+                    <a href="login.html" class="btn btn-outline-light btn-sm rounded-pill px-3">Salir</a>
+                </div>
             </div>
         </div>
     </nav>
+
+    <!-- MENÚ LATERAL PARA CELULAR (Offcanvas) -->
+    <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="menuLateral" style="background-color: var(--mermelada-oscuro) !important; width: 280px;">
+        <div class="offcanvas-header border-bottom border-secondary">
+            <h5 class="offcanvas-title text-white fw-bold">Frutitos de Casa</h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        
+        <div class="offcanvas-body d-flex flex-column">
+            <!-- Enlaces del menú -->
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0 gap-2 w-100">
+                <li class="nav-item"><a class="nav-link px-3 text-white" href="dashboard.html"><i class="bi bi-house-door me-2"></i> Dashboard</a></li>
+                <li class="nav-item"><a class="nav-link px-3 text-white" href="ventas.html"><i class="bi bi-cart me-2"></i> Ventas</a></li>
+                <li class="nav-item"><a class="nav-link px-3 text-white" href="inventario.html"><i class="bi bi-box me-2"></i> Inventario</a></li>
+                <li class="nav-item"><a class="nav-link px-3 text-white" href="fabricacion.html"><i class="bi bi-gear me-2"></i> Fabricación</a></li>
+                <li class="nav-item"><a class="nav-link px-3 text-white" href="compras.html"><i class="bi bi-truck me-2"></i> Compras</a></li>
+                <li class="nav-item"><a class="nav-link px-3 text-white" href="calidad.html"><i class="bi bi-clipboard-check me-2"></i> Calidad</a></li>
+            </ul>
+            
+            <!-- Usuario y Salir (Pegados hasta abajo) -->
+            <div class="mt-auto pt-3 border-top border-secondary d-flex align-items-center justify-content-between w-100">
+                <span class="text-white small"><i class="bi bi-person-fill me-1"></i> Admin</span>
+                <a href="login.html" class="btn btn-outline-light btn-sm rounded-pill px-3">Salir</a>
+            </div>
+        </div>
+    </div>
 
     <div class="container mt-4 mt-md-5">
         <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center mb-3 gap-2">
@@ -55,26 +84,14 @@
                             </tr>
                         </thead>
                         <tbody>
+                            <!-- Ejemplo un bucle for para mostrar los datos -->
                             <tr>
-                                <td>OF-0001</td>
-                                <td>Mermelada Artesanal de Fresa 250g</td>
-                                <td>20 frascos</td>
-                                <td><span class="badge bg-secondary">F-131026-02</span></td>
-                                <td><span class="badge bg-success">Terminada</span></td>
-                            </tr>
-                            <tr>
-                                <td>OF-0002-SE</td>
-                                <td>Mermelada Base (Semielaborado)</td>
-                                <td>5 kg</td>
-                                <td><span class="badge bg-secondary">F-131026-01</span></td>
-                                <td><span class="badge bg-warning text-dark">En Proceso</span></td>
-                            </tr>
-                            <tr>
-                                <td>OF-0003</td>
-                                <td>Mermelada Artesanal de Fresa 250g</td>
-                                <td>40 frascos</td>
-                                <td><span class="badge bg-light text-dark border">Sin asignar</span></td>
-                                <td><span class="badge bg-secondary">Borrador</span></td>
+                                <td>---</td>
+                                <td>---</td>
+                                <td>---</td>
+                                <td>---</td>
+                                <td><span class="badge bg-secondary">Sin datos</span></td>
+                                <td><button class="btn btn-sm btn-outline-secondary">Ver</button></td>
                             </tr>
                         </tbody>
                     </table>

@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacidad y Seguridad - Frutitos de Casa</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="../css/styles.css">
+    <style>
+        /* Estilos específicos para esta página legal */
+        .legal-header {
+            background-color: #3b2b2b; /* Marrón oscuro elegante */
+            color: white;
+            padding: 4rem 0;
+            margin-bottom: 3rem;
+        }
+        .legal-sidebar {
+            position: sticky;
+            top: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            padding: 1rem;
+        }
+        .legal-sidebar a {
+            display: block;
+            padding: 0.5rem 1rem;
+            color: var(--texto-marron);
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 0.95rem;
+            margin-bottom: 5px;
+        }
+        .legal-sidebar a:hover {
+            background-color: var(--fondo-beige);
+            color: var(--mermelada-rojo);
+        }
+        .legal-sidebar a.active {
+            background-color: var(--mermelada-rojo);
+            color: white;
+            font-weight: 500;
+        }
+        .legal-content h2 {
+            font-size: 1.8rem;
+            color: var(--mermelada-rojo);
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        .legal-content p, .legal-content li {
+            color: #555;
+            line-height: 1.8;
+            text-align: justify;
+        }
+    </style>
+</head>
+<body style="background-color: #fafafa;">
+
+        <!-- Menú Público  -->
+    <nav class="navbar navbar-expand-lg navbar-frutitos navbar-dark">
+        <div class="container px-4">
+            <a class="navbar-brand fw-bold" href="../index.html">Frutitos de Casa</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuPublico">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="menuPublico">
+                <ul class="navbar-nav ms-auto gap-2 align-items-center">
+                    <li class="nav-item"><a class="nav-link text-white" href="../index.html#nosotros">Nosotros</a></li>
+                    <li class="nav-item"><a class="nav-link text-white" href="../index.html#valores">Valores</a></li>
+                    <!-- Como estamos en legal, se marca como activo -->
+                    <li class="nav-item"><a class="nav-link text-white" href="politicas.html">Políticas</a></li>
+                    <li class="nav-item"><a class="nav-link text-white fw-bold border-bottom border-light" href="legal.html">Legal</a></li>
+                    <li class="nav-item ms-lg-4">
+                        <a href="login.html" class="btn btn-light text-dark fw-bold rounded-pill px-4 shadow-sm">
+                            <i class="bi bi-box-arrow-in-right me-2"></i> Acceder
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Cabecera -->
+    <header class="legal-header text-center">
+        <div class="container">
+            <h1 class="display-5 fw-bold">Privacidad y Seguridad</h1>
+            <p class="lead mb-0">Conoce cómo protegemos tu información y garantizamos la integridad del sistema ERP.</p>
+            <p class="small mt-2 text-white-50">Última actualización: 20 de Octubre de 2026</p>
+        </div>
+    </header>
+
+    <!-- Contenido Principal -->
+    <div class="container pb-5">
+        <div class="row">
+            
+            <!-- Barra Lateral (Subíndices) -->
+            <div class="col-md-4 col-lg-3 d-none d-md-block">
+                <div class="legal-sidebar">
+                    <h6 class="fw-bold px-3 mb-3 text-muted">Contenido</h6>
+                    <a href="#privacidad" class="active">1. Política de Privacidad</a>
+                    <a href="#seguridad">2. Seguridad del Sistema</a>
+                    <a href="#terminos">3. Términos de Uso</a>
+                    <a href="#propiedad">4. Propiedad Intelectual</a>
+                </div>
+            </div>
+
+                        <!-- Texto Legal Expandido -->
+            <div class="col-md-8 col-lg-9 legal-content px-4 pb-5">
+                
+                <section id="privacidad" class="mb-5">
+                    <h2>1. Política de Privacidad</h2>
+                    <p>En Frutitos de Casa, respetamos tu privacidad y estamos comprometidos con la protección de tus datos personales. Esta política explica qué información recopilamos a través de nuestro sistema ERP, cómo la utilizamos y las medidas que tomamos para mantenerla segura.</p>
+                    
+                    <h5 class="mt-4 fw-bold" style="color: var(--texto-marron);">Información que recopilamos</h5>
+                    <p>Al crear una cuenta, realizar un pedido o interactuar con nuestro sistema ERP, recopilamos información básica como:</p>
+                    <ul>
+                        <li><strong>Datos de contacto:</strong> Nombre completo, dirección de correo electrónico, número de teléfono y dirección de entrega.</li>
+                        <li><strong>Datos comerciales:</strong> RUC, nombre de la empresa (si aplica) y límite de crédito autorizado para clientes mayoristas.</li>
+                        <li><strong>Historial transaccional:</strong> Registro de pedidos, facturas emitidas, pagos realizados y lotes de producción adquiridos.</li>
+                    </ul>
+
+                    <h5 class="mt-4 fw-bold" style="color: var(--texto-marron);">Uso de la información</h5>
+                    <p>Los datos recopilados se utilizan exclusivamente para fines operativos y comerciales, incluyendo:</p>
+                    <ul>
+                        <li>Procesar y despachar tus pedidos de mermelada artesanal.</li>
+                        <li>Gestionar el control de inventario y la planificación de la producción (MRP).</li>
+                        <li>Garantizar la trazabilidad de los lotes mediante el código <strong>F-DDMMAA-NN</strong>, permitiendo responder ante cualquier reclamo de calidad.</li>
+                        <li>Enviar notificaciones sobre el estado de tu pedido o actualizaciones del sistema.</li>
+                    </ul>
+                    <p>Frutitos de Casa <strong>no vende, alquila ni comparte</strong> tu información personal con terceros no autorizados, salvo que sea estrictamente requerido por una autoridad legal.</p>
+                </section>
+
+                <section id="seguridad" class="mb-5 pt-4 border-top">
+                    <h2>2. Seguridad del Sistema</h2>
+                    <p>Nuestro ERP ha sido diseñado bajo altos estándares de ingeniería para proteger la integridad de los datos de la planta de manufactura. Implementamos las siguientes medidas de seguridad:</p>
+                    
+                    <h5 class="mt-4 fw-bold" style="color: var(--texto-marron);">Control de acceso basado en roles (RBAC)</h5>
+                    <p>El sistema cuenta con cuatro roles estrictamente definidos: Administrador, Ventas, Producción y Calidad. Un usuario de ventas no puede acceder a los módulos de fabricación, y un operario de producción no puede emitir facturas ni modificar límites de crédito.</p>
+                    
+                    <h5 class="mt-4 fw-bold" style="color: var(--texto-marron);">Protección de credenciales</h5>
+                    <p>Las contraseñas de los usuarios no se guardan en texto plano. Utilizamos algoritmos de encriptación (hashing) de un solo sentido. Esto significa que ni siquiera el personal de TI o los administradores de la base de datos pueden ver la contraseña de un usuario. Si un empleado olvida su clave, debe restablecerla.</p>
+
+                    <h5 class="mt-4 fw-bold" style="color: var(--texto-marron);">Registro de auditoría e integridad de datos</h5>
+                    <p>Cada movimiento dentro del ERP (recepción de materia prima, confirmación de pedido, orden de fabricación, inspección de calidad) queda registrado con una marca de tiempo (timestamp) y el ID del usuario que lo realizó. Esto garantiza un historial inmutable que permite rastrear cualquier error o irregularidad en el proceso productivo.</p>
+                </section>
+
+                <section id="terminos" class="mb-5 pt-4 border-top">
+                    <h2>3. Términos de Uso</h2>
+                    <p>El acceso y uso de esta plataforma (Frutitos de Casa ERP) está restringido a empleados, administradores y clientes mayoristas autorizados. Al utilizar el sistema, el usuario acepta los siguientes términos:</p>
+                    <ul>
+                        <li><strong>Uso adecuado:</strong> No utilizar el sistema para fines ilícitos, para introducir virus o para realizar acciones que puedan dañar la infraestructura de la planta.</li>
+                        <li><strong>Confidencialidad:</strong> Mantener en secreto las credenciales de acceso. El usuario es responsable de todas las acciones realizadas con su cuenta.</li>
+                        <li><strong>Veracidad de la información:</strong> Proporcionar datos reales al registrar clientes, proveedores o al crear órdenes de compra y venta.</li>
+                        <li><strong>Disponibilidad:</strong> Aunque buscamos un 99% de disponibilidad, el sistema puede entrar en mantenimiento programado, lo cual será notificado con antelación.</li>
+                    </ul>
+                </section>
+
+                <section id="propiedad" class="mb-5 pt-4 border-top">
+                    <h2>4. Propiedad Intelectual</h2>
+                    <p>Todo el contenido de este sistema ERP, incluyendo pero no limitándose a: el diseño de la interfaz de usuario (HTML/CSS), los logotipos de Frutitos de Casa, los textos, gráficos, y la estructura de la base de datos, es propiedad exclusiva de la empresa y de los desarrolladores del Proyecto Integrador de Ingeniería de Sistemas.</p>
+                    <p>Queda estrictamente prohibida la reproducción total o parcial, la copia del código fuente, la distribución o la modificación no autorizada de este software, sin el consentimiento previo y por escrito de los autores (Cándida Sandino y Odvin Condega).</p>
+                </section>
+
+                <div class="mt-5 p-4 rounded-4 shadow-sm" style="background-color: #fff; border-left: 5px solid var(--mermelada-rojo);">
+                    <h5 class="fw-bold" style="color: var(--texto-marron);">¿Tienes dudas sobre nuestras políticas legales?</h5>
+                    <p class="small text-muted mb-3">Puedes contactar a nuestro equipo de soporte para obtener más información.</p>
+                    <a href="mailto:legal@frutitosdecasa.com" class="btn btn-sm btn-outline-secondary rounded-pill">
+                        <i class="bi bi-envelope me-2"></i> Contactar a Legal
+                    </a>
+                </div>
+                                <!-- Botón Volver al Inicio -->
+                <div class="text-center mt-5 mb-4">
+                    <a href="../index.html" class="btn btn-outline-secondary rounded-pill px-4 shadow-sm bg-white">
+                        <i class="bi bi-arrow-left me-2"></i> Volver a la Página Principal
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+            <!-- Línea final  -->
+            <div class="border-top border-secondary pt-4 mt-2 text-center">
+                <p class="small mb-1">&copy; 2026 Frutitos de Casa. Todos los derechos reservados.</p>
+                <p class="small mb-0 text-secondary" style="opacity: 0.7;">Proyecto Integrador - Ingeniería de Sistemas</p>
+            </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Script para mover el resaltado del menú lateral -->
+    <script>
+        const secciones = document.querySelectorAll('section');
+        const enlaces = document.querySelectorAll('.legal-sidebar a');
+
+        window.addEventListener('scroll', () => {
+            let actual = '';
+            secciones.forEach(seccion => {
+                const seccionTop = seccion.offsetTop;
+                if (window.scrollY >= seccionTop - 150) { // 150px de margen
+                    actual = seccion.getAttribute('id');
+                }
+            });
+
+            enlaces.forEach(enlace => {
+                enlace.classList.remove('active');
+                if (enlace.getAttribute('href') === `#${actual}`) {
+                    enlace.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

@@ -3,67 +3,409 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - Frutitos de Casa ERP</title>
+    <title>Frutitos de Casa | ERP de Manufactura</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <link rel="stylesheet" href="css/styles.css">
 </head>
-<body class="login-body">
+<body>
 
-    <div class="container-fluid vh-100">
-        <div class="row h-100">
-            
-            <!-- LADO IZQUIERDO: Imagen y Marca (Oculto en celular) -->
-            <div class="col-md-7 d-none d-md-flex bg-login-image align-items-center justify-content-center">
-                <div class="text-white text-center p-5" style="z-index: 2; position: relative;">
-                    <h1 class="display-4 fw-bold mb-3">Frutitos de Casa</h1>
-                    <p class="lead fs-4">El sabor artesanal, ahora digitalizado.</p>
-                    <p class="text-white-50 mt-4">Sistema de Planificación de Recursos Empresariales (ERP)</p>
+    <!-- Menú Público (Fondo transparente sobre la portada) -->
+    <nav class="navbar navbar-expand-lg navbar-dark position-absolute w-100" style="z-index: 10; top: 0; background: rgba(94, 11, 11, 0.8); backdrop-filter: blur(5px);">
+        <div class="container px-4">
+            <a class="navbar-brand fw-bold" href="index.html">Frutitos de Casa</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuPublico">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="menuPublico">
+                <ul class="navbar-nav ms-auto gap-2 align-items-center">
+                    <li class="nav-item"><a class="nav-link text-white" href="#nosotros">Nosotros</a></li>
+                    <li class="nav-item"><a class="nav-link text-white" href="#valores">Valores</a></li>
+                    <li class="nav-item"><a class="nav-link text-white" href="modulos/politicas.html">Políticas</a></li>
+                    <li class="nav-item"><a class="nav-link text-white" href="#porque">¿Por qué elegirnos?</a></li>
+                    <li class="nav-item"><a class="nav-link text-white" href="#faq">FAQ</a></li>
+                    <li class="nav-item ms-lg-4">
+                        <a href="modulos/login.html" class="btn btn-light text-dark fw-bold rounded-pill px-4 shadow-sm">
+                            <i class="bi bi-box-arrow-in-right me-2"></i> Acceder al ERP
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 1. PORTADA PRINCIPAL (HERO) -->
+    <header class="hero-section">
+        <div class="container">
+            <h1 class="mb-3">Frutitos de Casa</h1>
+            <p class="lead mb-4">Impulsando el futuro de la manufactura artesanal.<br>Controlando cada detalle de nuestra producción para llevar lo mejor de Frutitos de Casa a la mesa de nuestros clientes.</p>
+            <a href="modulos/login.html" class="btn btn-fresa btn-lg rounded-pill px-5 py-3 shadow-lg" style="font-size: 1.2rem;">
+                Ingresar  <i class="bi bi-arrow-right ms-2"></i>
+            </a>
+        </div>
+    </header>
+
+    <!-- 2. SECCIÓN QUIÉNES SOMOS -->
+    <section class="about-section" id="nosotros">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6 mb-4 mb-md-0">
+                    <!-- Puedes cambiar esta imagen por una de tu producto -->
+                    <img src="img/fondo-fresa.jpg" alt="Mermelada Artesanal" class="about-img">
+                </div>
+                <div class="col-md-6 px-md-5">
+                    <h6 class="text-uppercase fw-bold mb-2" style="color: var(--mermelada-rojo); letter-spacing: 1px;">Sobre Nosotros</h6>
+                    <h2 class="fw-bold mb-4">Pasión por lo Artesanal, Compromiso con la Calidad</h2>
+                    <p class="text-muted" style="line-height: 1.8; font-size: 1.05rem;">
+                        En Frutitos de Casa elaboramos mermelada de fruta tropical de la más alta calidad. Nuestra planta de manufactura combina la tradición de las recetas caseras con la precisión de un sistema ERP moderno.
+                    </p>
+                    <p class="text-muted" style="line-height: 1.8; font-size: 1.05rem;">
+                        Desde la recepción de la fruta fresca hasta el etiquetado con trazabilidad por lote, garantizamos un producto seguro y delicioso que llega a los hogares nicaragüenses.
+                    </p>
                 </div>
             </div>
+        </div>
+    </section>
 
-            <!-- LADO DERECHO: Formulario de Login -->
-            <div class="col-md-5 d-flex align-items-center justify-content-center bg-login-form">
-                <div class="w-100" style="max-width: 400px; padding: 2rem;">
+    <!-- 3. MISIÓN Y VISIÓN -->
+    <section class="container py-5" id="mision-vision">
+        <div class="text-center mb-5">
+            <h2 class="fw-bold" style="color: var(--texto-marron);">Nuestra Filosofía</h2>
+            <div style="width: 50px; height: 3px; background-color: var(--mermelada-rojo); margin: 10px auto;"></div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 mb-4">
+                <div class="card-mision-vision mision h-100">
+                    <i class="bi bi-bullseye icono-fondo" style="color: var(--mermelada-rojo);"></i>
+                    <h4 class="fw-bold mb-3" style="color: var(--mermelada-rojo);"> Misión</h4>
+                    <p class="text-muted" style="line-height: 1.8;">
+                        Elaborar y distribuir mermeladas artesanales de la más alta calidad, utilizando frutas frescas seleccionadas y procesos que garantizan la inocuidad. Buscamos satisfacer las expectativas de nuestros clientes mayoristas, aportando valor a nuestra comunidad y manteniendo viva la tradición artesanal.
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-6 mb-4">
+                <div class="card-mision-vision vision verde h-100">
+                    <i class="bi bi-eye icono-fondo" style="color: var(--hoja-verde);"></i>
+                    <h4 class="fw-bold mb-3" style="color: var(--hoja-verde);"> Visión</h4>
+                    <p class="text-muted" style="line-height: 1.8;">
+                        Ser para el año 2030 la planta de manufactura artesanal de conservas de fruta líder en Nicaragua, reconocida por la excelencia de nuestros productos, la innovación en nuestros procesos de trazabilidad y la fidelidad de nuestros clientes.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. VALORES -->
+    <section class="py-5" style="background-color: rgba(255,255,255,0.5);" id="valores">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold" style="color: var(--texto-marron);"> Valores</h2>
+                <div style="width: 50px; height: 3px; background-color: var(--mermelada-rojo); margin: 10px auto;"></div>
+            </div>
+            <div class="row g-4 text-center">
+                <div class="col-6 col-md-3">
+                    <div class="kpi-etiqueta h-100">
+                        
+                        <h5 class="fw-bold" style="color: var(--mermelada-rojo);">Calidad</h5>
+                        <p class="small text-muted mb-0">No escatimamos en la selección de la mejor materia prima.</p>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3">
+                    <div class="kpi-etiqueta etiqueta-verde h-100">
+                        
+                        <h5 class="fw-bold" style="color: var(--hoja-verde);">Compromiso</h5>
+                        <p class="small text-muted mb-0">Con nuestros clientes, colaboradores y proveedores locales.</p>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3">
+                    <div class="kpi-etiqueta h-100">
+                       
+                        <h5 class="fw-bold" style="color: var(--mermelada-rojo);">Sostenibilidad</h5>
+                        <p class="small text-muted mb-0">Procesos amigables con el medio ambiente y la comunidad.</p>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3">
+                    <div class="kpi-etiqueta etiqueta-verde h-100">
+                        
+                        <h5 class="fw-bold" style="color: var(--hoja-verde);">Mejora Continua</h5>
+                        <p class="small text-muted mb-0">Buscamos la excelencia a través de la digitalización.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+            <!-- 6. POR QUÉ ELEGIRNOS (Estilo Bloque Elegante) -->
+    <section class="py-5" style="background-color: var(--blanco-tarjeta);" id="porque">
+        <div class="container py-4">
+            <div class="row align-items-center">
+                
+                <!-- Texto a la izquierda -->
+                <div class="col-lg-6 mb-4 mb-lg-0 pe-lg-5">
+                    <h6 class="text-uppercase fw-bold mb-2" style="color: var(--mermelada-rojo); letter-spacing: 1px;">Ventajas Competitivas</h6>
+                    <h2 class="fw-bold mb-4" style="color: var(--texto-marron);">¿Por qué elegir Frutitos de Casa?</h2>
                     
-                    <div class="text-center mb-5">
-                        <span style="font-size: 3rem;">🍓</span>
-                        <h2 class="fw-bold mt-2" style="color: var(--mermelada-rojo);">Bienvenido</h2>
-                        <p class="text-muted">Ingresa tus credenciales para acceder al sistema</p>
+                    <div class="d-flex mb-4">
+                        <div>
+                            <h5 class="fw-bold mb-1">Trazabilidad Total</h5>
+                            <p class="text-muted small mb-0">Rastreamos cada frasco con nuestro código de lote F-DDMMAA-NN, garantizando un control absoluto desde la materia prima hasta el cliente final.</p>
+                        </div>
                     </div>
 
-                    <form action="modulos/dashboard.html">
-                        <!-- Inputs con iconos -->
-                        <div class="form-floating mb-3">
-                            <input type="text" class="form-control form-control-lg" id="usuario" placeholder="Usuario" required>
-                            <label for="usuario">Usuario</label>
+                    <div class="d-flex mb-4">
+                        <div>
+                            <h5 class="fw-bold mb-1">Inocuidad Garantizada</h5>
+                            <p class="text-muted small mb-0">Procesos de cocción estandarizados (145 min) y estrictos controles de sellado y consistencia para la seguridad de tu familia.</p>
+                        </div>
+                    </div>
+
+                    <div class="d-flex mb-4">
+                        <div>
+                            <h5 class="fw-bold mb-1">Compromiso Local</h5>
+                            <p class="text-muted small mb-0">Apoyamos a proveedores nicaragüenses y llevamos lo mejor de nuestra tierra directamente a los hogares y comercios del país.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Imagen a la derecha -->
+                               <!-- Mosaico de Imágenes a la derecha -->
+                <div class="col-lg-6 mt-4 mt-lg-0">
+                    <div class="row g-3">
+                        <!-- Foto 1: Materia Prima (Arriba, ancho completo) -->
+                        <div class="col-12">
+                           <img src="img/materia-prima.jpg" alt="Materia Prima Fresca" class="img-fluid rounded-4 shadow-sm" style="height: 300px; width: 100%; object-fit: cover; object-position: center 30%;">
                         </div>
                         
-                        <div class="form-floating mb-4">
-                            <input type="password" class="form-control form-control-lg" id="password" placeholder="Contraseña" required>
-                            <label for="password">Contraseña</label>
+                        <!-- Foto 2: Proceso de Cocción (Abajo Izquierda) -->
+                        <div class="col-6">
+                            <img src="img/proceso-coccion.jpg" alt="Proceso de Cocción" class="img-fluid rounded-4 shadow-sm" style="height: 200px; width: 100%; object-fit: cover;">
                         </div>
-
-                        <div class="d-flex justify-content-between align-items-center mb-4">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" id="recordar">
-                                <label class="form-check-label text-muted" for="recordar">Recordarme</label>
-                            </div>
-                            <a href="#" class="text-decoration-none" style="color: var(--mermelada-rojo);">¿Olvidaste tu contraseña?</a>
+                        
+                        <!-- Foto 3: Control de Calidad (Abajo Derecha) -->
+                        <div class="col-6">
+                            <img src="img/control-calidad.jpg" alt="Control de Calidad" class="img-fluid rounded-4 shadow-sm" style="height: 200px; width: 100%; object-fit: cover;">
                         </div>
-
-                        <button type="submit" class="btn btn-fresa w-100 btn-lg py-3" style="font-size: 1.1rem;">
-                            Ingresar al Sistema
-                        </button>
-                    </form>
-
-                    <div class="text-center mt-5 text-muted small">
-                        &copy; 2026 Frutitos de Casa. Todos los derechos reservados.
                     </div>
                 </div>
+                
             </div>
-
         </div>
-    </div>
+    </section>
 
+        <!-- 7. PREGUNTAS FRECUENTES (FAQ) -->
+    <section class="py-5 pb-5 mb-5" style="background-color: var(--fondo-beige);" id="faq">
+        <div class="container py-4">
+            <div class="row">
+                
+                <!-- Título a la izquierda -->
+                <div class="col-lg-4 mb-4 mb-lg-0">
+                    <h2 class="fw-bold mb-3" style="color: var(--texto-marron);">Preguntas Frecuentes</h2>
+                    <p class="text-muted mb-4">Resolvemos tus dudas sobre nuestra manufactura, trazabilidad y la calidad de nuestra mermelada artesanal.</p>
+                    <div style="width: 60px; height: 4px; background-color: var(--mermelada-rojo); margin-bottom: 2rem;"></div>
+                    
+                    <!-- Este bloque SOLO se ve en computadora (d-none d-lg-block) -->
+                    <div class="d-none d-lg-block mt-5">
+                        <h5 class="fw-bold mb-2" style="color: var(--texto-marron);">¿Tienes otra pregunta?</h5>
+                        <p class="text-muted small mb-3">Nuestro equipo está listo para ayudarte con cualquier duda sobre nuestra manufactura o el sistema.</p>
+                        <a href="https://wa.me/50588888888?text=Hola,%20vengo%20de%20la%20p%C3%A1gina%20web%20de%20Frutitos%20de%20Casa%20y%20tengo%20una%20consulta" target="_blank" class="text-decoration-none fw-bold" style="color: #25D366;">
+                            <i class="bi bi-whatsapp me-2 fs-5 align-middle"></i> Contáctanos por WhatsApp <i class="bi bi-arrow-right ms-1"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Acordeón a la derecha -->
+                <div class="col-lg-8">
+                    <div class="accordion faq-minimalista" id="accordionFAQ">
+                        
+                        <!-- Pregunta 1 -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                                    ¿Qué hace diferente a Frutitos de Casa?
+                                </button>
+                            </h2>
+                            <div id="faq1" class="accordion-collapse collapse" data-bs-parent="#accordionFAQ">
+                                <div class="accordion-body">
+                                    La combinación perfecta entre la tradición artesanal y la tecnología. No solo elaboramos la mermelada con recetas caseras, sino que toda nuestra planta de manufactura opera bajo un sistema ERP que garantiza la eficiencia, el control de calidad y la trazabilidad exacta de cada frasco producido.
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Pregunta 2 -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                                    ¿Cómo garantizan la calidad del producto?
+                                </button>
+                            </h2>
+                            <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#accordionFAQ">
+                                <div class="accordion-body">
+                                    Mediante un riguroso control en cada etapa del proceso. Desde la selección manual de la fruta fresca, pasando por un proceso de cocción estandarizado de 145 minutos por lote, hasta una inspección final donde se verifica el color, la consistencia y el sellado hermético antes de ser despachado.
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Pregunta 3 -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+                                    ¿Qué significa el código de lote en el frasco?
+                                </button>
+                            </h2>
+                            <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#accordionFAQ">
+                                <div class="accordion-body">
+                                    Es nuestro sistema de trazabilidad (formato F-DDMMAA-NN). Este código nos permite saber exactamente qué día se produjo, qué materia prima se utilizó y qué operario estuvo a cargo. Si surgiera algún reclamo, podemos identificar el lote exacto de inmediato garantizando una respuesta rápida.
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Pregunta 4 -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">
+                                    ¿Cuál es la vida útil de la mermelada?
+                                </button>
+                            </h2>
+                            <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#accordionFAQ">
+                                <div class="accordion-body">
+                                    Nuestra mermelada tiene una vida útil de <strong>12 meses</strong> en su envase de vidrio sellado sin abrir. Una vez abierto el frasco, recomendamos mantenerlo en refrigeración y consumirlo en un plazo máximo de 1 mes para disfrutar de su mejor sabor, color y textura.
+                                </div>
+                            </div>
+                        </div>
+
+                    </div> <!-- Fin del acordeón -->
+
+                    <!-- Este bloque SOLO se ve en celular (d-block d-lg-none) -->
+                    <div class="d-block d-lg-none mt-5 pt-3 border-top">
+                        <h5 class="fw-bold mb-2" style="color: var(--texto-marron);">¿Tienes otra pregunta?</h5>
+                        <p class="text-muted small mb-3">Nuestro equipo está listo para ayudarte con cualquier duda sobre nuestra manufactura o el sistema.</p>
+                        <a href="https://wa.me/50555019626?text=Hola,%20vengo%20de%20la%20p%C3%A1gina%20web%20de%20Frutitos%20de%20Casa%20y%20tengo%20una%20consulta" target="_blank" class="text-decoration-none fw-bold" style="color: #25D366;">
+                            <i class="bi bi-whatsapp me-2 fs-5 align-middle"></i> Contáctanos por WhatsApp <i class="bi bi-arrow-right ms-1"></i>
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+ <!-- 8. SECCIÓN VISÍTANOS (MAPA) -->
+    <section class="py-5" style="background-color: var(--blanco-tarjeta);" id="ubicacion">
+        <div class="container py-4">
+            <div class="row align-items-center">
+                
+                <!-- Información de Contacto -->
+                <div class="col-lg-5 mb-4 mb-lg-0 pe-lg-4">
+                    <h6 class="text-uppercase fw-bold mb-2" style="color: var(--mermelada-rojo); letter-spacing: 1px;">Nuestra Ubicación</h6>
+                    <h2 class="fw-bold mb-4" style="color: var(--texto-marron);">Visítanos en nuestra Planta</h2>
+                    <p class="text-muted mb-4">Si eres proveedor o cliente mayorista, puedes visitarnos para conocer nuestro proceso de manufactura y adquirir nuestros productos directamente.</p>
+                    
+                    <ul class="list-unstyled mb-4">
+                        <li class="mb-3 d-flex">
+                            <i class="bi bi-geo-alt-fill fs-5 me-3" style="color: var(--mermelada-rojo);"></i>
+                            <div>
+                                <strong class="d-block" style="color: var(--texto-marron);">Dirección</strong>
+                                <span class="text-muted">Villa Venezuela, Managua, Nicaragua</span>
+                            </div>
+                        </li>
+                        <li class="mb-3 d-flex">
+                            <i class="bi bi-clock-fill fs-5 me-3" style="color: var(--hoja-verde);"></i>
+                            <div>
+                                <strong class="d-block" style="color: var(--texto-marron);">Horario de Atención</strong>
+                                <span class="text-muted">Lunes a Viernes: 8:00 AM - 5:00 PM<br>Sábados: 8:00 AM - 12:00 PM</span>
+                            </div>
+                        </li>
+                        <li class="d-flex">
+                            <i class="bi bi-telephone-fill fs-5 me-3" style="color: var(--mermelada-rojo);"></i>
+                            <div>
+                                <strong class="d-block" style="color: var(--texto-marron);">Teléfono</strong>
+                                <span class="text-muted">+505 5501 9626</span>
+                            </div>
+                        </li>
+                    </ul>
+
+                    <a href="https://maps.app.goo.gl/19Xt7PJsXXBPGAjr8" target="_blank" class="btn btn-fresa rounded-pill px-4 py-2">
+                        <i class="bi bi-map me-2"></i> Abrir en Google Maps
+                    </a>
+                </div>
+                
+
+                <!-- Mapa -->
+                <div class="col-lg-7">
+                    <div class="map-container shadow-lg rounded-4 overflow-hidden" style="border: 4px solid #fff;">
+                        <!-- MAPA EMBEBIDO -->
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d289.170424243049!2d-86.20939528160481!3d12.126960359313214!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8f73ff0038ed2721%3A0xbaa391587cf21a5f!2sVariedades%20D%26E!5e0!3m2!1ses-419!2sni!4v1792485462201!5m2!1ses-419!2sni" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    
+
+    <!-- 9. PIE DE PÁGINA (FOOTER CORPORATIVO) -->
+    <footer class="footer-erp pt-5 pb-3" style="background-color: #1a1a1a; color: #a0a0a0;">
+        <div class="container">
+            <div class="row g-4 mb-5">
+                
+                <!-- Columna 1: Empresa -->
+                <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
+                    <h5 class="text-white fw-bold mb-3">Frutitos de Casa</h5>
+                    <p class="small mb-3" style="line-height: 1.7;">Planta de manufactura artesanal dedicada a la elaboración de mermeladas de frutas tropicales de la más alta calidad. Combinando tradición y tecnología.</p>
+                </div>
+
+                <!-- Columna 2: Enlaces Rápidos -->
+                <div class="col-lg-2 col-md-6 mb-4 mb-lg-0">
+                    <h6 class="text-white fw-bold mb-3 text-uppercase" style="letter-spacing: 1px; font-size: 0.9rem;">Empresa</h6>
+                    <ul class="list-unstyled small" style="line-height: 2.2;">
+                        <li><a href="#nosotros" class="text-secondary text-decoration-none hover-link"> Nosotros</a></li>
+                        <li><a href="#valores" class="text-secondary text-decoration-none hover-link"> Valores</a></li>
+                        <li><a href="#porque" class="text-secondary text-decoration-none hover-link">¿Por qué elegirnos?</a></li>
+                        <li><a href="#faq" class="text-secondary text-decoration-none hover-link">Preguntas Frecuentes</a></li>
+                    </ul>
+                </div>
+
+                <!-- Columna 3: Legal -->
+                <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
+                    <h6 class="text-white fw-bold mb-3 text-uppercase" style="letter-spacing: 1px; font-size: 0.9rem;">Legal y Políticas</h6>
+                    <ul class="list-unstyled small" style="line-height: 2.2;">
+                        <li><a href="modulos/politicas.html" class="text-secondary text-decoration-none hover-link">Políticas de la Planta</a></li>
+                        <!-- Este lleva directo a Privacidad -->
+                        <li><a href="modulos/legal.html#privacidad" class="text-secondary text-decoration-none hover-link">Privacidad y Seguridad</a></li>
+                        <!-- Este lleva directo a Términos -->
+                        <li><a href="modulos/legal.html#terminos" class="text-secondary text-decoration-none hover-link">Términos de Uso</a></li>
+                    </ul>
+                </div>
+
+                <!-- Columna 4: Contacto -->
+                <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
+                    <h6 class="text-white fw-bold mb-3 text-uppercase" style="letter-spacing: 1px; font-size: 0.9rem;">Contacto</h6>
+                    <ul class="list-unstyled small" style="line-height: 2.2;">
+                        <li class="mb-2"><a href="#ubicacion" class="text-secondary text-decoration-none hover-link"><i class="bi bi-geo-alt me-2"></i> Nuestra Ubicación</a></li>
+                        <li class="mb-2"><i class="bi bi-envelope me-2"></i> candycarolina0401@gmail.com</li>
+                        <li class="mb-2"><i class="bi bi-telephone me-2"></i> +505 5501 9626</li>
+                    </ul>
+                    <a href="modulos/login.html" class="btn btn-outline-light btn-sm mt-3 rounded-pill px-4">Acceder al ERP</a>
+                </div>
+
+            </div>
+            
+         <!-- Línea final  -->
+            <div class="border-top border-secondary pt-4 mt-2 text-center">
+                <p class="small mb-1">&copy; 2026 Frutitos de Casa. Todos los derechos reservados.</p>
+                <p class="small mb-0 text-secondary" style="opacity: 0.7;">Proyecto Integrador - Ingeniería de Sistemas</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+        <!-- Botón Flotante de WhatsApp -->
+    <a href="https://wa.me/50555019626?text=Hola,%20necesito%20ayuda%20con%20el%20sistema%20ERP" target="_blank" class="whatsapp-float" title="Chatea con nosotros">
+        <i class="bi bi-whatsapp"></i>
+    </a>
+
+</body>
+</html>
 </body>
 </html>

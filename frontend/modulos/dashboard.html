@@ -6,39 +6,68 @@
     <title>Dashboard - Frutitos de Casa</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
 </head>
 <body>
 
-    <!-- Menú de Navegación -->
+
+        <!-- Menú de Navegación Inteligente -->
     <nav class="navbar navbar-expand-lg navbar-frutitos navbar-dark">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="dashboard.html">Frutitos de Casa ERP</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuPrincipal">
+        <div class="container-fluid px-4">
+            <a class="navbar-brand fw-bold" href="dashboard.html">Frutitos de Casa ERP</a>
+            
+            <!-- Botón de hamburguesa para celular -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#menuLateral" aria-controls="menuLateral">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="menuPrincipal">
-                <ul class="navbar-nav me-auto">
-                    <li class="nav-item"><a class="nav-link" href="ventas.html">Ventas</a></li>
-                    <li class="nav-item"><a class="nav-link" href="inventario.html">Inventario</a></li>
-                    <li class="nav-item"><a class="nav-link" href="fabricacion.html">Fabricación</a></li>
-                    <li class="nav-item"><a class="nav-link" href="compras.html">Compras</a></li>
-                    <li class="nav-item"><a class="nav-link" href="calidad.html">Calidad</a></li>
+
+            <!-- MENÚ DE COMPUTADORA -->
+            <div class="collapse navbar-collapse d-none d-lg-block">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0 gap-2 ms-lg-4">
+                    <li class="nav-item"><a class="nav-link px-3" href="ventas.html">Ventas</a></li>
+                    <li class="nav-item"><a class="nav-link px-3" href="inventario.html">Inventario</a></li>
+                    <li class="nav-item"><a class="nav-link px-3" href="fabricacion.html">Fabricación</a></li>
+                    <li class="nav-item"><a class="nav-link px-3" href="compras.html">Compras</a></li>
+                    <li class="nav-item"><a class="nav-link px-3" href="calidad.html">Calidad</a></li>
                 </ul>
                 <div class="d-flex align-items-center mt-2 mt-lg-0 gap-3">
-    <span class="navbar-text text-white mb-0 d-flex align-items-center">
-        <span class="me-2" style="font-size: 1.2rem;">👤</span> <!-- Icono de perfil -->
-        <span style="font-weight: 500;">Admin</span>
-    </span>
-    <!-- Botón "píldora" un poco más estilizado -->
-    <a href="../index.html" class="btn btn-outline-light btn-sm rounded-pill px-3">Salir</a>
-</div>
+                    <span class="navbar-text text-white mb-0 d-flex align-items-center">
+                        <span class="me-2">👤</span> Admin
+                    </span>
+                    <a href="login.html" class="btn btn-outline-light btn-sm rounded-pill px-3">Salir</a>
+                </div>
             </div>
         </div>
     </nav>
 
+    <!-- MENÚ LATERAL (OFFCANVAS) PARA CELULAR -->
+    <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="menuLateral" style="background-color: var(--mermelada-oscuro) !important; width: 280px;">
+        <div class="offcanvas-header border-bottom border-secondary">
+            <h5 class="offcanvas-title text-white fw-bold">Menú ERP</h5>
+            <!-- Botón de la X para cerrar -->
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        
+        <div class="offcanvas-body d-flex flex-column">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0 gap-2 w-100">
+                <li class="nav-item"><a class="nav-link px-3 text-white" href="dashboard.html"><i class="bi bi-house-door me-2"></i> Dashboard</a></li>
+                <li class="nav-item"><a class="nav-link px-3 text-white" href="ventas.html"><i class="bi bi-cart me-2"></i> Ventas</a></li>
+                <li class="nav-item"><a class="nav-link px-3 text-white" href="inventario.html"><i class="bi bi-box me-2"></i> Inventario</a></li>
+                <li class="nav-item"><a class="nav-link px-3 text-white" href="fabricacion.html"><i class="bi bi-gear me-2"></i> Fabricación</a></li>
+                <li class="nav-item"><a class="nav-link px-3 text-white" href="compras.html"><i class="bi bi-truck me-2"></i> Compras</a></li>
+                <li class="nav-item"><a class="nav-link px-3 text-white" href="calidad.html"><i class="bi bi-clipboard-check me-2"></i> Calidad</a></li>
+            </ul>
+            
+            <div class="mt-auto pt-3 border-top border-secondary d-flex align-items-center justify-content-between w-100">
+                <span class="text-white small"><i class="bi bi-person-fill me-1"></i> Admin</span>
+                <a href="login.html" class="btn btn-outline-light btn-sm rounded-pill px-3">Salir</a>
+            </div>
+        </div>
+    </div>
+
     <div class="container mt-4">
         
-        <!-- NUEVO: Banner con foto y texto -->
+        <!--  Banner con foto y texto -->
         <div class="hero-dashboard text-center text-md-start">
             <div class="row align-items-center">
                 <div class="col-md-7 col-lg-6">
@@ -48,77 +77,84 @@
             </div>
         </div>
 
-        <!-- NUEVO: Info de la Fresa y el Proceso -->
+              <!-- Info de la Fresa y el Proceso -->
         <div class="row mb-4">
             <div class="col-md-6 mb-3 mb-md-0">
-                <div class="card card-kpi border-fresa h-100">
-                    <div class="card-body">
-                        <h5 class="card-title fw-bold" style="color: var(--mermelada-rojo);">🍓 Nuestra Materia Prima</h5>
-                        <p class="card-text text-muted small">
-                            Trabajamos con fresas frescas seleccionadas de la mejor calidad. Cada lote requiere <strong>5 kg de fresa</strong> para garantizar el sabor y la textura perfecta de nuestra mermelada insignia.
-                        </p>
-                    </div>
+                <div class="kpi-ancha">
+                    <!-- Icono de canasta de fondo -->
+                    <i class="bi bi-basket icono-fondo-dash" style="color: var(--mermelada-rojo);"></i>
+                    <h5 class="card-title fw-bold" style="color: var(--mermelada-rojo);">Nuestra Materia Prima</h5>
+                    <p class="card-text text-muted small mt-2 mb-0" style="line-height: 1.6;">
+                        Trabajamos con fresas frescas seleccionadas de la mejor calidad. Cada lote requiere <strong>5 kg de fresa</strong> para garantizar el sabor y la textura perfecta de nuestra mermelada insignia.
+                    </p>
                 </div>
             </div>
             <div class="col-md-6">
-                <div class="card card-kpi border-verde h-100">
-                    <div class="card-body">
-                        <h5 class="card-title fw-bold" style="color: var(--hoja-verde);">⚙️ Proceso de Producción</h5>
-                        <p class="card-text text-muted small">
-                            El ciclo completo (Recepción, Cocción, Envasado, Etiquetado y Empaque) toma un tiempo estándar de <strong>145 minutos por lote</strong> de 20 frascos, asegurando la máxima eficiencia.
-                        </p>
-                    </div>
+                <div class="kpi-ancha etiqueta-verde">
+                    <!-- Icono de engranaje/fábrica de fondo -->
+                    <i class="bi bi-gear-wide-connected icono-fondo-dash" style="color: var(--hoja-verde);"></i>
+                    <h5 class="card-title fw-bold" style="color: var(--hoja-verde);">Proceso de Producción</h5>
+                    <p class="card-text text-muted small mt-2 mb-0" style="line-height: 1.6;">
+                        El ciclo completo (Recepción, Cocción, Envasado, Etiquetado y Empaque) toma un tiempo estándar de <strong>145 minutos por lote</strong> de 20 frascos, asegurando la máxima eficiencia.
+                    </p>
                 </div>
             </div>
         </div>
 
         <h4 class="mb-3 text-secondary border-bottom pb-2">Indicadores del Sistema (KPIs)</h4>
         
-        <!-- Tarjetas KPI -->
+                <!-- Tarjetas KPI Estilo Etiqueta -->
         <div class="row g-4 mb-5">
+            
+            <!-- Tarjeta 1: Stock Fresa -->
             <div class="col-12 col-sm-6 col-md-3">
-                <div class="card card-kpi border-fresa h-100">
-                    <div class="card-body">
-                        <h6 class="text-muted">Stock Fresa (MP)</h6>
-                        <h2 class="fw-bold" style="color: var(--mermelada-rojo);">12.5 kg</h2>
-                        <p class="small text-muted mb-0">Mínimo: 10 kg</p>
-                    </div>
+                <div class="kpi-etiqueta">
+                    <h6 class="text-uppercase text-muted mt-3" style="font-size: 0.8rem; letter-spacing: 1px;">
+                        <i class="bi bi-box-seam me-2" style="color: var(--mermelada-rojo);"></i>Stock Fresa (MP)
+                    </h6>
+                    <h2 class="fw-bold mb-1" style="color: var(--mermelada-rojo); font-family: serif;">--- <span style="font-size: 1rem; font-family: 'Segoe UI', sans-serif;">kg</span></h2>
+                    <p class="small text-muted mb-0">Mínimo: --- kg</p>
                 </div>
             </div>
             
+            <!-- Tarjeta 2: Órdenes de Fab -->
             <div class="col-12 col-sm-6 col-md-3">
-                <div class="card card-kpi border-verde h-100">
-                    <div class="card-body">
-                        <h6 class="text-muted">Órdenes de Fab.</h6>
-                        <h2 class="fw-bold" style="color: var(--hoja-verde);">2</h2>
-                        <p class="small text-muted mb-0">En proceso</p>
-                    </div>
+                <div class="kpi-etiqueta etiqueta-verde">
+                    <h6 class="text-uppercase text-muted mt-3" style="font-size: 0.8rem; letter-spacing: 1px;">
+                        <i class="bi bi-gear me-2" style="color: var(--hoja-verde);"></i>Órdenes de Fab.
+                    </h6>
+                    <h2 class="fw-bold mb-1" style="color: var(--hoja-verde); font-family: serif;">---</h2>
+                    <p class="small text-muted mb-0">En proceso</p>
                 </div>
             </div>
 
+            <!-- Tarjeta 3: Lote Activo -->
             <div class="col-12 col-sm-6 col-md-3">
-                <div class="card card-kpi border-fresa h-100">
-                    <div class="card-body">
-                        <h6 class="text-muted">Lote Activo</h6>
-                        <h2 class="fw-bold">F-131026-01</h2>
-                        <p class="small text-muted mb-0">Mermelada de Fresa</p>
-                    </div>
+                <div class="kpi-etiqueta">
+                    <h6 class="text-uppercase text-muted mt-3" style="font-size: 0.8rem; letter-spacing: 1px;">
+                        <i class="bi bi-tag me-2" style="color: var(--mermelada-rojo);"></i>Lote Activo
+                    </h6>
+                    <h2 class="fw-bold mb-1" style="color: var(--mermelada-rojo); font-family: serif;">---</h2>
+                    <p class="small text-muted mb-0">Mermelada de Fresa</p>
                 </div>
             </div>
 
+            <!-- Tarjeta 4: Tiempo de Lote -->
             <div class="col-12 col-sm-6 col-md-3">
-                <div class="card card-kpi border-verde h-100">
-                    <div class="card-body">
-                        <h6 class="text-muted">Tiempo de Lote</h6>
-                        <h2 class="fw-bold">145 min</h2>
-                        <p class="small text-muted mb-0">Estándar</p>
-                    </div>
+                <div class="kpi-etiqueta etiqueta-verde">
+                    <h6 class="text-uppercase text-muted mt-3" style="font-size: 0.8rem; letter-spacing: 1px;">
+                        <i class="bi bi-clock me-2" style="color: var(--hoja-verde);"></i>Tiempo de Lote
+                    </h6>
+                    <h2 class="fw-bold mb-1" style="color: var(--hoja-verde); font-family: serif;">--- <span style="font-size: 1rem; font-family: 'Segoe UI', sans-serif;">min</span></h2>
+                    <p class="small text-muted mb-0">Estándar</p>
                 </div>
             </div>
+
         </div>
 
     </div>
-
+    <!-- Bootstrap JS (Esencial para que funcione el menú lateral) -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
 </body>
 </html>
