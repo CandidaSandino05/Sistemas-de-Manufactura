@@ -21,7 +21,7 @@ Este repositorio contiene el desarrollo del Sistema ERP para la planta de manufa
 - CSS3 (Diseño personalizado y responsivo)
 - Bootstrap 5 (Framework de diseño, menú hamburguesa y tablas adaptables)
 
-## 🚀 Tareas pendientes (Backend)
+##  Tareas pendientes (Backend)
 - [ ] Configurar servidor local y base de datos.
 - [ ] Conectar las vistas con los modelos de datos (Productos, Clientes, OF, Lotes).
 - [ ] Implementar el motor MRP y la generación automática de lotes `F-DDMMAA-NN`.
