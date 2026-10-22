@@ -4,33 +4,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calidad - Frutitos de Casa</title>
+    <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <!-- CSS Personalizado -->
     <link rel="stylesheet" href="../css/styles.css">
 </head>
 <body>
 
-    <!-- Menú de Navegación (Desktop normal, Móvil lateral) -->
+    <!-- Menú de Navegación -->
     <nav class="navbar navbar-expand-lg navbar-frutitos navbar-dark">
         <div class="container-fluid px-4">
-            <a class="navbar-brand fw-bold" href="dashboard.html">Frutitos de Casa ERP</a>
+           <a class="navbar-brand fw-bold" href="#" id="logoNavbar">Frutitos de Casa ERP</a>
             
-            <!-- Botón de hamburguesa para celular -->
             <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#menuLateral">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
-            <!-- MENÚ DE COMPUTADORA (Se oculta en celular) -->
             <div class="collapse navbar-collapse d-none d-lg-block" id="menuDesktop">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0 gap-2 ms-lg-4">
-                    <li class="nav-item"><a class="nav-link px-3" href="ventas.html">Ventas</a></li>
-                    <li class="nav-item"><a class="nav-link px-3" href="inventario.html">Inventario</a></li>
-                    <li class="nav-item"><a class="nav-link px-3" href="fabricacion.html">Fabricación</a></li>
-                    <li class="nav-item"><a class="nav-link px-3" href="compras.html">Compras</a></li>
-                    <li class="nav-item"><a class="nav-link px-3" href="calidad.html">Calidad</a></li>
+                    <li class="nav-item" id="menu-ventas"><a class="nav-link px-3" href="ventas.html">Ventas</a></li>
+                    <li class="nav-item" id="menu-inventario"><a class="nav-link px-3" href="inventario.html">Inventario</a></li>
+                    <li class="nav-item" id="menu-fabricacion"><a class="nav-link px-3" href="fabricacion.html">Fabricación</a></li>
+                    <li class="nav-item" id="menu-compras"><a class="nav-link px-3" href="compras.html">Compras</a></li>
+                    <li class="nav-item" id="menu-calidad"><a class="nav-link px-3" href="calidad.html">Calidad</a></li>
                 </ul>
                 <div class="d-flex align-items-center mt-2 mt-lg-0 gap-3">
-                    <span class="navbar-text text-white mb-0 d-flex align-items-center">
-                        <span class="me-2">👤</span> Admin
+                    <span class="navbar-text text-white mb-0 d-flex align-items-center" id="nombreUsuarioNav">
+                        <i class="bi bi-person-circle me-2"></i> Admin
                     </span>
                     <a href="login.html" class="btn btn-outline-light btn-sm rounded-pill px-3">Salir</a>
                 </div>
@@ -44,30 +46,32 @@
             <h5 class="offcanvas-title text-white fw-bold">Frutitos de Casa</h5>
             <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
-        
         <div class="offcanvas-body d-flex flex-column">
-            <!-- Enlaces del menú -->
             <ul class="navbar-nav me-auto mb-2 mb-lg-0 gap-2 w-100">
                 <li class="nav-item"><a class="nav-link px-3 text-white" href="dashboard.html"><i class="bi bi-house-door me-2"></i> Dashboard</a></li>
-                <li class="nav-item"><a class="nav-link px-3 text-white" href="ventas.html"><i class="bi bi-cart me-2"></i> Ventas</a></li>
-                <li class="nav-item"><a class="nav-link px-3 text-white" href="inventario.html"><i class="bi bi-box me-2"></i> Inventario</a></li>
-                <li class="nav-item"><a class="nav-link px-3 text-white" href="fabricacion.html"><i class="bi bi-gear me-2"></i> Fabricación</a></li>
-                <li class="nav-item"><a class="nav-link px-3 text-white" href="compras.html"><i class="bi bi-truck me-2"></i> Compras</a></li>
-                <li class="nav-item"><a class="nav-link px-3 text-white" href="calidad.html"><i class="bi bi-clipboard-check me-2"></i> Calidad</a></li>
+                <li class="nav-item" id="menu-ventas-mobile"><a class="nav-link px-3 text-white" href="ventas.html"><i class="bi bi-cart me-2"></i> Ventas</a></li>
+                <li class="nav-item" id="menu-inventario-mobile"><a class="nav-link px-3 text-white" href="inventario.html"><i class="bi bi-box me-2"></i> Inventario</a></li>
+                <li class="nav-item" id="menu-fabricacion-mobile"><a class="nav-link px-3 text-white" href="fabricacion.html"><i class="bi bi-gear me-2"></i> Fabricación</a></li>
+                <li class="nav-item" id="menu-compras-mobile"><a class="nav-link px-3 text-white" href="compras.html"><i class="bi bi-truck me-2"></i> Compras</a></li>
+                <li class="nav-item" id="menu-calidad-mobile"><a class="nav-link px-3 text-white" href="calidad.html"><i class="bi bi-clipboard-check me-2"></i> Calidad</a></li>
             </ul>
-            
-            <!-- Usuario y Salir (Pegados hasta abajo) -->
             <div class="mt-auto pt-3 border-top border-secondary d-flex align-items-center justify-content-between w-100">
-                <span class="text-white small"><i class="bi bi-person-fill me-1"></i> Admin</span>
+                <span class="text-white small" id="nombreUsuarioNavMobile"><i class="bi bi-person-fill me-1"></i> Admin</span>
                 <a href="login.html" class="btn btn-outline-light btn-sm rounded-pill px-3">Salir</a>
             </div>
         </div>
     </div>
 
+    <!-- CONTENIDO PRINCIPAL -->
     <div class="container mt-4 mt-md-5">
         <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center mb-3 gap-2">
-            <h3 class="text-secondary mb-0">Control de Calidad y Trazabilidad</h3>
-            <button class="btn btn-fresa">+ Nueva Inspección</button>
+            <!-- ID en el título -->
+            <h3 class="text-secondary mb-0" id="tituloCalidad">Control de Calidad y Trazabilidad</h3>
+            
+            <!-- ID en el botón -->
+            <button class="btn btn-fresa" id="btnNuevaInspeccion" onclick="abrirModalInspeccion()">
+                <i class="bi bi-clipboard-plus me-2"></i> Nueva Inspección
+            </button>
         </div>
         
         <div class="card shadow-sm border-0">
@@ -83,17 +87,24 @@
                                 <th>Color</th>
                                 <th>Consistencia</th>
                                 <th>Disposición</th>
+                                <th>Acciones</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <!-- Ejemplo un bucle for para mostrar los datos -->
+                            <!-- Fila de ejemplo para la vista -->
                             <tr>
-                                <td>---</td>
-                                <td>---</td>
-                                <td>---</td>
-                                <td>---</td>
-                                <td><span class="badge bg-secondary">Sin datos</span></td>
-                                <td><button class="btn btn-sm btn-outline-secondary">Ver</button></td>
+                                <td>22/10/2026 14:30</td>
+                                <td><span class="badge bg-secondary">F-221026-01</span></td>
+                                <td>Inspector</td>
+                                <td class="text-success"><i class="bi bi-check-circle-fill"></i></td>
+                                <td class="text-success"><i class="bi bi-check-circle-fill"></i></td>
+                                <td class="text-danger"><i class="bi bi-x-circle-fill"></i></td>
+                                <td><span class="badge bg-warning text-dark">Cuarentena</span></td>
+                                <td>
+                                    <button class="btn btn-sm btn-outline-secondary" onclick="abrirModalVerCalidad('22/10/2026', 'F-221026-01', 'Inspector', 'OK', 'OK', 'Falló', 'Cuarentena', 'Se detectó grumos en la mezcla.')">
+                                        <i class="bi bi-eye"></i> Ver
+                                    </button>
+                                </td>
                             </tr>
                         </tbody>
                     </table>
@@ -102,6 +113,264 @@
         </div>
     </div>
 
+    <!-- ========================================================= -->
+    <!-- MODAL 1: REGISTRAR NUEVA INSPECCIÓN                       -->
+    <!-- ========================================================= -->
+    <div class="mi-modal-overlay" id="modalInspeccion">
+        <div class="mi-modal-caja" style="max-width: 650px;">
+            
+            <div class="position-relative p-3" style="background-color: var(--mermelada-oscuro);">
+                <h5 class="m-0 fw-bold text-center text-white w-100" style="color: white !important;">
+                    <i class="bi bi-clipboard-check me-2"></i> Nueva Inspección de Calidad
+                </h5>
+                <button type="button" class="btn-close btn-close-white position-absolute top-50 end-0 translate-middle-y me-3" onclick="cerrarModalInspeccion()" aria-label="Close"></button>
+            </div>
+
+            <form action="/api/calidad/crear" method="POST">
+                <div class="p-4">
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label class="form-label fw-bold small text-muted">Lote a Inspeccionar</label>
+                            <select class="form-select" name="lote_id" id="selectLote" required>
+                                <option value="">Cargando lotes...</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label fw-bold small text-muted">Inspector</label>
+                            <input type="text" class="form-control" name="inspector" value="Inspector" readonly required>
+                        </div>
+                    </div>
+
+                    <h6 class="fw-bold border-bottom pb-2 mb-3" style="color: var(--mermelada-rojo);">Puntos de Control</h6>
+                    
+                    <div class="row mb-4">
+                        <div class="col-md-4">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="sellado_ok" id="checkSellado" checked>
+                                <label class="form-check-label fw-bold" for="checkSellado">Sellado Correcto</label>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="color_ok" id="checkColor" checked>
+                                <label class="form-check-label fw-bold" for="checkColor">Color Adecuado</label>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="consistencia_ok" id="checkConsistencia" checked>
+                                <label class="form-check-label fw-bold" for="checkConsistencia">Consistencia OK</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label fw-bold small text-muted">Disposición Final</label>
+                        <select class="form-select" name="disposicion" required>
+                            <option value="Liberado">Liberado (Aprobado para despacho)</option>
+                            <option value="Cuarentena">Cuarentena (Retenido para revisión)</option>
+                            <option value="Retrabajo">Retrabajo (Necesita reprocesarse)</option>
+                            <option value="Scrap">Scrap (Desechar/Merma)</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-2">
+                        <label class="form-label fw-bold small text-muted">Observaciones</label>
+                        <textarea class="form-control" name="observaciones" rows="2" placeholder="Ej: Se encontró una tapa con fisura..."></textarea>
+                    </div>
+                </div>
+                
+                <div class="p-3 bg-light d-flex justify-content-end gap-2 border-top">
+                    <button type="button" class="btn btn-secondary" onclick="cerrarModalInspeccion()">Cancelar</button>
+                    <button type="submit" class="btn btn-fresa">Guardar Inspección</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- ========================================================= -->
+    <!-- MODAL 2: VER DETALLE DE LA INSPECCIÓN                     -->
+    <!-- ========================================================= -->
+    <div class="mi-modal-overlay" id="modalVerCalidad">
+        <div class="mi-modal-caja" style="max-width: 600px;">
+            
+            <div class="d-flex justify-content-between align-items-center p-3" style="background-color: var(--mermelada-oscuro);">
+                <h5 class="m-0 fw-bold text-white"><i class="bi bi-search me-2"></i> Detalle de Inspección</h5>
+                <button type="button" class="btn-close btn-close-white" onclick="cerrarModalVerCalidad()"></button>
+            </div>
+
+            <div class="p-4">
+                <div class="row mb-4 bg-light p-3 rounded">
+                    <div class="col-md-6 mb-2 mb-md-0">
+                        <span class="d-block text-muted small fw-bold">LOTE</span>
+                        <span class="fw-bold fs-5" id="verCalLote"></span>
+                    </div>
+                    <div class="col-md-6 text-md-end">
+                        <span class="d-block text-muted small fw-bold">FECHA</span>
+                        <span id="verCalFecha"></span> <br>
+                        <span class="text-muted small">Inspector: <span id="verCalInspector"></span></span>
+                    </div>
+                </div>
+
+                <h6 class="fw-bold border-bottom pb-2 mb-3" style="color: var(--mermelada-rojo);">Resultados de Calidad</h6>
+                
+                <ul class="list-group list-group-flush mb-4">
+                    <li class="list-group-item d-flex justify-content-between align-items-center px-0">
+                        <span><i class="bi bi-droplet me-2"></i> Sellado</span>
+                        <span id="verCalSellado"></span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center px-0">
+                        <span><i class="bi bi-palette me-2"></i> Color</span>
+                        <span id="verCalColor"></span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center px-0">
+                        <span><i class="bi bi-funnel me-2"></i> Consistencia</span>
+                        <span id="verCalConsistencia"></span>
+                    </li>
+                </ul>
+
+                <div class="alert alert-secondary mb-0">
+                    <span class="fw-bold d-block mb-1">Disposición Final:</span>
+                    <span class="badge fs-6" id="verCalDisposicion"></span>
+                </div>
+
+                <div class="mt-3">
+                    <span class="d-block text-muted small fw-bold mb-1">OBSERVACIONES:</span>
+                    <p class="small text-muted fst-italic" id="verCalObservaciones">Sin observaciones.</p>
+                </div>
+            </div>
+
+            <div class="p-3 bg-light d-flex justify-content-end border-top">
+                <button type="button" class="btn btn-secondary" onclick="cerrarModalVerCalidad()">Cerrar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========================================================= -->
+    <!-- SCRIPTS                                                   -->
+    <!-- ========================================================= -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        // =========================================================
+        // 1. LÓGICA DE VISIBILIDAD POR ROLES (RBAC) Y PROTECCIÓN
+        // =========================================================
+        const rolDelUsuario = localStorage.getItem('rolERP') || 'calidad';
+
+        // Protección de URL: Si no es admin ni calidad, lo pateamos
+        if (rolDelUsuario !== 'admin' && rolDelUsuario !== 'calidad') {
+            if (rolDelUsuario === 'ventas') window.location.href = 'ventas.html';
+            else if (rolDelUsuario === 'produccion') window.location.href = 'fabricacion.html';
+            else window.location.href = 'login.html';
+        }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            // 2. Ocultar menús según el rol
+            const modulosEscritorio = ['menu-ventas', 'menu-inventario', 'menu-fabricacion', 'menu-compras', 'menu-calidad'];
+            const modulosMovil = ['menu-ventas-mobile', 'menu-inventario-mobile', 'menu-fabricacion-mobile', 'menu-compras-mobile', 'menu-calidad-mobile'];
+                        // ASIGNAR RUTA AL LOGO SEGÚN EL ROL
+            const logo = document.getElementById('logoNavbar');
+            if (logo) {
+                if (rolDelUsuario === 'admin') logo.href = 'dashboard.html';
+                else if (rolDelUsuario === 'ventas') logo.href = 'ventas.html';
+                else if (rolDelUsuario === 'produccion') logo.href = 'fabricacion.html';
+                else if (rolDelUsuario === 'calidad') logo.href = 'calidad.html';
+            }
+            
+            // PRIMERO: Ocultamos TODOS los módulos por defecto
+            modulosEscritorio.forEach(id => { const el = document.getElementById(id); if (el) el.style.display = 'none'; });
+            modulosMovil.forEach(id => { const el = document.getElementById(id); if (el) el.style.display = 'none'; });
+
+            if (rolDelUsuario === 'admin') {
+                // EL ADMIN NO VE MENÚS (Se queda vacío)
+                document.getElementById('nombreUsuarioNav').innerHTML = '<i class="bi bi-person-circle me-2"></i> Administrador';
+                document.getElementById('nombreUsuarioNavMobile').innerHTML = '<i class="bi bi-person-fill me-1"></i> Administrador';
+            } 
+            else if (rolDelUsuario === 'calidad') {
+                // CALIDAD SOLO VE SU MÓDULO
+                document.getElementById('menu-calidad').style.display = 'block';
+                document.getElementById('menu-calidad-mobile').style.display = 'block';
+                document.getElementById('nombreUsuarioNav').innerHTML = '<i class="bi bi-person-circle me-2"></i> Inspector Calidad';
+                document.getElementById('nombreUsuarioNavMobile').innerHTML = '<i class="bi bi-person-fill me-1"></i> Inspector Calidad';
+            }
+
+            // 3. Lógica del Modo Solo Lectura
+            const urlParams = new URLSearchParams(window.location.search);
+            const modo = urlParams.get('mode');
+
+            // Si viene de un reporte o es Admin
+            if (modo === 'view' || rolDelUsuario === 'admin') {
+                const btnNuevo = document.getElementById('btnNuevaInspeccion');
+                if (btnNuevo) btnNuevo.style.display = 'none';
+                
+                const titulo = document.getElementById('tituloCalidad');
+                if (titulo) titulo.innerText = "Reporte de Calidad (Solo Lectura)";
+            }
+        });
+
+        // --- 1. CONTROL DE MODALES ---
+        function abrirModalInspeccion() { document.getElementById('modalInspeccion').classList.add('activo'); }
+        function cerrarModalInspeccion() { document.getElementById('modalInspeccion').classList.remove('activo'); }
+
+        function cerrarModalVerCalidad() { document.getElementById('modalVerCalidad').classList.remove('activo'); }
+
+        // Cerrar al hacer clic fuera
+        document.getElementById('modalInspeccion').addEventListener('click', function(e) { if (e.target === this) cerrarModalInspeccion(); });
+        document.getElementById('modalVerCalidad').addEventListener('click', function(e) { if (e.target === this) cerrarModalVerCalidad(); });
+
+        // --- 2. CARGAR LOTES PENDIENTES ---
+        document.addEventListener("DOMContentLoaded", function() {
+            fetch('/api/calidad/lotes-pendientes') 
+                .then(respuesta => respuesta.json())
+                .then(lotes => {
+                    const select = document.getElementById('selectLote');
+                    select.innerHTML = '<option value="">Seleccione un lote...</option>';
+                    
+                    lotes.forEach(lote => {
+                        const opcion = document.createElement('option');
+                        opcion.value = lote.id;
+                        opcion.textContent = lote.codigo_lote + ' (' + lote.producto_nombre + ')';
+                        select.appendChild(opcion);
+                    });
+                })
+                .catch(error => {
+                    console.error('Error al cargar lotes:', error);
+                    document.getElementById('selectLote').innerHTML = '<option value="">Error al cargar</option>';
+                });
+        });
+
+        // --- 3. ABRIR MODAL VER CALIDAD ---
+        function abrirModalVerCalidad(fecha, lote, inspector, sellado, color, consistencia, disposicion, observaciones) {
+            document.getElementById('verCalFecha').innerText = fecha;
+            document.getElementById('verCalLote').innerText = lote;
+            document.getElementById('verCalInspector').innerText = inspector;
+            document.getElementById('verCalObservaciones').innerText = observaciones;
+
+            // Función auxiliar para mostrar el icono correcto
+            const getIcono = (estado) => {
+                return estado === 'OK' 
+                    ? '<span class="text-success fw-bold"><i class="bi bi-check-circle-fill me-1"></i> Aprobado</span>' 
+                    : '<span class="text-danger fw-bold"><i class="bi bi-x-circle-fill me-1"></i> Falló</span>';
+            };
+
+            document.getElementById('verCalSellado').innerHTML = getIcono(sellado);
+            document.getElementById('verCalColor').innerHTML = getIcono(color);
+            document.getElementById('verCalConsistencia').innerHTML = getIcono(consistencia);
+
+            // Configurar el badge de disposición
+            const badgeDisp = document.getElementById('verCalDisposicion');
+            badgeDisp.innerText = disposicion;
+            
+            if (disposicion === 'Liberado') {
+                badgeDisp.className = 'badge bg-success fs-6';
+            } else if (disposicion === 'Cuarentena' || disposicion === 'Retrabajo') {
+                badgeDisp.className = 'badge bg-warning text-dark fs-6';
+            } else {
+                badgeDisp.className = 'badge bg-danger fs-6';
+            }
+
+            document.getElementById('modalVerCalidad').classList.add('activo');
+        }
+    </script>
 </body>
 </html>

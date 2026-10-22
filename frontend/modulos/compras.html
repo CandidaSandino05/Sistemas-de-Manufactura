@@ -4,33 +4,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Compras - Frutitos de Casa</title>
+    <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <!-- CSS Personalizado -->
     <link rel="stylesheet" href="../css/styles.css">
 </head>
 <body>
 
-    <!-- Menú de Navegación (Desktop normal, Móvil lateral) -->
+    <!-- Menú de Navegación -->
     <nav class="navbar navbar-expand-lg navbar-frutitos navbar-dark">
         <div class="container-fluid px-4">
-            <a class="navbar-brand fw-bold" href="dashboard.html">Frutitos de Casa ERP</a>
+         <a class="navbar-brand fw-bold" href="#" id="logoNavbar">Frutitos de Casa ERP</a>
             
-            <!-- Botón de hamburguesa para celular -->
             <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#menuLateral">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
-            <!-- MENÚ DE COMPUTADORA (Se oculta en celular) -->
+            <!-- MENÚ DE COMPUTADORA -->
             <div class="collapse navbar-collapse d-none d-lg-block" id="menuDesktop">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0 gap-2 ms-lg-4">
-                    <li class="nav-item"><a class="nav-link px-3" href="ventas.html">Ventas</a></li>
-                    <li class="nav-item"><a class="nav-link px-3" href="inventario.html">Inventario</a></li>
-                    <li class="nav-item"><a class="nav-link px-3" href="fabricacion.html">Fabricación</a></li>
-                    <li class="nav-item"><a class="nav-link px-3" href="compras.html">Compras</a></li>
-                    <li class="nav-item"><a class="nav-link px-3" href="calidad.html">Calidad</a></li>
+                    <li class="nav-item" id="menu-ventas"><a class="nav-link px-3" href="ventas.html">Ventas</a></li>
+                    <li class="nav-item" id="menu-inventario"><a class="nav-link px-3" href="inventario.html">Inventario</a></li>
+                    <li class="nav-item" id="menu-fabricacion"><a class="nav-link px-3" href="fabricacion.html">Fabricación</a></li>
+                    <li class="nav-item" id="menu-compras"><a class="nav-link px-3" href="compras.html">Compras</a></li>
+                    <li class="nav-item" id="menu-calidad"><a class="nav-link px-3" href="calidad.html">Calidad</a></li>
                 </ul>
                 <div class="d-flex align-items-center mt-2 mt-lg-0 gap-3">
-                    <span class="navbar-text text-white mb-0 d-flex align-items-center">
-                        <span class="me-2">👤</span> Admin
+                    <span class="navbar-text text-white mb-0 d-flex align-items-center" id="nombreUsuarioNav">
+                        <i class="bi bi-person-circle me-2"></i> Admin
                     </span>
                     <a href="login.html" class="btn btn-outline-light btn-sm rounded-pill px-3">Salir</a>
                 </div>
@@ -44,30 +47,32 @@
             <h5 class="offcanvas-title text-white fw-bold">Frutitos de Casa</h5>
             <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
-        
         <div class="offcanvas-body d-flex flex-column">
-            <!-- Enlaces del menú -->
             <ul class="navbar-nav me-auto mb-2 mb-lg-0 gap-2 w-100">
                 <li class="nav-item"><a class="nav-link px-3 text-white" href="dashboard.html"><i class="bi bi-house-door me-2"></i> Dashboard</a></li>
-                <li class="nav-item"><a class="nav-link px-3 text-white" href="ventas.html"><i class="bi bi-cart me-2"></i> Ventas</a></li>
-                <li class="nav-item"><a class="nav-link px-3 text-white" href="inventario.html"><i class="bi bi-box me-2"></i> Inventario</a></li>
-                <li class="nav-item"><a class="nav-link px-3 text-white" href="fabricacion.html"><i class="bi bi-gear me-2"></i> Fabricación</a></li>
-                <li class="nav-item"><a class="nav-link px-3 text-white" href="compras.html"><i class="bi bi-truck me-2"></i> Compras</a></li>
-                <li class="nav-item"><a class="nav-link px-3 text-white" href="calidad.html"><i class="bi bi-clipboard-check me-2"></i> Calidad</a></li>
+                <li class="nav-item" id="menu-ventas-mobile"><a class="nav-link px-3 text-white" href="ventas.html"><i class="bi bi-cart me-2"></i> Ventas</a></li>
+                <li class="nav-item" id="menu-inventario-mobile"><a class="nav-link px-3 text-white" href="inventario.html"><i class="bi bi-box me-2"></i> Inventario</a></li>
+                <li class="nav-item" id="menu-fabricacion-mobile"><a class="nav-link px-3 text-white" href="fabricacion.html"><i class="bi bi-gear me-2"></i> Fabricación</a></li>
+                <li class="nav-item" id="menu-compras-mobile"><a class="nav-link px-3 text-white" href="compras.html"><i class="bi bi-truck me-2"></i> Compras</a></li>
+                <li class="nav-item" id="menu-calidad-mobile"><a class="nav-link px-3 text-white" href="calidad.html"><i class="bi bi-clipboard-check me-2"></i> Calidad</a></li>
             </ul>
-            
-            <!-- Usuario y Salir (Pegados hasta abajo) -->
             <div class="mt-auto pt-3 border-top border-secondary d-flex align-items-center justify-content-between w-100">
-                <span class="text-white small"><i class="bi bi-person-fill me-1"></i> Admin</span>
+                <span class="text-white small" id="nombreUsuarioNavMobile"><i class="bi bi-person-fill me-1"></i> Admin</span>
                 <a href="login.html" class="btn btn-outline-light btn-sm rounded-pill px-3">Salir</a>
             </div>
         </div>
     </div>
 
+    <!-- CONTENIDO PRINCIPAL -->
     <div class="container mt-4 mt-md-5">
         <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center mb-3 gap-2">
-            <h3 class="text-secondary mb-0">Órdenes de Compra a Proveedores</h3>
-            <button class="btn btn-fresa">+ Nueva Orden de Compra</button>
+            <!-- ID en el título -->
+            <h3 class="text-secondary mb-0" id="tituloCompras">Órdenes de Compra a Proveedores</h3>
+            
+            <!-- ID en el botón -->
+            <button class="btn btn-fresa" id="btnNuevaCompra" onclick="abrirModalCompra()">
+                <i class="bi bi-truck me-2"></i> Nueva Orden de Compra
+            </button>
         </div>
         
         <div class="card shadow-sm border-0">
@@ -81,17 +86,21 @@
                                 <th>Fecha</th>
                                 <th>Total (C$)</th>
                                 <th>Estado</th>
+                                <th>Acciones</th>
                             </tr>
                         </thead>
-                       <tbody>
-                            <!-- Ejemplo un bucle for para mostrar los datos -->
+                        <tbody>
                             <tr>
-                                <td>---</td>
-                                <td>---</td>
-                                <td>---</td>
-                                <td>---</td>
-                                <td><span class="badge bg-secondary">Sin datos</span></td>
-                                <td><button class="btn btn-sm btn-outline-secondary">Ver</button></td>
+                                <td>OC-0001</td>
+                                <td>Frutas del Norte S.A.</td>
+                                <td>22/10/2026</td>
+                                <td>C$ 450.00</td>
+                                <td><span class="badge bg-success">Recibida</span></td>
+                                <td>
+                                    <button class="btn btn-sm btn-outline-secondary" onclick="abrirModalVerCompra('OC-0001', 'Frutas del Norte S.A.', '22/10/2026', 'C$ 450.00', 'Recibida')">
+                                        <i class="bi bi-eye"></i> Ver
+                                    </button>
+                                </td>
                             </tr>
                         </tbody>
                     </table>
@@ -100,6 +109,338 @@
         </div>
     </div>
 
+    <!-- ========================================================= -->
+    <!-- MODAL 1: REGISTRAR ORDEN DE COMPRA                        -->
+    <!-- ========================================================= -->
+    <div class="mi-modal-overlay" id="modalCompra">
+        <div class="mi-modal-caja" style="max-width: 800px;">
+            
+            <div class="position-relative p-3" style="background-color: var(--mermelada-oscuro);">
+                <h5 class="m-0 fw-bold text-center text-white w-100" style="color: white !important;">
+                    <i class="bi bi-truck me-2"></i> Nueva Orden de Compra
+                </h5>
+                <button type="button" class="btn-close btn-close-white position-absolute top-50 end-0 translate-middle-y me-3" onclick="cerrarModalCompra()" aria-label="Close"></button>
+            </div>
+
+            <form action="/api/compras/crear" method="POST">
+                <div class="p-4">
+                    <div class="row mb-4">
+                        <div class="col-md-6">
+                            <label class="form-label fw-bold small text-muted">Proveedor</label>
+                            <div class="input-group">
+                                <select class="form-select" name="proveedor_id" id="selectProveedor" required>
+                                    <option value="">Cargando proveedores...</option>
+                                </select>
+                                <button class="btn btn-outline-danger" type="button" onclick="abrirModalProveedor()" title="Registrar nuevo proveedor">
+                                    <i class="bi bi-building-add"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label fw-bold small text-muted">Fecha del Pedido</label>
+                            <input type="date" class="form-control" name="fecha" required>
+                        </div>
+                    </div>
+
+                    <h6 class="fw-bold border-bottom pb-2 mb-3" style="color: var(--mermelada-rojo);">Detalle de Compra</h6>
+                    
+                    <div class="row mb-3 align-items-end">
+                        <div class="col-md-5">
+                            <label class="form-label fw-bold small text-muted">Materia Prima / Insumo</label>
+                            <select class="form-select" name="producto_id" id="selectProductoCompra" required>
+                                <option value="">Cargando productos...</option>
+                            </select>
+                        </div>
+                        <div class="col-md-2">
+                            <label class="form-label fw-bold small text-muted">Cantidad</label>
+                            <input type="number" class="form-control" name="cantidad" id="inputCantCompra" min="0.01" step="0.01" required>
+                        </div>
+                        <div class="col-md-2">
+                            <label class="form-label fw-bold small text-muted">Precio (C$)</label>
+                            <input type="number" class="form-control" name="precio_unitario" id="inputPrecioCompra" step="0.01" required>
+                        </div>
+                        <div class="col-md-3">
+                            <label class="form-label fw-bold small text-muted">Subtotal</label>
+                            <input type="text" class="form-control bg-light" id="inputSubtotalCompra" readonly>
+                        </div>
+                    </div>
+
+                    <div class="mb-2">
+                        <label class="form-label fw-bold small text-muted">Observaciones</label>
+                        <textarea class="form-control" name="observaciones" rows="2" placeholder="Ej: Pedido urgente para producción de la próxima semana..."></textarea>
+                    </div>
+                    
+                    <div class="text-end mt-3">
+                        <h5 class="fw-bold" style="color: var(--mermelada-rojo);" id="textTotalCompra">Total: ----</h5>
+                    </div>
+                </div>
+                
+                <div class="p-3 bg-light d-flex justify-content-end gap-2 border-top">
+                    <button type="button" class="btn btn-secondary" onclick="cerrarModalCompra()">Cancelar</button>
+                    <button type="submit" class="btn btn-fresa">Generar Orden</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- ========================================================= -->
+    <!-- MODAL 2: ALTA RÁPIDA DE PROVEEDOR                         -->
+    <!-- ========================================================= -->
+    <div class="mi-modal-overlay" id="modalNuevoProveedor" style="z-index: 10000;">
+        <div class="mi-modal-caja" style="max-width: 500px;">
+            
+            <div class="d-flex justify-content-between align-items-center p-3" style="background-color: var(--mermelada-rojo);">
+                <h6 class="m-0 fw-bold text-white"><i class="bi bi-building-add me-2"></i> Registrar Nuevo Proveedor</h6>
+                <button type="button" class="btn-close btn-close-white" onclick="cerrarModalProveedor()"></button>
+            </div>
+
+            <form id="formNuevoProveedor">
+                <div class="p-3">
+                    <div class="mb-2">
+                        <label class="form-label small fw-bold">Nombre / Razón Social</label>
+                        <input type="text" class="form-control" name="nombre" required>
+                    </div>
+                    <div class="row mb-2">
+                        <div class="col-6">
+                            <label class="form-label small fw-bold">RUC</label>
+                            <input type="text" class="form-control" name="ruc">
+                        </div>
+                        <div class="col-6">
+                            <label class="form-label small fw-bold">Teléfono</label>
+                            <input type="text" class="form-control" name="telefono">
+                        </div>
+                    </div>
+                    <div class="mb-2">
+                        <label class="form-label small fw-bold">Dirección</label>
+                        <input type="text" class="form-control" name="direccion">
+                    </div>
+                </div>
+                <div class="p-3 bg-light d-flex justify-content-end gap-2 border-top">
+                    <button type="button" class="btn btn-sm btn-secondary" onclick="cerrarModalProveedor()">Cancelar</button>
+                    <button type="submit" class="btn btn-sm btn-fresa">Guardar y Seleccionar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- ========================================================= -->
+    <!-- MODAL 3: VER DETALLE DE LA COMPRA                         -->
+    <!-- ========================================================= -->
+    <div class="mi-modal-overlay" id="modalVerCompra">
+        <div class="mi-modal-caja" style="max-width: 700px;">
+            
+            <div class="d-flex justify-content-between align-items-center p-3" style="background-color: var(--mermelada-oscuro);">
+                <h5 class="m-0 fw-bold text-white"><i class="bi bi-file-earmark-text me-2"></i> Orden de Compra <span id="verCompraNumero"></span></h5>
+                <button type="button" class="btn-close btn-close-white" onclick="cerrarModalVerCompra()"></button>
+            </div>
+
+            <div class="p-4">
+                <div class="row mb-4 bg-light p-3 rounded">
+                    <div class="col-md-6 mb-2 mb-md-0">
+                        <span class="d-block text-muted small fw-bold">PROVEEDOR</span>
+                        <span class="fw-bold" id="verCompraProveedor"></span>
+                    </div>
+                    <div class="col-md-3 mb-2 mb-md-0">
+                        <span class="d-block text-muted small fw-bold">FECHA</span>
+                        <span id="verCompraFecha"></span>
+                    </div>
+                    <div class="col-md-3">
+                        <span class="d-block text-muted small fw-bold">ESTADO</span>
+                        <span class="badge bg-success" id="verCompraEstado"></span>
+                    </div>
+                </div>
+
+                <h6 class="fw-bold border-bottom pb-2 mb-3" style="color: var(--mermelada-rojo);">Materiales Solicitados</h6>
+                <table class="table table-sm text-center">
+                    <thead class="table-light">
+                        <tr>
+                            <th class="text-start">Material</th>
+                            <th>Cantidad</th>
+                            <th>Precio</th>
+                            <th class="text-end">Subtotal</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="text-start">Fresa fresca seleccionada</td>
+                            <td>10 kg</td>
+                            <td>C$ 45.00</td>
+                            <td class="text-end">C$ 450.00</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="d-flex justify-content-end mt-4">
+                    <div class="text-end">
+                        <span class="text-muted small fw-bold d-block">TOTAL DE LA COMPRA</span>
+                        <h3 class="fw-bold" style="color: var(--mermelada-rojo);" id="verCompraTotal"></h3>
+                    </div>
+                </div>
+            </div>
+
+            <div class="p-3 bg-light d-flex justify-content-between border-top">
+                <button type="button" class="btn btn-success" title="Registrar entrada al inventario"><i class="bi bi-box-arrow-in-down me-2"></i> Recibir Mercancía</button>
+                <button type="button" class="btn btn-secondary" onclick="cerrarModalVerCompra()">Cerrar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========================================================= -->
+    <!-- SCRIPTS                                                   -->
+    <!-- ========================================================= -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        // =========================================================
+        // 1. LÓGICA DE VISIBILIDAD POR ROLES (RBAC) Y PROTECCIÓN
+        // =========================================================
+        const rolDelUsuario = localStorage.getItem('rolERP') || 'produccion';
+
+        // Protección de URL: Si no es admin ni producción, lo pateamos
+        if (rolDelUsuario !== 'admin' && rolDelUsuario !== 'produccion') {
+            if (rolDelUsuario === 'ventas') window.location.href = 'ventas.html';
+            else if (rolDelUsuario === 'calidad') window.location.href = 'calidad.html';
+            else window.location.href = 'login.html';
+        }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            // 2. Ocultar menús según el rol
+            const modulosEscritorio = ['menu-ventas', 'menu-inventario', 'menu-fabricacion', 'menu-compras', 'menu-calidad'];
+            const modulosMovil = ['menu-ventas-mobile', 'menu-inventario-mobile', 'menu-fabricacion-mobile', 'menu-compras-mobile', 'menu-calidad-mobile'];
+                        // ASIGNAR RUTA AL LOGO SEGÚN EL ROL
+            const logo = document.getElementById('logoNavbar');
+            if (logo) {
+                if (rolDelUsuario === 'admin') logo.href = 'dashboard.html';
+                else if (rolDelUsuario === 'ventas') logo.href = 'ventas.html';
+                else if (rolDelUsuario === 'produccion') logo.href = 'fabricacion.html';
+                else if (rolDelUsuario === 'calidad') logo.href = 'calidad.html';
+            }
+            
+            // PRIMERO: Ocultamos TODOS los módulos por defecto
+            modulosEscritorio.forEach(id => { const el = document.getElementById(id); if (el) el.style.display = 'none'; });
+            modulosMovil.forEach(id => { const el = document.getElementById(id); if (el) el.style.display = 'none'; });
+
+            if (rolDelUsuario === 'admin') {
+                // EL ADMIN NO VE MENÚS (Se queda vacío)
+                document.getElementById('nombreUsuarioNav').innerHTML = '<i class="bi bi-person-circle me-2"></i> Administrador';
+                document.getElementById('nombreUsuarioNavMobile').innerHTML = '<i class="bi bi-person-fill me-1"></i> Administrador';
+            } 
+            else if (rolDelUsuario === 'produccion') {
+                // PRODUCCIÓN SOLO VE ESTOS
+                document.getElementById('menu-inventario').style.display = 'block';
+                document.getElementById('menu-fabricacion').style.display = 'block';
+                document.getElementById('menu-compras').style.display = 'block';
+                document.getElementById('menu-inventario-mobile').style.display = 'block';
+                document.getElementById('menu-fabricacion-mobile').style.display = 'block';
+                document.getElementById('menu-compras-mobile').style.display = 'block';
+                document.getElementById('nombreUsuarioNav').innerHTML = '<i class="bi bi-person-circle me-2"></i> Operario';
+                document.getElementById('nombreUsuarioNavMobile').innerHTML = '<i class="bi bi-person-fill me-1"></i> Operario';
+            }
+
+            // 3. Lógica del Modo Solo Lectura
+            const urlParams = new URLSearchParams(window.location.search);
+            const modo = urlParams.get('mode');
+
+            // Si viene de un reporte o es Admin
+            if (modo === 'view' || rolDelUsuario === 'admin') {
+                const btnNuevo = document.getElementById('btnNuevaCompra');
+                if (btnNuevo) btnNuevo.style.display = 'none';
+                
+                const titulo = document.getElementById('tituloCompras');
+                if (titulo) titulo.innerText = "Reporte de Compras (Solo Lectura)";
+            }
+        });
+
+        // --- 1. CONTROL DE MODALES ---
+        function abrirModalCompra() { document.getElementById('modalCompra').classList.add('activo'); }
+        function cerrarModalCompra() { document.getElementById('modalCompra').classList.remove('activo'); }
+
+        function abrirModalProveedor() { document.getElementById('modalNuevoProveedor').classList.add('activo'); }
+        function cerrarModalProveedor() { document.getElementById('modalNuevoProveedor').classList.remove('activo'); }
+
+        function cerrarModalVerCompra() { document.getElementById('modalVerCompra').classList.remove('activo'); }
+
+        // Cerrar al hacer clic fuera
+        document.getElementById('modalCompra').addEventListener('click', function(e) { if (e.target === this) cerrarModalCompra(); });
+        document.getElementById('modalNuevoProveedor').addEventListener('click', function(e) { if (e.target === this) cerrarModalProveedor(); });
+        document.getElementById('modalVerCompra').addEventListener('click', function(e) { if (e.target === this) cerrarModalVerCompra(); });
+
+        // --- 2. CÁLCULO DE TOTALES ---
+        const inputCantCompra = document.getElementById('inputCantCompra');
+        const inputPrecioCompra = document.getElementById('inputPrecioCompra');
+        const inputSubtotalCompra = document.getElementById('inputSubtotalCompra');
+        const textTotalCompra = document.getElementById('textTotalCompra');
+
+        function calcularTotalCompra() {
+            let cant = parseFloat(inputCantCompra.value) || 0;
+            let prec = parseFloat(inputPrecioCompra.value) || 0;
+            let sub = cant * prec;
+            
+            inputSubtotalCompra.value = 'C$ ' + sub.toFixed(2);
+            textTotalCompra.innerText = 'Total: C$ ' + sub.toFixed(2);
+        }
+
+        inputCantCompra.addEventListener('input', calcularTotalCompra);
+        inputPrecioCompra.addEventListener('input', calcularTotalCompra);
+
+        // --- 3. CARGAR PROVEEDORES Y PRODUCTOS ---
+        document.addEventListener("DOMContentLoaded", function() {
+            // Proveedores
+            fetch('/api/proveedores')
+                .then(res => res.json())
+                .then(proveedores => {
+                    const select = document.getElementById('selectProveedor');
+                    select.innerHTML = '<option value="">Seleccione un proveedor...</option>';
+                    proveedores.forEach(p => {
+                        select.appendChild(new Option(p.nombre, p.id));
+                    });
+                }).catch(e => console.error(e));
+
+            // Productos (Solo Materias Primas e Insumos)
+            fetch('/api/productos?tipo=MP') 
+                .then(res => res.json())
+                .then(productos => {
+                    const select = document.getElementById('selectProductoCompra');
+                    select.innerHTML = '<option value="">Seleccione un material...</option>';
+                    productos.forEach(p => {
+                        select.appendChild(new Option(p.codigo + ' - ' + p.nombre, p.id));
+                    });
+                }).catch(e => console.error(e));
+        });
+
+        // --- 4. ALTA RÁPIDA DE PROVEEDOR ---
+        document.getElementById('formNuevoProveedor').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const datos = Object.fromEntries(new FormData(this).entries());
+
+            fetch('/api/proveedores/crear', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(datos)
+            })
+            .then(res => res.json())
+            .then(nuevoProv => {
+                const select = document.getElementById('selectProveedor');
+                select.appendChild(new Option(nuevoProv.nombre, nuevoProv.id));
+                select.value = nuevoProv.id;
+                cerrarModalProveedor();
+                this.reset();
+            }).catch(e => alert('Error al guardar proveedor'));
+        });
+
+        // --- 5. ABRIR MODAL VER COMPRA ---
+        function abrirModalVerCompra(numero, proveedor, fecha, total, estado) {
+            document.getElementById('verCompraNumero').innerText = numero;
+            document.getElementById('verCompraProveedor').innerText = proveedor;
+            document.getElementById('verCompraFecha').innerText = fecha;
+            document.getElementById('verCompraTotal').innerText = total;
+            
+            const badge = document.getElementById('verCompraEstado');
+            badge.innerText = estado;
+            badge.className = estado === 'Recibida' ? 'badge bg-success' : 'badge bg-info text-dark';
+
+            document.getElementById('modalVerCompra').classList.add('activo');
+        }
+    </script>
 </body>
 </html>

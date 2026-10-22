@@ -21,243 +21,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* =========================================
-   2. BARRA DE NAVEGACIÓN
-   ========================================= */
-.navbar-frutitos {
-    background-color: var(--mermelada-oscuro) !important;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-}
-.navbar-frutitos .navbar-brand,
-.navbar-frutitos .nav-link {
-    color: white !important;
-    font-weight: 500;
-}
-.navbar-frutitos .nav-link {
-    border-radius: 8px;
-    transition: background-color 0.2s ease;
-}
-.navbar-frutitos .nav-link:hover {
-    background-color: rgba(255, 255, 255, 0.15);
-    color: white !important;
-}
-
-/* =========================================
-   3. PANTALLA DE LOGIN
-   ========================================= */
-.login-body {
-    background-color: var(--blanco-tarjeta);
-    overflow-y: auto; /* Permite scroll en celular */
-    overflow-x: hidden;
-}
-
-/* Ajuste de la imagen para celular */
-@media (max-width: 767px) {
-    .bg-login-image {
-        min-height: 35vh; /* Ocupa un tercio de la pantalla */
-        background-position: center top;
-        padding: 2rem 1rem !important;
-    }
-    .bg-login-image h1 {
-        font-size: 2.2rem; /* Letra un poco más pequeña para que quepa */
-    }
-    .bg-login-image p {
-        font-size: 1rem;
-    }
-}
-/* Panel izquierdo con la imagen */
-.bg-login-image {
-    background-image: linear-gradient(to right, rgba(30, 5, 5, 0.8), rgba(94, 11, 11, 0.5)), url('../img/fondo-fresa.jpg');
-    background-size: cover;
-    background-position: center;
-    position: relative;
-}
-
-/* Forzar textos blancos en el login */
-.bg-login-image h1, 
-.bg-login-image p {
-    color: #ffffff !important;
-    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.8);
-}
-.bg-login-image .text-white-50 {
-    color: rgba(255, 255, 255, 0.8) !important;
-}
-
-.bg-login-form {
-    background-color: #fafafa;
-}
-.form-control:focus {
-    border-color: var(--mermelada-rojo);
-    box-shadow: 0 0 0 0.25rem rgba(155, 25, 25, 0.25);
-}
-
-/* =========================================
-   4. BANNER PRINCIPAL (HERO DASHBOARD)
-   ========================================= */
-.hero-dashboard {
-    background-image: linear-gradient(to right, rgba(40, 10, 5, 0.9) 0%, rgba(40, 10, 5, 0.7) 45%, rgba(0, 0, 0, 0.1) 100%), url('../img/fondo-dashboard.jpg');
-    background-size: cover;
-    background-position: right center;
-    color: white;
-    padding: 4rem 3rem;
-    border-radius: 15px;
-    margin-bottom: 2rem;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-    min-height: 300px;
-    display: flex;
-    align-items: center;
-}
-.hero-dashboard h1, 
-.hero-dashboard p {
-    color: white !important;
-}
-
-/* Ajuste del banner para celulares */
-@media (max-width: 768px) {
-    .hero-dashboard {
-        background-image: linear-gradient(rgba(30, 5, 5, 0.4), rgba(0, 0, 0, 0.7)), url('../img/fondo-dashboard.jpg');
-        background-position: center;
-        padding: 2.5rem 1.5rem;
-        min-height: auto;
-        text-align: center;
-    }
-    .hero-dashboard h1, 
-    .hero-dashboard p {
-        text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.9) !important;
-    }
-}
-
-/* =========================================
-   5. TARJETAS KPI (Estilo "Etiqueta de Frasco")
-   ========================================= */
-.kpi-etiqueta {
-    background-color: #fffdfa;
-    border: 2px dashed #d4c5b0;
-    border-radius: 12px;
-    padding: 1.5rem;
-    position: relative;
-    transition: all 0.3s ease;
-    height: 100%;
-}
-.kpi-etiqueta:hover {
-    border-color: var(--mermelada-rojo);
-    background-color: #fff;
-    box-shadow: 0 8px 15px rgba(155, 25, 25, 0.08);
-}
-
-/* El agujerito de la etiqueta */
-.kpi-etiqueta::before {
-    content: '';
-    position: absolute;
-    top: 12px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 18px;
-    height: 18px;
-    background-color: var(--fondo-beige); 
-    border-radius: 50%;
-    border: 2px solid #b8a696;
-    box-shadow: inset 0 2px 4px rgba(0,0,0,0.2);
-}
-
-/* Variantes verdes */
-.kpi-etiqueta.etiqueta-verde {
-    border-color: #b8e0c2;
-}
-.kpi-etiqueta.etiqueta-verde:hover {
-    border-color: var(--hoja-verde);
-}
-
-/* =========================================
-   6. TARJETAS ANCHAS (Info Dashboard)
-   ========================================= */
-.kpi-ancha {
-    background-color: #fffdfa;
-    border: 2px dashed #d4c5b0;
-    border-radius: 12px;
-    padding: 1.5rem;
-    transition: all 0.3s ease;
-    height: 100%;
-    position: relative;
-    overflow: hidden;
-    z-index: 1;
-}
-.kpi-ancha:hover {
-    border-color: var(--mermelada-rojo);
-    box-shadow: 0 8px 15px rgba(155, 25, 25, 0.08);
-}
-.kpi-ancha.etiqueta-verde {
-    border-color: #b8e0c2;
-}
-.kpi-ancha.etiqueta-verde:hover {
-    border-color: var(--hoja-verde);
-}
-
-/* Icono gigante de fondo para tarjetas anchas */
-.kpi-ancha .icono-fondo-dash {
-    position: absolute;
-    top: -15px;
-    right: 5px;
-    font-size: 7rem;
-    opacity: 0.06;
-    z-index: -1;
-}
-
-/* =========================================
-   7. PÁGINA NOSOTROS (Misión, Visión, Políticas)
-   ========================================= */
-.card-mision-vision {
-    position: relative;
-    overflow: hidden;
-    background-color: #fffdfa;
-    border: 2px dashed #d4c5b0;
-    border-radius: 12px;
-    padding: 2.5rem 2rem;
-    z-index: 1;
-}
-.card-mision-vision.verde {
-    border-color: #b8e0c2;
-}
-
-/* Icono gigante de fondo para Misión/Visión */
-.card-mision-vision .icono-fondo {
-    position: absolute;
-    top: -10px;
-    right: 10px;
-    font-size: 7rem;
-    opacity: 0.05;
-    z-index: -1;
-}
-
-/* Círculos para los iconos de los Valores */
-.icono-valor {
-    width: 70px;
-    height: 70px;
-    border-radius: 50%;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 2rem;
-    margin-bottom: 1rem;
-    background-color: rgba(155, 25, 25, 0.1);
-    color: var(--mermelada-rojo);
-}
-.icono-valor.verde {
-    background-color: rgba(43, 138, 62, 0.1);
-    color: var(--hoja-verde);
-}
-
-/* Acordeón (Políticas) */
-.accordion-button:not(.collapsed) {
-    background-color: rgba(155, 25, 25, 0.05) !important;
-    color: var(--mermelada-rojo) !important;
-    box-shadow: none;
-}
-.accordion-button:focus {
-    box-shadow: none;
-}
-
-/* =========================================
-   8. BOTONES Y TABLAS GENERALES
+   2. COMPONENTES GLOBALES (BOTONES Y TABLAS)
    ========================================= */
 .btn-fresa {
     background-color: var(--mermelada-rojo);
@@ -287,22 +51,190 @@ h1, h2, h3, h4, h5, h6 {
     color: var(--texto-marron);
 }
 
-/* --- ESTILOS LANDING PAGE --- */
+/* =========================================
+   3. BARRA DE NAVEGACIÓN
+   ========================================= */
+.navbar-frutitos {
+    background-color: var(--mermelada-oscuro) !important;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+.navbar-frutitos .navbar-brand,
+.navbar-frutitos .nav-link {
+    color: white !important;
+    font-weight: 500;
+}
+.navbar-frutitos .nav-link {
+    border-radius: 8px;
+    transition: background-color 0.2s ease;
+}
+.navbar-frutitos .nav-link:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+    color: white !important;
+}
 
-/* Portada Principal (Hero Section) */
+/* =========================================
+   4. PANTALLA DE LOGIN (BASE)
+   ========================================= */
+.login-body {
+    background-color: var(--blanco-tarjeta);
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.bg-login-image {
+    background-image: linear-gradient(to right, rgba(30, 5, 5, 0.8), rgba(94, 11, 11, 0.5)), url('../img/fondo-fresa.jpg');
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+
+.bg-login-image h1, 
+.bg-login-image p {
+    color: #ffffff !important;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.8);
+}
+.bg-login-image .text-white-50 {
+    color: rgba(255, 255, 255, 0.8) !important;
+}
+
+.bg-login-form {
+    background-color: #fafafa;
+}
+
+.bg-login-form-mobile {
+    background-color: #fafafa;
+}
+
+.login-card {
+    padding: 2rem;
+}
+
+.form-control:focus {
+    border-color: var(--mermelada-rojo);
+    box-shadow: 0 0 0 0.25rem rgba(155, 25, 25, 0.25);
+}
+/* Ajuste para que el texto que escribe el usuario no se vea gigante */
+.form-floating > .form-control {
+    font-size: 1.05rem !important; 
+    font-weight: 400;
+    color: var(--texto-marron);
+}
+
+/* Ajuste para que la etiqueta (Usuario / Contraseña) se vea bien al flotar */
+.form-floating > label {
+    font-size: 1rem;
+    color: #6c757d;
+}
+
+.logo-fresa {
+    width: 75px;
+    height: auto;
+    object-fit: contain;
+    margin-bottom: 0.5rem;
+}
+
+/* =========================================
+   5. DASHBOARD (BANNER Y TARJETAS KPI)
+   ========================================= */
+.hero-dashboard {
+    background-image: linear-gradient(to right, rgba(40, 10, 5, 0.9) 0%, rgba(40, 10, 5, 0.7) 45%, rgba(0, 0, 0, 0.1) 100%), url('../img/fondo-dashboard.jpg');
+    background-size: cover;
+    background-position: right center;
+    color: white;
+    padding: 4rem 3rem;
+    border-radius: 15px;
+    margin-bottom: 2rem;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    min-height: 300px;
+    display: flex;
+    align-items: center;
+}
+.hero-dashboard h1, 
+.hero-dashboard p {
+    color: white !important;
+}
+
+/* Tarjetas KPI (Estilo "Etiqueta de Frasco") */
+.kpi-etiqueta {
+    background-color: #fffdfa;
+    border: 2px dashed #d4c5b0;
+    border-radius: 12px;
+    padding: 1.5rem;
+    position: relative;
+    transition: all 0.3s ease;
+    height: 100%;
+}
+.kpi-etiqueta:hover {
+    border-color: var(--mermelada-rojo);
+    background-color: #fff;
+    box-shadow: 0 8px 15px rgba(155, 25, 25, 0.08);
+}
+.kpi-etiqueta::before {
+    content: '';
+    position: absolute;
+    top: 12px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 18px;
+    height: 18px;
+    background-color: var(--fondo-beige); 
+    border-radius: 50%;
+    border: 2px solid #b8a696;
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.2);
+}
+.kpi-etiqueta.etiqueta-verde {
+    border-color: #b8e0c2;
+}
+.kpi-etiqueta.etiqueta-verde:hover {
+    border-color: var(--hoja-verde);
+}
+
+/* Tarjetas Anchas (Info Dashboard) */
+.kpi-ancha {
+    background-color: #fffdfa;
+    border: 2px dashed #d4c5b0;
+    border-radius: 12px;
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+.kpi-ancha:hover {
+    border-color: var(--mermelada-rojo);
+    box-shadow: 0 8px 15px rgba(155, 25, 25, 0.08);
+}
+.kpi-ancha.etiqueta-verde {
+    border-color: #b8e0c2;
+}
+.kpi-ancha.etiqueta-verde:hover {
+    border-color: var(--hoja-verde);
+}
+.kpi-ancha .icono-fondo-dash {
+    position: absolute;
+    top: -15px;
+    right: 5px;
+    font-size: 7rem;
+    opacity: 0.06;
+    z-index: -1;
+}
+
+/* =========================================
+   6. LANDING PAGE (INICIO Y FAQ)
+   ========================================= */
 .hero-section {
     background: linear-gradient(rgba(30, 5, 5, 0.7), rgba(30, 5, 5, 0.8)), url('../img/portada.jpg');
     background-size: cover;
     background-position: center;
-    background-attachment: fixed; /* Efecto Parallax elegante */
-    height: 85vh; /* Ocupa casi toda la pantalla */
+    background-attachment: fixed;
+    height: 85vh;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
     color: white;
 }
-
 .hero-section h1 {
     font-size: 4rem;
     font-weight: 800;
@@ -310,7 +242,6 @@ h1, h2, h3, h4, h5, h6 {
     text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
     color: white !important;
 }
-
 .hero-section p {
     font-size: 1.3rem;
     font-weight: 300;
@@ -318,7 +249,6 @@ h1, h2, h3, h4, h5, h6 {
     text-shadow: 1px 1px 4px rgba(0,0,0,0.5);
 }
 
-/* Sección de Introducción (About) */
 .about-section {
     padding: 5rem 0;
     background-color: var(--blanco-tarjeta);
@@ -331,7 +261,104 @@ h1, h2, h3, h4, h5, h6 {
     object-fit: cover;
 }
 
-/* Pie de Página (Footer) */
+#porque img {
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+#porque img:hover {
+    transform: scale(1.03);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15) !important;
+    z-index: 2;
+    position: relative;
+}
+
+/* FAQ Minimalista */
+.faq-minimalista .accordion-item {
+    background-color: transparent !important;
+    border: none !important;
+    border-bottom: 1px solid #dcdcdc !important;
+    border-radius: 0 !important;
+    margin-bottom: 0;
+}
+.faq-minimalista .accordion-button {
+    background-color: transparent !important;
+    color: var(--texto-marron) !important;
+    font-weight: 700;
+    font-size: 1.1rem;
+    padding: 1.5rem 0;
+    box-shadow: none !important;
+}
+.faq-minimalista .accordion-button::after {
+    background-image: none !important;
+    content: '\F4FE';
+    font-family: "bootstrap-icons";
+    font-size: 1.2rem;
+    transition: transform 0.3s ease;
+    color: var(--mermelada-rojo);
+}
+.faq-minimalista .accordion-button:not(.collapsed)::after {
+    content: '\F2EA';
+    transform: rotate(180deg);
+}
+.faq-minimalista .accordion-body {
+    padding: 0 0 1.5rem 0;
+    background-color: transparent;
+    color: #666;
+    font-size: 1rem;
+    line-height: 1.8;
+}
+
+/* =========================================
+   7. PÁGINA NOSOTROS (MISIÓN, VISIÓN, VALORES)
+   ========================================= */
+.card-mision-vision {
+    position: relative;
+    overflow: hidden;
+    background-color: #fffdfa;
+    border: 2px dashed #d4c5b0;
+    border-radius: 12px;
+    padding: 2.5rem 2rem;
+    z-index: 1;
+}
+.card-mision-vision.verde {
+    border-color: #b8e0c2;
+}
+.card-mision-vision .icono-fondo {
+    position: absolute;
+    top: -10px;
+    right: 10px;
+    font-size: 7rem;
+    opacity: 0.05;
+    z-index: -1;
+}
+.icono-valor {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    background-color: rgba(155, 25, 25, 0.1);
+    color: var(--mermelada-rojo);
+}
+.icono-valor.verde {
+    background-color: rgba(43, 138, 62, 0.1);
+    color: var(--hoja-verde);
+}
+
+.accordion-button:not(.collapsed) {
+    background-color: rgba(155, 25, 25, 0.05) !important;
+    color: var(--mermelada-rojo) !important;
+    box-shadow: none;
+}
+.accordion-button:focus {
+    box-shadow: none;
+}
+
+/* =========================================
+   8. FOOTER, MAPA Y ELEMENTOS FLOTANTES
+   ========================================= */
 .footer-erp {
     background-color: #2b2b2b;
     color: #a0a0a0;
@@ -351,7 +378,20 @@ h1, h2, h3, h4, h5, h6 {
     color: var(--mermelada-rojo);
 }
 
-/* --- Botón Flotante de WhatsApp --- */
+.hover-link {
+    transition: color 0.3s ease, padding-left 0.3s ease;
+}
+.hover-link:hover {
+    color: var(--mermelada-rojo) !important;
+    padding-left: 5px;
+}
+
+.map-container iframe {
+    width: 100%;
+    min-height: 300px;
+    border-radius: 12px;
+}
+
 .whatsapp-float {
     position: fixed;
     width: 65px;
@@ -371,167 +411,160 @@ h1, h2, h3, h4, h5, h6 {
     text-decoration: none;
     transition: all 0.3s ease;
 }
-
 .whatsapp-float:hover {
     background-color: #128C7E;
     color: #FFF;
-    transform: scale(1.1) rotate(10deg); /* Efecto de crecimiento y giro */
+    transform: scale(1.1) rotate(10deg);
     box-shadow: 2px 6px 20px rgba(0,0,0,0.3);
 }
 
 /* =========================================
-   DISEÑO RESPONSIVO DEL LOGIN (CELULAR)
+   9. DISEÑO RESPONSIVO (MEDIA QUERIES AL FINAL)
    ========================================= */
 
-/* Fondo por defecto para PC */
-.bg-login-form-mobile {
-    background-color: #fafafa;
-}
-.login-card {
-    padding: 2rem;
+/* --- Tablets y Computadoras Pequeñas (Mapa) --- */
+@media (min-width: 992px) {
+    .map-container iframe {
+        min-height: 450px;
+    }
 }
 
-/* Cuando la pantalla es de celular (menos de 768px) */
+/* --- Celulares y Tablets (Menos de 768px) --- */
 @media (max-width: 767px) {
+    /* Login Celular */
+    .bg-login-image {
+        min-height: 35vh;
+        background-position: center top;
+        padding: 2rem 1rem !important;
+    }
+    .bg-login-image h1 {
+        font-size: 2.2rem;
+    }
+    .bg-login-image p {
+        font-size: 1rem;
+    }
     
-    /* 1. El fondo de toda la columna se vuelve la foto con filtro oscuro */
     .bg-login-form-mobile {
         background: linear-gradient(rgba(30, 5, 5, 0.7), rgba(30, 5, 5, 0.8)), url('../img/fondo-fresa.jpg') no-repeat center center;
         background-size: cover;
-        background-attachment: fixed; /* Efecto Parallax */
-        padding: 2rem 1rem; /* Respiro en los bordes */
+        background-attachment: fixed;
+        padding: 2rem 1rem;
     }
-
-    /* 2. El formulario se convierte en una tarjeta blanca flotante */
     .login-card {
         background-color: #ffffff;
         border-radius: 20px;
         box-shadow: 0 15px 35px rgba(0,0,0,0.3);
         padding: 2rem 1.5rem;
     }
-
-    /* 3. Ocultamos el texto de "Volver a la página principal" para que no ocupe espacio valioso */
     .login-card .text-center.mt-4:last-child {
         margin-top: 1rem !important;
     }
+
+    /* Dashboard Celular */
+    .hero-dashboard {
+        background-image: linear-gradient(rgba(30, 5, 5, 0.4), rgba(0, 0, 0, 0.7)), url('../img/fondo-dashboard.jpg');
+        background-position: center;
+        padding: 2.5rem 1.5rem;
+        min-height: auto;
+        text-align: center;
+    }
+    .hero-dashboard h1, 
+    .hero-dashboard p {
+        text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.9) !important;
+    }
 }
 
-/* Estilo para el logo de fresa en el Login */
-.logo-fresa {
-    width: 75px; /* Ajusta el tamaño a tu gusto */
-    height: auto;
-    object-fit: contain;
-    margin-bottom: 0.5rem;
-}
-
-/* Efecto Hover para el mosaico de imágenes */
-#porque img {
-    transition: transform 0.4s ease, box-shadow 0.4s ease;
-}
-#porque img:hover {
-    transform: scale(1.03);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.15) !important;
-    z-index: 2;
-    position: relative;
-}
-
-/* --- ESTILO ELEGANTE PARA EL FAQ (Sin cajas) --- */
-.faq-minimalista .accordion-item {
-    background-color: transparent !important;
-    border: none !important;
-    border-bottom: 1px solid #dcdcdc !important; /* Línea sutil separadora */
-    border-radius: 0 !important;
-    margin-bottom: 0;
-}
-
-.faq-minimalista .accordion-button {
-    background-color: transparent !important;
-    color: var(--texto-marron) !important;
-    font-weight: 700;
-    font-size: 1.1rem;
-    padding: 1.5rem 0; /* Espaciado amplio arriba y abajo */
-    box-shadow: none !important;
-}
-
-/* Cambiamos el icono de la flecha por un signo + y - */
-.faq-minimalista .accordion-button::after {
-    background-image: none !important; /* Quitamos la flecha de Bootstrap */
-    content: '\F4FE'; /* Código del icono + de Bootstrap Icons */
-    font-family: "bootstrap-icons";
-    font-size: 1.2rem;
-    transition: transform 0.3s ease;
-    color: var(--mermelada-rojo);
-}
-
-.faq-minimalista .accordion-button:not(.collapsed)::after {
-    content: '\F2EA'; /* Código del icono - de Bootstrap Icons */
-    transform: rotate(180deg); /* Animación de giro */
-}
-
-.faq-minimalista .accordion-body {
-    padding: 0 0 1.5rem 0; /* Sin margen a los lados, solo abajo */
-    background-color: transparent;
-    color: #666;
-    font-size: 1rem;
-    line-height: 1.8;
-}
-
-/* --- Ajustes para que las Tarjetas KPI quepan bien en Celular --- */
+/* --- Celulares Pequeños (Menos de 575px) --- */
 @media (max-width: 575px) {
-    /* Reducimos el espacio interno de la tarjeta en celular */
+    /* Tarjetas KPI Celular */
     .kpi-etiqueta {
         padding: 1rem 0.5rem !important;
     }
-    
-    /* Hacemos el título un poco más pequeño para que "Sostenibilidad" no choque */
     .kpi-etiqueta h5 {
         font-size: 1rem !important;
         margin-top: 0.5rem !important;
-        word-wrap: break-word; /* Si una palabra es muy larga, la baja de renglón */
+        word-wrap: break-word;
     }
-
-    /* Hacemos que el texto de abajo también sea un pelín más pequeño */
     .kpi-etiqueta p.small {
         font-size: 0.8rem !important;
         line-height: 1.4;
     }
-    
-    /* Ajustamos el agujerito para que no se vea desproporcionado */
     .kpi-etiqueta::before {
         width: 14px;
         height: 14px;
         top: 8px;
     }
 }
-/* Efecto para los enlaces del Footer */
-.hover-link {
-    transition: color 0.3s ease, padding-left 0.3s ease;
-}
-.hover-link:hover {
-    color: var(--mermelada-rojo) !important;
-    padding-left: 5px; /* Pequeño salto a la derecha */
-}
 
-/* Ajuste para que el mapa se vea bien en celulares */
-.map-container iframe {
+
+/* --- SISTEMA DE MODAL PROPIO (SIN BOOTSTRAP) --- */
+.mi-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 100%;
-    min-height: 300px;
-    border-radius: 12px;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6); /* Fondo oscuro semitransparente */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
 }
 
-@media (min-width: 992px) {
-    .map-container iframe {
-        min-height: 450px; /* Mapa más alto en computadoras */
+/* Cuando tiene la clase 'activo', se muestra */
+.mi-modal-overlay.activo {
+    opacity: 1;
+    visibility: visible;
+}
+
+.mi-modal-caja {
+    background-color: #ffffff;
+    width: 90%;
+    max-width: 700px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    transform: translateY(-20px); /* Efecto de que baja al abrir */
+    transition: transform 0.3s ease;
+    overflow: hidden;
+}
+
+.mi-modal-overlay.activo .mi-modal-caja {
+    transform: translateY(0); /* Posición final */
+}
+
+/* --- ESTILO PARA IMPRIMIR (FACTURA FORMAL) --- */
+@media print {
+    /* Ocultar toda la interfaz web */
+    body * {
+        visibility: hidden;
     }
-}/* Ajuste para que el mapa se vea bien en celulares */
-.map-container iframe {
-    width: 100%;
-    min-height: 300px;
-    border-radius: 12px;
-}
+    
+    /* Mostrar SOLO la plantilla de factura */
+    #facturaImpresion, #facturaImpresion * {
+        visibility: visible;
+    }
+    
+    /* Posicionar la factura correctamente en la hoja */
+    #facturaImpresion {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        background: white !important;
+        display: block !important;
+    }
 
-@media (min-width: 992px) {
-    .map-container iframe {
-        min-height: 450px; /* Mapa más alto en computadoras */
+    /* Ocultar los modales de la pantalla */
+    .mi-modal-overlay {
+        display: none !important;
+    }
+
+    /* Configurar los márgenes del papel */
+    @page {
+        margin: 1.5cm;
+        size: letter portrait;
     }
 }

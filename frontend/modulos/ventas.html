@@ -4,7 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ventas - Frutitos de Casa</title>
+    <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <!-- CSS Personalizado -->
     <link rel="stylesheet" href="../css/styles.css">
 </head>
 <body>
@@ -12,7 +16,7 @@
     <!-- Menú de Navegación (Desktop normal, Móvil lateral) -->
     <nav class="navbar navbar-expand-lg navbar-frutitos navbar-dark">
         <div class="container-fluid px-4">
-            <a class="navbar-brand fw-bold" href="dashboard.html">Frutitos de Casa ERP</a>
+            <a class="navbar-brand fw-bold" href="#" id="logoNavbar">Frutitos de Casa ERP</a>
             
             <!-- Botón de hamburguesa para celular -->
             <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#menuLateral">
@@ -21,16 +25,18 @@
 
             <!-- MENÚ DE COMPUTADORA (Se oculta en celular) -->
             <div class="collapse navbar-collapse d-none d-lg-block" id="menuDesktop">
+                <!-- IDs AGREGADOS A LOS MENÚS -->
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0 gap-2 ms-lg-4">
-                    <li class="nav-item"><a class="nav-link px-3" href="ventas.html">Ventas</a></li>
-                    <li class="nav-item"><a class="nav-link px-3" href="inventario.html">Inventario</a></li>
-                    <li class="nav-item"><a class="nav-link px-3" href="fabricacion.html">Fabricación</a></li>
-                    <li class="nav-item"><a class="nav-link px-3" href="compras.html">Compras</a></li>
-                    <li class="nav-item"><a class="nav-link px-3" href="calidad.html">Calidad</a></li>
+                    <li class="nav-item" id="menu-ventas"><a class="nav-link px-3" href="ventas.html">Ventas</a></li>
+                    <li class="nav-item" id="menu-inventario"><a class="nav-link px-3" href="inventario.html">Inventario</a></li>
+                    <li class="nav-item" id="menu-fabricacion"><a class="nav-link px-3" href="fabricacion.html">Fabricación</a></li>
+                    <li class="nav-item" id="menu-compras"><a class="nav-link px-3" href="compras.html">Compras</a></li>
+                    <li class="nav-item" id="menu-calidad"><a class="nav-link px-3" href="calidad.html">Calidad</a></li>
                 </ul>
                 <div class="d-flex align-items-center mt-2 mt-lg-0 gap-3">
-                    <span class="navbar-text text-white mb-0 d-flex align-items-center">
-                        <span class="me-2">👤</span> Admin
+                    <!-- ID AGREGADO AL NOMBRE DE USUARIO -->
+                    <span class="navbar-text text-white mb-0 d-flex align-items-center" id="nombreUsuarioNav">
+                        <i class="bi bi-person-circle me-2"></i> Admin
                     </span>
                     <a href="login.html" class="btn btn-outline-light btn-sm rounded-pill px-3">Salir</a>
                 </div>
@@ -44,30 +50,33 @@
             <h5 class="offcanvas-title text-white fw-bold">Frutitos de Casa</h5>
             <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
-        
         <div class="offcanvas-body d-flex flex-column">
-            <!-- Enlaces del menú -->
+            <!-- IDs AGREGADOS A LOS MENÚS MÓVILES -->
             <ul class="navbar-nav me-auto mb-2 mb-lg-0 gap-2 w-100">
                 <li class="nav-item"><a class="nav-link px-3 text-white" href="dashboard.html"><i class="bi bi-house-door me-2"></i> Dashboard</a></li>
-                <li class="nav-item"><a class="nav-link px-3 text-white" href="ventas.html"><i class="bi bi-cart me-2"></i> Ventas</a></li>
-                <li class="nav-item"><a class="nav-link px-3 text-white" href="inventario.html"><i class="bi bi-box me-2"></i> Inventario</a></li>
-                <li class="nav-item"><a class="nav-link px-3 text-white" href="fabricacion.html"><i class="bi bi-gear me-2"></i> Fabricación</a></li>
-                <li class="nav-item"><a class="nav-link px-3 text-white" href="compras.html"><i class="bi bi-truck me-2"></i> Compras</a></li>
-                <li class="nav-item"><a class="nav-link px-3 text-white" href="calidad.html"><i class="bi bi-clipboard-check me-2"></i> Calidad</a></li>
+                <li class="nav-item" id="menu-ventas-mobile"><a class="nav-link px-3 text-white" href="ventas.html"><i class="bi bi-cart me-2"></i> Ventas</a></li>
+                <li class="nav-item" id="menu-inventario-mobile"><a class="nav-link px-3 text-white" href="inventario.html"><i class="bi bi-box me-2"></i> Inventario</a></li>
+                <li class="nav-item" id="menu-fabricacion-mobile"><a class="nav-link px-3 text-white" href="fabricacion.html"><i class="bi bi-gear me-2"></i> Fabricación</a></li>
+                <li class="nav-item" id="menu-compras-mobile"><a class="nav-link px-3 text-white" href="compras.html"><i class="bi bi-truck me-2"></i> Compras</a></li>
+                <li class="nav-item" id="menu-calidad-mobile"><a class="nav-link px-3 text-white" href="calidad.html"><i class="bi bi-clipboard-check me-2"></i> Calidad</a></li>
             </ul>
-            
-            <!-- Usuario y Salir (Pegados hasta abajo) -->
             <div class="mt-auto pt-3 border-top border-secondary d-flex align-items-center justify-content-between w-100">
-                <span class="text-white small"><i class="bi bi-person-fill me-1"></i> Admin</span>
+                <span class="text-white small" id="nombreUsuarioNavMobile"><i class="bi bi-person-fill me-1"></i> Admin</span>
                 <a href="login.html" class="btn btn-outline-light btn-sm rounded-pill px-3">Salir</a>
             </div>
         </div>
     </div>
 
+    <!-- CONTENIDO PRINCIPAL -->
     <div class="container mt-4 mt-md-5">
         <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center mb-3 gap-2">
-            <h3 class="text-secondary mb-0">Gestión de Ventas y Pedidos</h3>
-            <button class="btn btn-fresa">+ Nuevo Pedido</button>
+            <!-- Le pusimos un ID al título para poder cambiarlo desde JS -->
+            <h3 class="text-secondary mb-0" id="tituloVentas">Gestión de Ventas y Pedidos</h3>
+            
+            <!-- Le pusimos un ID al botón para poder ocultarlo desde JS -->
+            <button class="btn btn-fresa" id="btnNuevoPedido" onclick="abrirModal()">
+                <i class="bi bi-plus-lg me-2"></i> Nuevo Pedido
+            </button>
         </div>
         
         <div class="card shadow-sm border-0">
@@ -85,14 +94,18 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <!-- Ejemplo un bucle for para mostrar los pedidos -->
+                            <!-- Fila de ejemplo (Odvin la generará dinámicamente) -->
                             <tr>
-                                <td>---</td>
-                                <td>---</td>
-                                <td>---</td>
-                                <td>---</td>
-                                <td><span class="badge bg-secondary">Sin datos</span></td>
-                                <td><button class="btn btn-sm btn-outline-secondary">Ver</button></td>
+                                <td>PV-0001</td>
+                                <td>Mercado de Managua</td>
+                                <td>22/10/2026</td>
+                                <td>C$ 805.00</td>
+                                <td><span class="badge bg-info text-dark">Confirmado</span></td>
+                                <td>
+                                    <button class="btn btn-sm btn-outline-secondary" onclick="abrirModalVerPedido('PV-0001', 'Mercado de Managua', '22/10/2026', 'C$ 805.00', 'Confirmado')">
+                                        <i class="bi bi-eye"></i> Ver
+                                    </button>
+                                </td>
                             </tr>
                         </tbody>
                     </table>
@@ -101,6 +114,337 @@
         </div>
     </div>
 
+    <!-- ========================================================= -->
+    <!-- MODAL 1: REGISTRAR NUEVO PEDIDO                           -->
+    <!-- ========================================================= -->
+    <div class="mi-modal-overlay" id="modalVentas">
+        <div class="mi-modal-caja" style="max-width: 800px;">
+            
+            <div class="position-relative p-3" style="background-color: var(--mermelada-oscuro);">
+                <h5 class="m-0 fw-bold text-center text-white w-100" style="color: white !important;">
+                    <i class="bi bi-cart-plus me-2"></i> Registrar Nuevo Pedido
+                </h5>
+                <button type="button" class="btn-close btn-close-white position-absolute top-50 end-0 translate-middle-y me-3" onclick="cerrarModal()" aria-label="Close"></button>
+            </div>
+
+            <!-- RUTA POST PARA ODVIN -->
+            <form action="/api/ventas/crear" method="POST">
+                <div class="p-4">
+                    <div class="row mb-4">
+                        <div class="col-md-6">
+                            <label class="form-label fw-bold small text-muted">Cliente</label>
+                            <div class="input-group">
+                                <select class="form-select" name="cliente_id" id="selectCliente" required>
+                                    <option value="">Cargando clientes...</option>
+                                </select>
+                                <!-- Botón de Alta Rápida -->
+                                <button class="btn btn-outline-danger" type="button" onclick="abrirModalCliente()" title="Registrar nuevo cliente">
+                                    <i class="bi bi-person-plus-fill"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label fw-bold small text-muted">Fecha del Pedido</label>
+                            <input type="date" class="form-control" name="fecha" required>
+                        </div>
+                    </div>
+
+                    <h6 class="fw-bold border-bottom pb-2 mb-3" style="color: var(--mermelada-rojo);">Detalle del Pedido</h6>
+                    
+                    <div class="row mb-3 align-items-end">
+                        <div class="col-md-5">
+                            <label class="form-label fw-bold small text-muted">Producto</label>
+                            <select class="form-select" name="producto_id" required>
+                                <option value="PT-MERM-FRESA">Mermelada de Fresa 250g</option>
+                            </select>
+                        </div>
+                        <div class="col-md-2">
+                            <label class="form-label fw-bold small text-muted">Cantidad</label>
+                            <input type="number" class="form-control" name="cantidad" min="1" required>
+                        </div>
+                        <div class="col-md-2">
+                            <label class="form-label fw-bold small text-muted">Precio (C$)</label>
+                            <input type="number" class="form-control" name="precio_unitario" step="0.01" required>
+                        </div>
+                        <div class="col-md-3">
+                            <label class="form-label fw-bold small text-muted">Subtotal</label>
+                            <input type="text" class="form-control bg-light" readonly>
+                        </div>
+                    </div>
+
+                    <div class="mb-2">
+                        <label class="form-label fw-bold small text-muted">Observaciones</label>
+                        <textarea class="form-control" name="observaciones" rows="2" placeholder="Ej: Entregar el viernes por la mañana..."></textarea>
+                    </div>
+                    
+                    <div class="text-end mt-3">
+                        <h5 class="fw-bold" style="color: var(--mermelada-rojo);">Total: ----</h5>
+                    </div>
+                </div>
+                
+                <div class="p-3 bg-light d-flex justify-content-end gap-2 border-top">
+                    <button type="button" class="btn btn-secondary" onclick="cerrarModal()">Cancelar</button>
+                    <button type="submit" class="btn btn-fresa">Confirmar y Guardar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- ========================================================= -->
+    <!-- MODAL 2: ALTA RÁPIDA DE CLIENTE                           -->
+    <!-- ========================================================= -->
+    <div class="mi-modal-overlay" id="modalNuevoCliente" style="z-index: 10000;">
+        <div class="mi-modal-caja" style="max-width: 500px;">
+            
+            <div class="d-flex justify-content-between align-items-center p-3" style="background-color: var(--mermelada-rojo);">
+                <h6 class="m-0 fw-bold text-white"><i class="bi bi-person-plus me-2"></i> Registrar Nuevo Cliente</h6>
+                <button type="button" class="btn-close btn-close-white" onclick="cerrarModalCliente()"></button>
+            </div>
+
+            <!-- RUTA POST PARA ODVIN -->
+            <form id="formNuevoCliente">
+                <div class="p-3">
+                    <div class="mb-2">
+                        <label class="form-label small fw-bold">Nombre o Razón Social</label>
+                        <input type="text" class="form-control" name="nombre" required>
+                    </div>
+                    <div class="row mb-2">
+                        <div class="col-6">
+                            <label class="form-label small fw-bold">RUC</label>
+                            <input type="text" class="form-control" name="ruc">
+                        </div>
+                        <div class="col-6">
+                            <label class="form-label small fw-bold">Teléfono</label>
+                            <input type="text" class="form-control" name="telefono">
+                        </div>
+                    </div>
+                    <div class="mb-2">
+                        <label class="form-label small fw-bold">Límite de Crédito (C$)</label>
+                        <input type="number" class="form-control" name="limite_credito" value="0">
+                    </div>
+                </div>
+                <div class="p-3 bg-light d-flex justify-content-end gap-2 border-top">
+                    <button type="button" class="btn btn-sm btn-secondary" onclick="cerrarModalCliente()">Cancelar</button>
+                    <button type="submit" class="btn btn-sm btn-fresa">Guardar y Seleccionar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- ========================================================= -->
+    <!-- MODAL 3: VER DETALLE DEL PEDIDO                           -->
+    <!-- ========================================================= -->
+    <div class="mi-modal-overlay" id="modalVerPedido">
+        <div class="mi-modal-caja" style="max-width: 700px;">
+            
+            <div class="d-flex justify-content-between align-items-center p-3" style="background-color: var(--mermelada-oscuro);">
+                <h5 class="m-0 fw-bold text-white"><i class="bi bi-file-earmark-text me-2"></i> Pedido <span id="verNumPedido"></span></h5>
+                <button type="button" class="btn-close btn-close-white" onclick="cerrarModalVerPedido()"></button>
+            </div>
+
+            <div class="p-4">
+                <div class="row mb-4 bg-light p-3 rounded">
+                    <div class="col-md-6 mb-2 mb-md-0">
+                        <span class="d-block text-muted small fw-bold">CLIENTE</span>
+                        <span class="fw-bold" id="verCliente"></span>
+                    </div>
+                    <div class="col-md-3">
+                        <span class="d-block text-muted small fw-bold">FECHA</span>
+                        <span id="verFecha"></span>
+                    </div>
+                    <div class="col-md-3">
+                        <span class="d-block text-muted small fw-bold">ESTADO</span>
+                        <span class="badge" id="verEstado"></span>
+                    </div>
+                </div>
+
+                <h6 class="fw-bold border-bottom pb-2 mb-3" style="color: var(--mermelada-rojo);">Productos</h6>
+                <table class="table table-sm text-center">
+                    <thead class="table-light">
+                        <tr>
+                            <th class="text-start">Producto</th>
+                            <th>Cantidad</th>
+                            <th>Precio</th>
+                            <th class="text-end">Subtotal</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="text-start">Mermelada Artesanal de Fresa 250g</td>
+                            <td>20</td>
+                            <td>C$ 35.00</td>
+                            <td class="text-end">C$ 700.00</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="d-flex justify-content-end mt-4">
+                    <div class="text-end">
+                        <span class="text-muted small fw-bold d-block">TOTAL DEL PEDIDO</span>
+                        <h3 class="fw-bold" style="color: var(--mermelada-rojo);" id="verTotal"></h3>
+                    </div>
+                </div>
+            </div>
+
+            <div class="p-3 bg-light d-flex justify-content-end gap-2 border-top">
+                <button type="button" class="btn btn-secondary" onclick="cerrarModalVerPedido()">Cerrar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========================================================= -->
+    <!-- SCRIPTS                                                   -->
+    <!-- ========================================================= -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        // =========================================================
+        // LÓGICA DE VISIBILIDAD POR ROLES (RBAC)
+        // =========================================================
+        // Si Odvin ya inyectó el rol, lo toma de ahí. Si no, por defecto es 'ventas'.
+        const rolDelUsuario = localStorage.getItem('rolERP') || 'ventas'; 
+        
+        document.addEventListener("DOMContentLoaded", function() {
+            const modulosEscritorio = ['menu-ventas', 'menu-inventario', 'menu-fabricacion', 'menu-compras', 'menu-calidad'];
+            const modulosMovil = ['menu-ventas-mobile', 'menu-inventario-mobile', 'menu-fabricacion-mobile', 'menu-compras-mobile', 'menu-calidad-mobile'];
+            
+                        // ASIGNAR RUTA AL LOGO SEGÚN EL ROL
+            const logo = document.getElementById('logoNavbar');
+            if (logo) {
+                if (rolDelUsuario === 'admin') logo.href = 'dashboard.html';
+                else if (rolDelUsuario === 'ventas') logo.href = 'ventas.html';
+                else if (rolDelUsuario === 'produccion') logo.href = 'fabricacion.html';
+                else if (rolDelUsuario === 'calidad') logo.href = 'calidad.html';
+            }
+            
+            modulosEscritorio.forEach(id => { const el = document.getElementById(id); if (el) el.style.display = 'none'; });
+            modulosMovil.forEach(id => { const el = document.getElementById(id); if (el) el.style.display = 'none'; });
+
+            if (rolDelUsuario === 'admin') {
+                document.getElementById('nombreUsuarioNav').innerHTML = '<i class="bi bi-person-circle me-2"></i> Administrador';
+                document.getElementById('nombreUsuarioNavMobile').innerHTML = '<i class="bi bi-person-fill me-1"></i> Administrador';
+            } 
+            else if (rolDelUsuario === 'ventas') {
+                document.getElementById('menu-ventas').style.display = 'block';
+                document.getElementById('menu-ventas-mobile').style.display = 'block';
+                document.getElementById('nombreUsuarioNav').innerHTML = '<i class="bi bi-person-circle me-2"></i> Vendedor';
+                document.getElementById('nombreUsuarioNavMobile').innerHTML = '<i class="bi bi-person-fill me-1"></i> Vendedor';
+            } 
+            else if (rolDelUsuario === 'produccion') {
+                document.getElementById('menu-inventario').style.display = 'block';
+                document.getElementById('menu-fabricacion').style.display = 'block';
+                document.getElementById('menu-compras').style.display = 'block';
+                document.getElementById('menu-inventario-mobile').style.display = 'block';
+                document.getElementById('menu-fabricacion-mobile').style.display = 'block';
+                document.getElementById('menu-compras-mobile').style.display = 'block';
+                document.getElementById('nombreUsuarioNav').innerHTML = '<i class="bi bi-person-circle me-2"></i> Operario';
+                document.getElementById('nombreUsuarioNavMobile').innerHTML = '<i class="bi bi-person-fill me-1"></i> Operario';
+            } 
+            else if (rolDelUsuario === 'calidad') {
+                document.getElementById('menu-calidad').style.display = 'block';
+                document.getElementById('menu-calidad-mobile').style.display = 'block';
+                document.getElementById('nombreUsuarioNav').innerHTML = '<i class="bi bi-person-circle me-2"></i> Inspector';
+                document.getElementById('nombreUsuarioNavMobile').innerHTML = '<i class="bi bi-person-fill me-1"></i> Inspector';
+            }
+        });
+
+        // =========================================================
+        // LÓGICA DEL MODO SOLO LECTURA (REPORTE)
+        // =========================================================
+        document.addEventListener("DOMContentLoaded", function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const modo = urlParams.get('mode');
+
+            // Si viene del dashboard (mode=view) O si el usuario es admin (no debería crear ventas)
+            if (modo === 'view' || rolDelUsuario === 'admin') {
+                const btnNuevo = document.getElementById('btnNuevoPedido');
+                if (btnNuevo) btnNuevo.style.display = 'none';
+                
+                const titulo = document.getElementById('tituloVentas');
+                if (titulo) titulo.innerText = "Reporte de Ventas (Solo Lectura)";
+            }
+        });
+
+        // --- 1. CONTROL DE MODALES ---
+        function abrirModal() { document.getElementById('modalVentas').classList.add('activo'); }
+        function cerrarModal() { document.getElementById('modalVentas').classList.remove('activo'); }
+
+        function abrirModalCliente() { document.getElementById('modalNuevoCliente').classList.add('activo'); }
+        function cerrarModalCliente() { document.getElementById('modalNuevoCliente').classList.remove('activo'); }
+
+        function cerrarModalVerPedido() { document.getElementById('modalVerPedido').classList.remove('activo'); }
+
+        // Cerrar modales al hacer clic fuera
+        document.getElementById('modalVentas').addEventListener('click', function(e) { if (e.target === this) cerrarModal(); });
+        document.getElementById('modalNuevoCliente').addEventListener('click', function(e) { if (e.target === this) cerrarModalCliente(); });
+        document.getElementById('modalVerPedido').addEventListener('click', function(e) { if (e.target === this) cerrarModalVerPedido(); });
+
+        // --- 2. CÁLCULO DE TOTALES EN TIEMPO REAL ---
+        const inputCantidad = document.querySelector('input[name="cantidad"]');
+        const inputPrecio = document.querySelector('input[name="precio_unitario"]');
+        const inputSubtotal = document.querySelector('input[readonly]');
+        const textTotal = document.querySelector('.text-end h5');
+
+        function calcularTotal() {
+            let cant = parseFloat(inputCantidad.value) || 0;
+            let prec = parseFloat(inputPrecio.value) || 0;
+            let sub = cant * prec;
+            inputSubtotal.value = 'C$ ' + sub.toFixed(2);
+            textTotal.innerText = 'Total: C$ ' + sub.toFixed(2);
+        }
+
+        inputCantidad.addEventListener('input', calcularTotal);
+        inputPrecio.addEventListener('input', calcularTotal);
+
+        // --- 3. CARGAR CLIENTES DESDE EL BACKEND ---
+        document.addEventListener("DOMContentLoaded", function() {
+            fetch('/api/clientes')
+                .then(res => res.json())
+                .then(clientes => {
+                    const select = document.getElementById('selectCliente');
+                    select.innerHTML = '<option value="">Seleccione un cliente...</option>';
+                    clientes.forEach(c => {
+                        select.appendChild(new Option(c.nombre, c.id));
+                    });
+                }).catch(e => {
+                    console.error(e);
+                    document.getElementById('selectCliente').innerHTML = '<option value="">Error al cargar</option>';
+                });
+        });
+
+        // --- 4. GUARDAR NUEVO CLIENTE (ALTA RÁPIDA) ---
+        document.getElementById('formNuevoCliente').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const datos = Object.fromEntries(new FormData(this).entries());
+            
+            fetch('/api/clientes/crear', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(datos)
+            })
+            .then(res => res.json())
+            .then(nuevoCliente => {
+                const select = document.getElementById('selectCliente');
+                select.appendChild(new Option(nuevoCliente.nombre, nuevoCliente.id));
+                select.value = nuevoCliente.id;
+                cerrarModalCliente();
+                this.reset();
+            }).catch(e => alert('Error al guardar cliente'));
+        });
+
+        // --- 5. ABRIR MODAL VER PEDIDO ---
+        function abrirModalVerPedido(numero, cliente, fecha, total, estado) {
+            document.getElementById('verNumPedido').innerText = numero;
+            document.getElementById('verCliente').innerText = cliente;
+            document.getElementById('verFecha').innerText = fecha;
+            document.getElementById('verTotal').innerText = total;
+            
+            const badge = document.getElementById('verEstado');
+            badge.innerText = estado;
+            badge.className = estado === 'Confirmado' ? 'badge bg-info text-dark' : 'badge bg-success';
+
+            document.getElementById('modalVerPedido').classList.add('activo');
+        }
+    </script>
 </body>
 </html>
