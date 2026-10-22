@@ -246,18 +246,13 @@
         </div>
     </div>
 
-    <!-- ========================================================= -->
-    <!-- SCRIPTS                                                   -->
-    <!-- ========================================================= -->
+    
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
     <script>
-        // =========================================================
-        // 1. LÓGICA DE VISIBILIDAD POR ROLES (RBAC) Y PROTECCIÓN
-        // =========================================================
+       
         const rolDelUsuario = localStorage.getItem('rolERP') || 'calidad';
 
-        // Protección de URL: Si no es admin ni calidad, lo pateamos
         if (rolDelUsuario !== 'admin' && rolDelUsuario !== 'calidad') {
             if (rolDelUsuario === 'ventas') window.location.href = 'ventas.html';
             else if (rolDelUsuario === 'produccion') window.location.href = 'fabricacion.html';
@@ -265,10 +260,8 @@
         }
 
         document.addEventListener("DOMContentLoaded", function() {
-            // 2. Ocultar menús según el rol
             const modulosEscritorio = ['menu-ventas', 'menu-inventario', 'menu-fabricacion', 'menu-compras', 'menu-calidad'];
             const modulosMovil = ['menu-ventas-mobile', 'menu-inventario-mobile', 'menu-fabricacion-mobile', 'menu-compras-mobile', 'menu-calidad-mobile'];
-                        // ASIGNAR RUTA AL LOGO SEGÚN EL ROL
             const logo = document.getElementById('logoNavbar');
             if (logo) {
                 if (rolDelUsuario === 'admin') logo.href = 'dashboard.html';
@@ -277,28 +270,23 @@
                 else if (rolDelUsuario === 'calidad') logo.href = 'calidad.html';
             }
             
-            // PRIMERO: Ocultamos TODOS los módulos por defecto
             modulosEscritorio.forEach(id => { const el = document.getElementById(id); if (el) el.style.display = 'none'; });
             modulosMovil.forEach(id => { const el = document.getElementById(id); if (el) el.style.display = 'none'; });
 
             if (rolDelUsuario === 'admin') {
-                // EL ADMIN NO VE MENÚS (Se queda vacío)
                 document.getElementById('nombreUsuarioNav').innerHTML = '<i class="bi bi-person-circle me-2"></i> Administrador';
                 document.getElementById('nombreUsuarioNavMobile').innerHTML = '<i class="bi bi-person-fill me-1"></i> Administrador';
             } 
             else if (rolDelUsuario === 'calidad') {
-                // CALIDAD SOLO VE SU MÓDULO
                 document.getElementById('menu-calidad').style.display = 'block';
                 document.getElementById('menu-calidad-mobile').style.display = 'block';
                 document.getElementById('nombreUsuarioNav').innerHTML = '<i class="bi bi-person-circle me-2"></i> Inspector Calidad';
                 document.getElementById('nombreUsuarioNavMobile').innerHTML = '<i class="bi bi-person-fill me-1"></i> Inspector Calidad';
             }
 
-            // 3. Lógica del Modo Solo Lectura
             const urlParams = new URLSearchParams(window.location.search);
             const modo = urlParams.get('mode');
 
-            // Si viene de un reporte o es Admin
             if (modo === 'view' || rolDelUsuario === 'admin') {
                 const btnNuevo = document.getElementById('btnNuevaInspeccion');
                 if (btnNuevo) btnNuevo.style.display = 'none';
@@ -308,17 +296,14 @@
             }
         });
 
-        // --- 1. CONTROL DE MODALES ---
         function abrirModalInspeccion() { document.getElementById('modalInspeccion').classList.add('activo'); }
         function cerrarModalInspeccion() { document.getElementById('modalInspeccion').classList.remove('activo'); }
 
         function cerrarModalVerCalidad() { document.getElementById('modalVerCalidad').classList.remove('activo'); }
 
-        // Cerrar al hacer clic fuera
         document.getElementById('modalInspeccion').addEventListener('click', function(e) { if (e.target === this) cerrarModalInspeccion(); });
         document.getElementById('modalVerCalidad').addEventListener('click', function(e) { if (e.target === this) cerrarModalVerCalidad(); });
 
-        // --- 2. CARGAR LOTES PENDIENTES ---
         document.addEventListener("DOMContentLoaded", function() {
             fetch('/api/calidad/lotes-pendientes') 
                 .then(respuesta => respuesta.json())
@@ -339,14 +324,12 @@
                 });
         });
 
-        // --- 3. ABRIR MODAL VER CALIDAD ---
         function abrirModalVerCalidad(fecha, lote, inspector, sellado, color, consistencia, disposicion, observaciones) {
             document.getElementById('verCalFecha').innerText = fecha;
             document.getElementById('verCalLote').innerText = lote;
             document.getElementById('verCalInspector').innerText = inspector;
             document.getElementById('verCalObservaciones').innerText = observaciones;
 
-            // Función auxiliar para mostrar el icono correcto
             const getIcono = (estado) => {
                 return estado === 'OK' 
                     ? '<span class="text-success fw-bold"><i class="bi bi-check-circle-fill me-1"></i> Aprobado</span>' 
@@ -357,7 +340,6 @@
             document.getElementById('verCalColor').innerHTML = getIcono(color);
             document.getElementById('verCalConsistencia').innerHTML = getIcono(consistencia);
 
-            // Configurar el badge de disposición
             const badgeDisp = document.getElementById('verCalDisposicion');
             badgeDisp.innerText = disposicion;
             
