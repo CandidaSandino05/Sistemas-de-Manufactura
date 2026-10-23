@@ -19,7 +19,11 @@ const Venta = sequelize.define('Venta', {
     cliente: { type: DataTypes.STRING, allowNull: false },
     fecha: { type: DataTypes.DATEONLY, defaultValue: DataTypes.NOW },
     total: { type: DataTypes.DECIMAL(10, 2), allowNull: false },
-    estado: { type: DataTypes.STRING, defaultValue: 'Pendiente' }
+    estado: { type: DataTypes.STRING, defaultValue: 'Pendiente' },
+    // Nuevos campos
+    producto_codigo: { type: DataTypes.STRING, field: 'producto_codigo' },
+    cantidad: { type: DataTypes.DECIMAL(10, 2), field: 'cantidad' },
+    precio_unitario: { type: DataTypes.DECIMAL(10, 2), field: 'precio_unitario' }
 }, { tableName: 'ventas' });
 
 const Compra = sequelize.define('Compra', {
@@ -27,8 +31,11 @@ const Compra = sequelize.define('Compra', {
     proveedor: { type: DataTypes.STRING, allowNull: false },
     fecha: { type: DataTypes.DATEONLY, defaultValue: DataTypes.NOW },
     total: { type: DataTypes.DECIMAL(10, 2), allowNull: false },
-    estado: { type: DataTypes.STRING, defaultValue: 'Pendiente' }
-}, { tableName: 'compras' });
+    estado: { type: DataTypes.STRING, defaultValue: 'Pendiente' },
+    producto_codigo: { type: DataTypes.STRING, field: 'producto_codigo' },
+    cantidad: { type: DataTypes.DECIMAL(10, 2), field: 'cantidad' },
+    precio_unitario: { type: DataTypes.DECIMAL(10, 2), field: 'precio_unitario' }
+}, { tableName: 'compras' });;
 
 const Fabricacion = sequelize.define('Fabricacion', {
     numeroOF: { type: DataTypes.STRING, allowNull: false, unique: true, field: 'numero_of' },
@@ -69,7 +76,7 @@ const MovimientoInventario = sequelize.define('MovimientoInventario', {
     motivo: { type: DataTypes.STRING },
     referencia: { type: DataTypes.STRING },
     fecha: { type: DataTypes.DATE, defaultValue: DataTypes.NOW }
-}, { tableName: 'movimientos_inventario', updatedAt: false });
+}, { tableName: 'movimientos_inventario', timestamps: false });
 
 Role.hasMany(Usuario, { foreignKey: 'roleId', as: 'usuarios' });
 Usuario.belongsTo(Role, { foreignKey: 'roleId', as: 'role' });

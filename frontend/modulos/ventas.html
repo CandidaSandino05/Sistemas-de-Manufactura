@@ -5,69 +5,61 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ventas - Frutitos de Casa</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <link rel="stylesheet" href="../css/styles.css">
 </head>
 <body>
 
-    <!-- Menú de Navegación (Desktop normal, Móvil lateral) -->
+    <!-- NAVBAR -->
     <nav class="navbar navbar-expand-lg navbar-frutitos navbar-dark">
         <div class="container-fluid px-4">
-            <a class="navbar-brand fw-bold" href="dashboard.html">Frutitos de Casa ERP</a>
-            
-            <!-- Botón de hamburguesa para celular -->
-            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#menuLateral">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <!-- MENÚ DE COMPUTADORA (Se oculta en celular) -->
+            <a class="navbar-brand fw-bold" href="#" id="logoNavbar">Frutitos de Casa ERP</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#menuLateral"><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse d-none d-lg-block" id="menuDesktop">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0 gap-2 ms-lg-4">
-                    <li class="nav-item"><a class="nav-link px-3" href="ventas.html">Ventas</a></li>
-                    <li class="nav-item"><a class="nav-link px-3" href="inventario.html">Inventario</a></li>
-                    <li class="nav-item"><a class="nav-link px-3" href="fabricacion.html">Fabricación</a></li>
-                    <li class="nav-item"><a class="nav-link px-3" href="compras.html">Compras</a></li>
-                    <li class="nav-item"><a class="nav-link px-3" href="calidad.html">Calidad</a></li>
+                    <li class="nav-item" id="menu-ventas"><a class="nav-link px-3" href="ventas.html">Ventas</a></li>
+                    <li class="nav-item" id="menu-inventario"><a class="nav-link px-3" href="inventario.html">Inventario</a></li>
+                    <li class="nav-item" id="menu-fabricacion"><a class="nav-link px-3" href="fabricacion.html">Fabricación</a></li>
+                    <li class="nav-item" id="menu-compras"><a class="nav-link px-3" href="compras.html">Compras</a></li>
+                    <li class="nav-item" id="menu-calidad"><a class="nav-link px-3" href="calidad.html">Calidad</a></li>
                 </ul>
                 <div class="d-flex align-items-center mt-2 mt-lg-0 gap-3">
-                    <span class="navbar-text text-white mb-0 d-flex align-items-center">
-                        <span class="me-2">👤</span> Admin
-                    </span>
-                    <a href="login.html" class="btn btn-outline-light btn-sm rounded-pill px-3">Salir</a>
+                    <span class="navbar-text text-white mb-0 d-flex align-items-center"><i class="bi bi-person-circle me-2"></i> <span class="user-name">Cargando...</span></span>
+                    <a href="#" onclick="logout(); return false;" class="btn btn-outline-light btn-sm rounded-pill px-3">Salir</a>
                 </div>
             </div>
         </div>
     </nav>
 
-    <!-- MENÚ LATERAL PARA CELULAR (Offcanvas) -->
+    <!-- MENÚ LATERAL MÓVIL -->
     <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="menuLateral" style="background-color: var(--mermelada-oscuro) !important; width: 280px;">
         <div class="offcanvas-header border-bottom border-secondary">
             <h5 class="offcanvas-title text-white fw-bold">Frutitos de Casa</h5>
-            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
         </div>
-        
         <div class="offcanvas-body d-flex flex-column">
-            <!-- Enlaces del menú -->
             <ul class="navbar-nav me-auto mb-2 mb-lg-0 gap-2 w-100">
                 <li class="nav-item"><a class="nav-link px-3 text-white" href="dashboard.html"><i class="bi bi-house-door me-2"></i> Dashboard</a></li>
-                <li class="nav-item"><a class="nav-link px-3 text-white" href="ventas.html"><i class="bi bi-cart me-2"></i> Ventas</a></li>
-                <li class="nav-item"><a class="nav-link px-3 text-white" href="inventario.html"><i class="bi bi-box me-2"></i> Inventario</a></li>
-                <li class="nav-item"><a class="nav-link px-3 text-white" href="fabricacion.html"><i class="bi bi-gear me-2"></i> Fabricación</a></li>
-                <li class="nav-item"><a class="nav-link px-3 text-white" href="compras.html"><i class="bi bi-truck me-2"></i> Compras</a></li>
-                <li class="nav-item"><a class="nav-link px-3 text-white" href="calidad.html"><i class="bi bi-clipboard-check me-2"></i> Calidad</a></li>
+                <li class="nav-item" id="menu-ventas-mobile"><a class="nav-link px-3 text-white" href="ventas.html"><i class="bi bi-cart me-2"></i> Ventas</a></li>
+                <li class="nav-item" id="menu-inventario-mobile"><a class="nav-link px-3 text-white" href="inventario.html"><i class="bi bi-box me-2"></i> Inventario</a></li>
+                <li class="nav-item" id="menu-fabricacion-mobile"><a class="nav-link px-3 text-white" href="fabricacion.html"><i class="bi bi-gear me-2"></i> Fabricación</a></li>
+                <li class="nav-item" id="menu-compras-mobile"><a class="nav-link px-3 text-white" href="compras.html"><i class="bi bi-truck me-2"></i> Compras</a></li>
+                <li class="nav-item" id="menu-calidad-mobile"><a class="nav-link px-3 text-white" href="calidad.html"><i class="bi bi-clipboard-check me-2"></i> Calidad</a></li>
             </ul>
-            
-            <!-- Usuario y Salir (Pegados hasta abajo) -->
             <div class="mt-auto pt-3 border-top border-secondary d-flex align-items-center justify-content-between w-100">
-                <span class="text-white small"><i class="bi bi-person-fill me-1"></i> Admin</span>
-                <a href="login.html" class="btn btn-outline-light btn-sm rounded-pill px-3">Salir</a>
+                <span class="text-white small"><i class="bi bi-person-fill me-1"></i> <span class="user-name">Cargando...</span></span>
+                <a href="#" onclick="logout(); return false;" class="btn btn-outline-light btn-sm rounded-pill px-3">Salir</a>
             </div>
         </div>
     </div>
 
+    <!-- CONTENIDO -->
     <div class="container mt-4 mt-md-5">
         <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center mb-3 gap-2">
-            <h3 class="text-secondary mb-0">Gestión de Ventas y Pedidos</h3>
-            <button class="btn btn-fresa">+ Nuevo Pedido</button>
+            <h3 class="text-secondary mb-0" id="tituloVentas">Gestión de Ventas y Pedidos</h3>
+            <button class="btn btn-fresa" id="btnNuevoPedido" onclick="abrirModal()">
+                <i class="bi bi-plus-lg me-2"></i> Nuevo Pedido
+            </button>
         </div>
         
         <div class="card shadow-sm border-0">
@@ -75,25 +67,10 @@
                 <div class="table-responsive">
                     <table class="table table-hover align-middle">
                         <thead>
-                            <tr>
-                                <th>Nº Pedido</th>
-                                <th>Cliente</th>
-                                <th>Fecha</th>
-                                <th>Total (C$)</th>
-                                <th>Estado</th>
-                                <th>Acciones</th>
-                            </tr>
+                            <tr><th>Nº Pedido</th><th>Cliente</th><th>Producto</th><th>Cant.</th><th>Precio Unit.</th><th>Total (C$)</th><th>Estado</th></tr>
                         </thead>
-                        <tbody>
-                            <!-- Ejemplo un bucle for para mostrar los pedidos -->
-                            <tr>
-                                <td>---</td>
-                                <td>---</td>
-                                <td>---</td>
-                                <td>---</td>
-                                <td><span class="badge bg-secondary">Sin datos</span></td>
-                                <td><button class="btn btn-sm btn-outline-secondary">Ver</button></td>
-                            </tr>
+                        <tbody id="tbodyVentas">
+                            <tr><td colspan="7" class="text-center text-muted py-4">Cargando datos...</td></tr>
                         </tbody>
                     </table>
                 </div>
@@ -101,6 +78,232 @@
         </div>
     </div>
 
+    <!-- MODAL VENTA -->
+    <div class="mi-modal-overlay" id="modalVentas">
+        <div class="mi-modal-caja" style="max-width: 700px;">
+            <div class="position-relative p-3" style="background-color: var(--mermelada-oscuro);">
+                <h5 class="m-0 fw-bold text-center text-white w-100" style="color: white !important;"><i class="bi bi-cart-plus me-2"></i> Registrar Nuevo Pedido</h5>
+                <button type="button" class="btn-close btn-close-white position-absolute top-50 end-0 translate-middle-y me-3" onclick="cerrarModal()"></button>
+            </div>
+
+            <form id="formVenta">
+                <div class="p-4">
+                    <div id="errorVenta" class="alert alert-danger d-none"></div>
+                    
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label class="form-label fw-bold small text-muted">Cliente</label>
+                            <input type="text" class="form-control" name="cliente" id="cliente" required placeholder="Ej: Mercado de Managua">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label fw-bold small text-muted">Nº Pedido (Auto)</label>
+                            <input type="text" class="form-control" name="numeroPedido" id="numeroPedido" readonly>
+                        </div>
+                    </div>
+
+                    <h6 class="fw-bold border-bottom pb-2 mb-3 mt-4" style="color: var(--mermelada-rojo);">Detalle del Pedido</h6>
+
+                    <div class="row mb-3">
+                        <div class="col-md-5">
+                            <label class="form-label fw-bold small text-muted">Producto Terminado</label>
+                            <select class="form-select" id="selectProductoVenta" required>
+                                <option value="">Cargando...</option>
+                            </select>
+                        </div>
+                        <div class="col-md-3">
+                            <label class="form-label fw-bold small text-muted">Cantidad (uds)</label>
+                            <input type="number" class="form-control" id="cantidadVenta" step="1" min="1" required>
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label fw-bold small text-muted">Precio Unit. (C$)</label>
+                            <input type="number" class="form-control" id="precioUnitarioVenta" step="0.01" min="0" required>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3 align-items-end">
+                        <div class="col-md-4">
+                            <label class="form-label fw-bold small text-muted">Estado Inicial</label>
+                            <select class="form-select" name="estado" id="estado">
+                                <option value="Pendiente">Pendiente</option>
+                                <option value="Confirmado">Confirmado</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label fw-bold small text-muted">Total (C$)</label>
+                            <input type="number" class="form-control bg-light" id="totalVenta" readonly>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="p-3 bg-light d-flex justify-content-end gap-2 border-top">
+                    <button type="button" class="btn btn-secondary" onclick="cerrarModal()">Cancelar</button>
+                    <button type="submit" class="btn btn-fresa" id="btnGuardarVenta">Confirmar y Guardar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/api.js"></script>
+    <script src="../js/auth.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", async function() {
+            const token = localStorage.getItem('token');
+            if (!token) { window.location.href = 'login.html'; return; }
+            
+            const user = JSON.parse(localStorage.getItem('user'));
+            const rol = user.rol.toLowerCase();
+            renderizarUsuario();
+
+            if (rol !== 'administrador' && rol !== 'ventas') {
+                alert('No tienes permiso'); window.location.href = 'dashboard.html'; return;
+            }
+            
+            const logo = document.getElementById('logoNavbar');
+            if (logo) logo.href = rol === 'administrador' ? 'dashboard.html' : 'ventas.html';
+
+            const modulosEscritorio = ['menu-ventas', 'menu-inventario', 'menu-fabricacion', 'menu-compras', 'menu-calidad'];
+            const modulosMovil = ['menu-ventas-mobile', 'menu-inventario-mobile', 'menu-fabricacion-mobile', 'menu-compras-mobile', 'menu-calidad-mobile'];
+            
+            modulosEscritorio.forEach(id => { const el = document.getElementById(id); if (el) el.style.display = 'none'; });
+            modulosMovil.forEach(id => { const el = document.getElementById(id); if (el) el.style.display = 'none'; });
+
+            if (rol === 'administrador') {
+                modulosEscritorio.forEach(id => { const el = document.getElementById(id); if (el) el.style.display = 'block'; });
+                modulosMovil.forEach(id => { const el = document.getElementById(id); if (el) el.style.display = 'block'; });
+            } else if (rol === 'ventas') {
+                const m1 = document.getElementById('menu-ventas'); if (m1) m1.style.display = 'block';
+                const m2 = document.getElementById('menu-ventas-mobile'); if (m2) m2.style.display = 'block';
+            }
+
+            const urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.get('mode') === 'view' || rol === 'administrador') {
+                const btn = document.getElementById('btnNuevoPedido'); if (btn) btn.style.display = 'none';
+                const titulo = document.getElementById('tituloVentas'); if (titulo) titulo.innerText = "Reporte de Ventas (Solo Lectura)";
+            }
+
+            await cargarVentas();
+            await cargarSelectProductos();
+        });
+
+        async function cargarVentas() {
+            const tbody = document.getElementById('tbodyVentas');
+            try {
+                const ventas = await api.get('/ventas');
+                if (ventas.length === 0) {
+                    tbody.innerHTML = `<tr><td colspan="7" class="text-center text-muted py-4">No hay ventas registradas</td></tr>`;
+                    return;
+                }
+                tbody.innerHTML = ventas.map(v => {
+                    // Pintamos de rojo si está en producción, verde si está pendiente
+                    let badgeClass = 'bg-secondary';
+                    if (v.estado.includes('Producción')) badgeClass = 'bg-warning text-dark';
+                    if (v.estado === 'Confirmado') badgeClass = 'bg-success';
+
+                    return `
+                        <tr>
+                            <td><strong>${v.numeroPedido}</strong></td>
+                            <td>${v.cliente}</td>
+                            <td>${v.producto_codigo || '---'}</td>
+                            <td>${v.cantidad || 0}</td>
+                            <td>C$ ${v.precio_unitario ? parseFloat(v.precio_unitario).toFixed(2) : '0.00'}</td>
+                            <td>C$ ${parseFloat(v.total).toFixed(2)}</td>
+                            <td><span class="badge ${badgeClass}">${v.estado}</span></td>
+                        </tr>
+                    `;
+                }).join('');
+            } catch (error) {
+                tbody.innerHTML = `<tr><td colspan="7" class="text-center text-danger py-4">Error: ${error.message}</td></tr>`;
+            }
+        }
+
+        async function cargarSelectProductos() {
+            const select = document.getElementById('selectProductoVenta');
+            const token = localStorage.getItem('token');
+
+            try {
+                const response = await fetch('http://localhost:3000/api/ventas/productos', {
+                    headers: { 'Authorization': `Bearer ${token}` }
+                });
+
+                if (!response.ok) {
+                    select.innerHTML = `<option value="">Error del servidor (${response.status})</option>`;
+                    return;
+                }
+
+                const productosPT = await response.json();
+                
+                if (productosPT.length === 0) {
+                    select.innerHTML = '<option value="">No hay Productos Terminados en la BD</option>';
+                    return;
+                }
+
+                select.innerHTML = '<option value="">Seleccione producto terminado...</option>';
+                productosPT.forEach(i => {
+                    select.appendChild(new Option(`${i.codigo} - ${i.producto}`, i.codigo));
+                });
+                
+            } catch (error) { 
+                console.error("Error al cargar productos en ventas:", error);
+                select.innerHTML = '<option value="">Error de conexión</option>';
+            }
+        }
+
+        function calcularTotalVenta() {
+            const cant = parseFloat(document.getElementById('cantidadVenta').value) || 0;
+            const precio = parseFloat(document.getElementById('precioUnitarioVenta').value) || 0;
+            document.getElementById('totalVenta').value = (cant * precio).toFixed(2);
+        }
+        document.getElementById('cantidadVenta').addEventListener('input', calcularTotalVenta);
+        document.getElementById('precioUnitarioVenta').addEventListener('input', calcularTotalVenta);
+
+        function abrirModal() {
+            document.getElementById('formVenta').reset();
+            document.getElementById('errorVenta').classList.add('d-none');
+            document.getElementById('numeroPedido').value = 'PED-' + Date.now().toString().slice(-6);
+            document.getElementById('totalVenta').value = '0.00';
+            document.getElementById('modalVentas').classList.add('activo');
+        }
+
+        function cerrarModal() { document.getElementById('modalVentas').classList.remove('activo'); }
+        document.getElementById('modalVentas').addEventListener('click', function(e) { if (e.target === this) cerrarModal(); });
+
+        document.getElementById('formVenta').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const btn = document.getElementById('btnGuardarVenta');
+            const errorDiv = document.getElementById('errorVenta');
+            btn.disabled = true;
+            btn.innerText = 'Procesando...';
+            errorDiv.classList.add('d-none');
+
+            const datos = {
+                numeroPedido: document.getElementById('numeroPedido').value,
+                cliente: document.getElementById('cliente').value,
+                total: parseFloat(document.getElementById('totalVenta').value),
+                estado: document.getElementById('estado').value,
+                producto_codigo: document.getElementById('selectProductoVenta').value,
+                cantidad: parseFloat(document.getElementById('cantidadVenta').value),
+                precio_unitario: parseFloat(document.getElementById('precioUnitarioVenta').value)
+            };
+
+            try {
+                const response = await api.post('/ventas', datos);
+                
+                // Si el backend detectó que no hay stock y creó una OF automática
+                if (response.alerta) {
+                    alert("⚠️ " + response.alerta + "\n\nEl pedido quedó en estado 'En Producción (Sin Stock)' y la orden de fabricación ya está creada en el módulo de Fabricación.");
+                }
+
+                cerrarModal();
+                await cargarVentas();
+            } catch (error) {
+                errorDiv.innerText = error.message;
+                errorDiv.classList.remove('d-none');
+            } finally {
+                btn.disabled = false;
+                btn.innerText = 'Confirmar y Guardar';
+            }
+        });
+    </script>
 </body>
 </html>

@@ -5,156 +5,228 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard - Frutitos de Casa</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="../css/styles.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="../css/styles.css">
 </head>
 <body>
 
-
-        <!-- Menú de Navegación Inteligente -->
+    <!-- Menú de Navegación -->
     <nav class="navbar navbar-expand-lg navbar-frutitos navbar-dark">
         <div class="container-fluid px-4">
             <a class="navbar-brand fw-bold" href="dashboard.html">Frutitos de Casa ERP</a>
             
-            <!-- Botón de hamburguesa para celular -->
-            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#menuLateral" aria-controls="menuLateral">
+            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#menuLateral">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
-            <!-- MENÚ DE COMPUTADORA -->
-            <div class="collapse navbar-collapse d-none d-lg-block">
+            <div class="collapse navbar-collapse d-none d-lg-block" id="menuDesktop">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0 gap-2 ms-lg-4">
-                    <li class="nav-item"><a class="nav-link px-3" href="ventas.html">Ventas</a></li>
-                    <li class="nav-item"><a class="nav-link px-3" href="inventario.html">Inventario</a></li>
-                    <li class="nav-item"><a class="nav-link px-3" href="fabricacion.html">Fabricación</a></li>
-                    <li class="nav-item"><a class="nav-link px-3" href="compras.html">Compras</a></li>
-                    <li class="nav-item"><a class="nav-link px-3" href="calidad.html">Calidad</a></li>
+                    <li class="nav-item"><a class="nav-link px-3" href="ventas.html?mode=view">Ventas</a></li>
+                    <li class="nav-item"><a class="nav-link px-3" href="inventario.html?mode=view">Inventario</a></li>
+                    <li class="nav-item"><a class="nav-link px-3" href="fabricacion.html?mode=view">Fabricación</a></li>
+                    <li class="nav-item"><a class="nav-link px-3" href="compras.html?mode=view">Compras</a></li>
+                    <li class="nav-item"><a class="nav-link px-3" href="calidad.html?mode=view">Calidad</a></li>
                 </ul>
                 <div class="d-flex align-items-center mt-2 mt-lg-0 gap-3">
                     <span class="navbar-text text-white mb-0 d-flex align-items-center">
-                        <span class="me-2">👤</span> Admin
+                        <i class="bi bi-person-circle me-2"></i> <span class="user-name">Admin</span>
                     </span>
-                    <a href="login.html" class="btn btn-outline-light btn-sm rounded-pill px-3">Salir</a>
+                    <a href="#" onclick="logout(); return false;" class="btn btn-outline-light btn-sm rounded-pill px-3">Salir</a>
                 </div>
             </div>
         </div>
     </nav>
 
-    <!-- MENÚ LATERAL (OFFCANVAS) PARA CELULAR -->
+    <!-- Menú Lateral para Móvil -->
     <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="menuLateral" style="background-color: var(--mermelada-oscuro) !important; width: 280px;">
         <div class="offcanvas-header border-bottom border-secondary">
             <h5 class="offcanvas-title text-white fw-bold">Menú ERP</h5>
-            <!-- Botón de la X para cerrar -->
-            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
         </div>
-        
         <div class="offcanvas-body d-flex flex-column">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0 gap-2 w-100">
                 <li class="nav-item"><a class="nav-link px-3 text-white" href="dashboard.html"><i class="bi bi-house-door me-2"></i> Dashboard</a></li>
-                <li class="nav-item"><a class="nav-link px-3 text-white" href="ventas.html"><i class="bi bi-cart me-2"></i> Ventas</a></li>
-                <li class="nav-item"><a class="nav-link px-3 text-white" href="inventario.html"><i class="bi bi-box me-2"></i> Inventario</a></li>
-                <li class="nav-item"><a class="nav-link px-3 text-white" href="fabricacion.html"><i class="bi bi-gear me-2"></i> Fabricación</a></li>
-                <li class="nav-item"><a class="nav-link px-3 text-white" href="compras.html"><i class="bi bi-truck me-2"></i> Compras</a></li>
-                <li class="nav-item"><a class="nav-link px-3 text-white" href="calidad.html"><i class="bi bi-clipboard-check me-2"></i> Calidad</a></li>
+                <li class="nav-item"><a class="nav-link px-3 text-white" href="ventas.html?mode=view"><i class="bi bi-cart me-2"></i> Ventas</a></li>
+                <li class="nav-item"><a class="nav-link px-3 text-white" href="inventario.html?mode=view"><i class="bi bi-box me-2"></i> Inventario</a></li>
+                <li class="nav-item"><a class="nav-link px-3 text-white" href="fabricacion.html?mode=view"><i class="bi bi-gear me-2"></i> Fabricación</a></li>
+                <li class="nav-item"><a class="nav-link px-3 text-white" href="compras.html?mode=view"><i class="bi bi-truck me-2"></i> Compras</a></li>
+                <li class="nav-item"><a class="nav-link px-3 text-white" href="calidad.html?mode=view"><i class="bi bi-clipboard-check me-2"></i> Calidad</a></li>
             </ul>
-            
             <div class="mt-auto pt-3 border-top border-secondary d-flex align-items-center justify-content-between w-100">
-                <span class="text-white small"><i class="bi bi-person-fill me-1"></i> Admin</span>
-                <a href="login.html" class="btn btn-outline-light btn-sm rounded-pill px-3">Salir</a>
+                <span class="text-white small"><i class="bi bi-person-fill me-1"></i> <span class="user-name">Admin</span></span>
+                <a href="#" onclick="logout(); return false;" class="btn btn-outline-light btn-sm rounded-pill px-3">Salir</a>
             </div>
         </div>
     </div>
 
-    <div class="container mt-4">
-        
-        <!--  Banner con foto y texto -->
-        <div class="hero-dashboard text-center text-md-start">
-            <div class="row align-items-center">
-                <div class="col-md-7 col-lg-6">
-                    <h1 class="fw-bold mb-2">Mermelada Artesanal de Fresa</h1>
-                    <p class="lead mb-0">Sistema de gestión integral para la planta de manufactura. Controlando la calidad desde la selección de la fruta hasta el despacho al cliente.</p>
+    <div class="container mt-4 mb-5">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h3 class="fw-bold mb-0" style="color: var(--texto-marron);">Panel de Control Gerencial</h3>
+            <span class="text-muted small"><i class="bi bi-calendar3 me-1"></i> Última actualización: Hoy</span>
+        </div>
+
+        <!-- KPIs -->
+        <div class="row g-4 mb-4">
+            <div class="col-12 col-md-6 col-lg-3">
+                <a href="ventas.html?mode=view" class="text-decoration-none">
+                    <div class="kpi-etiqueta h-100">
+                        <h6 class="text-uppercase text-muted mt-3" style="font-size: 0.75rem; letter-spacing: 1px;">Ventas Totales</h6>
+                        <h2 class="fw-bold mb-1 mt-2" style="color: var(--mermelada-rojo);" id="kpiVentas">C$ ---</h2>
+                        <p class="small text-muted mb-0">Ver módulo de ventas <i class="bi bi-arrow-right"></i></p>
+                    </div>
+                </a>
+            </div>
+            <div class="col-12 col-md-6 col-lg-3">
+                <a href="fabricacion.html?mode=view" class="text-decoration-none">
+                    <div class="kpi-etiqueta etiqueta-verde h-100">
+                        <h6 class="text-uppercase text-muted mt-3" style="font-size: 0.75rem; letter-spacing: 1px;">OF en Proceso</h6>
+                        <h2 class="fw-bold mb-1 mt-2" style="color: var(--hoja-verde);" id="kpiOF">---</h2>
+                        <p class="small text-muted mb-0">Ver módulo de fabricación <i class="bi bi-arrow-right"></i></p>
+                    </div>
+                </a>
+            </div>
+            <div class="col-12 col-md-6 col-lg-3">
+                <a href="inventario.html?mode=view" class="text-decoration-none">
+                    <div class="kpi-etiqueta h-100">
+                        <h6 class="text-uppercase text-muted mt-3" style="font-size: 0.75rem; letter-spacing: 1px;">Alertas Inventario</h6>
+                        <h2 class="fw-bold mb-1 mt-2" style="color: var(--mermelada-rojo);" id="kpiAlertas">---</h2>
+                        <p class="small text-muted mb-0">Productos bajo mínimo <i class="bi bi-arrow-right"></i></p>
+                    </div>
+                </a>
+            </div>
+            <div class="col-12 col-md-6 col-lg-3">
+                <a href="calidad.html?mode=view" class="text-decoration-none">
+                    <div class="kpi-etiqueta etiqueta-verde h-100">
+                        <h6 class="text-uppercase text-muted mt-3" style="font-size: 0.75rem; letter-spacing: 1px;">Lotes x Calidad</h6>
+                        <h2 class="fw-bold mb-1 mt-2" style="color: var(--hoja-verde);" id="kpiLotes">---</h2>
+                        <p class="small text-muted mb-0">Pendientes de inspección <i class="bi bi-arrow-right"></i></p>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <!-- Gráficos (Se mantiene igual, Chart.js) -->
+        <div class="row g-4 mb-4">
+            <div class="col-lg-8">
+                <div class="card border-0 shadow-sm rounded-4 h-100">
+                    <div class="card-body p-4">
+                        <h5 class="fw-bold mb-4" style="color: var(--texto-marron);">Ingresos por Ventas (Últimos 6 meses)</h5>
+                        <canvas id="graficoVentas" style="max-height: 300px;"></canvas>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="card border-0 shadow-sm rounded-4 h-100">
+                    <div class="card-body p-4 text-center">
+                        <h5 class="fw-bold mb-4" style="color: var(--texto-marron);">Distribución de Inventario</h5>
+                        <div style="position: relative; height: 250px; width: 100%;">
+                            <canvas id="graficoInventario"></canvas>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
 
-              <!-- Info de la Fresa y el Proceso -->
-        <div class="row mb-4">
-            <div class="col-md-6 mb-3 mb-md-0">
-                <div class="kpi-ancha">
-                    <!-- Icono de canasta de fondo -->
-                    <i class="bi bi-basket icono-fondo-dash" style="color: var(--mermelada-rojo);"></i>
-                    <h5 class="card-title fw-bold" style="color: var(--mermelada-rojo);">Nuestra Materia Prima</h5>
-                    <p class="card-text text-muted small mt-2 mb-0" style="line-height: 1.6;">
-                        Trabajamos con fresas frescas seleccionadas de la mejor calidad. Cada lote requiere <strong>5 kg de fresa</strong> para garantizar el sabor y la textura perfecta de nuestra mermelada insignia.
-                    </p>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="kpi-ancha etiqueta-verde">
-                    <!-- Icono de engranaje/fábrica de fondo -->
-                    <i class="bi bi-gear-wide-connected icono-fondo-dash" style="color: var(--hoja-verde);"></i>
-                    <h5 class="card-title fw-bold" style="color: var(--hoja-verde);">Proceso de Producción</h5>
-                    <p class="card-text text-muted small mt-2 mb-0" style="line-height: 1.6;">
-                        El ciclo completo (Recepción, Cocción, Envasado, Etiquetado y Empaque) toma un tiempo estándar de <strong>145 minutos por lote</strong> de 20 frascos, asegurando la máxima eficiencia.
-                    </p>
+        <!-- Tabla de Historial (Simplificada a datos reales) -->
+        <div class="card border-0 shadow-sm rounded-4">
+            <div class="card-body p-4">
+                <h5 class="fw-bold mb-3" style="color: var(--texto-marron);">Últimos Movimientos de Inventario</h5>
+                <div class="table-responsive">
+                    <table class="table table-sm table-hover align-middle">
+                        <thead class="table-light">
+                            <tr>
+                                <th>Fecha</th>
+                                <th>Producto</th>
+                                <th>Tipo</th>
+                                <th>Cantidad</th>
+                                <th>Referencia</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tablaMovimientosDash">
+                            <tr><td colspan="5" class="text-center text-muted">Cargando...</td></tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
-
-        <h4 class="mb-3 text-secondary border-bottom pb-2">Indicadores del Sistema (KPIs)</h4>
-        
-                <!-- Tarjetas KPI Estilo Etiqueta -->
-        <div class="row g-4 mb-5">
-            
-            <!-- Tarjeta 1: Stock Fresa -->
-            <div class="col-12 col-sm-6 col-md-3">
-                <div class="kpi-etiqueta">
-                    <h6 class="text-uppercase text-muted mt-3" style="font-size: 0.8rem; letter-spacing: 1px;">
-                        <i class="bi bi-box-seam me-2" style="color: var(--mermelada-rojo);"></i>Stock Fresa (MP)
-                    </h6>
-                    <h2 class="fw-bold mb-1" style="color: var(--mermelada-rojo); font-family: serif;">--- <span style="font-size: 1rem; font-family: 'Segoe UI', sans-serif;">kg</span></h2>
-                    <p class="small text-muted mb-0">Mínimo: --- kg</p>
-                </div>
-            </div>
-            
-            <!-- Tarjeta 2: Órdenes de Fab -->
-            <div class="col-12 col-sm-6 col-md-3">
-                <div class="kpi-etiqueta etiqueta-verde">
-                    <h6 class="text-uppercase text-muted mt-3" style="font-size: 0.8rem; letter-spacing: 1px;">
-                        <i class="bi bi-gear me-2" style="color: var(--hoja-verde);"></i>Órdenes de Fab.
-                    </h6>
-                    <h2 class="fw-bold mb-1" style="color: var(--hoja-verde); font-family: serif;">---</h2>
-                    <p class="small text-muted mb-0">En proceso</p>
-                </div>
-            </div>
-
-            <!-- Tarjeta 3: Lote Activo -->
-            <div class="col-12 col-sm-6 col-md-3">
-                <div class="kpi-etiqueta">
-                    <h6 class="text-uppercase text-muted mt-3" style="font-size: 0.8rem; letter-spacing: 1px;">
-                        <i class="bi bi-tag me-2" style="color: var(--mermelada-rojo);"></i>Lote Activo
-                    </h6>
-                    <h2 class="fw-bold mb-1" style="color: var(--mermelada-rojo); font-family: serif;">---</h2>
-                    <p class="small text-muted mb-0">Mermelada de Fresa</p>
-                </div>
-            </div>
-
-            <!-- Tarjeta 4: Tiempo de Lote -->
-            <div class="col-12 col-sm-6 col-md-3">
-                <div class="kpi-etiqueta etiqueta-verde">
-                    <h6 class="text-uppercase text-muted mt-3" style="font-size: 0.8rem; letter-spacing: 1px;">
-                        <i class="bi bi-clock me-2" style="color: var(--hoja-verde);"></i>Tiempo de Lote
-                    </h6>
-                    <h2 class="fw-bold mb-1" style="color: var(--hoja-verde); font-family: serif;">--- <span style="font-size: 1rem; font-family: 'Segoe UI', sans-serif;">min</span></h2>
-                    <p class="small text-muted mb-0">Estándar</p>
-                </div>
-            </div>
-
-        </div>
-
     </div>
-    <!-- Bootstrap JS (Esencial para que funcione el menú lateral) -->
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-</body>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="../js/api.js"></script>
+    <script src="../js/auth.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", async function() {
+            // 1. Proteger página (solo admin)
+            const user = protegerPagina('dashboard');
+            if (!user) return;
+            renderizarUsuario();
+
+            try {
+                const inventario = await api.get('/inventario');
+                const ventas = await api.get('/ventas');
+                const fabricacion = await api.get('/fabricacion');
+                const calidad = await api.get('/calidad');
+
+                let totalVentas = ventas.reduce((sum, v) => sum + parseFloat(v.total), 0);
+                let ofProceso = fabricacion.filter(f => f.estado === 'En Proceso' || f.estado === 'Pendiente').length;
+                let alertas = inventario.filter(i => parseFloat(i.stockActual) < parseFloat(i.stockMinimo)).length;
+                let lotesCalidad = calidad.filter(c => c.disposicion === 'Cuarentena').length; // Ejemplo
+
+                document.getElementById('kpiVentas').innerText = 'C$ ' + totalVentas.toLocaleString('es-NI');
+                document.getElementById('kpiOF').innerText = ofProceso;
+                document.getElementById('kpiAlertas').innerText = alertas;
+                document.getElementById('kpiLotes').innerText = lotesCalidad;
+
+                const movimientos = await api.get('/movimientos');
+                const tbody = document.getElementById('tablaMovimientosDash');
+                if(movimientos.length === 0) {
+                    tbody.innerHTML = '<tr><td colspan="5" class="text-center text-muted">No hay movimientos</td></tr>';
+                } else {
+                    tbody.innerHTML = movimientos.slice(0, 5).map(m => `
+                        <tr>
+                            <td>${new Date(m.fecha).toLocaleDateString()}</td>
+                            <td>${m.inventario.producto}</td>
+                            <td><span class="badge ${m.tipo === 'ENTRADA' ? 'bg-success' : 'bg-danger'}">${m.tipo}</span></td>
+                            <td>${m.cantidad}</td>
+                            <td>${m.referencia || '-'}</td>
+                        </tr>
+                    `).join('');
+                }
+
+            } catch (error) {
+                console.error("Error cargando dashboard:", error);
+            }
+
+            const ctxVentas = document.getElementById('graficoVentas').getContext('2d');
+            const gradientVentas = ctxVentas.createLinearGradient(0, 0, 0, 300);
+            gradientVentas.addColorStop(0, 'rgba(155, 25, 25, 0.35)'); 
+            gradientVentas.addColorStop(1, 'rgba(155, 25, 25, 0.0)');  
+
+            new Chart(ctxVentas, {
+                type: 'line',
+                data: {
+                    labels: ['Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre'],
+                    datasets: [{
+                        label: 'Ingresos (C$)',
+                        data: [15000, 18000, 16500, 22000, 25000, 28000],
+                        borderColor: '#9b1919', backgroundColor: gradientVentas, borderWidth: 3,
+                        tension: 0.4, fill: true, pointBackgroundColor: '#ffffff'
+                    }]
+                },
+                options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } } }
+            });
+
+            const ctxInv = document.getElementById('graficoInventario').getContext('2d');
+            new Chart(ctxInv, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Materia Prima', 'Producto Terminado'],
+                    datasets: [{ data: [30, 70], backgroundColor: ['#2b8a3e', '#9b1919'], borderWidth: 2 }]
+                },
+                options: { responsive: true, maintainAspectRatio: false, cutout: '70%', plugins: { legend: { position: 'bottom' } } }
+            });
+        });
+    </script>
 </body>
 </html>

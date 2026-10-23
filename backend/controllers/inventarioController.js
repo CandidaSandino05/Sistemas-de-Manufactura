@@ -11,7 +11,10 @@ const listar = async (req, res) => {
 
 const crear = async (req, res) => {
     try {
-        const { codigo, producto, tipo, stockActual, stockMinimo } = req.body;
+        const { codigo, producto, tipo } = req.body;
+        
+        const stockActual = parseFloat(req.body.stockActual) || 0;
+        const stockMinimo = parseFloat(req.body.stockMinimo) || 0;
 
         if (!codigo || !producto) {
             return res.status(400).json({ msg: 'Campos obligatorios: codigo, producto' });
@@ -21,6 +24,9 @@ const crear = async (req, res) => {
         res.status(201).json({ msg: 'Item de inventario creado', data: nuevo });
     } catch (error) {
         console.error(error);
+        if (error.name === 'SequelizeUniqueConstraintError') {
+            return res.status(400).json({ msg: 'El código de producto ya existe.' });
+        }
         res.status(500).json({ msg: 'Error al crear item' });
     }
 };
