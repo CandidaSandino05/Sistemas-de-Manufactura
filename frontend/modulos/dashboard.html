@@ -10,15 +10,11 @@
 </head>
 <body>
 
-    <!-- Menú de Navegación -->
+    <!-- NAVBAR -->
     <nav class="navbar navbar-expand-lg navbar-frutitos navbar-dark">
         <div class="container-fluid px-4">
             <a class="navbar-brand fw-bold" href="dashboard.html">Frutitos de Casa ERP</a>
-            
-            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#menuLateral">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
+            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#menuLateral"><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse d-none d-lg-block" id="menuDesktop">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0 gap-2 ms-lg-4">
                     <li class="nav-item"><a class="nav-link px-3" href="ventas.html?mode=view">Ventas</a></li>
@@ -28,41 +24,17 @@
                     <li class="nav-item"><a class="nav-link px-3" href="calidad.html?mode=view">Calidad</a></li>
                 </ul>
                 <div class="d-flex align-items-center mt-2 mt-lg-0 gap-3">
-                    <span class="navbar-text text-white mb-0 d-flex align-items-center">
-                        <i class="bi bi-person-circle me-2"></i> <span class="user-name">Admin</span>
-                    </span>
+                    <span class="navbar-text text-white mb-0 d-flex align-items-center"><i class="bi bi-person-circle me-2"></i> <span class="user-name">Cargando...</span></span>
                     <a href="#" onclick="logout(); return false;" class="btn btn-outline-light btn-sm rounded-pill px-3">Salir</a>
                 </div>
             </div>
         </div>
     </nav>
 
-    <!-- Menú Lateral para Móvil -->
-    <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="menuLateral" style="background-color: var(--mermelada-oscuro) !important; width: 280px;">
-        <div class="offcanvas-header border-bottom border-secondary">
-            <h5 class="offcanvas-title text-white fw-bold">Menú ERP</h5>
-            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
-        </div>
-        <div class="offcanvas-body d-flex flex-column">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0 gap-2 w-100">
-                <li class="nav-item"><a class="nav-link px-3 text-white" href="dashboard.html"><i class="bi bi-house-door me-2"></i> Dashboard</a></li>
-                <li class="nav-item"><a class="nav-link px-3 text-white" href="ventas.html?mode=view"><i class="bi bi-cart me-2"></i> Ventas</a></li>
-                <li class="nav-item"><a class="nav-link px-3 text-white" href="inventario.html?mode=view"><i class="bi bi-box me-2"></i> Inventario</a></li>
-                <li class="nav-item"><a class="nav-link px-3 text-white" href="fabricacion.html?mode=view"><i class="bi bi-gear me-2"></i> Fabricación</a></li>
-                <li class="nav-item"><a class="nav-link px-3 text-white" href="compras.html?mode=view"><i class="bi bi-truck me-2"></i> Compras</a></li>
-                <li class="nav-item"><a class="nav-link px-3 text-white" href="calidad.html?mode=view"><i class="bi bi-clipboard-check me-2"></i> Calidad</a></li>
-            </ul>
-            <div class="mt-auto pt-3 border-top border-secondary d-flex align-items-center justify-content-between w-100">
-                <span class="text-white small"><i class="bi bi-person-fill me-1"></i> <span class="user-name">Admin</span></span>
-                <a href="#" onclick="logout(); return false;" class="btn btn-outline-light btn-sm rounded-pill px-3">Salir</a>
-            </div>
-        </div>
-    </div>
-
     <div class="container mt-4 mb-5">
         <div class="d-flex justify-content-between align-items-center mb-4">
             <h3 class="fw-bold mb-0" style="color: var(--texto-marron);">Panel de Control Gerencial</h3>
-            <span class="text-muted small"><i class="bi bi-calendar3 me-1"></i> Última actualización: Hoy</span>
+            <span class="text-muted small"><i class="bi bi-calendar3 me-1"></i> Actualizado en tiempo real</span>
         </div>
 
         <!-- KPIs -->
@@ -99,13 +71,13 @@
                     <div class="kpi-etiqueta etiqueta-verde h-100">
                         <h6 class="text-uppercase text-muted mt-3" style="font-size: 0.75rem; letter-spacing: 1px;">Lotes x Calidad</h6>
                         <h2 class="fw-bold mb-1 mt-2" style="color: var(--hoja-verde);" id="kpiLotes">---</h2>
-                        <p class="small text-muted mb-0">Pendientes de inspección <i class="bi bi-arrow-right"></i></p>
+                        <p class="small text-muted mb-0">En cuarentena <i class="bi bi-arrow-right"></i></p>
                     </div>
                 </a>
             </div>
         </div>
 
-        <!-- Gráficos (Se mantiene igual, Chart.js) -->
+        <!-- Gráficos -->
         <div class="row g-4 mb-4">
             <div class="col-lg-8">
                 <div class="card border-0 shadow-sm rounded-4 h-100">
@@ -127,20 +99,14 @@
             </div>
         </div>
 
-        <!-- Tabla de Historial (Simplificada a datos reales) -->
+        <!-- Tabla Movimientos -->
         <div class="card border-0 shadow-sm rounded-4">
             <div class="card-body p-4">
                 <h5 class="fw-bold mb-3" style="color: var(--texto-marron);">Últimos Movimientos de Inventario</h5>
                 <div class="table-responsive">
                     <table class="table table-sm table-hover align-middle">
                         <thead class="table-light">
-                            <tr>
-                                <th>Fecha</th>
-                                <th>Producto</th>
-                                <th>Tipo</th>
-                                <th>Cantidad</th>
-                                <th>Referencia</th>
-                            </tr>
+                            <tr><th>Fecha</th><th>Producto</th><th>Tipo</th><th>Cantidad</th><th>Referencia</th></tr>
                         </thead>
                         <tbody id="tablaMovimientosDash">
                             <tr><td colspan="5" class="text-center text-muted">Cargando...</td></tr>
@@ -157,35 +123,37 @@
     <script src="../js/auth.js"></script>
     <script>
         document.addEventListener("DOMContentLoaded", async function() {
-            // 1. Proteger página (solo admin)
             const user = protegerPagina('dashboard');
             if (!user) return;
             renderizarUsuario();
 
             try {
-                const inventario = await api.get('/inventario');
+                // 1. Obtener datos reales de la BD
                 const ventas = await api.get('/ventas');
+                const inventario = await api.get('/inventario');
                 const fabricacion = await api.get('/fabricacion');
                 const calidad = await api.get('/calidad');
+                const movimientos = await api.get('/movimientos');
 
+                // 2. Calcular KPIs
                 let totalVentas = ventas.reduce((sum, v) => sum + parseFloat(v.total), 0);
-                let ofProceso = fabricacion.filter(f => f.estado === 'En Proceso' || f.estado === 'Pendiente').length;
-                let alertas = inventario.filter(i => parseFloat(i.stockActual) < parseFloat(i.stockMinimo)).length;
-                let lotesCalidad = calidad.filter(c => c.disposicion === 'Cuarentena').length; // Ejemplo
+                let ofProceso = fabricacion.filter(f => f.estado === 'En Proceso' || f.estado === 'Pendiente por Iniciar').length;
+                let alertasStock = inventario.filter(i => parseFloat(i.stockActual) < parseFloat(i.stockMinimo)).length;
+                let lotesCuarentena = calidad.filter(c => c.disposicion === 'Cuarentena').length;
 
                 document.getElementById('kpiVentas').innerText = 'C$ ' + totalVentas.toLocaleString('es-NI');
                 document.getElementById('kpiOF').innerText = ofProceso;
-                document.getElementById('kpiAlertas').innerText = alertas;
-                document.getElementById('kpiLotes').innerText = lotesCalidad;
+                document.getElementById('kpiAlertas').innerText = alertasStock;
+                document.getElementById('kpiLotes').innerText = lotesCuarentena;
 
-                const movimientos = await api.get('/movimientos');
+                // 3. Llenar tabla de movimientos
                 const tbody = document.getElementById('tablaMovimientosDash');
                 if(movimientos.length === 0) {
                     tbody.innerHTML = '<tr><td colspan="5" class="text-center text-muted">No hay movimientos</td></tr>';
                 } else {
                     tbody.innerHTML = movimientos.slice(0, 5).map(m => `
                         <tr>
-                            <td>${new Date(m.fecha).toLocaleDateString()}</td>
+                            <td>${new Date(m.fecha).toLocaleDateString('es-NI')}</td>
                             <td>${m.inventario.producto}</td>
                             <td><span class="badge ${m.tipo === 'ENTRADA' ? 'bg-success' : 'bg-danger'}">${m.tipo}</span></td>
                             <td>${m.cantidad}</td>
@@ -194,38 +162,49 @@
                     `).join('');
                 }
 
+                // 4. Gráfico de Ventas (Simulamos 6 meses agrupando)
+                const ctxVentas = document.getElementById('graficoVentas').getContext('2d');
+                const gradient = ctxVentas.createLinearGradient(0, 0, 0, 300);
+                gradient.addColorStop(0, 'rgba(155, 25, 25, 0.35)'); 
+                gradient.addColorStop(1, 'rgba(155, 25, 25, 0.0)');  
+
+                // Datos de ejemplo para el gráfico (en un sistema real se agruparían por mes en el backend)
+                // Usamos el total de ventas para simular el último punto
+                new Chart(ctxVentas, {
+                    type: 'line',
+                    data: {
+                        labels: ['Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre'],
+                        datasets: [{
+                            label: 'Ingresos (C$)',
+                            data: [15000, 18000, 16500, 22000, 25000, totalVentas], 
+                            borderColor: '#9b1919', backgroundColor: gradient, borderWidth: 3,
+                            tension: 0.4, fill: true, pointBackgroundColor: '#ffffff'
+                        }]
+                    },
+                    options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } } }
+                });
+
+                // 5. Gráfico de Inventario (Dona)
+                const materiaPrimaCount = inventario.filter(i => i.tipo === 'MP').length;
+                const productoTerminadoCount = inventario.filter(i => i.tipo === 'PT').length;
+                
+                const ctxInv = document.getElementById('graficoInventario').getContext('2d');
+                new Chart(ctxInv, {
+                    type: 'doughnut',
+                    data: {
+                        labels: ['Materia Prima', 'Producto Terminado'],
+                        datasets: [{ 
+                            data: [materiaPrimaCount, productoTerminadoCount], 
+                            backgroundColor: ['#2b8a3e', '#9b1919'], borderWidth: 2 
+                        }]
+                    },
+                    options: { responsive: true, maintainAspectRatio: false, cutout: '70%', plugins: { legend: { position: 'bottom' } } }
+                });
+
             } catch (error) {
                 console.error("Error cargando dashboard:", error);
+                alert("Error al cargar los datos del Dashboard. Revisa la consola.");
             }
-
-            const ctxVentas = document.getElementById('graficoVentas').getContext('2d');
-            const gradientVentas = ctxVentas.createLinearGradient(0, 0, 0, 300);
-            gradientVentas.addColorStop(0, 'rgba(155, 25, 25, 0.35)'); 
-            gradientVentas.addColorStop(1, 'rgba(155, 25, 25, 0.0)');  
-
-            new Chart(ctxVentas, {
-                type: 'line',
-                data: {
-                    labels: ['Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre'],
-                    datasets: [{
-                        label: 'Ingresos (C$)',
-                        data: [15000, 18000, 16500, 22000, 25000, 28000],
-                        borderColor: '#9b1919', backgroundColor: gradientVentas, borderWidth: 3,
-                        tension: 0.4, fill: true, pointBackgroundColor: '#ffffff'
-                    }]
-                },
-                options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } } }
-            });
-
-            const ctxInv = document.getElementById('graficoInventario').getContext('2d');
-            new Chart(ctxInv, {
-                type: 'doughnut',
-                data: {
-                    labels: ['Materia Prima', 'Producto Terminado'],
-                    datasets: [{ data: [30, 70], backgroundColor: ['#2b8a3e', '#9b1919'], borderWidth: 2 }]
-                },
-                options: { responsive: true, maintainAspectRatio: false, cutout: '70%', plugins: { legend: { position: 'bottom' } } }
-            });
         });
     </script>
 </body>
