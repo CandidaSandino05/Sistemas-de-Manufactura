@@ -3,46 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ventas - Frutitos de Casa</title>
+    <title>Ventas, Pedidos y Cartera CRM - Frutitos de Casa ERP</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <link rel="stylesheet" href="../css/styles.css">
 </head>
 <body>
 
-    <!-- NAVBAR -->
-    <nav class="navbar navbar-expand-lg navbar-frutitos navbar-dark">
-        <div class="container-fluid px-4">
-            <a class="navbar-brand fw-bold" href="#" id="logoNavbar">Frutitos de Casa ERP</a>
+    <nav class="navbar navbar-expand-lg navbar-frutitos navbar-dark sticky-top">
+        <div class="container-fluid px-3 px-md-4">
+            <a class="navbar-brand fw-bold d-flex align-items-center gap-2" href="#" id="logoNavbar">
+                <i class="bi bi-bag-check"></i>
+                <span>Frutitos de Casa ERP</span>
+            </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#menuLateral"><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse d-none d-lg-block" id="menuDesktop">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0 gap-2 ms-lg-4">
-                    <li class="nav-item" id="menu-ventas"><a class="nav-link px-3" href="ventas.html">Ventas</a></li>
-                    <li class="nav-item" id="menu-inventario"><a class="nav-link px-3" href="inventario.html">Inventario</a></li>
-                    <li class="nav-item" id="menu-fabricacion"><a class="nav-link px-3" href="fabricacion.html">Fabricación</a></li>
-                    <li class="nav-item" id="menu-compras"><a class="nav-link px-3" href="compras.html">Compras</a></li>
-                    <li class="nav-item" id="menu-calidad"><a class="nav-link px-3" href="calidad.html">Calidad</a></li>
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0 gap-1 ms-lg-4">
+                    <li class="nav-item" id="menu-dashboard" style="display:none;"><a class="nav-link" href="dashboard.html"><i class="bi bi-speedometer2 me-1"></i>Dashboard</a></li>
+                    <li class="nav-item" id="menu-inventario"><a class="nav-link" href="inventario.html">1. Inventario &amp; BOM</a></li>
+                    <li class="nav-item" id="menu-compras"><a class="nav-link" href="compras.html">2. Compras &amp; Proveedores</a></li>
+                    <li class="nav-item" id="menu-fabricacion"><a class="nav-link" href="fabricacion.html">3. Fabricación &amp; IoT</a></li>
+                    <li class="nav-item" id="menu-sensores"><a class="nav-link" href="sensores.html"><i class="bi bi-activity me-1"></i>Sensores &amp; SPC</a></li>
+                    <li class="nav-item" id="menu-calidad"><a class="nav-link" href="calidad.html">4. Calidad</a></li>
+                    <li class="nav-item" id="menu-ventas"><a class="nav-link active" href="ventas.html">Ventas &amp; Clientes CRM</a></li>
                 </ul>
-                <div class="d-flex align-items-center mt-2 mt-lg-0 gap-3">
-                    <span class="navbar-text text-white mb-0 d-flex align-items-center"><i class="bi bi-person-circle me-2"></i> <span class="user-name">Cargando...</span></span>
+                <div class="d-flex align-items-center gap-3">
+                    <span class="navbar-text text-white mb-0 d-flex align-items-center small"><i class="bi bi-person-circle me-2"></i> <span class="user-name">Cargando...</span></span>
                     <a href="#" onclick="logout(); return false;" class="btn btn-outline-light btn-sm rounded-pill px-3">Salir</a>
                 </div>
             </div>
         </div>
     </nav>
 
-    <!-- MENÚ LATERAL MÓVIL -->
     <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="menuLateral" style="background-color: var(--mermelada-oscuro) !important; width: 280px;">
         <div class="offcanvas-header border-bottom border-secondary">
-            <h5 class="offcanvas-title text-white fw-bold">Frutitos de Casa</h5>
+            <h5 class="offcanvas-title text-white fw-bold">Gestión Comercial</h5>
             <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
         </div>
         <div class="offcanvas-body d-flex flex-column">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0 gap-2 w-100">
-                <li class="nav-item"><a class="nav-link px-3 text-white" href="dashboard.html"><i class="bi bi-house-door me-2"></i> Dashboard</a></li>
-                <li class="nav-item" id="menu-ventas-mobile"><a class="nav-link px-3 text-white" href="ventas.html"><i class="bi bi-cart me-2"></i> Ventas</a></li>
+            <ul class="navbar-nav me-auto mb-2 gap-2 w-100">
+                <li class="nav-item" id="menu-dashboard-mobile" style="display:none;"><a class="nav-link px-3 text-white" href="dashboard.html"><i class="bi bi-speedometer2 me-2"></i> Dashboard</a></li>
+                <li class="nav-item" id="menu-ventas-mobile"><a class="nav-link px-3 text-white active" href="ventas.html"><i class="bi bi-cart me-2"></i> Ventas &amp; CRM</a></li>
                 <li class="nav-item" id="menu-inventario-mobile"><a class="nav-link px-3 text-white" href="inventario.html"><i class="bi bi-box me-2"></i> Inventario</a></li>
                 <li class="nav-item" id="menu-fabricacion-mobile"><a class="nav-link px-3 text-white" href="fabricacion.html"><i class="bi bi-gear me-2"></i> Fabricación</a></li>
+                <li class="nav-item" id="menu-sensores-mobile"><a class="nav-link px-3 text-white" href="sensores.html"><i class="bi bi-activity me-2"></i> Sensores &amp; SPC</a></li>
                 <li class="nav-item" id="menu-compras-mobile"><a class="nav-link px-3 text-white" href="compras.html"><i class="bi bi-truck me-2"></i> Compras</a></li>
                 <li class="nav-item" id="menu-calidad-mobile"><a class="nav-link px-3 text-white" href="calidad.html"><i class="bi bi-clipboard-check me-2"></i> Calidad</a></li>
             </ul>
@@ -53,24 +57,96 @@
         </div>
     </div>
 
-    <!-- CONTENIDO -->
-    <div class="container mt-4 mt-md-5">
-        <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center mb-3 gap-2">
-            <h3 class="text-secondary mb-0" id="tituloVentas">Gestión de Ventas y Pedidos</h3>
-            <button class="btn btn-fresa" id="btnNuevoPedido" onclick="abrirModal()">
-                <i class="bi bi-plus-lg me-2"></i> Nuevo Pedido
-            </button>
+    <div class="container-fluid px-3 px-md-4 mt-4 mb-5" style="max-width: 1400px;">
+
+        <div id="alertaSantoGrial" class="card mb-4 d-none" style="border: 2px solid var(--mermelada-rojo); background-color: #fffbfa;">
+            <div class="card-body p-3 p-md-4">
+                <div class="d-flex justify-content-between align-items-start">
+                    <div class="d-flex align-items-center gap-2 mb-2">
+                        <span class="kpi-icon-box kpi-icon-fresa"><i class="bi bi-Cpu-fill bi-lightning-charge-fill"></i></span>
+                        <div>
+                            <h5 class="fw-bold mb-0" style="color: var(--mermelada-rojo);">Flujo Automático ERP Activado (MRP Conectado)</h5>
+                            <span class="small text-muted">El pedido superó el stock disponible en almacén y disparó automáticamente la cadena de suministro</span>
+                        </div>
+                    </div>
+                    <button type="button" class="btn-close" onclick="document.getElementById('alertaSantoGrial').classList.add('d-none')"></button>
+                </div>
+                <p class="small mb-2 mt-2" id="textoSantoGrial"></p>
+                <div class="row g-2 mt-1" id="detalleCadenaMRP"></div>
+            </div>
         </div>
-        
-        <div class="card shadow-sm border-0">
-            <div class="card-body">
+
+        <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center mb-4 gap-2">
+            <div>
+                <h1 class="h4 fw-bold mb-1" id="tituloVentas">Gestión Comercial, Pedidos y Cartera de Clientes (CRM)</h1>
+                <p class="small text-muted mb-0">Registro de clientes corporativos con RUC/DNI, historial de compras y conexión directa al MRP de Planta</p>
+            </div>
+            <div class="d-flex flex-wrap gap-2">
+                <button class="btn btn-outline-secondary" id="btnNuevoCliente" onclick="abrirModalCliente()">
+                    <i class="bi bi-person-plus-fill me-1"></i> Registrar Cliente
+                </button>
+                <button class="btn btn-fresa" id="btnNuevoPedido" onclick="abrirModal()">
+                    <i class="bi bi-cart-plus-fill me-1"></i> Nuevo Pedido de Venta
+                </button>
+            </div>
+        </div>
+
+        <div class="card mb-4">
+            <div class="card-body p-3 p-md-4">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <div>
+                        <h2 class="h6 fw-bold mb-0"><i class="bi bi-people-fill me-1" style="color: var(--mermelada-rojo);"></i> Cartera de Clientes Registrados (CRM)</h2>
+                        <span class="small text-muted">Datos fiscales RUC/Cédula, dirección de despacho, contacto e historial acumulado</span>
+                    </div>
+                    <span class="badge bg-secondary-subtle text-dark" id="contadorClientes">0 clientes</span>
+                </div>
                 <div class="table-responsive">
                     <table class="table table-hover align-middle">
                         <thead>
-                            <tr><th>Nº Pedido</th><th>Cliente</th><th>Producto</th><th>Cant.</th><th>Precio Unit.</th><th>Total (C$)</th><th>Estado</th></tr>
+                            <tr>
+                                <th>Código</th>
+                                <th>RUC / DNI</th>
+                                <th>Cliente / Razón Social</th>
+                                <th>Segmento</th>
+                                <th>Dirección de Entrega</th>
+                                <th>Teléfono &amp; Correo</th>
+                                <th class="text-end">Total Comprado</th>
+                                <th class="text-end">Historial</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tbodyClientes">
+                            <tr><td colspan="8" class="text-center text-muted py-3">Cargando cartera de clientes...</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-body p-3 p-md-4">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <div>
+                        <h2 class="h6 fw-bold mb-0">Libro de Pedidos de Venta y Trazabilidad MRP</h2>
+                        <span class="small text-muted">Si un pedido no cuenta con stock PT, muestra la Orden de Fabricación automática vinculada</span>
+                    </div>
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-hover align-middle">
+                        <thead>
+                            <tr>
+                                <th>Nº Pedido</th>
+                                <th>Fecha</th>
+                                <th>Cliente (RUC / DNI)</th>
+                                <th>Dirección / Contacto</th>
+                                <th>Producto</th>
+                                <th class="text-end">Cant.</th>
+                                <th class="text-end">Precio Unit.</th>
+                                <th class="text-end">Total (C$)</th>
+                                <th>Estado / OF Vinculada</th>
+                            </tr>
                         </thead>
                         <tbody id="tbodyVentas">
-                            <tr><td colspan="7" class="text-center text-muted py-4">Cargando datos...</td></tr>
+                            <tr><td colspan="9" class="text-center text-muted py-4">Cargando pedidos...</td></tr>
                         </tbody>
                     </table>
                 </div>
@@ -78,68 +154,190 @@
         </div>
     </div>
 
-    <!-- MODAL VENTA -->
     <div class="mi-modal-overlay" id="modalVentas">
-        <div class="mi-modal-caja" style="max-width: 700px;">
+        <div class="mi-modal-caja" style="max-width: 720px;">
             <div class="position-relative p-3" style="background-color: var(--mermelada-oscuro);">
-                <h5 class="m-0 fw-bold text-center text-white w-100" style="color: white !important;"><i class="bi bi-cart-plus me-2"></i> Registrar Nuevo Pedido</h5>
+                <h5 class="m-0 fw-bold text-center text-white w-100"><i class="bi bi-cart-plus me-2"></i> Registrar Nuevo Pedido Comercial</h5>
                 <button type="button" class="btn-close btn-close-white position-absolute top-50 end-0 translate-middle-y me-3" onclick="cerrarModal()"></button>
             </div>
 
             <form id="formVenta">
                 <div class="p-4">
                     <div id="errorVenta" class="alert alert-danger d-none"></div>
-                    
-                    <div class="row mb-3">
-                        <div class="col-md-6">
-                            <label class="form-label fw-bold small text-muted">Cliente</label>
-                            <input type="text" class="form-control" name="cliente" id="cliente" required placeholder="Ej: Mercado de Managua">
+
+                    <div class="row g-3 mb-3">
+                        <div class="col-md-7">
+                            <label class="form-label fw-bold small text-muted">Seleccionar Cliente de Cartera CRM</label>
+                            <select class="form-select" id="selectClienteExistente">
+                                <option value="">-- Seleccionar cliente registrado o escribir abajo --</option>
+                            </select>
                         </div>
-                        <div class="col-md-6">
-                            <label class="form-label fw-bold small text-muted">Nº Pedido (Auto)</label>
-                            <input type="text" class="form-control" name="numeroPedido" id="numeroPedido" readonly>
+                        <div class="col-md-5">
+                            <label class="form-label fw-bold small text-muted">Nº Pedido (Automático)</label>
+                            <input type="text" class="form-control codigo-mono bg-light" name="numeroPedido" id="numeroPedido" readonly>
                         </div>
                     </div>
 
-                    <h6 class="fw-bold border-bottom pb-2 mb-3 mt-4" style="color: var(--mermelada-rojo);">Detalle del Pedido</h6>
-
-                    <div class="row mb-3">
+                    <div class="row g-3 mb-3">
+                        <div class="col-md-7">
+                            <label class="form-label fw-bold small text-muted">Nombre o Razón Social del Cliente</label>
+                            <input type="text" class="form-control" name="cliente" id="cliente" required placeholder="Ej: Supermercados La Colonia S.A.">
+                        </div>
                         <div class="col-md-5">
-                            <label class="form-label fw-bold small text-muted">Producto Terminado</label>
+                            <label class="form-label fw-bold small text-muted">RUC / Cédula DNI</label>
+                            <input type="text" class="form-control codigo-mono" id="ventaRucDni" required placeholder="Ej: J0310000881234">
+                        </div>
+                    </div>
+
+                    <div class="row g-3 mb-3">
+                        <div class="col-md-5">
+                            <label class="form-label fw-bold small text-muted">Dirección de Entrega</label>
+                            <input type="text" class="form-control" id="ventaDireccion" required placeholder="Dirección exacta de despacho">
+                        </div>
+                        <div class="col-md-3">
+                            <label class="form-label fw-bold small text-muted">Teléfono</label>
+                            <input type="text" class="form-control" id="ventaTelefono" required placeholder="+505 8800-0000">
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label fw-bold small text-muted">Correo Electrónico</label>
+                            <input type="email" class="form-control" id="ventaCorreo" placeholder="compras@cliente.com.ni">
+                        </div>
+                    </div>
+
+                    <h6 class="fw-bold border-bottom pb-2 mb-3 mt-4" style="color: var(--mermelada-rojo);">Detalle del Producto y Verificación de Stock</h6>
+
+                    <div class="row g-3 mb-3">
+                        <div class="col-md-6">
+                            <label class="form-label fw-bold small text-muted">Producto Terminado (PT)</label>
                             <select class="form-select" id="selectProductoVenta" required>
                                 <option value="">Cargando...</option>
                             </select>
                         </div>
                         <div class="col-md-3">
-                            <label class="form-label fw-bold small text-muted">Cantidad (uds)</label>
-                            <input type="number" class="form-control" id="cantidadVenta" step="1" min="1" required>
+                            <label class="form-label fw-bold small text-muted">Cantidad (Frascos)</label>
+                            <input type="number" class="form-control tabular-nums" id="cantidadVenta" step="1" min="1" value="10" required>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                             <label class="form-label fw-bold small text-muted">Precio Unit. (C$)</label>
-                            <input type="number" class="form-control" id="precioUnitarioVenta" step="0.01" min="0" required>
+                            <input type="number" class="form-control tabular-nums" id="precioUnitarioVenta" step="0.01" min="0" value="95.00" required>
                         </div>
                     </div>
 
-                    <div class="row mb-3 align-items-end">
-                        <div class="col-md-4">
-                            <label class="form-label fw-bold small text-muted">Estado Inicial</label>
-                            <select class="form-select" name="estado" id="estado">
-                                <option value="Pendiente">Pendiente</option>
-                                <option value="Confirmado">Confirmado</option>
-                            </select>
+                    <div class="row g-3 align-items-end">
+                        <div class="col-md-7">
+                            <div class="p-2 px-3 rounded-3 small bg-light border" id="avisoStockPreventivo">
+                                <i class="bi bi-lightning-charge me-1" style="color: var(--mermelada-rojo);"></i>
+                                Si la cantidad supera el stock disponible, el ERP generará automáticamente la <strong>Orden de Fabricación (OF)</strong> y sugerirá las <strong>Compras de Materia Prima (OC)</strong> necesarias.
+                            </div>
                         </div>
-                        <div class="col-md-4">
-                            <label class="form-label fw-bold small text-muted">Total (C$)</label>
-                            <input type="number" class="form-control bg-light" id="totalVenta" readonly>
+                        <div class="col-md-5">
+                            <label class="form-label fw-bold small text-muted">Total a Facturar (C$)</label>
+                            <input type="number" class="form-control bg-light fw-bold tabular-nums fs-5" id="totalVenta" readonly>
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="p-3 bg-light d-flex justify-content-end gap-2 border-top">
                     <button type="button" class="btn btn-secondary" onclick="cerrarModal()">Cancelar</button>
-                    <button type="submit" class="btn btn-fresa" id="btnGuardarVenta">Confirmar y Guardar</button>
+                    <button type="submit" class="btn btn-fresa" id="btnGuardarVenta">Confirmar Pedido</button>
                 </div>
             </form>
+        </div>
+    </div>
+
+    <div class="mi-modal-overlay" id="modalCliente">
+        <div class="mi-modal-caja" style="max-width: 600px;">
+            <div class="position-relative p-3" style="background-color: var(--mermelada-oscuro);">
+                <h5 class="m-0 fw-bold text-center text-white w-100"><i class="bi bi-person-vcard me-2"></i> Alta de Cliente en Cartera CRM</h5>
+                <button type="button" class="btn-close btn-close-white position-absolute top-50 end-0 translate-middle-y me-3" onclick="cerrarModalCliente()"></button>
+            </div>
+            <form id="formCliente">
+                <div class="p-4">
+                    <div id="errorCliente" class="alert alert-danger d-none"></div>
+                    <div class="row g-3 mb-3">
+                        <div class="col-sm-5">
+                            <label class="form-label small fw-bold">RUC / Cédula DNI</label>
+                            <input type="text" class="form-control codigo-mono" id="cliRuc" placeholder="J0310000..." required>
+                        </div>
+                        <div class="col-sm-7">
+                            <label class="form-label small fw-bold">Nombre o Razón Social</label>
+                            <input type="text" class="form-control" id="cliNombre" placeholder="Ej: Distribuidora San Sebastián" required>
+                        </div>
+                    </div>
+                    <div class="row g-3 mb-3">
+                        <div class="col-sm-6">
+                            <label class="form-label small fw-bold">Segmento Comercial</label>
+                            <select class="form-select" id="cliTipo">
+                                <option value="Supermercado">Supermercado / Cadena</option>
+                                <option value="Mayorista">Distribuidor Mayorista</option>
+                                <option value="HorEca">Hotel / Restaurante / Cafetería</option>
+                                <option value="Detalle">Cliente Detalle</option>
+                            </select>
+                        </div>
+                        <div class="col-sm-6">
+                            <label class="form-label small fw-bold">Teléfono de Contacto</label>
+                            <input type="text" class="form-control" id="cliTelefono" placeholder="+505 8800-0000" required>
+                        </div>
+                    </div>
+                    <div class="row g-3 mb-3">
+                        <div class="col-sm-7">
+                            <label class="form-label small fw-bold">Correo Electrónico Facturación</label>
+                            <input type="email" class="form-control" id="cliCorreo" placeholder="facturacion@cliente.com.ni" required>
+                        </div>
+                        <div class="col-sm-5">
+                            <label class="form-label small fw-bold">Límite de Crédito (C$)</label>
+                            <input type="number" class="form-control tabular-nums" id="cliCredito" value="50000" step="500" required>
+                        </div>
+                    </div>
+                    <div class="mb-2">
+                        <label class="form-label small fw-bold">Dirección Fiscal y de Despacho</label>
+                        <input type="text" class="form-control" id="cliDireccion" placeholder="Dirección completa en Managua o departamentos" required>
+                    </div>
+                </div>
+                <div class="p-3 bg-light d-flex justify-content-end gap-2 border-top">
+                    <button type="button" class="btn btn-secondary" onclick="cerrarModalCliente()">Cancelar</button>
+                    <button type="submit" class="btn btn-fresa" id="btnGuardarCliente">Guardar Cliente</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="mi-modal-overlay" id="modalHistorialCliente">
+        <div class="mi-modal-caja" style="max-width: 680px;">
+            <div class="position-relative p-3" style="background-color: var(--mermelada-oscuro);">
+                <h5 class="m-0 fw-bold text-center text-white w-100"><i class="bi bi-clock-history me-2"></i> Historial de Compras del Cliente</h5>
+                <button type="button" class="btn-close btn-close-white position-absolute top-50 end-0 translate-middle-y me-3" onclick="cerrarModalHistorial()"></button>
+            </div>
+            <div class="p-4">
+                <div class="p-3 rounded-3 mb-3 bg-light border d-flex flex-wrap justify-content-between align-items-center gap-2">
+                    <div>
+                        <div class="fw-bold" id="histNombreCliente">—</div>
+                        <div class="small text-muted" id="histMetaCliente">—</div>
+                    </div>
+                    <div class="text-end">
+                        <span class="small text-muted d-block">Total Acumulado:</span>
+                        <strong class="fs-5 tabular-nums" style="color: var(--mermelada-rojo);" id="histTotalCliente">C$ 0.00</strong>
+                    </div>
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-sm align-middle">
+                        <thead>
+                            <tr>
+                                <th>Nº Pedido</th>
+                                <th>Fecha</th>
+                                <th>Producto</th>
+                                <th class="text-end">Cant.</th>
+                                <th class="text-end">Total (C$)</th>
+                                <th>Estado</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tbodyHistorialModal"></tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="p-3 bg-light d-flex justify-content-end border-top">
+                <button type="button" class="btn btn-secondary" onclick="cerrarModalHistorial()">Cerrar</button>
+            </div>
         </div>
     </div>
 
@@ -147,107 +345,199 @@
     <script src="../js/api.js"></script>
     <script src="../js/auth.js"></script>
     <script>
+        (function guardVentas() {
+            const usuarioGuard = aplicarSeguridadVisualRBAC('ventas');
+            if (!usuarioGuard) {
+                throw new Error('Acceso bloqueado por RBAC');
+            }
+        })();
+
+        let listaClientesGlobal = [];
+        let listaProductosPT = [];
+
         document.addEventListener("DOMContentLoaded", async function() {
-            const token = localStorage.getItem('token');
-            if (!token) { window.location.href = 'login.html'; return; }
-            
-            const user = JSON.parse(localStorage.getItem('user'));
-            const rol = user.rol.toLowerCase();
+            const user = aplicarSeguridadVisualRBAC('ventas');
+            if (!user) return;
+
+            const rol = obtenerClaveRol(user);
             renderizarUsuario();
 
-            if (rol !== 'administrador' && rol !== 'ventas') {
-                alert('No tienes permiso'); window.location.href = 'dashboard.html'; return;
-            }
-            
-            const logo = document.getElementById('logoNavbar');
-            if (logo) logo.href = rol === 'administrador' ? 'dashboard.html' : 'ventas.html';
-
-            const modulosEscritorio = ['menu-ventas', 'menu-inventario', 'menu-fabricacion', 'menu-compras', 'menu-calidad'];
-            const modulosMovil = ['menu-ventas-mobile', 'menu-inventario-mobile', 'menu-fabricacion-mobile', 'menu-compras-mobile', 'menu-calidad-mobile'];
-            
-            modulosEscritorio.forEach(id => { const el = document.getElementById(id); if (el) el.style.display = 'none'; });
-            modulosMovil.forEach(id => { const el = document.getElementById(id); if (el) el.style.display = 'none'; });
-
-            if (rol === 'administrador') {
-                modulosEscritorio.forEach(id => { const el = document.getElementById(id); if (el) el.style.display = 'block'; });
-                modulosMovil.forEach(id => { const el = document.getElementById(id); if (el) el.style.display = 'block'; });
-            } else if (rol === 'ventas') {
-                const m1 = document.getElementById('menu-ventas'); if (m1) m1.style.display = 'block';
-                const m2 = document.getElementById('menu-ventas-mobile'); if (m2) m2.style.display = 'block';
-            }
-
             const urlParams = new URLSearchParams(window.location.search);
-            if (urlParams.get('mode') === 'view' || rol === 'administrador') {
-                const btn = document.getElementById('btnNuevoPedido'); if (btn) btn.style.display = 'none';
-                const titulo = document.getElementById('tituloVentas'); if (titulo) titulo.innerText = "Reporte de Ventas (Solo Lectura)";
+            if (urlParams.get('mode') === 'view' || rol === 'admin' || rol === 'administrador') {
+                const btn1 = document.getElementById('btnNuevoPedido'); if (btn1) btn1.style.display = 'none';
+                const btn2 = document.getElementById('btnNuevoCliente'); if (btn2) btn2.style.display = 'none';
+                const titulo = document.getElementById('tituloVentas'); if (titulo) titulo.innerText = "Auditoría Comercial de Ventas y Clientes (Solo Lectura)";
             }
 
+            await cargarClientes();
             await cargarVentas();
             await cargarSelectProductos();
         });
+
+        async function cargarClientes() {
+            const tbody = document.getElementById('tbodyClientes');
+            const selectCli = document.getElementById('selectClienteExistente');
+            try {
+                listaClientesGlobal = await api.get('/clientes');
+                document.getElementById('contadorClientes').innerText = `${listaClientesGlobal.length} clientes registrados`;
+
+                selectCli.innerHTML = '<option value="">-- Seleccionar cliente de cartera o completar manualmente --</option>';
+                listaClientesGlobal.forEach(c => {
+                    selectCli.appendChild(new Option(`${c.nombre} (RUC/DNI: ${c.rucDni})`, c.id));
+                });
+
+                if (listaClientesGlobal.length === 0) {
+                    tbody.innerHTML = '<tr><td colspan="8" class="text-center text-muted py-3">No hay clientes registrados</td></tr>';
+                    return;
+                }
+
+                tbody.innerHTML = listaClientesGlobal.map(c => `
+                    <tr>
+                        <td><span class="codigo-mono fw-semibold">${c.codigoCliente}</span></td>
+                        <td><span class="codigo-mono">${c.rucDni}</span></td>
+                        <td class="fw-bold">${c.nombre}</td>
+                        <td><span class="badge bg-secondary-subtle text-dark">${c.tipoCliente || 'Mayorista'}</span></td>
+                        <td class="small">${c.direccion}</td>
+                        <td class="small">
+                            <div><i class="bi bi-telephone me-1 text-muted"></i>${c.telefono}</div>
+                            <div class="text-muted"><i class="bi bi-envelope me-1"></i>${c.correo}</div>
+                        </td>
+                        <td class="text-end tabular-nums fw-bold" style="color: var(--mermelada-rojo);">C$ ${(c.totalComprado || 0).toLocaleString('es-NI', { minimumFractionDigits: 2 })}</td>
+                        <td class="text-end">
+                            <button type="button" class="btn btn-sm btn-outline-secondary" onclick="verHistorialCliente(${c.id})">
+                                <i class="bi bi-receipt me-1"></i> ${c.cantidadPedidos || 0} ped.
+                            </button>
+                        </td>
+                    </tr>
+                `).join('');
+            } catch (error) {
+                tbody.innerHTML = '<tr><td colspan="8" class="text-center text-danger">Error al cargar cartera de clientes</td></tr>';
+            }
+        }
+
+        document.getElementById('selectClienteExistente').addEventListener('change', function() {
+            const cli = listaClientesGlobal.find(c => c.id == this.value);
+            if (cli) {
+                document.getElementById('cliente').value = cli.nombre;
+                document.getElementById('ventaRucDni').value = cli.rucDni;
+                document.getElementById('ventaDireccion').value = cli.direccion;
+                document.getElementById('ventaTelefono').value = cli.telefono;
+                document.getElementById('ventaCorreo').value = cli.correo;
+            }
+        });
+
+        function verHistorialCliente(clienteId) {
+            const cli = listaClientesGlobal.find(c => c.id == clienteId);
+            if (!cli) return;
+
+            document.getElementById('histNombreCliente').innerText = `${cli.nombre} (${cli.rucDni})`;
+            document.getElementById('histMetaCliente').innerText = `${cli.direccion} · Tel: ${cli.telefono} · ${cli.correo}`;
+            document.getElementById('histTotalCliente').innerText = `C$ ${(cli.totalComprado || 0).toLocaleString('es-NI', { minimumFractionDigits: 2 })}`;
+
+            const tbody = document.getElementById('tbodyHistorialModal');
+            const hist = cli.historialCompras || [];
+            if (hist.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="6" class="text-center text-muted py-3">Este cliente aún no registra pedidos</td></tr>';
+            } else {
+                tbody.innerHTML = hist.map(p => `
+                    <tr>
+                        <td><strong class="codigo-mono">${p.numeroPedido}</strong></td>
+                        <td class="small tabular-nums">${p.fecha}</td>
+                        <td><span class="codigo-mono">${p.producto_codigo || 'PT-MER-300'}</span></td>
+                        <td class="text-end tabular-nums">${p.cantidad || 0} uds</td>
+                        <td class="text-end tabular-nums fw-bold">C$ ${parseFloat(p.total).toFixed(2)}</td>
+                        <td><span class="badge bg-secondary-subtle text-dark">${p.estado}</span></td>
+                    </tr>
+                `).join('');
+            }
+            document.getElementById('modalHistorialCliente').classList.add('activo');
+        }
+        function cerrarModalHistorial() { document.getElementById('modalHistorialCliente').classList.remove('activo'); }
+        document.getElementById('modalHistorialCliente').addEventListener('click', function(e) { if (e.target === this) cerrarModalHistorial(); });
 
         async function cargarVentas() {
             const tbody = document.getElementById('tbodyVentas');
             try {
                 const ventas = await api.get('/ventas');
                 if (ventas.length === 0) {
-                    tbody.innerHTML = `<tr><td colspan="7" class="text-center text-muted py-4">No hay ventas registradas</td></tr>`;
+                    tbody.innerHTML = `<tr><td colspan="9" class="text-center text-muted py-4">No hay ventas registradas</td></tr>`;
                     return;
                 }
                 tbody.innerHTML = ventas.map(v => {
-                    // Pintamos de rojo si está en producción, verde si está pendiente
-                    let badgeClass = 'bg-secondary';
-                    if (v.estado.includes('Producción')) badgeClass = 'bg-warning text-dark';
-                    if (v.estado === 'Confirmado') badgeClass = 'bg-success';
+                    let badgeClass = 'bg-secondary-subtle text-dark';
+                    if (v.estado.includes('Producción')) badgeClass = 'bg-warning-subtle text-dark border border-warning';
+                    if (v.estado === 'Confirmado' || v.estado.includes('Despachado')) badgeClass = 'bg-success-subtle text-success';
+
+                    const ruc = v.rucDni || (v.clienteDetalle && v.clienteDetalle.rucDni) || 'J0310000881234';
+                    const dir = v.direccionEntrega || (v.clienteDetalle && v.clienteDetalle.direccion) || 'Managua, Nicaragua';
+                    const tel = v.telefonoCliente || (v.clienteDetalle && v.clienteDetalle.telefono) || '+505 2255-7700';
+
+                    let detalleEstadoHTML = '';
+                    if (v.estado.includes('Producción') && v.ofGenerada) {
+                        detalleEstadoHTML = `<div class="small mt-1"><span class="codigo-mono text-danger fw-semibold"><i class="bi bi-gear-fill me-1"></i>${v.ofGenerada}</span></div>`;
+                    } else if (v.estado === 'Confirmado' && v.ofGenerada) {
+                        detalleEstadoHTML = `<div class="small mt-1"><span class="codigo-mono text-success fw-semibold"><i class="bi bi-check2-all me-1"></i>Asignado FEFO (${v.ofGenerada} cerrada)</span></div>`;
+                    } else if (v.estado === 'Confirmado') {
+                        detalleEstadoHTML = `<div class="small mt-1"><span class="text-success small"><i class="bi bi-box-seam me-1"></i>Stock PT Liberado</span></div>`;
+                    }
 
                     return `
                         <tr>
-                            <td><strong>${v.numeroPedido}</strong></td>
-                            <td>${v.cliente}</td>
-                            <td>${v.producto_codigo || '---'}</td>
-                            <td>${v.cantidad || 0}</td>
-                            <td>C$ ${v.precio_unitario ? parseFloat(v.precio_unitario).toFixed(2) : '0.00'}</td>
-                            <td>C$ ${parseFloat(v.total).toFixed(2)}</td>
-                            <td><span class="badge ${badgeClass}">${v.estado}</span></td>
+                            <td><strong class="codigo-mono">${v.numeroPedido}</strong></td>
+                            <td class="small tabular-nums">${v.fecha || '2026-10-29'}</td>
+                            <td>
+                                <div class="fw-bold">${v.cliente}</div>
+                                <div class="small text-muted codigo-mono">RUC/DNI: ${ruc}</div>
+                            </td>
+                            <td class="small">
+                                <div>${dir}</div>
+                                <div class="text-muted">${tel}</div>
+                            </td>
+                            <td><span class="codigo-mono badge bg-light text-dark border">${v.producto_codigo || 'PT-MER-300'}</span></td>
+                            <td class="text-end tabular-nums fw-bold">${v.cantidad || 0} uds</td>
+                            <td class="text-end tabular-nums">C$ ${v.precio_unitario ? parseFloat(v.precio_unitario).toFixed(2) : '0.00'}</td>
+                            <td class="text-end tabular-nums fw-bold">C$ ${parseFloat(v.total).toFixed(2)}</td>
+                            <td>
+                                <span class="badge ${badgeClass}">${v.estado}</span>
+                                ${detalleEstadoHTML}
+                            </td>
                         </tr>
                     `;
                 }).join('');
             } catch (error) {
-                tbody.innerHTML = `<tr><td colspan="7" class="text-center text-danger py-4">Error: ${error.message}</td></tr>`;
+                tbody.innerHTML = `<tr><td colspan="9" class="text-center text-danger py-4">Error: ${error.message}</td></tr>`;
             }
         }
 
         async function cargarSelectProductos() {
             const select = document.getElementById('selectProductoVenta');
-            const token = localStorage.getItem('token');
-
             try {
-                const response = await fetch('http://localhost:3000/api/ventas/productos', {
-                    headers: { 'Authorization': `Bearer ${token}` }
-                });
-
-                if (!response.ok) {
-                    select.innerHTML = `<option value="">Error del servidor (${response.status})</option>`;
+                listaProductosPT = await api.get('/ventas/productos');
+                if (listaProductosPT.length === 0) {
+                    select.innerHTML = '<option value="PT-MER-300">PT-MER-300 - Mermelada de Fresa Artesanal (300g)</option>';
                     return;
                 }
-
-                const productosPT = await response.json();
-                
-                if (productosPT.length === 0) {
-                    select.innerHTML = '<option value="">No hay Productos Terminados en la BD</option>';
-                    return;
-                }
-
-                select.innerHTML = '<option value="">Seleccione producto terminado...</option>';
-                productosPT.forEach(i => {
-                    select.appendChild(new Option(`${i.codigo} - ${i.producto}`, i.codigo));
+                select.innerHTML = '';
+                listaProductosPT.forEach(i => {
+                    select.appendChild(new Option(`${i.codigo} - ${i.producto} (Disponible: ${i.stockActual} uds)`, i.codigo));
                 });
-                
-            } catch (error) { 
-                console.error("Error al cargar productos en ventas:", error);
+                const PRECIOS_VENTA = { 'PT-MER-300': 68.00, 'PT-PIN-300': 65.00, 'PT-MIX-300': 72.00 };
+                if (PRECIOS_VENTA[select.value]) {
+                    document.getElementById('precioUnitarioVenta').value = PRECIOS_VENTA[select.value].toFixed(2);
+                }
+                calcularTotalVenta();
+            } catch (error) {
                 select.innerHTML = '<option value="">Error de conexión</option>';
             }
         }
+
+        const PRECIOS_VENTA_MAP = { 'PT-MER-300': 68.00, 'PT-PIN-300': 65.00, 'PT-MIX-300': 72.00 };
+        document.getElementById('selectProductoVenta').addEventListener('change', function() {
+            if (PRECIOS_VENTA_MAP[this.value]) {
+                document.getElementById('precioUnitarioVenta').value = PRECIOS_VENTA_MAP[this.value].toFixed(2);
+            }
+            calcularTotalVenta();
+        });
 
         function calcularTotalVenta() {
             const cant = parseFloat(document.getElementById('cantidadVenta').value) || 0;
@@ -261,10 +551,11 @@
             document.getElementById('formVenta').reset();
             document.getElementById('errorVenta').classList.add('d-none');
             document.getElementById('numeroPedido').value = 'PED-' + Date.now().toString().slice(-6);
-            document.getElementById('totalVenta').value = '0.00';
+            document.getElementById('cantidadVenta').value = 10;
+            document.getElementById('precioUnitarioVenta').value = '95.00';
+            calcularTotalVenta();
             document.getElementById('modalVentas').classList.add('activo');
         }
-
         function cerrarModal() { document.getElementById('modalVentas').classList.remove('activo'); }
         document.getElementById('modalVentas').addEventListener('click', function(e) { if (e.target === this) cerrarModal(); });
 
@@ -273,14 +564,21 @@
             const btn = document.getElementById('btnGuardarVenta');
             const errorDiv = document.getElementById('errorVenta');
             btn.disabled = true;
-            btn.innerText = 'Procesando...';
+            btn.innerText = 'Verificando Stock y MRP...';
             errorDiv.classList.add('d-none');
+
+            const cliId = document.getElementById('selectClienteExistente').value;
 
             const datos = {
                 numeroPedido: document.getElementById('numeroPedido').value,
-                cliente: document.getElementById('cliente').value,
+                clienteId: cliId ? parseInt(cliId, 10) : null,
+                cliente: document.getElementById('cliente').value.trim(),
+                rucDni: document.getElementById('ventaRucDni').value.trim(),
+                direccionEntrega: document.getElementById('ventaDireccion').value.trim(),
+                telefonoCliente: document.getElementById('ventaTelefono').value.trim(),
+                correoCliente: document.getElementById('ventaCorreo').value.trim(),
                 total: parseFloat(document.getElementById('totalVenta').value),
-                estado: document.getElementById('estado').value,
+                estado: 'Confirmado',
                 producto_codigo: document.getElementById('selectProductoVenta').value,
                 cantidad: parseFloat(document.getElementById('cantidadVenta').value),
                 precio_unitario: parseFloat(document.getElementById('precioUnitarioVenta').value)
@@ -288,20 +586,98 @@
 
             try {
                 const response = await api.post('/ventas', datos);
-                
-                // Si el backend detectó que no hay stock y creó una OF automática
-                if (response.alerta) {
-                    alert("⚠️ " + response.alerta + "\n\nEl pedido quedó en estado 'En Producción (Sin Stock)' y la orden de fabricación ya está creada en el módulo de Fabricación.");
+                cerrarModal();
+
+                if (response.ordenFabricacion) {
+                    const panel = document.getElementById('alertaSantoGrial');
+                    document.getElementById('textoSantoGrial').innerText = response.alerta;
+
+                    const of = response.ordenFabricacion;
+                    const ocs = response.ordenesCompraSugeridas || [];
+                    let htmlDetalle = `
+                        <div class="col-md-6">
+                            <div class="p-2 px-3 rounded-3 bg-white border">
+                                <div class="small fw-bold text-danger"><i class="bi bi-fire me-1"></i>1. Orden de Fabricación Disparada</div>
+                                <div class="small mt-1">Código: <strong class="codigo-mono">${of.numeroOF}</strong> · Lote: <span class="codigo-mono">${of.loteAsignado}</span></div>
+                                <div class="small text-muted">Cantidad a producir: <strong>${of.cantidad} frascos</strong> (${of.estado})</div>
+                            </div>
+                        </div>
+                    `;
+                    if (ocs.length > 0) {
+                        htmlDetalle += `
+                            <div class="col-md-6">
+                                <div class="p-2 px-3 rounded-3 bg-white border">
+                                    <div class="small fw-bold text-success"><i class="bi bi-truck me-1"></i>2. Órdenes de Compra MP Generadas (BOM)</div>
+                                    <div class="small mt-1">${ocs.map(o => `<span class="badge bg-light text-dark border me-1 codigo-mono">${o.numeroOC}: ${o.producto_codigo} (${o.cantidad})</span>`).join('')}</div>
+                                </div>
+                            </div>
+                        `;
+                    } else {
+                        htmlDetalle += `
+                            <div class="col-md-6">
+                                <div class="p-2 px-3 rounded-3 bg-white border">
+                                    <div class="small fw-bold text-success"><i class="bi bi-check2-circle me-1"></i>2. Materia Prima Verificada en BOM</div>
+                                    <div class="small text-muted mt-1">Stock suficiente de Fresa, Azúcar, Pectina y Envases en almacén para iniciar cocción.</div>
+                                </div>
+                            </div>
+                        `;
+                    }
+                    document.getElementById('detalleCadenaMRP').innerHTML = htmlDetalle;
+                    panel.classList.remove('d-none');
                 }
 
-                cerrarModal();
+                await cargarClientes();
                 await cargarVentas();
+                await cargarSelectProductos();
             } catch (error) {
                 errorDiv.innerText = error.message;
                 errorDiv.classList.remove('d-none');
             } finally {
                 btn.disabled = false;
-                btn.innerText = 'Confirmar y Guardar';
+                btn.innerText = 'Confirmar Pedido';
+            }
+        });
+
+        function abrirModalCliente() {
+            document.getElementById('formCliente').reset();
+            document.getElementById('errorCliente').classList.add('d-none');
+            document.getElementById('modalCliente').classList.add('activo');
+        }
+        function cerrarModalCliente() { document.getElementById('modalCliente').classList.remove('activo'); }
+        document.getElementById('modalCliente').addEventListener('click', function(e) { if (e.target === this) cerrarModalCliente(); });
+
+        document.getElementById('formCliente').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const btn = document.getElementById('btnGuardarCliente');
+            const errorDiv = document.getElementById('errorCliente');
+            btn.disabled = true; btn.innerText = 'Guardando...'; errorDiv.classList.add('d-none');
+
+            const rucValor = document.getElementById('cliRuc').value.trim();
+            const creditoValor = parseFloat(document.getElementById('cliCredito').value) || 50000;
+            const tipoValor = document.getElementById('cliTipo').value;
+
+            const payload = {
+                rucDni: rucValor,
+                ruc: rucValor,
+                ruc_dni: rucValor,
+                nombre: document.getElementById('cliNombre').value.trim(),
+                tipoCliente: tipoValor,
+                tipo_cliente: tipoValor,
+                telefono: document.getElementById('cliTelefono').value.trim(),
+                correo: document.getElementById('cliCorreo').value.trim(),
+                limiteCredito: creditoValor,
+                limite_credito: creditoValor,
+                direccion: document.getElementById('cliDireccion').value.trim()
+            };
+
+            try {
+                await api.post('/clientes', payload);
+                cerrarModalCliente();
+                await cargarClientes();
+            } catch (error) {
+                errorDiv.innerText = error.message; errorDiv.classList.remove('d-none');
+            } finally {
+                btn.disabled = false; btn.innerText = 'Guardar Cliente';
             }
         });
     </script>

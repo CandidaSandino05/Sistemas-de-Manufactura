@@ -3,50 +3,158 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inventario - Frutitos de Casa</title>
+    <title>Inventario y Trazabilidad por Lotes - Frutitos de Casa ERP</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <link rel="stylesheet" href="../css/styles.css">
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-frutitos navbar-dark">
-        <div class="container-fluid px-4">
-            <a class="navbar-brand fw-bold" href="#" id="logoNavbar">Frutitos de Casa ERP</a>
+    <nav class="navbar navbar-expand-lg navbar-frutitos navbar-dark sticky-top">
+        <div class="container-fluid px-3 px-md-4">
+            <a class="navbar-brand fw-bold d-flex align-items-center gap-2" href="#" id="logoNavbar">
+                <i class="bi bi-boxes"></i>
+                <span>Frutitos de Casa ERP</span>
+            </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#menuLateral"><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse d-none d-lg-block" id="menuDesktop">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0 gap-2 ms-lg-4">
-                    <li class="nav-item" id="menu-ventas"><a class="nav-link px-3" href="ventas.html">Ventas</a></li>
-                    <li class="nav-item" id="menu-inventario"><a class="nav-link px-3" href="inventario.html">Inventario</a></li>
-                    <li class="nav-item" id="menu-fabricacion"><a class="nav-link px-3" href="fabricacion.html">Fabricación</a></li>
-                    <li class="nav-item" id="menu-compras"><a class="nav-link px-3" href="compras.html">Compras</a></li>
-                    <li class="nav-item" id="menu-calidad"><a class="nav-link px-3" href="calidad.html">Calidad</a></li>
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0 gap-1 ms-lg-4">
+                    <li class="nav-item" id="menu-dashboard" style="display:none;"><a class="nav-link" href="dashboard.html"><i class="bi bi-speedometer2 me-1"></i>Dashboard</a></li>
+                    <li class="nav-item" id="menu-inventario"><a class="nav-link active" href="inventario.html">1. Inventario &amp; BOM</a></li>
+                    <li class="nav-item" id="menu-compras"><a class="nav-link" href="compras.html">2. Compras &amp; Proveedores</a></li>
+                    <li class="nav-item" id="menu-fabricacion"><a class="nav-link" href="fabricacion.html">3. Fabricación &amp; IoT</a></li>
+                    <li class="nav-item" id="menu-sensores"><a class="nav-link" href="sensores.html"><i class="bi bi-activity me-1"></i>Sensores &amp; SPC</a></li>
+                    <li class="nav-item" id="menu-calidad"><a class="nav-link" href="calidad.html">4. Calidad</a></li>
+                    <li class="nav-item" id="menu-ventas"><a class="nav-link" href="ventas.html">Ventas &amp; CRM</a></li>
                 </ul>
-                <div class="d-flex align-items-center mt-2 mt-lg-0 gap-3">
-                    <span class="navbar-text text-white mb-0 d-flex align-items-center"><i class="bi bi-person-circle me-2"></i> <span class="user-name">Cargando...</span></span>
+                <div class="d-flex align-items-center gap-3">
+                    <span class="navbar-text text-white mb-0 d-flex align-items-center small"><i class="bi bi-person-circle me-2"></i> <span class="user-name">Cargando...</span></span>
                     <a href="#" onclick="logout(); return false;" class="btn btn-outline-light btn-sm rounded-pill px-3">Salir</a>
                 </div>
             </div>
         </div>
     </nav>
 
-    <div class="container mt-4 mt-md-5">
-        <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center mb-3 gap-2">
-            <h3 class="text-secondary mb-0" id="tituloInventario">Inventario y Almacenes</h3>
-            <div class="d-flex gap-2">
-                <button class="btn btn-outline-secondary" id="btnNuevoProducto" onclick="abrirModalNuevoProducto()"><i class="bi bi-box-seam me-2"></i> Nuevo Producto</button>
-                <button class="btn btn-fresa" id="btnRegistrarMovimiento" onclick="abrirModalMovimiento()"><i class="bi bi-arrow-left-right me-2"></i> Registrar Movimiento</button>
+    <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="menuLateral" style="background-color: var(--mermelada-oscuro) !important; width: 280px;">
+        <div class="offcanvas-header border-bottom border-secondary">
+            <h5 class="offcanvas-title text-white fw-bold">Menú de Planta</h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
+        </div>
+        <div class="offcanvas-body d-flex flex-column">
+            <ul class="navbar-nav me-auto mb-2 gap-2 w-100">
+                <li class="nav-item" id="menu-dashboard-mobile" style="display:none;"><a class="nav-link px-3 text-white" href="dashboard.html"><i class="bi bi-speedometer2 me-2"></i> Dashboard</a></li>
+                <li class="nav-item" id="menu-inventario-mobile"><a class="nav-link px-3 text-white active" href="inventario.html"><i class="bi bi-boxes me-2"></i> 1. Inventario &amp; BOM</a></li>
+                <li class="nav-item" id="menu-compras-mobile"><a class="nav-link px-3 text-white" href="compras.html"><i class="bi bi-truck me-2"></i> 2. Compras &amp; Proveedores</a></li>
+                <li class="nav-item" id="menu-fabricacion-mobile"><a class="nav-link px-3 text-white" href="fabricacion.html"><i class="bi bi-fire me-2"></i> 3. Fabricación &amp; IoT</a></li>
+                <li class="nav-item" id="menu-sensores-mobile"><a class="nav-link px-3 text-white" href="sensores.html"><i class="bi bi-activity me-2"></i> Sensores &amp; SPC</a></li>
+                <li class="nav-item" id="menu-calidad-mobile"><a class="nav-link px-3 text-white" href="calidad.html"><i class="bi bi-shield-check me-2"></i> 4. Calidad</a></li>
+                <li class="nav-item" id="menu-ventas-mobile"><a class="nav-link px-3 text-white" href="ventas.html"><i class="bi bi-cart me-2"></i> Ventas</a></li>
+            </ul>
+            <div class="mt-auto pt-3 border-top border-secondary d-flex align-items-center justify-content-between w-100">
+                <span class="text-white small"><i class="bi bi-person-fill me-1"></i> <span class="user-name">Cargando...</span></span>
+                <a href="#" onclick="logout(); return false;" class="btn btn-outline-light btn-sm rounded-pill px-3">Salir</a>
             </div>
         </div>
-        
-        <div class="card shadow-sm border-0">
-            <div class="card-body">
+    </div>
+
+    <div class="container-fluid px-3 px-md-4 mt-4 mb-5" style="max-width: 1400px;">
+
+        <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center mb-4 gap-2">
+            <div>
+                <h1 class="h4 fw-bold mb-1" id="tituloInventario">Almacenes y Trazabilidad por Lotes</h1>
+                <p class="small text-muted mb-0">Control de stock disponible, reservas de producción, cuarentena y fechas de vencimiento FEFO</p>
+            </div>
+            <div class="d-flex flex-wrap gap-2">
+                <button class="btn btn-outline-secondary" id="btnNuevoProducto" onclick="abrirModalNuevoProducto()"><i class="bi bi-box-seam me-1"></i> Nuevo Ítem</button>
+                <button class="btn btn-fresa" id="btnRegistrarMovimiento" onclick="abrirModalMovimiento()"><i class="bi bi-arrow-left-right me-1"></i> Movimiento / Despacho</button>
+            </div>
+        </div>
+
+        <div class="row g-3 g-lg-4 mb-4 kpi-row">
+            <div class="col-12 col-sm-6 col-lg-3">
+                <div class="kpi-card-modern">
+                    <div class="kpi-header">
+                        <span class="kpi-label">Catálogo de Productos</span>
+                        <span class="kpi-icon-box kpi-icon-fresa"><i class="bi bi-box-seam"></i></span>
+                    </div>
+                    <div class="kpi-body">
+                        <div class="kpi-value" id="resumenTotalItems">0</div>
+                    </div>
+                    <div class="kpi-meta">
+                        <span>MP, WIP y PT activos</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-sm-6 col-lg-3">
+                <div class="kpi-card-modern">
+                    <div class="kpi-header">
+                        <span class="kpi-label">Materia Prima (MP)</span>
+                        <span class="kpi-icon-box kpi-icon-verde"><i class="bi bi-basket2-fill"></i></span>
+                    </div>
+                    <div class="kpi-body">
+                        <div class="kpi-value" style="color: var(--hoja-verde);" id="resumenMP">0</div>
+                    </div>
+                    <div class="kpi-meta">
+                        <span>Insumos de cocción y envase</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-sm-6 col-lg-3">
+                <div class="kpi-card-modern">
+                    <div class="kpi-header">
+                        <span class="kpi-label">Reservado / Cuarentena</span>
+                        <span class="kpi-icon-box kpi-icon-ambar"><i class="bi bi-shield-exclamation"></i></span>
+                    </div>
+                    <div class="kpi-body">
+                        <div class="kpi-value" style="color: var(--ambar-alerta);" id="resumenBloqueado">0 uds</div>
+                    </div>
+                    <div class="kpi-meta">
+                        <span>Reserva OF y Retención</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-sm-6 col-lg-3">
+                <div class="kpi-card-modern">
+                    <div class="kpi-header">
+                        <span class="kpi-label">Alertas Críticas</span>
+                        <span class="kpi-icon-box kpi-icon-fresa"><i class="bi bi-bell-fill"></i></span>
+                    </div>
+                    <div class="kpi-body">
+                        <div class="kpi-value" style="color: var(--mermelada-rojo);" id="resumenBajoMin">0</div>
+                    </div>
+                    <div class="kpi-meta">
+                        <span>Requieren reposición OC</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="d-flex flex-wrap gap-1 mb-3" id="filtrosTipoInv">
+            <button type="button" class="btn btn-sm btn-fresa" onclick="filtrarInventario('TODOS', this)">Todos</button>
+            <button type="button" class="btn btn-sm btn-outline-secondary" onclick="filtrarInventario('MP', this)">Materia Prima (MP)</button>
+            <button type="button" class="btn btn-sm btn-outline-secondary" onclick="filtrarInventario('WIP', this)">En Proceso (WIP)</button>
+            <button type="button" class="btn btn-sm btn-outline-secondary" onclick="filtrarInventario('PT', this)">Producto Terminado (PT)</button>
+        </div>
+
+        <div class="card">
+            <div class="card-body p-3 p-md-4">
                 <div class="table-responsive">
                     <table class="table table-hover align-middle">
                         <thead>
-                            <tr><th>Código</th><th>Producto</th><th>Tipo</th><th>Stock Actual</th><th>Stock Mínimo</th><th>Estado</th></tr>
+                            <tr>
+                                <th>Código</th>
+                                <th>Producto / Insumo</th>
+                                <th>Categoría</th>
+                                <th>Lote Actual</th>
+                                <th>Vencimiento</th>
+                                <th class="text-end">Stock Disp.</th>
+                                <th class="text-end">Reservado / Ret.</th>
+                                <th class="text-end">Mínimo</th>
+                                <th>Estado Calidad</th>
+                                <th>Salud Stock</th>
+                            </tr>
                         </thead>
                         <tbody id="tbodyInventario">
-                            <tr><td colspan="6" class="text-center text-muted py-4">Cargando...</td></tr>
+                            <tr><td colspan="10" class="text-center text-muted py-4">Cargando inventario...</td></tr>
                         </tbody>
                     </table>
                 </div>
@@ -57,61 +165,83 @@
     <div class="mi-modal-overlay" id="modalMovimiento">
         <div class="mi-modal-caja" style="max-width: 600px;">
             <div class="position-relative p-3" style="background-color: var(--mermelada-oscuro);">
-                <h5 class="m-0 fw-bold text-center text-white w-100" style="color: white !important;"><i class="bi bi-arrow-left-right me-2"></i> Registrar Movimiento</h5>
+                <h5 class="m-0 fw-bold text-center text-white w-100"><i class="bi bi-arrow-left-right me-2"></i> Registrar Movimiento de Almacén</h5>
                 <button type="button" class="btn-close btn-close-white position-absolute top-50 end-0 translate-middle-y me-3" onclick="cerrarModalMovimiento()"></button>
             </div>
             <form id="formMovimiento">
                 <div class="p-4">
                     <div id="errorMovimiento" class="alert d-none"></div>
                     <div class="mb-3">
-                        <label class="form-label fw-bold small text-muted">Producto</label>
+                        <label class="form-label fw-bold small text-muted">Producto / Insumo</label>
                         <select class="form-select" id="selectProducto" required><option value="">Cargando...</option></select>
                     </div>
-                    <div class="row mb-3">
-                        <div class="col-md-6">
-                            <label class="form-label fw-bold small text-muted">Tipo</label>
+                    <div class="row g-3 mb-3">
+                        <div class="col-sm-6">
+                            <label class="form-label fw-bold small text-muted">Tipo de Operación</label>
                             <select class="form-select" id="tipoMovimiento" required>
-                                <option value="ENTRADA">Entrada (Suma)</option>
-                                <option value="SALIDA">Salida (Resta)</option>
+                                <option value="ENTRADA">Entrada (Recepción / Ingreso)</option>
+                                <option value="SALIDA">Salida (Consumo OF / Despacho Venta)</option>
                             </select>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-sm-6">
                             <label class="form-label fw-bold small text-muted">Cantidad</label>
-                            <input type="number" class="form-control" id="cantidadMov" min="0.01" step="0.01" required>
+                            <input type="number" class="form-control tabular-nums" id="cantidadMov" min="0.01" step="0.01" required>
                         </div>
                     </div>
                     <div class="mb-3">
-                        <label class="form-label fw-bold small text-muted">Referencia / Documento</label>
+                        <label class="form-label fw-bold small text-muted">Documento de Referencia (OC / OF / Pedido)</label>
                         <select class="form-select" id="selectReferencia" required><option value="">Seleccione producto...</option></select>
                     </div>
                 </div>
                 <div class="p-3 bg-light d-flex justify-content-end gap-2 border-top">
                     <button type="button" class="btn btn-secondary" onclick="cerrarModalMovimiento()">Cancelar</button>
-                    <button type="submit" class="btn btn-fresa" id="btnGuardarMov">Guardar</button>
+                    <button type="submit" class="btn btn-fresa" id="btnGuardarMov">Confirmar Movimiento</button>
                 </div>
             </form>
         </div>
     </div>
 
     <div class="mi-modal-overlay" id="modalNuevoProducto">
-        <div class="mi-modal-caja" style="max-width: 500px;">
+        <div class="mi-modal-caja" style="max-width: 540px;">
             <div class="position-relative p-3" style="background-color: var(--mermelada-oscuro);">
-                <h5 class="m-0 fw-bold text-center text-white w-100" style="color: white !important;"><i class="bi bi-box-seam me-2"></i> Nuevo Producto</h5>
+                <h5 class="m-0 fw-bold text-center text-white w-100"><i class="bi bi-box-seam me-2"></i> Alta de Ítem en Inventario</h5>
                 <button type="button" class="btn-close btn-close-white position-absolute top-50 end-0 translate-middle-y me-3" onclick="cerrarModalNuevoProducto()"></button>
             </div>
             <form id="formNuevoProducto">
                 <div class="p-4">
                     <div id="errorProducto" class="alert alert-danger d-none"></div>
-                    <div class="row mb-3">
-                        <div class="col-md-6"><label class="form-label small fw-bold">Código</label><input type="text" class="form-control" id="prodCodigo" required></div>
-                        <div class="col-md-6"><label class="form-label small fw-bold">Tipo</label><select class="form-select" id="prodTipo" required><option value="MP">Materia Prima</option><option value="PT">Producto Terminado</option></select></div>
+                    <div class="row g-3 mb-3">
+                        <div class="col-sm-6">
+                            <label class="form-label small fw-bold">Código SKU</label>
+                            <input type="text" class="form-control codigo-mono" id="prodCodigo" placeholder="Ej: MP-CIT-05" required>
+                        </div>
+                        <div class="col-sm-6">
+                            <label class="form-label small fw-bold">Clasificación</label>
+                            <select class="form-select" id="prodTipo" required>
+                                <option value="MP">Materia Prima (MP)</option>
+                                <option value="WIP">Producto en Proceso (WIP)</option>
+                                <option value="PT">Producto Terminado (PT)</option>
+                            </select>
+                        </div>
                     </div>
-                    <div class="mb-3"><label class="form-label small fw-bold">Nombre</label><input type="text" class="form-control" id="prodNombre" required></div>
-                    <div class="mb-3"><label class="form-label small fw-bold">Stock Mínimo</label><input type="number" class="form-control" id="prodStockMin" value="10" step="0.01" required></div>
+                    <div class="mb-3">
+                        <label class="form-label small fw-bold">Descripción del Producto</label>
+                        <input type="text" class="form-control" id="prodNombre" placeholder="Ej: Ácido Cítrico Grado Alimenticio" required>
+                    </div>
+                    <div class="row g-3 mb-3">
+                        <div class="col-sm-6">
+                            <label class="form-label small fw-bold">Stock Mínimo Seguridad</label>
+                            <input type="number" class="form-control tabular-nums" id="prodStockMin" value="10" step="0.01" required>
+                        </div>
+                        <div class="col-sm-6">
+                            <label class="form-label small fw-bold">Fecha de Vencimiento Lote</label>
+                            <input type="date" class="form-control" id="prodVencimiento" required>
+                        </div>
+                    </div>
                 </div>
                 <div class="p-3 bg-light d-flex justify-content-end gap-2 border-top">
                     <button type="button" class="btn btn-secondary" onclick="cerrarModalNuevoProducto()">Cancelar</button>
-                    <button type="submit" class="btn btn-fresa" id="btnGuardarProducto">Guardar</button>
+                    <button type="submit" class="btn btn-fresa" id="btnGuardarProducto">Guardar Ítem</button>
                 </div>
             </form>
         </div>
@@ -121,61 +251,141 @@
     <script src="../js/api.js"></script>
     <script src="../js/auth.js"></script>
     <script>
-        let listaProductos = []; 
+        (function guardInventario() {
+            const usuarioGuard = aplicarSeguridadVisualRBAC('inventario');
+            if (!usuarioGuard) {
+                throw new Error('Acceso bloqueado por RBAC');
+            }
+        })();
+
+        let listaProductos = [];
+        let filtroActual = 'TODOS';
 
         document.addEventListener("DOMContentLoaded", async function() {
-            const token = localStorage.getItem('token');
-            if (!token) { window.location.href = 'login.html'; return; }
-            
-            const user = JSON.parse(localStorage.getItem('user'));
-            const rol = user.rol.toLowerCase();
+            const user = aplicarSeguridadVisualRBAC('inventario');
+            if (!user) return;
+
+            const rol = obtenerClaveRol(user);
             renderizarUsuario();
 
-            if (rol !== 'administrador' && rol !== 'produccion') {
-                alert('No tienes permiso'); window.location.href = 'dashboard.html'; return;
-            }
-            document.getElementById('logoNavbar').href = rol === 'administrador' ? 'dashboard.html' : 'fabricacion.html';
-
-            const modulosEscritorio = ['menu-ventas', 'menu-inventario', 'menu-fabricacion', 'menu-compras', 'menu-calidad'];
-            const modulosMovil = ['menu-ventas-mobile', 'menu-inventario-mobile', 'menu-fabricacion-mobile', 'menu-compras-mobile', 'menu-calidad-mobile'];
-            modulosEscritorio.forEach(id => { const el = document.getElementById(id); if (el) el.style.display = 'none'; });
-            modulosMovil.forEach(id => { const el = document.getElementById(id); if (el) el.style.display = 'none'; });
-
-            if (rol === 'administrador') {
-                modulosEscritorio.forEach(id => { const el = document.getElementById(id); if (el) el.style.display = 'block'; });
-                modulosMovil.forEach(id => { const el = document.getElementById(id); if (el) el.style.display = 'block'; });
+            if (rol === 'admin' || rol === 'administrador') {
                 document.getElementById('btnRegistrarMovimiento').style.display = 'none';
                 document.getElementById('btnNuevoProducto').style.display = 'none';
-                document.getElementById('tituloInventario').innerText = "Reporte de Inventario (Solo Lectura)";
-            } else if (rol === 'produccion') {
-                ['menu-inventario', 'menu-fabricacion', 'menu-compras'].forEach(id => { const el = document.getElementById(id); if (el) el.style.display = 'block'; });
-                ['menu-inventario-mobile', 'menu-fabricacion-mobile', 'menu-compras-mobile'].forEach(id => { const el = document.getElementById(id); if (el) el.style.display = 'block'; });
+                document.getElementById('tituloInventario').innerText = "Reporte de Inventario y Lotes (Solo Lectura)";
             }
+
+            document.getElementById('prodVencimiento').value = new Date(Date.now() + 180 * 86400000).toISOString().split('T')[0];
 
             await cargarInventario();
             await cargarSelectProductos();
         });
 
+        function filtrarInventario(tipo, btnEl) {
+            filtroActual = tipo;
+            document.querySelectorAll('#filtrosTipoInv button').forEach(b => {
+                b.className = 'btn btn-sm btn-outline-secondary';
+            });
+            btnEl.className = 'btn btn-sm btn-fresa';
+            renderizarTablaInventario();
+        }
+
+        function formatearCantidad(valor, unidad = '') {
+            const num = parseFloat(valor) || 0;
+            const u = String(unidad || '').toLowerCase().trim();
+            if (u === 'uds' || u === 'unidades' || u === 'frascos') {
+                return Math.round(num);
+            }
+            return Number(num.toFixed(2));
+        }
+
         async function cargarInventario() {
             const tbody = document.getElementById('tbodyInventario');
             try {
                 listaProductos = await api.get('/inventario');
-                if (listaProductos.length === 0) { tbody.innerHTML = `<tr><td colspan="6" class="text-center text-muted py-4">No hay productos</td></tr>`; return; }
-                tbody.innerHTML = listaProductos.map(i => {
-                    const actual = parseFloat(i.stockActual), minimo = parseFloat(i.stockMinimo);
-                    return `<tr><td>${i.codigo}</td><td>${i.producto}</td><td>${i.tipo === 'MP' ? 'Materia Prima' : 'Producto Terminado'}</td>
-                        <td>${actual} ${i.tipo === 'MP' ? 'kg' : 'uds'}</td><td>${minimo}</td>
-                        <td><span class="badge ${actual < minimo ? 'bg-danger' : 'bg-success'}">${actual < minimo ? 'Bajo mínimo' : 'OK'}</span></td></tr>`;
-                }).join('');
-            } catch (error) { tbody.innerHTML = `<tr><td colspan="6" class="text-center text-danger">Error</td></tr>`; }
+                const itemsVisibles = listaProductos.filter(i => !(i.tipo === 'WIP' && (parseFloat(i.stockActual) || 0) <= 0));
+                document.getElementById('resumenTotalItems').innerText = itemsVisibles.length;
+                document.getElementById('resumenMP').innerText = listaProductos.filter(i => i.tipo === 'MP').length;
+                const totalBloq = listaProductos.reduce((acc, i) => acc + (parseFloat(i.stockBloqueado) || 0), 0);
+                document.getElementById('resumenBloqueado').innerText = `${Math.round(totalBloq)} uds`;
+                document.getElementById('resumenBajoMin').innerText = listaProductos.filter(i => i.tipo !== 'WIP' && parseFloat(i.stockActual) < parseFloat(i.stockMinimo)).length;
+
+                renderizarTablaInventario();
+            } catch (error) {
+                tbody.innerHTML = `<tr><td colspan="10" class="text-center text-danger py-4">Error al cargar inventario</td></tr>`;
+            }
+        }
+
+        function renderizarTablaInventario() {
+            const tbody = document.getElementById('tbodyInventario');
+            const filtrados = (filtroActual === 'TODOS'
+                ? listaProductos
+                : listaProductos.filter(i => i.tipo === filtroActual)
+            ).filter(i => !(i.tipo === 'WIP' && (parseFloat(i.stockActual) || 0) <= 0));
+
+            if (filtrados.length === 0) {
+                const msgVacio = filtroActual === 'WIP'
+                    ? 'No hay lotes en cocción activa en este momento (0.00 kg en marmita). Los lotes finalizados ya pasaron a Producto Terminado (PT) en revisión o liberados.'
+                    : 'No hay productos en esta categoría';
+                tbody.innerHTML = `<tr><td colspan="10" class="text-center text-muted py-4">${msgVacio}</td></tr>`;
+                return;
+            }
+
+            tbody.innerHTML = filtrados.map(i => {
+                const actual = parseFloat(i.stockActual) || 0;
+                const minimo = parseFloat(i.stockMinimo) || 0;
+                const bloqueado = parseFloat(i.stockBloqueado) || 0;
+                const unidad = i.tipo === 'WIP' ? 'kg' : (i.unidadMedida || (i.tipo === 'MP' ? 'kg' : 'uds'));
+                const actualFormatted = unidad === 'uds' ? Math.round(actual) : actual.toFixed(2);
+                const bloqueadoFormatted = unidad === 'uds' ? Math.round(bloqueado) : bloqueado.toFixed(2);
+                const minimoFormatted = unidad === 'uds' ? Math.round(minimo) : minimo.toFixed(2);
+                const lote = i.loteActual || `LOTE-${i.tipo}-2610`;
+                const venc = i.fechaVencimiento || '2027-04-30';
+                const calEstado = i.tipo === 'WIP'
+                    ? (actual > 0 ? 'En Cocina' : 'En Proceso')
+                    : (i.estadoCalidad || 'Liberado');
+
+                let tipoBadge = 'bg-success-subtle text-success';
+                let tipoLabel = 'Materia Prima (MP)';
+                if (i.tipo === 'WIP') { tipoBadge = 'bg-warning-subtle text-dark'; tipoLabel = 'En Proceso (WIP)'; }
+                if (i.tipo === 'PT') { tipoBadge = 'bg-danger-subtle text-danger'; tipoLabel = 'Terminado (PT)'; }
+
+                let calBadge = 'bg-success-subtle text-success';
+                if (calEstado.includes('Cuarentena') || calEstado.includes('Reservado') || calEstado.includes('Revisión')) calBadge = 'bg-warning-subtle text-dark border border-warning';
+                if (calEstado.includes('Proceso') || calEstado.includes('Cocina') || calEstado.includes('Pendiente de Calidad')) calBadge = 'bg-info-subtle text-dark border border-info';
+                if (calEstado.includes('Retrabajo') || calEstado === 'Scrap') calBadge = 'bg-danger-subtle text-danger';
+
+                const esWIP = i.tipo === 'WIP';
+                const bajo = !esWIP && actual < minimo;
+                const saludClass = esWIP ? 'bg-info text-dark' : (bajo ? 'bg-danger' : 'bg-success');
+                const saludTexto = esWIP ? 'En Cocción Activa' : (bajo ? 'Bajo Mínimo' : 'Óptimo');
+
+                return `
+                    <tr>
+                        <td><span class="codigo-mono fw-semibold">${i.codigo}</span></td>
+                        <td class="fw-semibold">${i.producto}</td>
+                        <td><span class="badge ${tipoBadge}">${tipoLabel}</span></td>
+                        <td><span class="codigo-mono badge bg-light text-dark border">${lote}</span></td>
+                        <td class="small tabular-nums">${venc}</td>
+                        <td class="text-end fw-bold tabular-nums">${actualFormatted} ${unidad}</td>
+                        <td class="text-end tabular-nums ${bloqueado > 0 ? 'text-warning fw-bold' : 'text-muted'}">${bloqueado > 0 ? bloqueadoFormatted : '0'}</td>
+                        <td class="text-end tabular-nums text-muted">${esWIP ? '—' : minimoFormatted}</td>
+                        <td><span class="badge ${calBadge}">${calEstado}</span></td>
+                        <td>
+                            <span class="badge ${saludClass}">
+                                ${saludTexto}
+                            </span>
+                        </td>
+                    </tr>
+                `;
+            }).join('');
         }
 
         async function cargarSelectProductos() {
-            try {
-                const select = document.getElementById('selectProducto');
-                select.innerHTML = '<option value="">Seleccione...</option>';
-                listaProductos.forEach(i => { select.appendChild(new Option(`${i.codigo} - ${i.producto}`, i.id)); });
-            } catch (error) { console.error(error); }
+            const select = document.getElementById('selectProducto');
+            select.innerHTML = '<option value="">Seleccione...</option>';
+            listaProductos.forEach(i => {
+                select.appendChild(new Option(`${i.codigo} - ${i.producto} (Stock: ${i.stockActual})`, i.id));
+            });
         }
 
         document.getElementById('tipoMovimiento').addEventListener('change', actualizarReferencias);
@@ -185,37 +395,35 @@
             const tipo = document.getElementById('tipoMovimiento').value;
             const productoId = document.getElementById('selectProducto').value;
             const selectRef = document.getElementById('selectReferencia');
-            
+
             document.getElementById('cantidadMov').value = '';
             document.getElementById('cantidadMov').removeAttribute('max');
             document.getElementById('errorMovimiento').className = 'alert d-none';
 
             if (!productoId) { selectRef.innerHTML = '<option value="">Seleccione producto...</option>'; return; }
             const prod = listaProductos.find(i => i.id == productoId);
-            selectRef.innerHTML = '<option value="">Calculando...</option>';
+            selectRef.innerHTML = '<option value="">Calculando referencias...</option>';
 
             try {
                 if (tipo === 'ENTRADA') {
                     if (prod.tipo === 'PT') {
-                        // Entrada de PT -> Viene de Fabricación (OF)
                         const ordenes = await api.get('/fabricacion');
-                        selectRef.innerHTML = '<option value="">Seleccione OF...</option>';
+                        selectRef.innerHTML = '<option value="">Seleccione Orden de Fabricación...</option>';
                         let hay = false;
                         ordenes.forEach(f => {
                             if (f.estado !== 'Terminada') {
                                 hay = true;
-                                const op = new Option(`${f.numeroOF} (${f.producto})`, f.numeroOF);
+                                const op = new Option(`${f.numeroOF} (${f.producto} - ${f.cantidad} uds)`, f.numeroOF);
                                 op.setAttribute('data-limite', f.cantidad);
                                 selectRef.appendChild(op);
                             }
                         });
-                        if (!hay) selectRef.innerHTML = '<option value="">No hay órdenes en proceso</option>';
+                        if (!hay) selectRef.innerHTML = '<option value="AJUSTE-PT">Ajuste de Inventario PT</option>';
                     } else {
-                        // Entrada de MP -> Viene de Compras (OC)
                         const compras = await api.get('/compras');
-                        selectRef.innerHTML = '<option value="">Seleccione OC...</option>';
+                        selectRef.innerHTML = '<option value="">Seleccione Orden de Compra...</option>';
                         let hay = false;
-                        for (const c of compras.filter(c => c.producto_codigo === prod.codigo && c.estado === 'Pendiente')) {
+                        for (const c of compras.filter(c => c.producto_codigo === prod.codigo && c.estado.includes('Pendiente'))) {
                             const info = await api.get(`/compras/${c.numeroOC}/pendiente`);
                             if (info.pendiente > 0) {
                                 hay = true;
@@ -224,55 +432,51 @@
                                 selectRef.appendChild(op);
                             }
                         }
-                        if (!hay) selectRef.innerHTML = '<option value="">No hay compras pendientes</option>';
+                        if (!hay) selectRef.innerHTML = '<option value="RECEPCION-MP">Recepción Directa Almacén</option>';
                     }
                 } else {
                     if (prod.tipo === 'PT') {
-                        // Salida de PT -> Va a Ventas (PED)
-                        const response = await fetch('http://localhost:3000/api/ventas/pedidos-pendientes', {
-                            headers: { 'Authorization': `Bearer ${localStorage.getItem('token')}` }
-                        });
-                        const pedidos = await response.json();
-                        selectRef.innerHTML = '<option value="">Seleccione Pedido...</option>';
+                        const pedidos = await api.get('/ventas/pedidos-pendientes');
+                        selectRef.innerHTML = '<option value="">Seleccione Pedido de Venta...</option>';
                         let hay = false;
                         pedidos.forEach(p => {
-                            if (p.producto_codigo === prod.codigo) {
+                            if (!p.producto_codigo || p.producto_codigo === prod.codigo) {
                                 hay = true;
-                                const op = new Option(`${p.numeroPedido} (${p.cliente})`, p.numeroPedido);
+                                const op = new Option(`${p.numeroPedido} (${p.cliente} - ${p.cantidad} uds)`, p.numeroPedido);
                                 op.setAttribute('data-limite', p.cantidad);
                                 selectRef.appendChild(op);
                             }
                         });
-                        if (!hay) selectRef.innerHTML = '<option value="">No hay pedidos pendientes</option>';
+                        if (!hay) selectRef.innerHTML = '<option value="DESPACHO-GENERAL">Despacho Comercial Directo</option>';
                     } else {
-                        // Salida de MP -> Va a Fabricación (OF)
                         const ordenes = await api.get('/fabricacion');
-                        selectRef.innerHTML = '<option value="">Seleccione OF...</option>';
+                        selectRef.innerHTML = '<option value="">Seleccione OF destino...</option>';
                         let hay = false;
                         ordenes.forEach(f => {
                             if (f.estado !== 'Terminada') {
                                 hay = true;
                                 const op = new Option(`${f.numeroOF} (${f.producto})`, f.numeroOF);
-                                op.setAttribute('data-limite', f.cantidad);
                                 selectRef.appendChild(op);
                             }
                         });
-                        if (!hay) selectRef.innerHTML = '<option value="">No hay órdenes en proceso</option>';
+                        if (!hay) selectRef.innerHTML = '<option value="CONSUMO-PLANTA">Consumo Interno de Planta</option>';
                     }
                 }
-            } catch (error) { console.error(error); selectRef.innerHTML = '<option value="">Error</option>'; }
+            } catch (error) {
+                selectRef.innerHTML = '<option value="OPERACION-MANUAL">Operación Manual</option>';
+            }
         }
 
         document.getElementById('selectReferencia').addEventListener('change', function() {
             const op = this.options[this.selectedIndex];
-            const limite = op.getAttribute('data-limite');
+            const limite = op ? op.getAttribute('data-limite') : null;
             const inputCant = document.getElementById('cantidadMov');
             const errorDiv = document.getElementById('errorMovimiento');
             if (limite) {
                 inputCant.max = limite;
-                inputCant.value = '';
-                errorDiv.innerHTML = `ℹ️ Pendiente: <strong>${limite}</strong>`;
-                errorDiv.className = 'alert alert-info';
+                inputCant.value = limite;
+                errorDiv.innerHTML = `<i class="bi bi-info-circle me-1"></i> Cantidad vinculada al documento: <strong>${limite}</strong>`;
+                errorDiv.className = 'alert alert-info py-2 small';
                 errorDiv.classList.remove('d-none');
             } else {
                 inputCant.removeAttribute('max');
@@ -280,11 +484,11 @@
             }
         });
 
-        function abrirModalMovimiento() { 
+        function abrirModalMovimiento() {
             document.getElementById('formMovimiento').reset();
             document.getElementById('errorMovimiento').className = 'alert d-none';
             document.getElementById('selectReferencia').innerHTML = '<option value="">Seleccione producto...</option>';
-            document.getElementById('modalMovimiento').classList.add('activo'); 
+            document.getElementById('modalMovimiento').classList.add('activo');
         }
         function cerrarModalMovimiento() { document.getElementById('modalMovimiento').classList.remove('activo'); }
         document.getElementById('modalMovimiento').addEventListener('click', function(e) { if (e.target === this) cerrarModalMovimiento(); });
@@ -294,50 +498,49 @@
             const tipo = document.getElementById('tipoMovimiento').value;
             const cant = parseFloat(document.getElementById('cantidadMov').value);
             const selectRef = document.getElementById('selectReferencia');
-            const limite = selectRef.options[selectRef.selectedIndex].getAttribute('data-limite');
+            const op = selectRef.options[selectRef.selectedIndex];
+            const limite = op ? op.getAttribute('data-limite') : null;
             const errorDiv = document.getElementById('errorMovimiento');
             const prod = listaProductos.find(i => i.id == document.getElementById('selectProducto').value);
 
             if (limite && cant > parseFloat(limite)) {
-                errorDiv.innerHTML = `❌ El límite es ${limite}.`;
-                errorDiv.className = 'alert alert-danger';
+                errorDiv.innerHTML = `El límite del documento es ${limite}.`;
+                errorDiv.className = 'alert alert-danger py-2 small';
                 errorDiv.classList.remove('d-none');
-                return; 
+                return;
             }
 
             const btn = document.getElementById('btnGuardarMov');
             btn.disabled = true; btn.innerText = 'Guardando...';
 
             const datos = {
-                inventarioId: parseInt(document.getElementById('selectProducto').value),
-                tipo: tipo,
+                inventarioId: parseInt(document.getElementById('selectProducto').value, 10),
+                tipo,
                 cantidad: cant,
                 referencia: selectRef.value
             };
 
             try {
                 await api.post('/movimientos', datos);
-                
-                // Si es despacho de producto terminado, actualizamos la venta
-                if (tipo === 'SALIDA' && prod.tipo === 'PT' && selectRef.value) {
-                    await fetch(`http://localhost:3000/api/ventas/${selectRef.value}/despachar`, {
-                        method: 'PUT',
-                        headers: { 'Authorization': `Bearer ${localStorage.getItem('token')}` }
-                    });
-                    alert("✅ Pedido despachado y facturado exitosamente.");
+                if (tipo === 'SALIDA' && prod && prod.tipo === 'PT' && selectRef.value.startsWith('PED-')) {
+                    await api.put(`/ventas/${selectRef.value}/despachar`, {});
+                    alert("Pedido despachado y facturado exitosamente.");
                 }
-
                 cerrarModalMovimiento();
-                await cargarInventario(); 
+                await cargarInventario();
+                await cargarSelectProductos();
             } catch (error) {
-                errorDiv.innerText = error.message; errorDiv.className = 'alert alert-danger'; errorDiv.classList.remove('d-none');
+                errorDiv.innerText = error.message;
+                errorDiv.className = 'alert alert-danger py-2 small';
+                errorDiv.classList.remove('d-none');
             } finally {
-                btn.disabled = false; btn.innerText = 'Guardar';
+                btn.disabled = false; btn.innerText = 'Confirmar Movimiento';
             }
         });
 
         function abrirModalNuevoProducto() {
             document.getElementById('formNuevoProducto').reset();
+            document.getElementById('prodVencimiento').value = new Date(Date.now() + 180 * 86400000).toISOString().split('T')[0];
             document.getElementById('errorProducto').classList.add('d-none');
             document.getElementById('modalNuevoProducto').classList.add('activo');
         }
@@ -354,7 +557,8 @@
                 codigo: document.getElementById('prodCodigo').value.toUpperCase(),
                 producto: document.getElementById('prodNombre').value,
                 tipo: document.getElementById('prodTipo').value,
-                stockMinimo: parseFloat(document.getElementById('prodStockMin').value)
+                stockMinimo: parseFloat(document.getElementById('prodStockMin').value),
+                fechaVencimiento: document.getElementById('prodVencimiento').value
             };
 
             try {
@@ -365,7 +569,7 @@
             } catch (error) {
                 errorDiv.innerText = error.message; errorDiv.classList.remove('d-none');
             } finally {
-                btn.disabled = false; btn.innerText = 'Guardar';
+                btn.disabled = false; btn.innerText = 'Guardar Ítem';
             }
         });
     </script>

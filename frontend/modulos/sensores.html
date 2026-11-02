@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monitoreo de Sensores IoT & SPC - Frutitos de Casa ERP</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="../css/styles.css">
+    <style>
+        .iot-live-pulse {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: #22c55e;
+            box-shadow: 0 0 0 rgba(34, 197, 94, 0.4);
+            animation: pulse-live 1.8s infinite;
+        }
+        @keyframes pulse-live {
+            0% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7); }
+            70% { box-shadow: 0 0 0 10px rgba(34, 197, 94, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
+        }
+        .spc-badge-ok {
+            background-color: #dcfce7;
+            color: #15803d;
+            border: 1px solid #86efac;
+        }
+        .spc-badge-alert {
+            background-color: #fee2e2;
+            color: #b91c1c;
+            border: 1px solid #fca5a5;
+            animation: blink-border 1.5s infinite;
+        }
+        @keyframes blink-border {
+            0%, 100% { border-color: #fca5a5; }
+            50% { border-color: #dc2626; box-shadow: 0 0 8px rgba(220, 38, 38, 0.3); }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-frutitos navbar-dark sticky-top">
+        <div class="container-fluid px-3 px-md-4">
+            <a class="navbar-brand fw-bold d-flex align-items-center gap-2" href="#" id="logoNavbar">
+                <i class="bi bi-cpu"></i>
+                <span>Frutitos de Casa ERP</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#menuLateral" aria-label="Abrir menú">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse d-none d-lg-block" id="menuDesktop">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0 gap-1 ms-lg-4">
+                    <li class="nav-item" id="menu-dashboard"><a class="nav-link" href="dashboard.html"><i class="bi bi-speedometer2 me-1"></i>Dashboard</a></li>
+                    <li class="nav-item" id="menu-inventario"><a class="nav-link" href="inventario.html">1. Inventario &amp; BOM</a></li>
+                    <li class="nav-item" id="menu-compras"><a class="nav-link" href="compras.html">2. Compras &amp; Proveedores</a></li>
+                    <li class="nav-item" id="menu-fabricacion"><a class="nav-link" href="fabricacion.html">3. Fabricación &amp; IoT</a></li>
+                    <li class="nav-item" id="menu-sensores"><a class="nav-link active" href="sensores.html"><i class="bi bi-activity me-1"></i>Sensores &amp; SPC</a></li>
+                    <li class="nav-item" id="menu-calidad"><a class="nav-link" href="calidad.html">4. Calidad &amp; Liberación</a></li>
+                    <li class="nav-item" id="menu-ventas"><a class="nav-link" href="ventas.html">Ventas &amp; CRM</a></li>
+                </ul>
+                <div class="d-flex align-items-center gap-3">
+                    <span class="navbar-text text-white mb-0 d-flex align-items-center small">
+                        <i class="bi bi-person-circle me-2"></i> <span class="user-name">Cargando...</span>
+                    </span>
+                    <a href="#" onclick="logout(); return false;" class="btn btn-outline-light btn-sm rounded-pill px-3">Salir</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="menuLateral" style="background-color: var(--mermelada-oscuro) !important; width: 280px;">
+        <div class="offcanvas-header border-bottom border-secondary">
+            <h5 class="offcanvas-title text-white fw-bold">Menú ERP</h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
+        </div>
+        <div class="offcanvas-body d-flex flex-column">
+            <ul class="navbar-nav me-auto mb-2 gap-2 w-100">
+                <li class="nav-item"><a class="nav-link px-3 text-white" href="dashboard.html"><i class="bi bi-speedometer2 me-2"></i> Dashboard</a></li>
+                <li class="nav-item"><a class="nav-link px-3 text-white" href="inventario.html"><i class="bi bi-boxes me-2"></i> Inventario &amp; BOM</a></li>
+                <li class="nav-item"><a class="nav-link px-3 text-white" href="compras.html"><i class="bi bi-truck me-2"></i> Compras</a></li>
+                <li class="nav-item"><a class="nav-link px-3 text-white" href="fabricacion.html"><i class="bi bi-fire me-2"></i> Fabricación</a></li>
+                <li class="nav-item"><a class="nav-link px-3 text-white active" href="sensores.html"><i class="bi bi-activity me-2"></i> Sensores &amp; SPC</a></li>
+                <li class="nav-item"><a class="nav-link px-3 text-white" href="calidad.html"><i class="bi bi-shield-check me-2"></i> Calidad</a></li>
+                <li class="nav-item"><a class="nav-link px-3 text-white" href="ventas.html"><i class="bi bi-cart me-2"></i> Ventas</a></li>
+            </ul>
+            <div class="mt-auto pt-3 border-top border-secondary d-flex align-items-center justify-content-between w-100">
+                <span class="text-white small"><i class="bi bi-person-fill me-1"></i> <span class="user-name">Cargando...</span></span>
+                <a href="#" onclick="logout(); return false;" class="btn btn-outline-light btn-sm rounded-pill px-3">Salir</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid px-3 px-md-4 mt-4 mb-5" style="max-width: 1400px;">
+
+        <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center mb-4 gap-2">
+            <div>
+                <div class="d-flex align-items-center gap-2 mb-1">
+                    <h1 class="h4 fw-bold mb-0" style="color: var(--texto-marron);">Dashboard de Sensores IoT &amp; Control Estadístico de Proceso (SPC)</h1>
+                    <span class="badge rounded-pill bg-success-subtle text-success border border-success-subtle d-inline-flex align-items-center gap-1">
+                        <span class="iot-live-pulse"></span> Telemetría Online
+                    </span>
+                </div>
+                <p class="small text-muted mb-0">Marmita M-01 · Termocupla PT100 de Platino, Refractómetro Brix Digital y Auditoría de Emisiones CO₂e</p>
+            </div>
+            <div class="d-flex align-items-center gap-2">
+                <span class="badge bg-secondary-subtle text-secondary border px-3 py-2 d-none" id="badgeModoAdmin">
+                    <i class="bi bi-eye me-1"></i>Modo Auditoría Gerencial (Solo Lectura)
+                </span>
+                <button type="button" class="btn btn-sm btn-outline-secondary" onclick="cargarDatosSensores()" title="Refrescar lecturas">
+                    <i class="bi bi-arrow-clockwise"></i> Sincronizar
+                </button>
+                <div class="dropdown" id="dropdownMantenimientoSensor">
+                    <button class="btn btn-sm btn-fresa dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                        <i class="bi bi-wrench-adjustable me-1"></i> Mantenimiento Sensor
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end shadow">
+                        <li><h6 class="dropdown-header">Simulación para Defensa</h6></li>
+                        <li><button class="dropdown-item" type="button" onclick="simularHoras(385)"><i class="bi bi-check-circle text-success me-2"></i>Estado Normal (385h / 77%)</button></li>
+                        <li><button class="dropdown-item" type="button" onclick="simularHoras(415)"><i class="bi bi-exclamation-triangle text-warning me-2"></i>Alerta Preventiva (415h / 83%)</button></li>
+                        <li><button class="dropdown-item" type="button" onclick="simularHoras(485)"><i class="bi bi-exclamation-octagon text-danger me-2"></i>Alerta Predictiva (485h / 97%)</button></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><button class="dropdown-item text-primary" type="button" onclick="resetearSensor()"><i class="bi bi-arrow-counterclockwise me-2"></i>Resetear a 0h (Calibración/Reemplazo)</button></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div id="alertaNoConformidadGlobal" class="alert alert-danger d-none shadow-sm mb-4 border-2">
+            <div class="d-flex align-items-center justify-content-between">
+                <div class="d-flex align-items-center gap-2">
+                    <i class="bi bi-shield-x fs-3 text-danger"></i>
+                    <div>
+                        <h6 class="fw-bold mb-0">¡Alerta SPC de No Conformidad en Tiempo Real!</h6>
+                        <span class="small" id="textoAlertaNoConformidad">Lectura fuera de límites de control. El lote activo ha sido bloqueado y enviado a Cuarentena automáticamente.</span>
+                    </div>
+                </div>
+                <a href="calidad.html" class="btn btn-sm btn-outline-danger" id="btnAuditarCalidad">Auditar en Calidad <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="row g-3 g-lg-4 mb-4 kpi-row">
+            <div class="col-12 col-sm-6 col-lg-3">
+                <div class="kpi-card-modern">
+                    <div class="kpi-header">
+                        <span class="kpi-label">Temperatura en Marmita</span>
+                        <span class="kpi-icon-box kpi-icon-fresa"><i class="bi bi-thermometer-half"></i></span>
+                    </div>
+                    <div class="kpi-body">
+                        <div class="kpi-value tabular-nums" id="kpiTempActual" style="color: var(--mermelada-rojo);">92.5 °C</div>
+                    </div>
+                    <div class="kpi-meta">
+                        <span id="kpiTempStatus" class="badge spc-badge-ok">LCI 88°C — LCS 98°C</span>
+                        <span class="text-muted small">Sensor PT100</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-sm-6 col-lg-3">
+                <div class="kpi-card-modern">
+                    <div class="kpi-header">
+                        <span class="kpi-label">Concentración Brix</span>
+                        <span class="kpi-icon-box kpi-icon-verde"><i class="bi bi-droplet-half"></i></span>
+                    </div>
+                    <div class="kpi-body">
+                        <div class="kpi-value tabular-nums" id="kpiBrixActual" style="color: var(--hoja-verde);">66.2 °Bx</div>
+                    </div>
+                    <div class="kpi-meta">
+                        <span id="kpiBrixStatus" class="badge spc-badge-ok">Norma: ≥ 65.0 °Bx</span>
+                        <span class="text-muted small">Refractómetro</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-sm-6 col-lg-3">
+                <div class="kpi-card-modern" id="cardVidaUtilSensor">
+                    <div class="kpi-header">
+                        <span class="kpi-label">Vida Útil Sensor PT100</span>
+                        <span class="kpi-icon-box" id="iconBoxSensor"><i class="bi bi-cpu"></i></span>
+                    </div>
+                    <div class="kpi-body flex-column align-items-start w-100">
+                        <div class="kpi-value tabular-nums" id="kpiHorasSensor">385.0 h</div>
+                        <div class="progress w-100 mt-2" style="height: 6px;">
+                            <div class="progress-bar bg-success" id="progressBarSensor" role="progressbar" style="width: 77%;"></div>
+                        </div>
+                    </div>
+                    <div class="kpi-meta">
+                        <span id="badgeEstadoSensor" class="badge bg-success-subtle text-success">Óptimo (77%)</span>
+                        <span class="text-muted small">Límite: 500 h</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-sm-6 col-lg-3">
+                <div class="kpi-card-modern">
+                    <div class="kpi-header">
+                        <span class="kpi-label">Huella de Carbono Acumulada</span>
+                        <span class="kpi-icon-box kpi-icon-verde"><i class="bi bi-globe-americas"></i></span>
+                    </div>
+                    <div class="kpi-body">
+                        <div class="kpi-value tabular-nums" id="kpiHuellaCO2" style="color: var(--hoja-verde);">0.0 kg</div>
+                    </div>
+                    <div class="kpi-meta">
+                        <span class="badge bg-success-subtle text-success">3.42 kg CO₂e / h</span>
+                        <span class="text-muted small" id="kpiTotalHorasCoccion">0.0 h cocción</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="bannerAlertaSensor" class="alert d-none mb-4 shadow-sm">
+            <div class="d-flex align-items-center gap-2">
+                <i class="bi fs-4" id="bannerAlertaIcon"></i>
+                <div>
+                    <h6 class="fw-bold mb-0" id="bannerAlertaTitulo">Mantenimiento de Sensor</h6>
+                    <span class="small" id="bannerAlertaMensaje">Detalle del estado predictivo del sensor.</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="row g-4 mb-4">
+            <div class="col-12 col-lg-8">
+                <div class="card h-100">
+                    <div class="card-body p-3 p-md-4">
+                        <div class="d-flex flex-column flex-sm-row justify-content-between align-items-sm-center mb-3 gap-2">
+                            <div>
+                                <h2 class="h6 fw-bold mb-0">Gráfico de Control Estadístico de Proceso (SPC) · Temperatura en Tiempo Real</h2>
+                                <span class="small text-muted">Límites Estadísticos: LCI (88.0°C) — Media Nominal (93.0°C) — LCS (98.0°C)</span>
+                            </div>
+                            <div class="d-flex gap-2">
+                                <span class="badge bg-danger-subtle text-danger border border-danger-subtle">Rojo = Fuera de Límites</span>
+                                <span class="badge bg-success-subtle text-success border border-success-subtle">Verde = En Control</span>
+                            </div>
+                        </div>
+                        <div style="position: relative; height: 320px; width: 100%;">
+                            <canvas id="graficoSPCTemperatura"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-lg-4">
+                <div class="card h-100">
+                    <div class="card-body p-3 p-md-4">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <div>
+                                <h2 class="h6 fw-bold mb-0">Refractómetro · Grados Brix</h2>
+                                <span class="small text-muted">Concentración de sólidos solubles</span>
+                            </div>
+                            <span class="badge bg-secondary-subtle text-dark">Límite: ≥ 65°Bx</span>
+                        </div>
+                        <div style="position: relative; height: 320px; width: 100%;">
+                            <canvas id="graficoSPCBrix"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card mb-4 border-0 shadow-sm" style="background-color: var(--fondo-beige); border-radius: 12px;">
+            <div class="card-body p-3">
+                <div class="d-flex flex-wrap align-items-center justify-content-between gap-2">
+                    <div class="d-flex align-items-center gap-2">
+                        <i class="bi bi-journal-text text-secondary fs-5"></i>
+                        <span class="fw-semibold text-secondary small">Documentación Técnica &amp; Protocolos Operativos:</span>
+                    </div>
+                    <div class="d-flex gap-2">
+                        <button class="btn btn-sm btn-outline-success d-inline-flex align-items-center gap-1" type="button" data-bs-toggle="collapse" data-bs-target="#collapseMetodologiaCO2" aria-expanded="false" aria-controls="collapseMetodologiaCO2">
+                            <i class="bi bi-tree-fill"></i> Ver Metodología CO2
+                        </button>
+                        <button class="btn btn-sm btn-outline-danger d-inline-flex align-items-center gap-1" type="button" data-bs-toggle="collapse" data-bs-target="#collapseProtocoloSPC" aria-expanded="false" aria-controls="collapseProtocoloSPC">
+                            <i class="bi bi-shield-lock-fill"></i> Ver Protocolo SPC
+                        </button>
+                    </div>
+                </div>
+
+                <div class="collapse mt-3" id="collapseMetodologiaCO2">
+                    <div class="card card-body bg-white border">
+                        <div class="d-flex align-items-center gap-2 mb-3">
+                            <span class="rounded-circle d-inline-flex align-items-center justify-content-center p-2" style="background-color: var(--hoja-verde-suave); color: var(--hoja-verde);">
+                                <i class="bi bi-tree-fill fs-5"></i>
+                            </span>
+                            <div>
+                                <h2 class="h6 fw-bold mb-0">Justificación Técnica de Huella de Carbono (ISO 14067 &amp; GHG Protocol)</h2>
+                                <span class="small text-muted">Modelo de cálculo de emisiones directas (Alcance 1) e indirectas (Alcance 2)</span>
+                            </div>
+                        </div>
+
+                        <div class="p-3 rounded-3 mb-3" style="background-color: var(--fondo-beige); border-left: 4px solid var(--hoja-verde);">
+                            <div class="fw-bold mb-1" style="color: var(--texto-marron);">
+                                <i class="bi bi-info-circle-fill me-1" style="color: var(--hoja-verde);"></i> Equivalencia Técnica Certificada: 1 Hora de Marmita Industrial = 3.42 kg CO₂e
+                            </div>
+                            <p class="small text-muted mb-0" style="line-height: 1.6;">
+                                Basado en los factores de emisión del IPCC (Panel Intergubernamental sobre Cambio Climático) y la norma ISO 14067 para huella de carbono de producto en procesamiento térmico de frutas:
+                            </p>
+                        </div>
+
+                        <div class="row g-3 small">
+                            <div class="col-md-6">
+                                <div class="border rounded-3 p-3 bg-white h-100">
+                                    <div class="fw-bold mb-1 text-danger"><i class="bi bi-fire me-1"></i> Alcance 1: Combustión Térmica GLP</div>
+                                    <div class="text-muted" style="font-size: 0.8rem; line-height: 1.5;">
+                                        Quemador atmosférico de 18 kW consume <strong>1.15 kg de GLP/hora</strong> en etapa de evaporación. Factor de emisión: 2.98 kg CO₂ / kg GLP.
+                                        <div class="mt-1 fw-semibold text-dark">Subtotal: 2.98 kg CO₂e / h</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="border rounded-3 p-3 bg-white h-100">
+                                    <div class="fw-bold mb-1 text-primary"><i class="bi bi-lightning-charge me-1"></i> Alcance 2: Energía Eléctrica Auxiliar</div>
+                                    <div class="text-muted" style="font-size: 0.8rem; line-height: 1.5;">
+                                        Motor de agitación trifásico (1.5 HP = 1.1 kW) + bombas y telemetría. Factor de matriz eléctrica: 0.40 kg CO₂e / kWh.
+                                        <div class="mt-1 fw-semibold text-dark">Subtotal: 0.44 kg CO₂e / h</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mt-3 p-3 rounded-3 bg-light border d-flex flex-wrap align-items-center justify-content-between gap-2">
+                            <span class="small fw-semibold text-muted">Fórmula de Planta Frutitos de Casa:</span>
+                            <code class="px-2 py-1 rounded bg-white border text-dark fw-bold" style="font-size: 0.85rem;">
+                                CO₂e (kg) = (Horas de Marmita) × 3.42 kg CO₂e/h + (Frascos × 0.042 kg CO₂e)
+                            </code>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="collapse mt-3" id="collapseProtocoloSPC">
+                    <div class="card card-body bg-white border">
+                        <div class="d-flex align-items-center gap-2 mb-3">
+                            <span class="rounded-circle d-inline-flex align-items-center justify-content-center p-2" style="background-color: #fee2e2; color: #dc2626;">
+                                <i class="bi bi-shield-lock-fill fs-5"></i>
+                            </span>
+                            <div>
+                                <h2 class="h6 fw-bold mb-0">Protocolo de No Conformidad Automatizada</h2>
+                                <span class="small text-muted">Intervención sin operador humano ante desvíos críticos</span>
+                            </div>
+                        </div>
+
+                        <div class="list-group list-group-flush small">
+                            <div class="list-group-item px-0 py-2 border-bottom">
+                                <div class="d-flex align-items-start gap-2">
+                                    <span class="badge bg-danger rounded-pill mt-1">1</span>
+                                    <div>
+                                        <strong>Detección Inmediata:</strong> Si Brix &lt; 65.0° o Temperatura &lt; 88.0°C / &gt; 98.0°C, el motor SPC activa bandera de no conformidad.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="list-group-item px-0 py-2 border-bottom">
+                                <div class="d-flex align-items-start gap-2">
+                                    <span class="badge bg-warning text-dark rounded-pill mt-1">2</span>
+                                    <div>
+                                        <strong>Bloqueo de Inventario:</strong> El saldo del lote pasa de disponible a <code>stockBloqueado</code> con estado 'Cuarentena'.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="list-group-item px-0 py-2 border-bottom">
+                                <div class="d-flex align-items-start gap-2">
+                                    <span class="badge bg-info text-dark rounded-pill mt-1">3</span>
+                                    <div>
+                                        <strong>Registro en Calidad:</strong> Se genera automáticamente la entrada en el módulo de Calidad señalando la desviación física.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="list-group-item px-0 py-2">
+                                <div class="d-flex align-items-start gap-2">
+                                    <span class="badge bg-success rounded-pill mt-1">4</span>
+                                    <div>
+                                        <strong>Trazabilidad Kardex:</strong> Movimiento tipo <code>BLOQUEO</code> registrado para auditoría bromatológica de inocuidad.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mt-3 text-center">
+                            <span class="small text-muted">Ejecuta el script simulador en la terminal:</span>
+                            <div class="codigo-mono p-2 mt-1 rounded bg-dark text-white small">node simulador_iot.js</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-body p-3 p-md-4">
+                <div class="d-flex flex-column flex-sm-row justify-content-between align-items-sm-center mb-3 gap-2">
+                    <div>
+                        <h2 class="h6 fw-bold mb-0">Registro Reciente de Telemetría IoT en Base de Datos</h2>
+                        <span class="small text-muted">Últimas lecturas capturadas por el endpoint /api/sensores/lectura</span>
+                    </div>
+                    <span class="badge rounded-pill bg-light text-dark border tabular-nums" id="badgeTotalLecturas">0 lecturas registradas</span>
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-hover align-middle">
+                        <thead>
+                            <tr>
+                                <th>Fecha / Hora</th>
+                                <th>Sensor ID</th>
+                                <th>OF / Lote Vinculado</th>
+                                <th class="text-center">Temp. (°C)</th>
+                                <th class="text-center">Brix (°Bx)</th>
+                                <th>Dictamen SPC</th>
+                                <th>Huella Est. (CO₂e)</th>
+                                <th>Acción del Sistema</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tbodyLecturas">
+                            <tr><td colspan="8" class="text-center text-muted py-4">Sincronizando telemetría...</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="../js/api.js"></script>
+    <script src="../js/auth.js"></script>
+    <script>
+        (function guardSensores() {
+            const user = aplicarSeguridadVisualRBAC('sensores');
+            if (!user) {
+                const userGeneral = JSON.parse(localStorage.getItem('user') || 'null');
+                if (!userGeneral) {
+                    window.location.href = 'login.html';
+                    throw new Error('No autenticado');
+                }
+            }
+        })();
+
+        let chartTempSPC = null;
+        let chartBrixSPC = null;
+        let intervaloPolling = null;
+
+        document.addEventListener("DOMContentLoaded", async function() {
+            renderizarUsuario();
+
+            const userStr = localStorage.getItem('user');
+            if (userStr) {
+                try {
+                    const u = JSON.parse(userStr);
+                    const rol = String(u.rol || localStorage.getItem('rol') || '').toLowerCase();
+                    if (rol === 'admin' || rol === 'administrador') {
+                        const dropMantenimiento = document.getElementById('dropdownMantenimientoSensor');
+                        if (dropMantenimiento) dropMantenimiento.classList.add('d-none');
+                        const badgeAdmin = document.getElementById('badgeModoAdmin');
+                        if (badgeAdmin) badgeAdmin.classList.remove('d-none');
+                        const btnAuditar = document.getElementById('btnAuditarCalidad');
+                        if (btnAuditar) btnAuditar.classList.add('d-none');
+                    }
+                } catch (e) {}
+            }
+
+            await inicializarGraficos();
+            await cargarDatosSensores();
+
+            intervaloPolling = setInterval(async () => {
+                await cargarDatosSensores();
+            }, 3000);
+        });
+
+        window.addEventListener('beforeunload', () => {
+            if (intervaloPolling) clearInterval(intervaloPolling);
+        });
+
+        async function inicializarGraficos() {
+            const ctxTemp = document.getElementById('graficoSPCTemperatura').getContext('2d');
+            chartTempSPC = new Chart(ctxTemp, {
+                type: 'line',
+                data: {
+                    labels: [],
+                    datasets: [
+                        {
+                            label: 'Temperatura (°C)',
+                            data: [],
+                            borderColor: '#dc2626',
+                            borderWidth: 2,
+                            tension: 0.2,
+                            pointBackgroundColor: [],
+                            pointBorderColor: '#ffffff',
+                            pointBorderWidth: 1.5,
+                            pointRadius: [],
+                            pointHoverRadius: 7,
+                            fill: false
+                        },
+                        {
+                            label: 'LCS (98.0°C)',
+                            data: [],
+                            borderColor: '#ef4444',
+                            borderWidth: 1.5,
+                            borderDash: [6, 4],
+                            pointRadius: 0,
+                            fill: false
+                        },
+                        {
+                            label: 'Media (93.0°C)',
+                            data: [],
+                            borderColor: '#94a3b8',
+                            borderWidth: 1,
+                            borderDash: [3, 3],
+                            pointRadius: 0,
+                            fill: false
+                        },
+                        {
+                            label: 'LCI (88.0°C)',
+                            data: [],
+                            borderColor: '#3b82f6',
+                            borderWidth: 1.5,
+                            borderDash: [6, 4],
+                            pointRadius: 0,
+                            fill: false
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    animation: { duration: 300 },
+                    scales: {
+                        y: {
+                            min: 75,
+                            max: 105,
+                            title: { display: true, text: 'Temperatura (°C)' },
+                            grid: { color: 'rgba(0,0,0,0.05)' }
+                        },
+                        x: {
+                            grid: { display: false }
+                        }
+                    },
+                    plugins: {
+                        legend: { position: 'top' },
+                        tooltip: {
+                            callbacks: {
+                                afterLabel: function(context) {
+                                    const val = context.raw;
+                                    if (context.datasetIndex === 0) {
+                                        if (val > 98) return '⚠️ NO CONFORMIDAD: Sobrecalentamiento > LCS';
+                                        if (val < 88) return '⚠️ NO CONFORMIDAD: Temperatura baja < LCI';
+                                        return '✓ Parámetro dentro de control estadístico';
+                                    }
+                                    return '';
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+
+            const ctxBrix = document.getElementById('graficoSPCBrix').getContext('2d');
+            chartBrixSPC = new Chart(ctxBrix, {
+                type: 'line',
+                data: {
+                    labels: [],
+                    datasets: [
+                        {
+                            label: 'Grados °Brix',
+                            data: [],
+                            borderColor: '#16a34a',
+                            backgroundColor: 'rgba(22, 163, 74, 0.1)',
+                            borderWidth: 2,
+                            tension: 0.2,
+                            pointBackgroundColor: '#16a34a',
+                            pointRadius: 4,
+                            fill: true
+                        },
+                        {
+                            label: 'Mínimo (65.0°Bx)',
+                            data: [],
+                            borderColor: '#f59e0b',
+                            borderWidth: 1.5,
+                            borderDash: [6, 4],
+                            pointRadius: 0,
+                            fill: false
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    animation: { duration: 300 },
+                    scales: {
+                        y: {
+                            min: 55,
+                            max: 75,
+                            title: { display: true, text: 'Sólidos Solubles (°Bx)' }
+                        },
+                        x: { grid: { display: false } }
+                    },
+                    plugins: {
+                        legend: { position: 'top' }
+                    }
+                }
+            });
+        }
+
+        async function cargarDatosSensores() {
+            try {
+                const [lecturas, estadoSensor] = await Promise.all([
+                    api.get('/sensores/lecturas?limite=20'),
+                    api.get('/sensores/estado')
+                ]);
+
+                actualizarKPIs(lecturas, estadoSensor);
+                actualizarGraficos(lecturas);
+                actualizarTablaLecturas(lecturas);
+            } catch (error) {
+                console.error('Error al sincronizar sensores:', error);
+            }
+        }
+
+        function actualizarKPIs(lecturas, estado) {
+            const ultima = lecturas && lecturas.length > 0 ? lecturas[lecturas.length - 1] : null;
+
+            if (ultima) {
+                const temp = parseFloat(ultima.temperatura);
+                const brix = parseFloat(ultima.brix);
+
+                document.getElementById('kpiTempActual').innerText = `${temp.toFixed(1)} °C`;
+                document.getElementById('kpiBrixActual').innerText = `${brix.toFixed(1)} °Bx`;
+
+                const tempOk = temp >= 88.0 && temp <= 98.0;
+                const brixOk = brix >= 65.0;
+
+                const tempStatus = document.getElementById('kpiTempStatus');
+                if (tempOk) {
+                    tempStatus.className = 'badge spc-badge-ok';
+                    tempStatus.innerText = '✓ En Control (88° - 98°)';
+                } else {
+                    tempStatus.className = 'badge spc-badge-alert';
+                    tempStatus.innerText = `⚠️ Desvío SPC (${temp.toFixed(1)}°C)`;
+                }
+
+                const brixStatus = document.getElementById('kpiBrixStatus');
+                if (brixOk) {
+                    brixStatus.className = 'badge spc-badge-ok';
+                    brixStatus.innerText = '✓ Norma Brix Cumplida';
+                } else {
+                    brixStatus.className = 'badge spc-badge-alert';
+                    brixStatus.innerText = `⚠️ Brix Bajo (${brix.toFixed(1)}° < 65°)`;
+                }
+
+                const alertaGlobal = document.getElementById('alertaNoConformidadGlobal');
+                if (!tempOk || !brixOk) {
+                    alertaGlobal.classList.remove('d-none');
+                    document.getElementById('textoAlertaNoConformidad').innerText =
+                        `No conformidad detectada en OF ${ultima.numeroOF || 'Planta'}: Temp=${temp}°C, Brix=${brix}°Bx. Lote bloqueado y transferido automáticamente a Cuarentena.`;
+                } else {
+                    alertaGlobal.classList.add('d-none');
+                }
+            }
+
+            if (estado) {
+                const horas = parseFloat(estado.horasUso || 0);
+                const max = parseFloat(estado.horasMaximas || 500);
+                const pct = Math.min(100, Math.max(0, parseFloat(estado.porcentajeUso || 0)));
+
+                document.getElementById('kpiHorasSensor').innerText = `${horas.toFixed(1)} h`;
+                const pBar = document.getElementById('progressBarSensor');
+                pBar.style.width = `${pct}%`;
+
+                const badge = document.getElementById('badgeEstadoSensor');
+                const banner = document.getElementById('bannerAlertaSensor');
+                const bannerIcon = document.getElementById('bannerAlertaIcon');
+                const bannerTitulo = document.getElementById('bannerAlertaTitulo');
+                const bannerMsg = document.getElementById('bannerAlertaMensaje');
+
+                if (pct >= 95) {
+                    pBar.className = 'progress-bar bg-danger';
+                    badge.className = 'badge bg-danger text-white';
+                    badge.innerText = `Critico (${pct}%)`;
+
+                    banner.className = 'alert alert-danger shadow-sm mb-4 border-2';
+                    banner.classList.remove('d-none');
+                    bannerIcon.className = 'bi bi-exclamation-octagon-fill text-danger';
+                    bannerTitulo.innerText = '🚨 ALERTA ROJA: MANTENIMIENTO PREDICTIVO / REEMPLAZO INMINENTE';
+                    bannerMsg.innerText = `El sensor PT100 ha superado el 95% de su vida útil útil (${horas.toFixed(1)}h / ${max}h). Riesgo inminente de deriva térmica en marmita. Reemplazo requerido antes del próximo lote.`;
+                } else if (pct >= 80) {
+                    pBar.className = 'progress-bar bg-warning';
+                    badge.className = 'badge bg-warning text-dark';
+                    badge.innerText = `Preventivo (${pct}%)`;
+
+                    banner.className = 'alert alert-warning shadow-sm mb-4 border-2';
+                    banner.classList.remove('d-none');
+                    bannerIcon.className = 'bi bi-exclamation-triangle-fill text-warning';
+                    bannerTitulo.innerText = '⚠️ ALERTA AMARILLA: MANTENIMIENTO PREVENTIVO REQUERIDO';
+                    bannerMsg.innerText = `El sensor PT100 ha alcanzado el 80% de su vida útil acumulada (${horas.toFixed(1)}h / ${max}h). Se recomienda programar calibración en baño térmico patrón y limpieza de termovaina.`;
+                } else {
+                    pBar.className = 'progress-bar bg-success';
+                    badge.className = 'badge bg-success-subtle text-success';
+                    badge.innerText = `Óptimo (${pct}%)`;
+                    banner.classList.add('d-none');
+                }
+
+                if (estado.estadisticasCoccion) {
+                    const stats = estado.estadisticasCoccion;
+                    document.getElementById('kpiHuellaCO2').innerText = `${stats.totalHuellaCO2} kg`;
+                    document.getElementById('kpiTotalHorasCoccion').innerText = `${stats.totalHorasCoccion} h de cocción en marmitas`;
+                }
+
+                document.getElementById('badgeTotalLecturas').innerText = `${estado.totalLecturas || 0} lecturas registradas`;
+            }
+        }
+
+        function actualizarGraficos(lecturas) {
+            if (!lecturas || lecturas.length === 0) return;
+
+            const labels = lecturas.map(l => {
+                const d = new Date(l.fecha || l.createdAt);
+                return d.toLocaleTimeString('es-NI', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+            });
+
+            const dataTemp = lecturas.map(l => parseFloat(l.temperatura));
+            const pointColors = dataTemp.map(t => (t < 88.0 || t > 98.0) ? '#dc2626' : '#16a34a');
+            const pointRadii = dataTemp.map(t => (t < 88.0 || t > 98.0) ? 6 : 3.5);
+
+            const lcsLine = dataTemp.map(() => 98.0);
+            const mediaLine = dataTemp.map(() => 93.0);
+            const lciLine = dataTemp.map(() => 88.0);
+
+            chartTempSPC.data.labels = labels;
+            chartTempSPC.data.datasets[0].data = dataTemp;
+            chartTempSPC.data.datasets[0].pointBackgroundColor = pointColors;
+            chartTempSPC.data.datasets[0].pointRadius = pointRadii;
+            chartTempSPC.data.datasets[1].data = lcsLine;
+            chartTempSPC.data.datasets[2].data = mediaLine;
+            chartTempSPC.data.datasets[3].data = lciLine;
+            chartTempSPC.update('none');
+
+            const dataBrix = lecturas.map(l => parseFloat(l.brix));
+            const minBrixLine = dataBrix.map(() => 65.0);
+            chartBrixSPC.data.labels = labels;
+            chartBrixSPC.data.datasets[0].data = dataBrix;
+            chartBrixSPC.data.datasets[1].data = minBrixLine;
+            chartBrixSPC.update('none');
+        }
+
+        function actualizarTablaLecturas(lecturas) {
+            const tbody = document.getElementById('tbodyLecturas');
+            if (!lecturas || lecturas.length === 0) {
+                tbody.innerHTML = `<tr><td colspan="8" class="text-center text-muted py-4">No hay lecturas registradas aún</td></tr>`;
+                return;
+            }
+
+            const ultimasInvertidas = [...lecturas].reverse().slice(0, 10);
+            tbody.innerHTML = ultimasInvertidas.map(l => {
+                const fecha = new Date(l.fecha || l.createdAt).toLocaleTimeString('es-NI', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+                const temp = parseFloat(l.temperatura);
+                const brix = parseFloat(l.brix);
+                const esAlerta = l.esAlerta || temp < 88.0 || temp > 98.0 || brix < 65.0;
+
+                let dictamenBadge = '<span class="badge bg-success-subtle text-success">✓ En Control</span>';
+                let accion = '<span class="text-muted small">Parámetro normal</span>';
+
+                if (esAlerta) {
+                    dictamenBadge = '<span class="badge bg-danger text-white">⚠️ No Conformidad</span>';
+                    accion = '<span class="text-danger small fw-semibold"><i class="bi bi-lock-fill me-1"></i>Bloqueo a Cuarentena</span>';
+                }
+
+                return `
+                    <tr class="${esAlerta ? 'table-danger' : ''}">
+                        <td class="small tabular-nums">${fecha}</td>
+                        <td><span class="codigo-mono badge bg-light text-dark border">${l.sensorId || 'PT100-M01'}</span></td>
+                        <td><span class="codigo-mono fw-semibold">${l.numeroOF || 'Marmita M-01'}</span></td>
+                        <td class="text-center tabular-nums fw-bold ${temp < 88 || temp > 98 ? 'text-danger' : 'text-success'}">${temp.toFixed(1)} °C</td>
+                        <td class="text-center tabular-nums fw-bold ${brix < 65 ? 'text-danger' : 'text-success'}">${brix.toFixed(1)} °Bx</td>
+                        <td>${dictamenBadge}</td>
+                        <td class="small tabular-nums text-muted">${parseFloat(l.huellaCarbonoEstimada || 0.057).toFixed(3)} kg</td>
+                        <td>${accion}</td>
+                    </tr>
+                `;
+            }).join('');
+        }
+
+        async function simularHoras(horas) {
+            try {
+                await api.post('/sensores/simular-horas', { horas });
+                await cargarDatosSensores();
+            } catch (e) {
+                alert('Error al simular horas: ' + e.message);
+            }
+        }
+
+        async function resetearSensor() {
+            if (!confirm('¿Confirma registrar la calibración técnica / reemplazo del sensor PT100? Las horas de vida útil volverán a 0.')) return;
+            try {
+                await api.post('/sensores/reset', {});
+                await cargarDatosSensores();
+                alert('Sensor calibrado. Horas de uso reiniciadas a 0.0 h.');
+            } catch (e) {
+                alert('Error al resetear sensor: ' + e.message);
+            }
+        }
+    </script>
+</body>
+</html>

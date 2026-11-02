@@ -3,49 +3,268 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fabricación - Frutitos de Casa</title>
+    <title>Fabricación y Control IoT - Frutitos de Casa ERP</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <link rel="stylesheet" href="../css/styles.css">
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-frutitos navbar-dark">
-        <div class="container-fluid px-4">
-            <a class="navbar-brand fw-bold" href="#" id="logoNavbar">Frutitos de Casa ERP</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#menuLateral"><span class="navbar-toggler-icon"></span></button>
+    <nav class="navbar navbar-expand-lg navbar-frutitos navbar-dark sticky-top">
+        <div class="container-fluid px-3 px-md-4">
+            <a class="navbar-brand fw-bold d-flex align-items-center gap-2" href="#" id="logoNavbar">
+                <i class="bi bi-fire"></i>
+                <span>Frutitos de Casa ERP</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#menuLateral" aria-label="Abrir menú">
+                <span class="navbar-toggler-icon"></span>
+            </button>
             <div class="collapse navbar-collapse d-none d-lg-block" id="menuDesktop">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0 gap-2 ms-lg-4">
-                    <li class="nav-item" id="menu-ventas"><a class="nav-link px-3" href="ventas.html">Ventas</a></li>
-                    <li class="nav-item" id="menu-inventario"><a class="nav-link px-3" href="inventario.html">Inventario</a></li>
-                    <li class="nav-item" id="menu-fabricacion"><a class="nav-link px-3" href="fabricacion.html">Fabricación</a></li>
-                    <li class="nav-item" id="menu-compras"><a class="nav-link px-3" href="compras.html">Compras</a></li>
-                    <li class="nav-item" id="menu-calidad"><a class="nav-link px-3" href="calidad.html">Calidad</a></li>
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0 gap-1 ms-lg-4">
+                    <li class="nav-item" id="menu-dashboard" style="display:none;"><a class="nav-link" href="dashboard.html"><i class="bi bi-speedometer2 me-1"></i>Dashboard</a></li>
+                    <li class="nav-item" id="menu-inventario"><a class="nav-link" href="inventario.html">1. Inventario &amp; BOM</a></li>
+                    <li class="nav-item" id="menu-compras"><a class="nav-link" href="compras.html">2. Compras &amp; Proveedores</a></li>
+                    <li class="nav-item" id="menu-fabricacion"><a class="nav-link active" href="fabricacion.html">3. Fabricación &amp; IoT</a></li>
+                    <li class="nav-item" id="menu-sensores"><a class="nav-link" href="sensores.html"><i class="bi bi-activity me-1"></i>Sensores &amp; SPC</a></li>
+                    <li class="nav-item" id="menu-calidad"><a class="nav-link" href="calidad.html">4. Calidad</a></li>
+                    <li class="nav-item" id="menu-ventas"><a class="nav-link" href="ventas.html">Ventas &amp; CRM</a></li>
                 </ul>
-                <div class="d-flex align-items-center mt-2 mt-lg-0 gap-3">
-                    <span class="navbar-text text-white mb-0 d-flex align-items-center"><i class="bi bi-person-circle me-2"></i> <span class="user-name">Cargando...</span></span>
+                <div class="d-flex align-items-center gap-3">
+                    <span class="navbar-text text-white mb-0 d-flex align-items-center small">
+                        <i class="bi bi-person-circle me-2"></i> <span class="user-name">Cargando...</span>
+                    </span>
                     <a href="#" onclick="logout(); return false;" class="btn btn-outline-light btn-sm rounded-pill px-3">Salir</a>
                 </div>
             </div>
         </div>
     </nav>
 
-    <div class="container mt-4 mt-md-5">
-        <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center mb-3 gap-2">
-            <h3 class="text-secondary mb-0" id="tituloFabricacion">Órdenes de Fabricación (MRP)</h3>
-            <button class="btn btn-fresa" id="btnNuevaOF" onclick="abrirModalOF()">
-                <i class="bi bi-gear-fill me-2"></i> Nueva Orden Manual
-            </button>
+    <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="menuLateral" style="background-color: var(--mermelada-oscuro) !important; width: 280px;">
+        <div class="offcanvas-header border-bottom border-secondary">
+            <h5 class="offcanvas-title text-white fw-bold">Menú de Planta</h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
         </div>
-        
-        <div class="card shadow-sm border-0">
-            <div class="card-body">
+        <div class="offcanvas-body d-flex flex-column">
+            <ul class="navbar-nav me-auto mb-2 gap-2 w-100">
+                <li class="nav-item" id="menu-dashboard-mobile" style="display:none;"><a class="nav-link px-3 text-white" href="dashboard.html"><i class="bi bi-speedometer2 me-2"></i> Dashboard</a></li>
+                <li class="nav-item" id="menu-inventario-mobile"><a class="nav-link px-3 text-white" href="inventario.html"><i class="bi bi-boxes me-2"></i> 1. Inventario &amp; BOM</a></li>
+                <li class="nav-item" id="menu-compras-mobile"><a class="nav-link px-3 text-white" href="compras.html"><i class="bi bi-truck me-2"></i> 2. Compras &amp; Proveedores</a></li>
+                <li class="nav-item" id="menu-fabricacion-mobile"><a class="nav-link px-3 text-white active" href="fabricacion.html"><i class="bi bi-fire me-2"></i> 3. Fabricación &amp; IoT</a></li>
+                <li class="nav-item" id="menu-sensores-mobile"><a class="nav-link px-3 text-white" href="sensores.html"><i class="bi bi-activity me-2"></i> Sensores &amp; SPC</a></li>
+                <li class="nav-item" id="menu-calidad-mobile"><a class="nav-link px-3 text-white" href="calidad.html"><i class="bi bi-shield-check me-2"></i> 4. Calidad</a></li>
+                <li class="nav-item" id="menu-ventas-mobile"><a class="nav-link px-3 text-white" href="ventas.html"><i class="bi bi-cart me-2"></i> Ventas</a></li>
+            </ul>
+            <div class="mt-auto pt-3 border-top border-secondary d-flex align-items-center justify-content-between w-100">
+                <span class="text-white small"><i class="bi bi-person-fill me-1"></i> <span class="user-name">Cargando...</span></span>
+                <a href="#" onclick="logout(); return false;" class="btn btn-outline-light btn-sm rounded-pill px-3">Salir</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid px-3 px-md-4 mt-4 mb-5" style="max-width: 1400px;">
+
+        <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center mb-4 gap-2">
+            <div>
+                <h1 class="h4 fw-bold mb-1" id="tituloFabricacion">Órdenes de Fabricación y Telemetría de Cocción</h1>
+                <p class="small text-muted mb-0">Control de marmitas, curva térmica de concentración a 66° Brix y explosión BOM multinivel</p>
+            </div>
+            <div class="d-flex flex-wrap gap-2">
+                <button class="btn btn-outline-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseBOM">
+                    <i class="bi bi-diagram-3 me-1"></i> Ver BOM Multinivel
+                </button>
+                <button class="btn btn-fresa" id="btnNuevaOF" onclick="abrirModalOF()">
+                    <i class="bi bi-plus-circle me-1"></i> Nueva Orden Manual
+                </button>
+            </div>
+        </div>
+
+        <div class="row g-3 g-xl-4 mb-4 kpi-row">
+            <div class="col-12 col-sm-6 col-lg-3">
+                <div class="kpi-card-modern">
+                    <div class="kpi-header">
+                        <span class="kpi-label">OF en Planta (MRP)</span>
+                        <span class="kpi-icon-box kpi-icon-verde"><i class="bi bi-gear-wide-connected"></i></span>
+                    </div>
+                    <div class="kpi-body">
+                        <div class="kpi-value" style="color: var(--hoja-verde);" id="kpiFabActivas">0</div>
+                    </div>
+                    <div class="kpi-meta">
+                        <span id="kpiFabActivasDetalle">Órdenes activas en cocción</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-sm-6 col-lg-3">
+                <div class="kpi-card-modern">
+                    <div class="kpi-header">
+                        <span class="kpi-label">En Cocción Activa</span>
+                        <span class="kpi-icon-box kpi-icon-fresa"><i class="bi bi-fire"></i></span>
+                    </div>
+                    <div class="kpi-body">
+                        <div class="kpi-value" style="color: var(--mermelada-rojo);" id="kpiFabEnCoccion">0</div>
+                    </div>
+                    <div class="kpi-meta">
+                        <span>Marmita M-01 a 92°C</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-sm-6 col-lg-3">
+                <div class="kpi-card-modern">
+                    <div class="kpi-header">
+                        <span class="kpi-label">Pendientes por Iniciar</span>
+                        <span class="kpi-icon-box kpi-icon-ambar"><i class="bi bi-hourglass-split"></i></span>
+                    </div>
+                    <div class="kpi-body">
+                        <div class="kpi-value" style="color: var(--ambar-alerta);" id="kpiFabPendientes">0</div>
+                    </div>
+                    <div class="kpi-meta">
+                        <span>En cola de programación</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-sm-6 col-lg-3">
+                <div class="kpi-card-modern">
+                    <div class="kpi-header">
+                        <span class="kpi-label">Total Órdenes</span>
+                        <span class="kpi-icon-box kpi-icon-fresa"><i class="bi bi-clipboard2-check"></i></span>
+                    </div>
+                    <div class="kpi-body">
+                        <div class="kpi-value" id="kpiFabTotal">0</div>
+                    </div>
+                    <div class="kpi-meta">
+                        <span id="contadorOF">0 órdenes registradas</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="collapse mb-4" id="collapseBOM">
+            <div class="card">
+                <div class="card-body p-3 p-md-4">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <div>
+                            <h2 class="h6 fw-bold mb-0" style="color: var(--mermelada-rojo);">Estructura BOM Multinivel (Estándar por Frasco 300g)</h2>
+                            <span class="small text-muted">Nivel 1: Semielaborado WIP + Empaque · Nivel 2: Materia Prima de Cocción</span>
+                        </div>
+                        <span class="badge bg-secondary-subtle text-dark">Rendimiento: 66° Brix</span>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table table-sm align-middle">
+                            <thead>
+                                <tr>
+                                    <th>Nivel</th>
+                                    <th>Componente Padre</th>
+                                    <th>Código</th>
+                                    <th>Insumo / Semielaborado</th>
+                                    <th>Tipo</th>
+                                    <th class="text-end">Cant. x Frasco</th>
+                                    <th class="text-end">Merma Est.</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tbodyBOM">
+                                <tr><td colspan="7" class="text-center text-muted py-3">Cargando estructura BOM...</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row g-4 mb-4">
+            <div class="col-12 col-xl-5">
+                <div class="card h-100">
+                    <div class="card-body p-3 p-md-4">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <div>
+                                <h2 class="h6 fw-bold mb-0"><i class="bi bi-cpu me-1" style="color: var(--mermelada-rojo);"></i> Simulación IoT · Control de Cocción</h2>
+                                <span class="small text-muted">Marmita de Vapor M-01 · Sensor PT100 y Refractómetro Digital</span>
+                            </div>
+                            <span class="iot-sensor-badge"><span class="iot-pulse"></span> Sensor Online</span>
+                        </div>
+
+                        <form id="formIoT" class="iot-panel">
+                            <div class="mb-3">
+                                <label class="form-label small fw-bold">Orden de Fabricación Activa</label>
+                                <select class="form-select" id="selectOFIoT" required>
+                                    <option value="">Seleccione una OF...</option>
+                                </select>
+                            </div>
+
+                            <div class="row g-2 mb-3">
+                                <div class="col-4">
+                                    <label class="form-label small fw-bold">Temp. Horno (°C)</label>
+                                    <input type="number" class="form-control tabular-nums" id="iotTemp" value="94.5" min="60" max="125" step="0.5" required>
+                                    <div class="form-text" style="font-size: 0.7rem;">Óptimo: 88°–98°C</div>
+                                </div>
+                                <div class="col-4">
+                                    <label class="form-label small fw-bold">Tiempo (min)</label>
+                                    <input type="number" class="form-control tabular-nums" id="iotTiempo" value="48" min="15" max="120" step="1" required>
+                                    <div class="form-text" style="font-size: 0.7rem;">Óptimo: 45–55 min</div>
+                                </div>
+                                <div class="col-4">
+                                    <label class="form-label small fw-bold">Grados °Brix</label>
+                                    <input type="number" class="form-control tabular-nums" id="iotBrix" value="66.2" min="50" max="75" step="0.1" required>
+                                    <div class="form-text" style="font-size: 0.7rem;">Norma: 65°–68°</div>
+                                </div>
+                            </div>
+
+                            <div class="d-flex justify-content-between align-items-center p-2 rounded-2 mb-3 bg-white border">
+                                <span class="small text-muted"><i class="bi bi-cloud-check me-1"></i> Huella CO₂e estimada del lote:</span>
+                                <strong class="tabular-nums" style="color: var(--hoja-verde);" id="iotCarbonoPreview">3.70 kg CO₂e</strong>
+                            </div>
+
+                            <div class="d-flex flex-wrap gap-2">
+                                <button type="button" class="btn btn-outline-secondary flex-grow-1" onclick="simularCurvaCoccion()">
+                                    <i class="bi bi-activity me-1"></i> Simular Curva Térmica
+                                </button>
+                                <button type="submit" class="btn btn-fresa flex-grow-1" id="btnGuardarIoT">
+                                    <i class="bi bi-cloud-arrow-up me-1"></i> Registrar en OF
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-xl-7">
+                <div class="card h-100">
+                    <div class="card-body p-3 p-md-4 d-flex flex-column justify-content-between">
+                        <div class="d-flex flex-column flex-sm-row justify-content-between align-items-sm-center mb-3 gap-2">
+                            <div>
+                                <h2 class="h6 fw-bold mb-0">Curva de Temperatura de Cocción en Tiempo Real (°C vs Minutos)</h2>
+                                <span class="small text-muted" id="subtituloCurvaIoT">Fases: Precalentamiento → Adición Pectina (85°C) → Concentración (94.5°C) → Envasado (82°C)</span>
+                            </div>
+                            <span class="badge bg-danger-subtle text-danger tabular-nums" id="badgePicoTemp">Pico: 94.5 °C</span>
+                        </div>
+                        <div style="position: relative; height: 255px; width: 100%;">
+                            <canvas id="graficoCurvaIoT"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-body p-3 p-md-4">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <h2 class="h6 fw-bold mb-0">Listado de Órdenes de Fabricación y Lotes en Planta</h2>
+                    <span class="small text-muted" id="contadorOF">0 órdenes</span>
+                </div>
                 <div class="table-responsive">
                     <table class="table table-hover align-middle">
                         <thead>
-                            <tr><th>Nº OF</th><th>Producto</th><th>Cantidad</th><th>Lote</th><th>Estado</th><th>Acciones</th></tr>
+                            <tr>
+                                <th>Nº OF</th>
+                                <th>Origen</th>
+                                <th>Producto Terminado</th>
+                                <th class="text-end">Cantidad</th>
+                                <th>Lote Asignado</th>
+                                <th class="text-end">Telemetría IoT</th>
+                                <th class="text-end">CO₂e</th>
+                                <th>Estado</th>
+                                <th class="text-end">Acciones</th>
+                            </tr>
                         </thead>
                         <tbody id="tbodyFabricacion">
-                            <tr><td colspan="6" class="text-center text-muted py-4">Cargando datos...</td></tr>
+                            <tr><td colspan="9" class="text-center text-muted py-4">Cargando datos...</td></tr>
                         </tbody>
                     </table>
                 </div>
@@ -54,9 +273,9 @@
     </div>
 
     <div class="mi-modal-overlay" id="modalNuevaOF">
-        <div class="mi-modal-caja" style="max-width: 600px;">
+        <div class="mi-modal-caja" style="max-width: 560px;">
             <div class="position-relative p-3" style="background-color: var(--mermelada-oscuro);">
-                <h5 class="m-0 fw-bold text-center text-white w-100" style="color: white !important;"><i class="bi bi-gear me-2"></i> Nueva Orden de Fabricación</h5>
+                <h5 class="m-0 fw-bold text-center text-white w-100"><i class="bi bi-gear me-2"></i> Nueva Orden de Fabricación</h5>
                 <button type="button" class="btn-close btn-close-white position-absolute top-50 end-0 translate-middle-y me-3" onclick="cerrarModalOF()"></button>
             </div>
             <form id="formOF">
@@ -65,121 +284,360 @@
                     <div class="mb-3">
                         <label class="form-label fw-bold small text-muted">Producto a Fabricar</label>
                         <select class="form-select" name="producto" id="selectProductoFabricar" required>
-                            <option value="Mermelada de Fresa">Mermelada de Fresa</option>
+                            <option value="Mermelada de Fresa Artesanal (Frasco 300g)" data-codigo="PT-MER-300">Mermelada de Fresa Artesanal (Frasco 300g) · PT-MER-300</option>
+                            <option value="Mermelada de Piña Artesanal (Frasco 300g)" data-codigo="PT-PIN-300">Mermelada de Piña Artesanal (Frasco 300g) · PT-PIN-300</option>
+                            <option value="Mermelada de Fresa y Piña Artesanal (Frasco 300g)" data-codigo="PT-MIX-300">Mermelada de Fresa y Piña Artesanal (Frasco 300g) · PT-MIX-300</option>
                         </select>
                     </div>
-                    <div class="row mb-3">
-                        <div class="col-md-6">
-                            <label class="form-label fw-bold small text-muted">Cantidad</label>
-                            <input type="number" class="form-control" name="cantidad" id="cantidadOF" min="1" placeholder="Ej: 20" required>
+                    <div class="row g-3 mb-3">
+                        <div class="col-sm-6">
+                            <label class="form-label fw-bold small text-muted">Cantidad (Frascos)</label>
+                            <input type="number" class="form-control tabular-nums" name="cantidad" id="cantidadOF" min="1" value="25" required>
                         </div>
-                        <div class="col-md-6">
-                            <label class="form-label fw-bold small text-muted">Nº Orden (Auto)</label>
-                            <input type="text" class="form-control" name="numeroOF" id="numeroOF" readonly>
+                        <div class="col-sm-6">
+                            <label class="form-label fw-bold small text-muted">Nº Orden (Automático)</label>
+                            <input type="text" class="form-control codigo-mono bg-light" name="numeroOF" id="numeroOF" readonly>
                         </div>
+                    </div>
+                    <div class="p-3 rounded-3 small" style="background-color: var(--crema-superficie); border: 1px solid var(--borde-suave);">
+                        <i class="bi bi-info-circle-fill me-1" style="color: var(--mermelada-rojo);"></i>
+                        Al crear la orden, el motor MRP verificará el stock de Fresa, Azúcar, Pectina y Envases en el BOM. Si falta algún insumo, sugerirá automáticamente la Orden de Compra.
                     </div>
                 </div>
                 <div class="p-3 bg-light d-flex justify-content-end gap-2 border-top">
                     <button type="button" class="btn btn-secondary" onclick="cerrarModalOF()">Cancelar</button>
-                    <button type="submit" class="btn btn-fresa" id="btnGuardarOF">Crear Orden</button>
+                    <button type="submit" class="btn btn-fresa" id="btnGuardarOF">Crear Orden MRP</button>
                 </div>
             </form>
         </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="../js/api.js"></script>
     <script src="../js/auth.js"></script>
     <script>
+        (function guardFabricacion() {
+            const usuarioGuard = aplicarSeguridadVisualRBAC('fabricacion');
+            if (!usuarioGuard) {
+                throw new Error('Acceso bloqueado por RBAC');
+            }
+        })();
+
+        let chartCurvaIoT = null;
+        let listaOrdenesGlobal = [];
+        let ultimaCurvaSimulada = [];
+
         document.addEventListener("DOMContentLoaded", async function() {
-            const token = localStorage.getItem('token');
-            if (!token) { window.location.href = 'login.html'; return; }
-            
-            const user = JSON.parse(localStorage.getItem('user'));
-            const rol = user.rol.toLowerCase();
+            const user = aplicarSeguridadVisualRBAC('fabricacion');
+            if (!user) return;
+
+            const rol = obtenerClaveRol(user);
             renderizarUsuario();
 
-            if (rol !== 'administrador' && rol !== 'produccion') {
-                alert('No tienes permiso'); window.location.href = 'dashboard.html'; return;
-            }
-            document.getElementById('logoNavbar').href = rol === 'administrador' ? 'dashboard.html' : 'fabricacion.html';
-
-            const modulosEscritorio = ['menu-ventas', 'menu-inventario', 'menu-fabricacion', 'menu-compras', 'menu-calidad'];
-            const modulosMovil = ['menu-ventas-mobile', 'menu-inventario-mobile', 'menu-fabricacion-mobile', 'menu-compras-mobile', 'menu-calidad-mobile'];
-            
-            modulosEscritorio.forEach(id => { const el = document.getElementById(id); if (el) el.style.display = 'none'; });
-            modulosMovil.forEach(id => { const el = document.getElementById(id); if (el) el.style.display = 'none'; });
-
-            if (rol === 'administrador') {
-                modulosEscritorio.forEach(id => { const el = document.getElementById(id); if (el) el.style.display = 'block'; });
-                modulosMovil.forEach(id => { const el = document.getElementById(id); if (el) el.style.display = 'block'; });
+            if (rol === 'admin' || rol === 'administrador') {
                 document.getElementById('btnNuevaOF').style.display = 'none';
-                document.getElementById('tituloFabricacion').innerText = "Reporte de Fabricación (Solo Lectura)";
-            } else if (rol === 'produccion') {
-                ['menu-inventario', 'menu-fabricacion', 'menu-compras'].forEach(id => { const el = document.getElementById(id); if (el) el.style.display = 'block'; });
-                ['menu-inventario-mobile', 'menu-fabricacion-mobile', 'menu-compras-mobile'].forEach(id => { const el = document.getElementById(id); if (el) el.style.display = 'block'; });
+                document.getElementById('btnGuardarIoT').style.display = 'none';
+                document.getElementById('tituloFabricacion').innerText = "Auditoría de Fabricación y Telemetría IoT (Modo Lectura)";
             }
 
             await cargarFabricacion();
+            await cargarBOM();
+            simularCurvaCoccion();
         });
+
+        async function cargarBOM() {
+            const tbody = document.getElementById('tbodyBOM');
+            try {
+                const recetas = await api.get('/recetas');
+                if (!recetas || recetas.length === 0) {
+                    tbody.innerHTML = '<tr><td colspan="7" class="text-center text-muted">Sin estructura BOM registrada</td></tr>';
+                    return;
+                }
+                tbody.innerHTML = recetas.map(r => `
+                    <tr>
+                        <td><span class="badge ${r.nivelBom === 1 ? 'bg-danger-subtle text-danger' : 'bg-success-subtle text-success'}">Nivel ${r.nivelBom || 1}</span></td>
+                        <td class="small">${r.componentePadre || r.productoFinal}</td>
+                        <td><span class="codigo-mono">${r.codigoIngrediente || 'MP-STD'}</span></td>
+                        <td class="fw-semibold">${r.ingrediente}</td>
+                        <td><span class="badge bg-secondary-subtle text-dark">${r.tipoComponente || 'MP'}</span></td>
+                        <td class="text-end tabular-nums">${parseFloat(r.cantidadRequerida).toFixed(3)} ${r.unidadMedida || 'kg'}</td>
+                        <td class="text-end tabular-nums">${parseFloat(r.mermaEstimadaPct || 1.5).toFixed(1)}%</td>
+                    </tr>
+                `).join('');
+            } catch (e) {
+                tbody.innerHTML = '<tr><td colspan="7" class="text-center text-muted">No se pudo cargar BOM</td></tr>';
+            }
+        }
+
+        function simularCurvaCoccion() {
+            const tempObjetivo = parseFloat(document.getElementById('iotTemp').value) || 94.5;
+            const tiempoTotal = parseInt(document.getElementById('iotTiempo').value, 10) || 48;
+            const brix = parseFloat(document.getElementById('iotBrix').value) || 66.2;
+
+            const selectOF = document.getElementById('selectOFIoT');
+            const ofSeleccionada = listaOrdenesGlobal.find(o => o.numeroOF === selectOF.value);
+            const cantFrascos = ofSeleccionada ? parseInt(ofSeleccionada.cantidad, 10) : 25;
+
+            const huella = +((cantFrascos * (((tempObjetivo / 90) * (tiempoTotal / 45) * 0.145) + 0.042))).toFixed(2);
+            document.getElementById('iotCarbonoPreview').innerText = `${huella} kg CO₂e (${cantFrascos} uds)`;
+            document.getElementById('badgePicoTemp').innerText = `Pico: ${tempObjetivo.toFixed(1)} °C · ${brix.toFixed(1)} °Bx`;
+
+            const pasos = [0, Math.round(tiempoTotal * 0.15), Math.round(tiempoTotal * 0.35), Math.round(tiempoTotal * 0.6), Math.round(tiempoTotal * 0.85), tiempoTotal];
+            const temperaturas = [
+                26.0,
+                +(tempObjetivo * 0.68).toFixed(1),
+                +(tempObjetivo * 0.90).toFixed(1),
+                tempObjetivo,
+                +(tempObjetivo - 1.2).toFixed(1),
+                82.0
+            ];
+
+            ultimaCurvaSimulada = pasos.map((min, idx) => ({ minuto: min, temp: temperaturas[idx] }));
+
+            if (chartCurvaIoT) chartCurvaIoT.destroy();
+            const ctx = document.getElementById('graficoCurvaIoT').getContext('2d');
+            chartCurvaIoT = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: pasos.map(p => `${p} min`),
+                    datasets: [
+                        {
+                            label: 'Temperatura Marmita (°C)',
+                            data: temperaturas,
+                            borderColor: '#9b1919',
+                            backgroundColor: 'rgba(155, 25, 25, 0.14)',
+                            borderWidth: 3,
+                            tension: 0.36,
+                            fill: true,
+                            pointBackgroundColor: '#ffffff',
+                            pointBorderColor: '#9b1919',
+                            pointRadius: 5
+                        },
+                        {
+                            label: 'Umbral Pasteurización (85 °C)',
+                            data: pasos.map(() => 85),
+                            borderColor: '#2b8a3e',
+                            borderWidth: 1.5,
+                            borderDash: [5, 5],
+                            pointRadius: 0,
+                            fill: false
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: { legend: { position: 'bottom' } },
+                    scales: {
+                        y: { min: 20, max: 115, title: { display: true, text: '°C' }, grid: { color: '#efe8dd' } },
+                        x: { grid: { display: false } }
+                    }
+                }
+            });
+        }
+
+        document.getElementById('iotTemp').addEventListener('input', simularCurvaCoccion);
+        document.getElementById('iotTiempo').addEventListener('input', simularCurvaCoccion);
+        document.getElementById('iotBrix').addEventListener('input', simularCurvaCoccion);
+        document.getElementById('selectOFIoT').addEventListener('change', function() {
+            const of = listaOrdenesGlobal.find(o => o.numeroOF === this.value);
+            if (of) {
+                if (of.temperaturaPromedio > 0) document.getElementById('iotTemp').value = of.temperaturaPromedio;
+                if (of.tiempoCoccionMin > 0) document.getElementById('iotTiempo').value = of.tiempoCoccionMin;
+                if (of.brixAlcanzado > 0) document.getElementById('iotBrix').value = of.brixAlcanzado;
+                simularCurvaCoccion();
+            }
+        });
+
+        document.getElementById('formIoT').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const selectIoT = document.getElementById('selectOFIoT');
+            const numeroOF = selectIoT.value;
+            if (!numeroOF) {
+                alert('Seleccione primero una Orden de Fabricación.');
+                return;
+            }
+            const btn = document.getElementById('btnGuardarIoT');
+            btn.disabled = true;
+            btn.innerHTML = '<i class="bi bi-hourglass-split me-1"></i> Procesando cocción e inventario...';
+
+            try {
+                const ofActual = listaOrdenesGlobal.find(o => o.numeroOF === numeroOF);
+                const esRetrabajo = ofActual && (ofActual.estado === 'En Retrabajo' || String(ofActual.estado).includes('Retrabajo'));
+                const nuevoEstado = esRetrabajo ? 'Pendiente de Calidad (Retrabajo)' : 'Listo para Calidad';
+
+                const res = await api.put(`/fabricacion/${numeroOF}/iot`, {
+                    temperaturaPromedio: parseFloat(document.getElementById('iotTemp').value),
+                    tiempoCoccionMin: parseInt(document.getElementById('iotTiempo').value, 10),
+                    brixAlcanzado: parseFloat(document.getElementById('iotBrix').value),
+                    curvaTemperaturaJson: JSON.stringify(ultimaCurvaSimulada),
+                    estado: nuevoEstado
+                });
+
+                await cargarFabricacion();
+                selectIoT.value = "";
+                btn.disabled = false;
+                btn.innerHTML = '<i class="bi bi-cloud-arrow-up me-1"></i> Registrar en OF';
+
+                if (res && res.msg) {
+                    alert(res.msg);
+                }
+            } catch (error) {
+                alert('Error al guardar telemetría IoT: ' + error.message);
+            } finally {
+                btn.disabled = false;
+                btn.innerHTML = '<i class="bi bi-cloud-arrow-up me-1"></i> Registrar en OF';
+                selectIoT.value = "";
+            }
+        });
+
+        function esOFActiva(o) {
+            if (!o || !o.estado) return false;
+            const est = String(o.estado).trim().toLowerCase();
+            if (est.startsWith('terminada') || est.includes('scrap') || est.includes('rechazada') || est.includes('cancelada')) {
+                return false;
+            }
+            if (est.includes('calidad')) {
+                return false;
+            }
+            return est.includes('proceso') || est.includes('pendiente') || est.includes('retrabajo') || est.includes('cola') || est.includes('cocina');
+        }
 
         async function cargarFabricacion() {
             const tbody = document.getElementById('tbodyFabricacion');
+            const selectIoT = document.getElementById('selectOFIoT');
             try {
                 const ordenes = await api.get('/fabricacion');
+                listaOrdenesGlobal = ordenes;
+
+                const ordenesActivas = ordenes.filter(esOFActiva);
+                const enCoccion = ordenes.filter(o => o.estado === 'En Proceso' || o.estado === 'En Retrabajo').length;
+                const pendientes = ordenes.filter(o => o.estado.includes('Pendiente') || o.estado.includes('Cola')).length;
+
+                const elActivas = document.getElementById('kpiFabActivas');
+                if (elActivas) elActivas.innerText = ordenesActivas.length;
+                const elActivasDet = document.getElementById('kpiFabActivasDetalle');
+                if (elActivasDet) elActivasDet.innerText = `${ordenesActivas.length} órdenes en planta`;
+                const elCoccion = document.getElementById('kpiFabEnCoccion');
+                if (elCoccion) elCoccion.innerText = enCoccion;
+                const elPend = document.getElementById('kpiFabPendientes');
+                if (elPend) elPend.innerText = pendientes;
+                const elTotal = document.getElementById('kpiFabTotal');
+                if (elTotal) elTotal.innerText = ordenes.length;
+                const elContador = document.getElementById('contadorOF');
+                if (elContador) elContador.innerText = `${ordenes.length} órdenes registradas`;
+
+                selectIoT.innerHTML = '<option value="">Seleccione una OF...</option>';
+                ordenesActivas.forEach(o => {
+                    selectIoT.appendChild(new Option(`${o.numeroOF} · ${o.producto} (${o.cantidad} uds - ${o.estado})`, o.numeroOF));
+                });
+
                 if (ordenes.length === 0) {
-                    tbody.innerHTML = `<tr><td colspan="6" class="text-center text-muted py-4">No hay órdenes registradas</td></tr>`;
+                    tbody.innerHTML = `<tr><td colspan="9" class="text-center text-muted py-4">No hay órdenes de fabricación registradas</td></tr>`;
                     return;
                 }
-                tbody.innerHTML = ordenes.map(o => {
-                    let badge = 'bg-warning text-dark';
-                    if (o.estado === 'En Proceso') badge = 'bg-primary';
-                    if (o.estado === 'Terminada') badge = 'bg-success';
-                    if (o.estado === 'Pendiente por Iniciar') badge = 'bg-secondary';
 
-                    let btnAccion = '';
-                    // Si el admin está mirando, no mostramos botones
-                    const user = JSON.parse(localStorage.getItem('user'));
-                    if (user.rol.toLowerCase() === 'produccion') {
-                        if (o.estado === 'Pendiente por Iniciar') {
-                            btnAccion = `<button class="btn btn-sm btn-outline-primary" onclick="cambiarEstado('${o.numeroOF}', 'En Proceso')"><i class="bi bi-play-fill"></i> Iniciar</button>`;
+                const user = JSON.parse(localStorage.getItem('user') || '{}');
+                const rol = obtenerClaveRol(user);
+                const esSoloLectura = rol === 'admin' || rol === 'administrador';
+
+                // Ordenar poniendo primero las tareas pendientes de Retrabajo para máxima visibilidad en Planta
+                const ordenesOrdenadas = [...ordenes].sort((a, b) => {
+                    const aRet = a.estado === 'En Retrabajo' ? 0 : 1;
+                    const bRet = b.estado === 'En Retrabajo' ? 0 : 1;
+                    return aRet - bRet;
+                });
+
+                tbody.innerHTML = ordenesOrdenadas.map(o => {
+                    let badge = 'bg-secondary-subtle text-dark';
+                    if (o.estado === 'En Proceso') badge = 'bg-primary-subtle text-primary';
+                    if (o.estado.startsWith('Terminada')) badge = 'bg-success-subtle text-success';
+                    if (o.estado === 'Pendiente de Calidad' || o.estado === 'Listo para Calidad' || o.estado === 'Pendiente de Calidad (Retrabajo)') badge = 'bg-info-subtle text-dark border border-info';
+                    if (o.estado.includes('Cuarentena') || o.estado.includes('Pendiente MP')) badge = 'bg-warning-subtle text-dark';
+                    if (o.estado.includes('Retrabajo') && o.estado !== 'Pendiente de Calidad (Retrabajo)') badge = 'bg-danger-subtle text-danger';
+                    if (o.estado.includes('Scrap')) badge = 'bg-danger-subtle text-danger';
+
+                    const esAuto = o.numeroOF.includes('AUTO');
+                    const temp = o.temperaturaPromedio ? `${parseFloat(o.temperaturaPromedio).toFixed(1)}°C / ${o.tiempoCoccionMin || 48}m` : '92.0°C / 48m';
+                    const co2 = o.huellaCarbonoKg ? parseFloat(o.huellaCarbonoKg).toFixed(2) : (o.cantidad * 0.185).toFixed(2);
+
+                    let btnAccion = '<span class="text-muted small">—</span>';
+                    if (!esSoloLectura) {
+                        if (o.estado === 'En Retrabajo') {
+                            btnAccion = `
+                                <button class="btn btn-sm btn-warning fw-bold text-dark shadow-sm" onclick="finalizarRetrabajo('${o.numeroOF}')">
+                                    <i class="bi bi-wrench-adjustable-circle me-1"></i> Finalizar Retrabajo
+                                </button>
+                            `;
+                        } else if (o.estado === 'Pendiente por Iniciar') {
+                            btnAccion = `<button class="btn btn-sm btn-outline-primary" onclick="cambiarEstado('${o.numeroOF}', 'En Proceso')"><i class="bi bi-play-fill"></i> Iniciar Cocción</button>`;
+                        } else if (o.estado === 'Pendiente MP (OC Sugerida)') {
+                            btnAccion = `<a href="compras.html" class="btn btn-sm btn-outline-warning text-dark"><i class="bi bi-truck me-1"></i> Recibir MP en Compras</a>`;
                         } else if (o.estado === 'En Proceso') {
-                            btnAccion = `<button class="btn btn-sm btn-outline-success" onclick="cambiarEstado('${o.numeroOF}', 'Terminada')"><i class="bi bi-check-lg"></i> Terminar</button>`;
+                            btnAccion = `<button class="btn btn-sm btn-outline-success" onclick="cambiarEstado('${o.numeroOF}', 'Pendiente de Calidad')"><i class="bi bi-send-check"></i> Enviar a Calidad</button>`;
+                        } else if (o.estado === 'Pendiente de Calidad' || o.estado === 'Listo para Calidad' || o.estado === 'Pendiente de Calidad (Retrabajo)') {
+                            btnAccion = `<span class="badge bg-info-subtle text-dark border"><i class="bi bi-shield-check me-1"></i>En Cola de Calidad</span>`;
                         }
                     }
 
+                    const rowHighlight = o.estado === 'En Retrabajo' ? 'style="background-color: #fff8f6;"' : '';
+
                     return `
-                        <tr>
-                            <td><strong>${o.numeroOF}</strong></td>
-                            <td>${o.producto}</td>
-                            <td>${o.cantidad} frascos</td>
-                            <td><span class="badge bg-secondary">${o.loteAsignado || 'Sin asignar'}</span></td>
+                        <tr ${rowHighlight}>
+                            <td>
+                                <strong class="codigo-mono">${o.numeroOF}</strong>
+                                ${o.estado === 'En Retrabajo' ? '<div><span class="badge bg-danger text-white" style="font-size:0.65rem;">TAREA PENDIENTE RETRABAJO</span></div>' : ''}
+                            </td>
+                            <td>
+                                <span class="badge ${esAuto ? 'bg-danger-subtle text-danger' : 'bg-light text-dark border'}">
+                                    ${esAuto ? 'MRP Venta ' + (o.pedidoOrigen || '') : 'Manual Planta'}
+                                </span>
+                            </td>
+                            <td class="fw-semibold">${o.producto}</td>
+                            <td class="text-end tabular-nums fw-bold">${o.cantidad} uds</td>
+                            <td><span class="codigo-mono badge bg-light text-dark border">${o.loteAsignado || 'LOTE-PT-2610'}</span></td>
+                            <td class="text-end small tabular-nums">${temp}</td>
+                            <td class="text-end small tabular-nums text-success fw-semibold">${co2} kg</td>
                             <td><span class="badge ${badge}">${o.estado}</span></td>
-                            <td>${btnAccion}</td>
+                            <td class="text-end">${btnAccion}</td>
                         </tr>
                     `;
                 }).join('');
             } catch (error) {
-                tbody.innerHTML = `<tr><td colspan="6" class="text-center text-danger py-4">Error: ${error.message}</td></tr>`;
+                tbody.innerHTML = `<tr><td colspan="9" class="text-center text-danger py-4">Error: ${error.message}</td></tr>`;
             }
         }
 
         async function cambiarEstado(numeroOF, nuevoEstado) {
-            if(!confirm(`¿Estás seguro de pasar la orden ${numeroOF} a "${nuevoEstado}"?`)) return;
-            
             try {
-                await api.put(`/fabricacion/${numeroOF}/estado`, { estado: nuevoEstado });
+                const res = await api.put(`/fabricacion/${numeroOF}/estado`, { estado: nuevoEstado });
                 await cargarFabricacion();
+                if (res && res.msg && nuevoEstado === 'Pendiente de Calidad') {
+                    alert(res.msg);
+                }
             } catch (error) {
                 alert("Error al cambiar estado: " + error.message);
             }
         }
 
-        function abrirModalOF() { 
+        async function finalizarRetrabajo(numeroOF) {
+            try {
+                const res = await api.put(`/fabricacion/${numeroOF}/estado`, { estado: 'Pendiente de Calidad (Retrabajo)' });
+                await cargarFabricacion();
+                const selectIoT = document.getElementById('selectOFIoT');
+                if (selectIoT) selectIoT.value = "";
+                alert(res.msg || `Retrabajo finalizado para ${numeroOF}. El lote ahora está en estado "Pendiente de Calidad (Retrabajo)" y disponible para su 2ª inspección en el módulo de Calidad.`);
+            } catch (error) {
+                alert("Error al finalizar retrabajo: " + error.message);
+            }
+        }
+
+        function abrirModalOF() {
             document.getElementById('formOF').reset();
             document.getElementById('errorOF').classList.add('d-none');
             document.getElementById('numeroOF').value = 'OF-MAN-' + Date.now().toString().slice(-6);
-            document.getElementById('modalNuevaOF').classList.add('activo'); 
+            document.getElementById('modalNuevaOF').classList.add('activo');
         }
         function cerrarModalOF() { document.getElementById('modalNuevaOF').classList.remove('activo'); }
         document.getElementById('modalNuevaOF').addEventListener('click', function(e) { if (e.target === this) cerrarModalOF(); });
@@ -188,23 +646,39 @@
             e.preventDefault();
             const btn = document.getElementById('btnGuardarOF');
             const errorDiv = document.getElementById('errorOF');
-            btn.disabled = true; btn.innerText = 'Creando...'; errorDiv.classList.add('d-none');
+            btn.disabled = true;
+            btn.innerText = 'Procesando MRP...';
+            errorDiv.classList.add('d-none');
+
+            const selectProd = document.getElementById('selectProductoFabricar');
+            const productoTexto = selectProd.value;
+            const productoCodigo = selectProd.options[selectProd.selectedIndex]?.getAttribute('data-codigo') || 'PT-MER-300';
 
             const datos = {
                 numeroOF: document.getElementById('numeroOF').value,
-                producto: document.getElementById('selectProductoFabricar').value,
-                cantidad: parseInt(document.getElementById('cantidadOF').value),
+                producto: productoTexto,
+                productoCodigo: productoCodigo,
+                cantidad: parseInt(document.getElementById('cantidadOF').value, 10),
+                temperaturaPromedio: parseFloat(document.getElementById('iotTemp').value) || 94.5,
+                tiempoCoccionMin: parseInt(document.getElementById('iotTiempo').value, 10) || 48,
                 estado: 'Pendiente por Iniciar'
             };
 
             try {
-                await api.post('/fabricacion', datos);
+                const res = await api.post('/fabricacion', datos);
                 cerrarModalOF();
                 await cargarFabricacion();
+                if (res.ordenesCompraSugeridas && res.ordenesCompraSugeridas.length > 0) {
+                    alert(`Orden ${datos.numeroOF} creada. El MRP detectó faltante de Materia Prima y generó automáticamente ${res.ordenesCompraSugeridas.length} Orden(es) de Compra en el módulo de Compras.`);
+                } else {
+                    alert(`Orden ${datos.numeroOF} creada. El sistema verificó el BOM y reservó automáticamente la Materia Prima requerida en el Inventario (descontada del stock disponible).`);
+                }
             } catch (error) {
-                errorDiv.innerText = error.message; errorDiv.classList.remove('d-none');
+                errorDiv.innerText = error.message;
+                errorDiv.classList.remove('d-none');
             } finally {
-                btn.disabled = false; btn.innerText = 'Crear Orden';
+                btn.disabled = false;
+                btn.innerText = 'Crear Orden MRP';
             }
         });
     </script>

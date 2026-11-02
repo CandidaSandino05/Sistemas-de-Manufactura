@@ -11,7 +11,12 @@ const requireModule = (modulo) => {
                 return res.status(404).json({ msg: 'Usuario no encontrado' });
             }
 
-            const modulos = user.role.modulosPermitidos
+            const rolNombre = (user.role ? user.role.nombre : '').toLowerCase();
+            if (rolNombre === 'administrador' || rolNombre === 'admin') {
+                return next();
+            }
+
+            const modulos = user.role && user.role.modulosPermitidos
                 ? user.role.modulosPermitidos.split(',').map(m => m.trim())
                 : [];
 
@@ -23,7 +28,6 @@ const requireModule = (modulo) => {
 
             next();
         } catch (error) {
-            console.error(error);
             res.status(500).json({ msg: 'Error al verificar permisos' });
         }
     };

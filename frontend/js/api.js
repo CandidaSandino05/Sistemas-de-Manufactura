@@ -12,6 +12,11 @@ function getUser() {
 function logout() {
     localStorage.removeItem('token');
     localStorage.removeItem('user');
+    localStorage.removeItem('rol');
+    localStorage.removeItem('frutitos_rol');
+    sessionStorage.removeItem('rol');
+    sessionStorage.removeItem('frutitos_rol');
+    sessionStorage.clear();
     window.location.href = 'login.html';
 }
 

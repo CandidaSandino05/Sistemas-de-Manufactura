@@ -3,47 +3,65 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calidad - Frutitos de Casa</title>
+    <title>Control de Calidad y Disposición de Lotes - Frutitos de Casa ERP</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <link rel="stylesheet" href="../css/styles.css">
+    <style>
+        .nav-pills .nav-link.active {
+            background-color: var(--mermelada-rojo) !important;
+            color: #fff !important;
+        }
+        .nav-pills .nav-link {
+            color: var(--texto-marron);
+            border: 1px solid #dee2e6;
+            background-color: #fff;
+        }
+        .hover-bg-light:hover {
+            background-color: #f8fafc;
+        }
+    </style>
 </head>
 <body>
-    <!-- NAVBAR -->
-    <nav class="navbar navbar-expand-lg navbar-frutitos navbar-dark">
-        <div class="container-fluid px-4">
-           <a class="navbar-brand fw-bold" href="#" id="logoNavbar">Frutitos de Casa ERP</a>
+    <nav class="navbar navbar-expand-lg navbar-frutitos navbar-dark sticky-top">
+        <div class="container-fluid px-3 px-md-4">
+            <a class="navbar-brand fw-bold d-flex align-items-center gap-2" href="#" id="logoNavbar">
+                <i class="bi bi-shield-check"></i>
+                <span>Frutitos de Casa ERP</span>
+            </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#menuLateral"><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse d-none d-lg-block" id="menuDesktop">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0 gap-2 ms-lg-4">
-                    <li class="nav-item" id="menu-ventas"><a class="nav-link px-3" href="ventas.html">Ventas</a></li>
-                    <li class="nav-item" id="menu-inventario"><a class="nav-link px-3" href="inventario.html">Inventario</a></li>
-                    <li class="nav-item" id="menu-fabricacion"><a class="nav-link px-3" href="fabricacion.html">Fabricación</a></li>
-                    <li class="nav-item" id="menu-compras"><a class="nav-link px-3" href="compras.html">Compras</a></li>
-                    <li class="nav-item" id="menu-calidad"><a class="nav-link px-3" href="calidad.html">Calidad</a></li>
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0 gap-1 ms-lg-4">
+                    <li class="nav-item" id="menu-dashboard" style="display:none;"><a class="nav-link" href="dashboard.html"><i class="bi bi-speedometer2 me-1"></i>Dashboard</a></li>
+                    <li class="nav-item" id="menu-inventario"><a class="nav-link" href="inventario.html">1. Inventario &amp; BOM</a></li>
+                    <li class="nav-item" id="menu-compras"><a class="nav-link" href="compras.html">2. Compras &amp; Proveedores</a></li>
+                    <li class="nav-item" id="menu-fabricacion"><a class="nav-link" href="fabricacion.html">3. Fabricación &amp; IoT</a></li>
+                    <li class="nav-item" id="menu-sensores"><a class="nav-link" href="sensores.html"><i class="bi bi-activity me-1"></i>Sensores &amp; SPC</a></li>
+                    <li class="nav-item" id="menu-calidad"><a class="nav-link active" href="calidad.html">4. Calidad &amp; Liberación</a></li>
+                    <li class="nav-item" id="menu-ventas"><a class="nav-link" href="ventas.html">Ventas &amp; CRM</a></li>
                 </ul>
-                <div class="d-flex align-items-center mt-2 mt-lg-0 gap-3">
-                    <span class="navbar-text text-white mb-0 d-flex align-items-center"><i class="bi bi-person-circle me-2"></i> <span class="user-name">Cargando...</span></span>
+                <div class="d-flex align-items-center gap-3">
+                    <span class="navbar-text text-white mb-0 d-flex align-items-center small"><i class="bi bi-person-circle me-2"></i> <span class="user-name">Cargando...</span></span>
                     <a href="#" onclick="logout(); return false;" class="btn btn-outline-light btn-sm rounded-pill px-3">Salir</a>
                 </div>
             </div>
         </div>
     </nav>
 
-    <!-- MENÚ LATERAL MÓVIL -->
     <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="menuLateral" style="background-color: var(--mermelada-oscuro) !important; width: 280px;">
         <div class="offcanvas-header border-bottom border-secondary">
-            <h5 class="offcanvas-title text-white fw-bold">Frutitos de Casa</h5>
+            <h5 class="offcanvas-title text-white fw-bold">Control de Calidad</h5>
             <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
         </div>
         <div class="offcanvas-body d-flex flex-column">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0 gap-2 w-100">
-                <li class="nav-item"><a class="nav-link px-3 text-white" href="dashboard.html"><i class="bi bi-house-door me-2"></i> Dashboard</a></li>
-                <li class="nav-item" id="menu-ventas-mobile"><a class="nav-link px-3 text-white" href="ventas.html"><i class="bi bi-cart me-2"></i> Ventas</a></li>
-                <li class="nav-item" id="menu-inventario-mobile"><a class="nav-link px-3 text-white" href="inventario.html"><i class="bi bi-box me-2"></i> Inventario</a></li>
-                <li class="nav-item" id="menu-fabricacion-mobile"><a class="nav-link px-3 text-white" href="fabricacion.html"><i class="bi bi-gear me-2"></i> Fabricación</a></li>
+            <ul class="navbar-nav me-auto mb-2 gap-2 w-100">
+                <li class="nav-item" id="menu-dashboard-mobile" style="display:none;"><a class="nav-link px-3 text-white" href="dashboard.html"><i class="bi bi-speedometer2 me-2"></i> Dashboard</a></li>
+                <li class="nav-item" id="menu-inventario-mobile"><a class="nav-link px-3 text-white" href="inventario.html"><i class="bi bi-boxes me-2"></i> Inventario</a></li>
                 <li class="nav-item" id="menu-compras-mobile"><a class="nav-link px-3 text-white" href="compras.html"><i class="bi bi-truck me-2"></i> Compras</a></li>
-                <li class="nav-item" id="menu-calidad-mobile"><a class="nav-link px-3 text-white" href="calidad.html"><i class="bi bi-clipboard-check me-2"></i> Calidad</a></li>
+                <li class="nav-item" id="menu-fabricacion-mobile"><a class="nav-link px-3 text-white" href="fabricacion.html"><i class="bi bi-fire me-2"></i> Fabricación</a></li>
+                <li class="nav-item" id="menu-sensores-mobile"><a class="nav-link px-3 text-white" href="sensores.html"><i class="bi bi-activity me-2"></i> Sensores &amp; SPC</a></li>
+                <li class="nav-item" id="menu-calidad-mobile"><a class="nav-link px-3 text-white active" href="calidad.html"><i class="bi bi-shield-check me-2"></i> Calidad</a></li>
+                <li class="nav-item" id="menu-ventas-mobile"><a class="nav-link px-3 text-white" href="ventas.html"><i class="bi bi-cart me-2"></i> Ventas</a></li>
             </ul>
             <div class="mt-auto pt-3 border-top border-secondary d-flex align-items-center justify-content-between w-100">
                 <span class="text-white small"><i class="bi bi-person-fill me-1"></i> <span class="user-name">Cargando...</span></span>
@@ -52,70 +70,344 @@
         </div>
     </div>
 
-    <!-- CONTENIDO -->
-    <div class="container mt-4 mt-md-5">
-        <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center mb-3 gap-2">
-            <h3 class="text-secondary mb-0" id="tituloCalidad">Control de Calidad y Trazabilidad</h3>
-            <button class="btn btn-fresa" id="btnNuevaInspeccion" onclick="abrirModalInspeccion()"><i class="bi bi-clipboard-plus me-2"></i> Nueva Inspección</button>
+    <div class="container-fluid px-3 px-md-4 mt-4 mb-5" style="max-width: 1400px;">
+
+        <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center mb-4 gap-2">
+            <div>
+                <h1 class="h4 fw-bold mb-1" id="tituloCalidad">Control de Calidad y Liberación de Lotes</h1>
+                <p class="small text-muted mb-0">Inspección bromatológica, Lot Splitting y asignación automática FEFO a pedidos pendientes</p>
+            </div>
+            <button class="btn btn-fresa" id="btnNuevaInspeccion" onclick="abrirModalInspeccion()">
+                <i class="bi bi-clipboard2-plus me-1"></i> Nueva Inspección de Lote
+            </button>
         </div>
-        
-        <div class="card shadow-sm border-0">
-            <div class="card-body">
-                <div class="table-responsive">
-                    <table class="table table-hover align-middle text-center">
-                        <thead>
-                            <tr><th>Fecha</th><th>Lote</th><th>Inspector</th><th>Sellado</th><th>Color</th><th>Consistencia</th><th>Disposición</th></tr>
-                        </thead>
-                        <tbody id="tbodyCalidad">
-                            <tr><td colspan="7" class="text-center text-muted py-4">Cargando datos...</td></tr>
-                        </tbody>
-                    </table>
+
+        <div class="row g-3 g-lg-4 mb-4 kpi-row">
+            <div class="col-12 col-sm-6 col-lg-3">
+                <div class="kpi-card-modern">
+                    <div class="kpi-header">
+                        <span class="kpi-label">Lotes Liberados</span>
+                        <span class="kpi-icon-box kpi-icon-verde"><i class="bi bi-check2-circle"></i></span>
+                    </div>
+                    <div class="kpi-body">
+                        <div class="kpi-value" style="color: var(--hoja-verde);" id="calCountLiberados">0</div>
+                    </div>
+                    <div class="kpi-meta">
+                        <span>Transferidos a Stock PT</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-sm-6 col-lg-3">
+                <div class="kpi-card-modern">
+                    <div class="kpi-header">
+                        <span class="kpi-label">En Cuarentena</span>
+                        <span class="kpi-icon-box kpi-icon-ambar"><i class="bi bi-lock-fill"></i></span>
+                    </div>
+                    <div class="kpi-body">
+                        <div class="kpi-value" style="color: var(--ambar-alerta);" id="calCountCuarentena">0</div>
+                    </div>
+                    <div class="kpi-meta">
+                        <span>Zona Amarilla · Stock bloqueado</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-sm-6 col-lg-3">
+                <div class="kpi-card-modern">
+                    <div class="kpi-header">
+                        <span class="kpi-label">En Retrabajo</span>
+                        <span class="kpi-icon-box kpi-icon-fresa"><i class="bi bi-arrow-repeat"></i></span>
+                    </div>
+                    <div class="kpi-body">
+                        <div class="kpi-value" id="calCountRetrabajo">0</div>
+                    </div>
+                    <div class="kpi-meta">
+                        <span>Retornados a marmita WIP</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-sm-6 col-lg-3">
+                <div class="kpi-card-modern">
+                    <div class="kpi-header">
+                        <span class="kpi-label">Scrap / Desecho</span>
+                        <span class="kpi-icon-box kpi-icon-fresa"><i class="bi bi-trash3-fill"></i></span>
+                    </div>
+                    <div class="kpi-body">
+                        <div class="kpi-value" style="color: var(--mermelada-rojo);" id="calCountScrap">0 uds</div>
+                    </div>
+                    <div class="kpi-meta">
+                        <span>Baja definitiva de inventario</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <ul class="nav nav-pills mb-3 gap-2" id="pills-calidad" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active px-4 py-2 fw-semibold d-inline-flex align-items-center gap-2" id="tab-inspecciones" data-bs-toggle="pill" data-bs-target="#panel-inspecciones" type="button" role="tab">
+                    <i class="bi bi-clipboard-check"></i> Inspecciones &amp; Cola de Entrada
+                </button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link px-4 py-2 fw-semibold d-inline-flex align-items-center gap-2" id="tab-cuarentena" data-bs-toggle="pill" data-bs-target="#panel-cuarentena" type="button" role="tab">
+                    <i class="bi bi-shield-lock-fill text-warning"></i> Lotes en Cuarentena / Retenidos
+                    <span class="badge rounded-pill bg-danger ms-1" id="badgeTabCuarentena">0</span>
+                </button>
+            </li>
+        </ul>
+
+        <div class="tab-content" id="pills-calidadContent">
+            <div class="tab-pane fade show active" id="panel-inspecciones" role="tabpanel">
+                <div class="card">
+                    <div class="card-body p-3 p-md-4">
+                        <div class="table-responsive">
+                            <table class="table table-hover align-middle">
+                                <thead>
+                                    <tr>
+                                        <th>Fecha / Hora</th>
+                                        <th>Lote / OF (Único)</th>
+                                        <th>Inspector</th>
+                                        <th class="text-center">Sellado</th>
+                                        <th class="text-center">Color</th>
+                                        <th class="text-center">Textura</th>
+                                        <th class="text-center">°Brix / pH</th>
+                                        <th>Disposición Final</th>
+                                        <th class="text-end">Merma / Rechazo</th>
+                                        <th>Lot Splitting e Impacto en Inventario</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tbodyCalidad">
+                                    <tr><td colspan="10" class="text-center text-muted py-4">Cargando inspecciones...</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-pane fade" id="panel-cuarentena" role="tabpanel">
+                <div class="card">
+                    <div class="card-body p-3 p-md-4">
+                        <div class="d-flex flex-column flex-sm-row justify-content-between align-items-sm-center mb-3 gap-2">
+                            <div>
+                                <h2 class="h6 fw-bold mb-0 text-dark">
+                                    <i class="bi bi-shield-exclamation text-warning me-2"></i>Lotes Retenidos en Zona Amarilla (Cuarentena)
+                                </h2>
+                                <span class="small text-muted">Stock segregado físicamente y bloqueado en inventario esperando resolución de destino</span>
+                            </div>
+                            <button type="button" class="btn btn-sm btn-outline-secondary" onclick="cargarLotesCuarentena()">
+                                <i class="bi bi-arrow-clockwise me-1"></i>Actualizar Retenidos
+                            </button>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table table-hover align-middle">
+                                <thead>
+                                    <tr>
+                                        <th>Fecha Retención</th>
+                                        <th>Lote Retenido</th>
+                                        <th>Orden Ref.</th>
+                                        <th>Producto</th>
+                                        <th class="text-end">Stock Bloqueado</th>
+                                        <th>Ubicación Física</th>
+                                        <th>Motivo de Retención</th>
+                                        <th class="text-center">Acción</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tbodyCuarentena">
+                                    <tr><td colspan="8" class="text-center text-muted py-4">Cargando lotes en cuarentena...</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- MODAL INSPECCION -->
     <div class="mi-modal-overlay" id="modalInspeccion">
-        <div class="mi-modal-caja" style="max-width: 650px;">
+        <div class="mi-modal-caja" style="max-width: 720px;">
             <div class="position-relative p-3" style="background-color: var(--mermelada-oscuro);">
-                <h5 class="m-0 fw-bold text-center text-white w-100" style="color: white !important;"><i class="bi bi-clipboard-check me-2"></i> Nueva Inspección</h5>
+                <h5 class="m-0 fw-bold text-center text-white w-100"><i class="bi bi-clipboard-check me-2"></i> Dictamen Único de Calidad y Lot Splitting</h5>
                 <button type="button" class="btn-close btn-close-white position-absolute top-50 end-0 translate-middle-y me-3" onclick="cerrarModalInspeccion()"></button>
             </div>
             <form id="formCalidad">
                 <div class="p-4">
                     <div id="errorCalidad" class="alert alert-danger d-none"></div>
-                    <div class="row mb-3">
-                        <div class="col-md-6">
-                            <label class="form-label fw-bold small text-muted">Lote / Orden a Inspeccionar</label>
+                    <div class="row g-3 mb-3">
+                        <div class="col-md-7">
+                            <label class="form-label fw-bold small text-muted">Orden de Fabricación / Lote Pendiente de Inspección</label>
                             <select class="form-select" name="lote" id="selectLote" required>
                                 <option value="">Cargando órdenes...</option>
                             </select>
+                            <div id="avisoLoteBloqueado" class="small text-danger fw-semibold mt-1 d-none">
+                                <i class="bi bi-lock-fill me-1"></i>Lote bloqueado por selección directa. Cierre el modal si desea inspeccionar otro lote.
+                            </div>
                         </div>
-                        <div class="col-md-6">
-                            <label class="form-label fw-bold small text-muted">Inspector</label>
-                            <input type="text" class="form-control" name="inspector" id="inspector" readonly required>
+                        <div class="col-md-5">
+                            <label class="form-label fw-bold small text-muted">Inspector Responsable</label>
+                            <input type="text" class="form-control bg-light" name="inspector" id="inspector" readonly required>
                         </div>
                     </div>
-                    <h6 class="fw-bold border-bottom pb-2 mb-3" style="color: var(--mermelada-rojo);">Puntos de Control</h6>
-                    <div class="row mb-4">
-                        <div class="col-md-4"><div class="form-check"><input class="form-check-input" type="checkbox" id="checkSellado" checked><label class="form-check-label fw-bold" for="checkSellado">Sellado Correcto</label></div></div>
-                        <div class="col-md-4"><div class="form-check"><input class="form-check-input" type="checkbox" id="checkColor" checked><label class="form-check-label fw-bold" for="checkColor">Color Adecuado</label></div></div>
-                        <div class="col-md-4"><div class="form-check"><input class="form-check-input" type="checkbox" id="checkConsistencia" checked><label class="form-check-label fw-bold" for="checkConsistencia">Consistencia OK</label></div></div>
+
+                    <div id="infoOrigenLote" class="p-2 px-3 rounded-3 mb-3 small bg-light border d-flex flex-wrap justify-content-between gap-2">
+                        <span><strong>Lote Trazable:</strong> <span class="codigo-mono" id="lblLoteCodigo">—</span></span>
+                        <span><strong>Tamaño Total Lote:</strong> <span class="tabular-nums fw-bold" id="lblLoteCantidad">0 frascos</span></span>
+                        <span><strong>Telemetría Cocción:</strong> <span class="tabular-nums" id="lblLoteTemp">92.5 °C</span></span>
                     </div>
+
+                    <h6 class="fw-bold border-bottom pb-2 mb-3" style="color: var(--mermelada-rojo);">1. Puntos Críticos de Control (HACCP)</h6>
+                    <div class="row g-3 mb-3">
+                        <div class="col-sm-4">
+                            <div class="form-check p-2 ps-4 border rounded-3 bg-white">
+                                <input class="form-check-input param-check" type="checkbox" id="checkSellado" checked>
+                                <label class="form-check-label fw-semibold small" for="checkSellado">Sellado Vacío Twist-Off</label>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="form-check p-2 ps-4 border rounded-3 bg-white">
+                                <input class="form-check-input param-check" type="checkbox" id="checkColor" checked>
+                                <label class="form-check-label fw-semibold small" for="checkColor">Color Rojo Rubí Brillante</label>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="form-check p-2 ps-4 border rounded-3 bg-white">
+                                <input class="form-check-input param-check" type="checkbox" id="checkConsistencia" checked>
+                                <label class="form-check-label fw-semibold small" for="checkConsistencia">Gelificación Pectina OK</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row g-3 mb-3">
+                        <div class="col-sm-4">
+                            <label class="form-label small fw-bold">Sólidos Solubles (°Brix)</label>
+                            <input type="number" class="form-control tabular-nums" id="brixGrados" value="66.0" step="0.1" min="45" max="75" required>
+                        </div>
+                        <div class="col-sm-4">
+                            <label class="form-label small fw-bold">Acidez (pH)</label>
+                            <input type="number" class="form-control tabular-nums" id="phNivel" value="3.25" step="0.05" min="2.5" max="4.5" required>
+                        </div>
+                        <div class="col-sm-4">
+                            <label class="form-label small fw-bold">Cant. Rechazada / Merma (uds)</label>
+                            <input type="number" class="form-control tabular-nums" id="cantidadRechazada" value="0" min="0" step="1" required>
+                        </div>
+                    </div>
+
+                    <h6 class="fw-bold border-bottom pb-2 mb-3 mt-4" style="color: var(--mermelada-rojo);">2. Disposición Final y Lot Splitting (División de Stock)</h6>
                     <div class="mb-3">
-                        <label class="form-label fw-bold small text-muted">Disposición Final</label>
-                        <select class="form-select" name="disposicion" id="disposicion" required>
-                            <option value="Liberado">Liberado (Aprobado para despacho)</option>
-                            <option value="Cuarentena">Cuarentena (Retenido)</option>
-                            <option value="Retrabajo">Retrabajo</option>
-                            <option value="Scrap">Scrap (Desechar)</option>
+                        <label class="form-label fw-bold small text-muted">Dictamen de Disposición</label>
+                        <select class="form-select fw-semibold" name="disposicion" id="disposicion" required>
+                            <option value="Liberado">Liberado (Aprobado para ingreso a Stock PT y despacho)</option>
+                            <option value="Cuarentena">Cuarentena (Retención física en Zona Amarilla y bloqueo de Stock)</option>
+                            <option value="Retrabajo">Retrabajo (Retorno físico a marmita de cocción / re-envasado WIP)</option>
+                            <option value="Scrap">Scrap / Desecho (Destrucción sanitaria y baja definitiva por merma)</option>
                         </select>
+                    </div>
+
+                    <div class="p-2 px-3 rounded-3 mb-3 bg-white border d-flex flex-wrap justify-content-between align-items-center gap-2 small">
+                        <span><i class="bi bi-arrows-split me-1" style="color: var(--mermelada-rojo);"></i><strong>Previsualización Lot Splitting:</strong></span>
+                        <span class="badge bg-success-subtle text-success border border-success-subtle tabular-nums" id="previewSplitPT">Aprobado a PT: 0 uds</span>
+                        <span class="badge bg-danger-subtle text-danger border border-danger-subtle tabular-nums" id="previewSplitMerma">Cuarentena / Scrap: 0 uds</span>
+                    </div>
+
+                    <div class="disposicion-card mb-2" id="panelDisposicionInfo">
+                        <div class="d-flex align-items-center gap-2 fw-bold small mb-2" id="dispTitulo" style="color: var(--hoja-verde);">
+                            <i class="bi bi-check-circle-fill"></i>
+                            <span>Flujo: LIBERACIÓN COMERCIAL A ALMACÉN PT</span>
+                        </div>
+                        <div class="small mb-1">
+                            <strong><i class="bi bi-box-seam me-1"></i> Destino Físico en Planta:</strong>
+                            <span id="dispFisico">Traslado físico a Almacén de Producto Terminado (Zona Verde) apto para despacho comercial inmediato.</span>
+                        </div>
+                        <div class="small">
+                            <strong><i class="bi bi-database-check me-1"></i> Impacto en Inventario ERP:</strong>
+                            <span id="dispInventario">Suma automáticamente las unidades aprobadas al Stock Disponible de Producto Terminado (PT) y cierra la Orden de Fabricación como Terminada.</span>
+                        </div>
                     </div>
                 </div>
                 <div class="p-3 bg-light d-flex justify-content-end gap-2 border-top">
                     <button type="button" class="btn btn-secondary" onclick="cerrarModalInspeccion()">Cancelar</button>
-                    <button type="submit" class="btn btn-fresa" id="btnGuardarCalidad">Guardar Inspección</button>
+                    <button type="submit" class="btn btn-fresa" id="btnGuardarCalidad">Ejecutar Dictamen Único</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal Gestionar Cuarentena -->
+    <div class="mi-modal-overlay" id="modalGestionCuarentena">
+        <div class="mi-modal-caja" style="max-width: 640px;">
+            <div class="position-relative p-3" style="background-color: var(--mermelada-oscuro);">
+                <h5 class="m-0 fw-bold text-center text-white w-100">
+                    <i class="bi bi-shield-shaded me-2"></i> Gestión de Retención · Cierre de Ciclo en Calidad
+                </h5>
+                <button type="button" class="btn-close btn-close-white position-absolute top-50 end-0 translate-middle-y me-3" onclick="cerrarModalGestionCuarentena()"></button>
+            </div>
+            <form id="formGestionCuarentena">
+                <div class="p-4">
+                    <div id="errorGestionCuarentena" class="alert alert-danger d-none"></div>
+
+                    <div class="p-3 rounded-3 mb-3 bg-light border">
+                        <div class="row g-2 small">
+                            <div class="col-6">
+                                <span class="text-muted d-block">Lote Retenido:</span>
+                                <span class="codigo-mono fw-bold fs-6 text-dark" id="modalCuarLote">—</span>
+                            </div>
+                            <div class="col-6 text-end">
+                                <span class="text-muted d-block">Stock en Cuarentena:</span>
+                                <span class="tabular-nums fw-bold fs-6 text-danger" id="modalCuarCantidad">0 uds</span>
+                            </div>
+                            <div class="col-12 border-top pt-2 mt-2">
+                                <span class="text-muted">Producto:</span>
+                                <strong id="modalCuarProducto" class="text-dark">—</strong>
+                            </div>
+                            <div class="col-12">
+                                <span class="text-muted">Ubicación Física:</span>
+                                <span class="badge bg-warning-subtle text-dark border border-warning" id="modalCuarUbicacion">Zona Amarilla de Retención</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <label class="form-label fw-bold small text-muted mb-2">Selecciona la Decisión de Disposición para este Lote:</label>
+                    <div class="d-flex flex-column gap-2 mb-3">
+                        <label class="p-3 border rounded-3 d-flex align-items-start gap-3 cursor-pointer hover-bg-light" style="cursor: pointer;">
+                            <input class="form-check-input mt-1" type="radio" name="radioAccionCuarentena" value="LIBERAR" checked>
+                            <div>
+                                <div class="fw-bold text-success"><i class="bi bi-check-circle-fill me-1"></i> 1. LIBERAR A PRODUCTO TERMINADO (PT)</div>
+                                <div class="small text-muted">El stock retenido se transfiere inmediatamente a Producto Terminado como <strong>"Disponible"</strong> para venta en el inventario.</div>
+                            </div>
+                        </label>
+
+                        <label class="p-3 border rounded-3 d-flex align-items-start gap-3 cursor-pointer hover-bg-light" style="cursor: pointer;">
+                            <input class="form-check-input mt-1" type="radio" name="radioAccionCuarentena" value="RETRABAJO">
+                            <div>
+                                <div class="fw-bold text-primary"><i class="bi bi-arrow-repeat me-1"></i> 2. RETRABAJO EN PLANTA</div>
+                                <div class="small text-muted">Se descuenta el stock retenido de PT y se genera automáticamente una nueva Orden de Fabricación (OF) en estado <strong>"Pendiente en Cola"</strong> (con la cantidad exacta del lote) en Fabricación para su reproceso.</div>
+                            </div>
+                        </label>
+
+                        <label class="p-3 border rounded-3 d-flex align-items-start gap-3 cursor-pointer hover-bg-light" style="cursor: pointer;">
+                            <input class="form-check-input mt-1" type="radio" name="radioAccionCuarentena" value="SCRAP">
+                            <div>
+                                <div class="fw-bold text-danger"><i class="bi bi-trash3-fill me-1"></i> 3. SCRAP (DESECHO DEFINITIVO)</div>
+                                <div class="small text-muted">Se da de baja definitiva e inmediata del inventario físico y el sistema suma estas unidades al KPI de <strong>"Scrap / Desecho"</strong> en el Dashboard.</div>
+                            </div>
+                        </label>
+
+                        <label class="p-3 border rounded-3 d-flex align-items-start gap-3 cursor-pointer hover-bg-light" style="cursor: pointer;">
+                            <input class="form-check-input mt-1" type="radio" name="radioAccionCuarentena" value="MANTENER">
+                            <div>
+                                <div class="fw-bold text-secondary"><i class="bi bi-pause-circle-fill me-1"></i> 4. MANTENER EN CUARENTENA</div>
+                                <div class="small text-muted">Cierra el modal sin realizar cambios transaccionales. El stock continúa bloqueado en Zona Amarilla para análisis de laboratorio posterior.</div>
+                            </div>
+                        </label>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label small fw-bold text-muted">Observaciones / Justificación de Calidad (Opcional):</label>
+                        <input type="text" class="form-control form-control-sm" id="modalCuarObservaciones" placeholder="Ej. Aprobado tras análisis bromatológico de confirmación...">
+                    </div>
+                </div>
+                <div class="p-3 bg-light d-flex justify-content-end gap-2 border-top">
+                    <button type="button" class="btn btn-secondary" onclick="cerrarModalGestionCuarentena()">Cancelar</button>
+                    <button type="submit" class="btn btn-fresa" id="btnEjecutarGestionCuarentena">Confirmar Resolución</button>
                 </div>
             </form>
         </div>
@@ -125,119 +417,402 @@
     <script src="../js/api.js"></script>
     <script src="../js/auth.js"></script>
     <script>
+        (function guardCalidad() {
+            const usuarioGuard = aplicarSeguridadVisualRBAC('calidad');
+            if (!usuarioGuard) {
+                throw new Error('Acceso bloqueado por RBAC');
+            }
+        })();
+
         let usuarioActual = null;
+        let ordenesCalidadGlobal = [];
+        let inspeccionesGlobal = [];
+        let lotesYaInspeccionados = new Set();
+
+        const INFO_FLUJO_CALIDAD = {
+            Liberado: {
+                titulo: 'Flujo: LIBERACIÓN COMERCIAL A ALMACÉN PT',
+                color: 'var(--hoja-verde)',
+                icono: 'bi-check-circle-fill',
+                fisico: 'Traslado físico a Almacén de Producto Terminado (Zona Verde) apto para despacho comercial inmediato.',
+                inventario: 'Suma automáticamente las unidades aprobadas al Stock Disponible de Producto Terminado (PT) y marca la Orden de Fabricación como Terminada.'
+            },
+            Cuarentena: {
+                titulo: 'Flujo: RETENCIÓN EN ZONA AMARILLA (CUARENTENA)',
+                color: 'var(--ambar-alerta)',
+                icono: 'bi-shield-lock-fill',
+                fisico: 'Aislamiento físico en Zona Amarilla de Retención para contramuestra microbiológica y verificación de vacío.',
+                inventario: 'Bloquea las unidades afectadas en Stock Retenido (En Cuarentena). Si es parcial (Lot Splitting), la fracción sana ingresa a PT.'
+            },
+            Retrabajo: {
+                titulo: 'Flujo: RETORNO A LÍNEA DE COCCIÓN / RE-ENVASADO (WIP)',
+                color: '#2563eb',
+                icono: 'bi-arrow-repeat',
+                fisico: 'Retorno físico a marmita de cocción para ajuste térmico de grados Brix, pectina o cambio de tapas.',
+                inventario: 'Las unidades en retrabajo retornan a planta (WIP); si hubo fracción aprobada por Lot Splitting, esta se suma a PT.'
+            },
+            Scrap: {
+                titulo: 'Flujo: BAJA POR MERMA Y DESTRUCCIÓN CONTROLADA (SCRAP)',
+                color: 'var(--mermelada-rojo)',
+                icono: 'bi-x-octagon-fill',
+                fisico: 'Destrucción sanitaria controlada y disposición en contenedor de merma orgánica/vidrio según norma de inocuidad.',
+                inventario: 'Da de baja las unidades rechazadas (Scrap) y, mediante Lot Splitting, ingresa las unidades sanas restantes a Producto Terminado (PT).'
+            }
+        };
 
         document.addEventListener("DOMContentLoaded", async function() {
-            const token = localStorage.getItem('token');
-            if (!token) { window.location.href = 'login.html'; return; }
-            
-            usuarioActual = JSON.parse(localStorage.getItem('user'));
-            const rol = usuarioActual.rol.toLowerCase();
+            usuarioActual = aplicarSeguridadVisualRBAC('calidad');
+            if (!usuarioActual) return;
 
-            if (rol !== 'administrador' && rol !== 'calidad') {
-                alert('No tienes permiso'); window.location.href = 'dashboard.html'; return;
-            }
-
+            const rol = obtenerClaveRol(usuarioActual);
             renderizarUsuario();
             document.getElementById('inspector').value = usuarioActual.nombre;
-            document.getElementById('logoNavbar').href = rol === 'administrador' ? 'dashboard.html' : 'calidad.html';
 
-            const modulosEscritorio = ['menu-ventas', 'menu-inventario', 'menu-fabricacion', 'menu-compras', 'menu-calidad'];
-            const modulosMovil = ['menu-ventas-mobile', 'menu-inventario-mobile', 'menu-fabricacion-mobile', 'menu-compras-mobile', 'menu-calidad-mobile'];
-            
-            modulosEscritorio.forEach(id => { const el = document.getElementById(id); if (el) el.style.display = 'none'; });
-            modulosMovil.forEach(id => { const el = document.getElementById(id); if (el) el.style.display = 'none'; });
-
-            if (rol === 'administrador') {
-                modulosEscritorio.forEach(id => { const el = document.getElementById(id); if (el) el.style.display = 'block'; });
-                modulosMovil.forEach(id => { const el = document.getElementById(id); if (el) el.style.display = 'block'; });
+            if (rol === 'admin' || rol === 'administrador') {
                 document.getElementById('btnNuevaInspeccion').style.display = 'none';
-                document.getElementById('tituloCalidad').innerText = "Reporte de Calidad (Solo Lectura)";
-            } else if (rol === 'calidad') {
-                const m1 = document.getElementById('menu-calidad'); if (m1) m1.style.display = 'block';
-                const m2 = document.getElementById('menu-calidad-mobile'); if (m2) m2.style.display = 'block';
+                document.getElementById('tituloCalidad').innerText = "Auditoría de Calidad y Trazabilidad de Lotes (Solo Lectura)";
             }
 
+            await cargarLotesCuarentena();
             await cargarCalidad();
             await cargarSelectLotes();
         });
 
+        function calcularPreviewLotSplitting() {
+            const ofActual = ordenesCalidadGlobal.find(o => o.numeroOF === document.getElementById('selectLote').value);
+            const totalLote = ofActual ? (parseInt(ofActual.cantidad, 10) || 0) : 0;
+            const disp = document.getElementById('disposicion').value;
+            const cantInput = document.getElementById('cantidadRechazada');
+            if (totalLote > 0) {
+                cantInput.max = totalLote;
+            }
+
+            const rechazada = Math.max(0, parseInt(cantInput.value, 10) || 0);
+            let aprobadasPT = 0;
+            let afectadas = 0;
+
+            if (disp === 'Liberado') {
+                afectadas = totalLote > 0 ? Math.min(totalLote, rechazada) : rechazada;
+                aprobadasPT = Math.max(0, totalLote - afectadas);
+            } else {
+                if (rechazada > 0 && totalLote > 0 && rechazada < totalLote) {
+                    afectadas = rechazada;
+                    aprobadasPT = totalLote - afectadas;
+                } else {
+                    afectadas = totalLote > 0 ? totalLote : rechazada;
+                    aprobadasPT = 0;
+                }
+            }
+
+            const destino = disp === 'Liberado' ? 'Scrap' : disp;
+            document.getElementById('previewSplitPT').innerText = `Aprobado a PT: ${aprobadasPT} uds`;
+            document.getElementById('previewSplitMerma').innerText = `${destino}: ${afectadas} uds`;
+        }
+
+        function actualizarPanelDisposicion() {
+            const disp = document.getElementById('disposicion').value;
+            const info = INFO_FLUJO_CALIDAD[disp] || INFO_FLUJO_CALIDAD.Liberado;
+            const tituloEl = document.getElementById('dispTitulo');
+            tituloEl.style.color = info.color;
+            tituloEl.innerHTML = `<i class="bi ${info.icono}"></i> <span>${info.titulo}</span>`;
+            document.getElementById('dispFisico').innerText = info.fisico;
+            document.getElementById('dispInventario').innerText = info.inventario;
+
+            const ofActual = ordenesCalidadGlobal.find(o => o.numeroOF === document.getElementById('selectLote').value);
+            const cantInput = document.getElementById('cantidadRechazada');
+            if (disp === 'Liberado') {
+                cantInput.value = 0;
+            } else if (disp === 'Retrabajo' && ofActual) {
+                cantInput.value = ofActual.cantidad;
+            } else if (disp !== 'Liberado' && parseInt(cantInput.value, 10) === 0 && ofActual) {
+                cantInput.value = ofActual.cantidad;
+            }
+            calcularPreviewLotSplitting();
+        }
+
+        document.getElementById('disposicion').addEventListener('change', actualizarPanelDisposicion);
+        document.getElementById('cantidadRechazada').addEventListener('input', calcularPreviewLotSplitting);
+
+        document.querySelectorAll('.param-check').forEach(chk => {
+            chk.addEventListener('change', () => {
+                const selladoOK = document.getElementById('checkSellado').checked;
+                const colorOK = document.getElementById('checkColor').checked;
+                const consistenciaOK = document.getElementById('checkConsistencia').checked;
+                const selectDisp = document.getElementById('disposicion');
+
+                if (selladoOK && colorOK && consistenciaOK) {
+                    selectDisp.value = 'Liberado';
+                } else if (!selladoOK && !colorOK) {
+                    selectDisp.value = 'Scrap';
+                } else if (!consistenciaOK) {
+                    selectDisp.value = 'Retrabajo';
+                } else {
+                    selectDisp.value = 'Cuarentena';
+                }
+                actualizarPanelDisposicion();
+            });
+        });
+
+        document.getElementById('selectLote').addEventListener('change', function() {
+            const of = ordenesCalidadGlobal.find(o => o.numeroOF === this.value);
+            if (of) {
+                document.getElementById('lblLoteCodigo').innerText = of.loteAsignado || of.numeroOF;
+                document.getElementById('lblLoteCantidad').innerText = `${of.cantidad} frascos`;
+                document.getElementById('lblLoteTemp').innerText = `${(of.temperaturaPromedio || 92.5).toFixed(1)} °C · ${(of.brixAlcanzado || 66.0).toFixed(1)} °Bx`;
+            }
+            calcularPreviewLotSplitting();
+        });
+
+        function obtenerUltimaInspeccionDeOrden(orden, mapaUltima) {
+            const ofKey = String(orden.numeroOF || '').trim().toUpperCase();
+            const loteKey = String(orden.loteAsignado || '').trim().toUpperCase();
+            return mapaUltima.get(ofKey) || (loteKey ? mapaUltima.get(loteKey) : null) || null;
+        }
+
+        function esOrdenElegibleParaInspeccion(orden, mapaUltima) {
+            if (!orden || orden.estado === 'Pendiente MP (OC Sugerida)') return false;
+            const ultima = obtenerUltimaInspeccionDeOrden(orden, mapaUltima);
+            if (!ultima) {
+                return !String(orden.estado || '').startsWith('Terminada');
+            }
+            // Excepción a Disposición Única: Si su última disposición fue Retrabajo y Producción ya finalizó el retrabajo ("Pendiente de Calidad" / "Listo para Calidad" / "Pendiente de Calidad (Retrabajo)")
+            if (ultima.disposicion === 'Retrabajo' && (orden.estado === 'Pendiente de Calidad' || orden.estado === 'Listo para Calidad' || orden.estado === 'Pendiente de Calidad (Retrabajo)')) {
+                return true;
+            }
+            return false;
+        }
+
+        function inspeccionarLoteDirecto(numeroOF) {
+            abrirModalInspeccion(numeroOF);
+        }
+
         async function cargarCalidad() {
             const tbody = document.getElementById('tbodyCalidad');
             try {
-                const inspecciones = await api.get('/calidad');
-                if (inspecciones.length === 0) {
-                    tbody.innerHTML = `<tr><td colspan="7" class="text-center text-muted py-4">No hay inspecciones registradas</td></tr>`;
-                    return;
-                }
-                tbody.innerHTML = inspecciones.map(c => {
-                    const icono = (val) => val === 'OK' ? '<i class="bi bi-check-circle-fill text-success fs-5"></i>' : '<i class="bi bi-x-circle-fill text-danger fs-5"></i>';
-                    let badgeClass = 'bg-success';
-                    if (c.disposicion === 'Cuarentena' || c.disposicion === 'Retrabajo') badgeClass = 'bg-warning text-dark';
-                    if (c.disposicion === 'Scrap') badgeClass = 'bg-danger';
-                    const fecha = new Date(c.createdAt).toLocaleString('es-NI', { day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit' });
+                const [rawInspecciones, ordenes] = await Promise.all([
+                    api.get('/calidad'),
+                    api.get('/calidad/ordenes').catch(() => [])
+                ]);
+
+                ordenesCalidadGlobal = ordenes || [];
+                inspeccionesGlobal = rawInspecciones || [];
+
+                // Mapa con la última inspección de cada lote (para KPIs y elegibilidad de reinspección)
+                const mapaUltima = new Map();
+                inspeccionesGlobal.forEach(item => {
+                    const clave = String(item.lote || '').trim().toUpperCase();
+                    if (!mapaUltima.has(clave)) {
+                        mapaUltima.set(clave, item);
+                    }
+                });
+
+                const ultimasPorLote = Array.from(mapaUltima.values());
+
+                document.getElementById('calCountLiberados').innerText = ultimasPorLote.filter(c => c.disposicion === 'Liberado').length;
+                document.getElementById('calCountCuarentena').innerText = lotesCuarentenaGlobal.length;
+                document.getElementById('calCountRetrabajo').innerText = ultimasPorLote.filter(c => c.disposicion === 'Retrabajo' && c.estadoActualOF === 'En Retrabajo').length;
+                const totalScrap = inspeccionesGlobal
+                    .filter(c => c.disposicion === 'Scrap' || c.disposicion === 'Liberado')
+                    .reduce((acc, c) => acc + (parseInt(c.cantidadRechazada, 10) || 0), 0);
+                document.getElementById('calCountScrap').innerText = `${totalScrap} uds`;
+
+                const rol = usuarioActual ? obtenerClaveRol(usuarioActual) : '';
+                const esSoloLectura = rol === 'admin' || rol === 'administrador';
+
+                // Lotes en estado "Pendiente de Calidad", "Listo para Calidad" o "Pendiente de Calidad (Retrabajo)"
+                const lotesPendientesEnCola = ordenesCalidadGlobal.filter(o =>
+                    esOrdenElegibleParaInspeccion(o, mapaUltima) &&
+                    (o.estado === 'Pendiente de Calidad' || o.estado === 'Listo para Calidad' || o.estado === 'Pendiente de Calidad (Retrabajo)')
+                );
+
+                const filasColaHTML = lotesPendientesEnCola.map(o => {
+                    const ultima = obtenerUltimaInspeccionDeOrden(o, mapaUltima);
+                    const vieneDeRetrabajo = (ultima && ultima.disposicion === 'Retrabajo') || String(o.estado).includes('Retrabajo');
                     return `
-                        <tr>
-                            <td>${fecha}</td><td><span class="badge bg-secondary">${c.lote}</span></td><td>${c.inspector}</td>
-                            <td>${icono(c.sellado)}</td><td>${icono(c.color)}</td><td>${icono(c.consistencia)}</td>
-                            <td><span class="badge ${badgeClass}">${c.disposicion}</span></td>
+                        <tr style="background-color: #fff9db;">
+                            <td class="small fw-semibold text-dark">
+                                <i class="bi bi-bell-fill text-warning me-1"></i>En Cola Ahora
+                            </td>
+                            <td>
+                                <span class="codigo-mono badge bg-light text-dark border fw-bold">${o.numeroOF}</span>
+                                <div class="small text-muted codigo-mono mt-1">${o.loteAsignado || ''}</div>
+                                <span class="badge ${vieneDeRetrabajo ? 'bg-warning text-dark' : 'bg-info-subtle text-dark'} mt-1" style="font-size:0.68rem;">
+                                    ${vieneDeRetrabajo ? '2da Inspección (Post-Retrabajo)' : '1ª Inspección Pendiente'}
+                                </span>
+                            </td>
+                            <td class="text-muted small">Pendiente asignar</td>
+                            <td class="text-center text-muted">—</td>
+                            <td class="text-center text-muted">—</td>
+                            <td class="text-center text-muted">—</td>
+                            <td class="text-center small tabular-nums">${parseFloat(o.brixAlcanzado || 66).toFixed(1)}° Bx</td>
+                            <td><span class="badge bg-warning text-dark"><i class="bi bi-hourglass-split me-1"></i>${o.estado}</span></td>
+                            <td class="text-end tabular-nums fw-semibold">${o.cantidad} uds</td>
+                            <td class="small">
+                                <div class="d-flex flex-column gap-1">
+                                    <span class="fw-semibold text-dark">
+                                        ${vieneDeRetrabajo
+                                            ? 'Retrabajo finalizado en Planta. Listo para segunda inspección bromatológica.'
+                                            : 'Lote cocinado en Planta esperando dictamen de Calidad.'}
+                                    </span>
+                                    ${!esSoloLectura ? `
+                                        <div>
+                                            <button type="button" class="btn btn-sm btn-fresa" onclick="inspeccionarLoteDirecto('${o.numeroOF}')">
+                                                <i class="bi bi-clipboard2-check me-1"></i> ${vieneDeRetrabajo ? 'Reinspeccionar Ahora' : 'Inspeccionar Ahora'}
+                                            </button>
+                                        </div>
+                                    ` : ''}
+                                </div>
+                            </td>
                         </tr>
                     `;
                 }).join('');
+
+                if (inspeccionesGlobal.length === 0 && lotesPendientesEnCola.length === 0) {
+                    tbody.innerHTML = `<tr><td colspan="10" class="text-center text-muted py-4">No hay inspecciones registradas</td></tr>`;
+                    return;
+                }
+
+                const filasHistorialHTML = inspeccionesGlobal.map(c => {
+                    const icono = (val) => val === 'OK'
+                        ? '<i class="bi bi-check-circle-fill text-success fs-5"></i>'
+                        : '<i class="bi bi-x-circle-fill text-danger fs-5"></i>';
+
+                    let badgeClass = 'bg-success-subtle text-success';
+                    if (c.disposicion === 'Cuarentena') badgeClass = 'bg-warning-subtle text-dark';
+                    if (c.disposicion === 'Retrabajo') badgeClass = 'bg-info-subtle text-dark';
+                    if (c.disposicion === 'Scrap') badgeClass = 'bg-danger-subtle text-danger';
+
+                    const numInsp = c.numeroInspeccion || 1;
+                    const totalInsp = c.totalInspeccionesLote || 1;
+                    let etiquetaCiclo = `<span class="badge bg-secondary-subtle text-secondary ms-1" style="font-size:0.68rem;">Cerrado</span>`;
+
+                    if (numInsp > 1) {
+                        etiquetaCiclo = `<span class="badge bg-primary-subtle text-primary ms-1" style="font-size:0.68rem;">${numInsp}ª Insp. (Post-Retrabajo)</span>`;
+                    } else if (totalInsp > 1) {
+                        etiquetaCiclo = `<span class="badge bg-secondary-subtle text-secondary ms-1" style="font-size:0.68rem;">1ª Insp. (Historial)</span>`;
+                    } else if (c.disposicion === 'Retrabajo') {
+                        if (c.estadoActualOF === 'Pendiente de Calidad' || c.estadoActualOF === 'Listo para Calidad' || c.estadoActualOF === 'Pendiente de Calidad (Retrabajo)') {
+                            etiquetaCiclo = `<span class="badge bg-warning text-dark ms-1" style="font-size:0.68rem;">2da Inspección (Post-Retrabajo)</span>`;
+                        } else {
+                            etiquetaCiclo = `<span class="badge bg-danger-subtle text-danger ms-1" style="font-size:0.68rem;">En Planta (Retrabajo)</span>`;
+                        }
+                    }
+
+                    const infoDefault = INFO_FLUJO_CALIDAD[c.disposicion] || INFO_FLUJO_CALIDAD.Liberado;
+                    const accionFisica = c.accionFisica || infoDefault.fisico;
+                    const impactoInv = c.impactoInventario || infoDefault.inventario;
+                    const fecha = new Date(c.createdAt).toLocaleString('es-NI', { day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit' });
+
+                    return `
+                        <tr>
+                            <td class="small tabular-nums">${fecha}</td>
+                            <td>
+                                <span class="codigo-mono badge bg-light text-dark border">${c.lote}</span>
+                                ${etiquetaCiclo}
+                            </td>
+                            <td class="fw-semibold">${c.inspector}</td>
+                            <td class="text-center">${icono(c.sellado)}</td>
+                            <td class="text-center">${icono(c.color)}</td>
+                            <td class="text-center">${icono(c.consistencia)}</td>
+                            <td class="text-center small tabular-nums">${parseFloat(c.brixGrados || 66).toFixed(1)}° / pH ${parseFloat(c.phNivel || 3.25).toFixed(2)}</td>
+                            <td><span class="badge ${badgeClass}">${c.disposicion}</span></td>
+                            <td class="text-end tabular-nums fw-bold ${c.cantidadRechazada > 0 ? 'text-danger' : 'text-muted'}">${c.cantidadRechazada || 0} uds</td>
+                            <td class="small" style="max-width: 320px;">
+                                <div class="fw-semibold text-dark">${accionFisica}</div>
+                                <div class="text-muted" style="font-size: 0.76rem;">${impactoInv}</div>
+                            </td>
+                        </tr>
+                    `;
+                }).join('');
+
+                tbody.innerHTML = filasColaHTML + filasHistorialHTML;
             } catch (error) {
-                tbody.innerHTML = `<tr><td colspan="7" class="text-center text-danger py-4">Error: ${error.message}</td></tr>`;
+                tbody.innerHTML = `<tr><td colspan="10" class="text-center text-danger py-4">Error: ${error.message}</td></tr>`;
             }
         }
 
-        // --- SELECTOR AUTOMÁTICO DE LOTES ---
         async function cargarSelectLotes() {
             const select = document.getElementById('selectLote');
-            const token = localStorage.getItem('token');
-            
+            const btnNueva = document.getElementById('btnNuevaInspeccion');
             select.innerHTML = '<option value="">Cargando...</option>';
 
             try {
-                const response = await fetch('http://localhost:3000/api/calidad/ordenes', {
-                    headers: { 'Authorization': `Bearer ${token}` }
+                const ordenes = await api.get('/calidad/ordenes');
+                ordenesCalidadGlobal = ordenes;
+
+                const mapaUltima = new Map();
+                inspeccionesGlobal.forEach(item => {
+                    const clave = String(item.lote || '').trim().toUpperCase();
+                    if (!mapaUltima.has(clave)) {
+                        mapaUltima.set(clave, item);
+                    }
                 });
 
-                if (!response.ok) {
-                    select.innerHTML = `<option value="">Error del servidor (${response.status})</option>`;
+                const pendientes = ordenes.filter(o => esOrdenElegibleParaInspeccion(o, mapaUltima));
+
+                if (pendientes.length === 0) {
+                    select.innerHTML = '<option value="">Todos los lotes ya tienen disposición final asignada</option>';
+                    if (btnNueva) {
+                        btnNueva.disabled = true;
+                        btnNueva.innerHTML = '<i class="bi bi-check2-all me-1"></i> Lotes al día (Sin pendientes)';
+                    }
                     return;
                 }
 
-                const ordenes = await response.json();
-                
-                if (ordenes.length === 0) {
-                    select.innerHTML = '<option value="">No hay órdenes registradas</option>';
-                    return;
+                if (btnNueva) {
+                    btnNueva.disabled = false;
+                    btnNueva.innerHTML = `<i class="bi bi-clipboard2-plus me-1"></i> Nueva Inspección de Lote (${pendientes.length})`;
                 }
 
-                select.innerHTML = '<option value="">Seleccione una orden...</option>';
-                ordenes.forEach(o => {
-                    select.appendChild(new Option(`${o.numeroOF} - ${o.producto}`, o.numeroOF));
+                select.innerHTML = '<option value="">Seleccione orden / lote pendiente...</option>';
+                pendientes.forEach(o => {
+                    const ultima = obtenerUltimaInspeccionDeOrden(o, mapaUltima);
+                    const sufijo = (ultima && ultima.disposicion === 'Retrabajo') ? ' [REINSPECCIÓN POST-RETRABAJO]' : '';
+                    select.appendChild(new Option(`${o.numeroOF} · Lote: ${o.loteAsignado || 'S/L'} (${o.cantidad} uds - ${o.estado})${sufijo}`, o.numeroOF));
                 });
-                
-            } catch (error) { 
-                console.error("Error cargando lotes:", error); 
-                select.innerHTML = '<option value="">Error de conexión</option>';
+            } catch (error) {
+                select.innerHTML = '<option value="">Error al cargar lotes</option>';
             }
         }
 
-        function abrirModalInspeccion() { 
+        function abrirModalInspeccion(loteFijo = null) {
             document.getElementById('formCalidad').reset();
             document.getElementById('inspector').value = usuarioActual.nombre;
             document.getElementById('errorCalidad').classList.add('d-none');
-            document.getElementById('modalInspeccion').classList.add('activo'); 
+            const select = document.getElementById('selectLote');
+            const aviso = document.getElementById('avisoLoteBloqueado');
+
+            if (loteFijo) {
+                select.value = loteFijo;
+                select.disabled = true;
+                if (aviso) aviso.classList.remove('d-none');
+                select.dispatchEvent(new Event('change'));
+            } else {
+                select.disabled = false;
+                if (aviso) aviso.classList.add('d-none');
+                if (select.options.length > 1) {
+                    select.selectedIndex = 1;
+                    select.dispatchEvent(new Event('change'));
+                }
+            }
+
+            actualizarPanelDisposicion();
+            document.getElementById('modalInspeccion').classList.add('activo');
         }
-        function cerrarModalInspeccion() { document.getElementById('modalInspeccion').classList.remove('activo'); }
+        function cerrarModalInspeccion() {
+            const select = document.getElementById('selectLote');
+            const aviso = document.getElementById('avisoLoteBloqueado');
+            if (select) select.disabled = false;
+            if (aviso) aviso.classList.add('d-none');
+            document.getElementById('modalInspeccion').classList.remove('activo');
+        }
         document.getElementById('modalInspeccion').addEventListener('click', function(e) { if (e.target === this) cerrarModalInspeccion(); });
 
         document.getElementById('formCalidad').addEventListener('submit', async function(e) {
             e.preventDefault();
             const btn = document.getElementById('btnGuardarCalidad');
             const errorDiv = document.getElementById('errorCalidad');
-            btn.disabled = true; btn.innerText = 'Guardando...'; errorDiv.classList.add('d-none');
+            btn.disabled = true; btn.innerText = 'Procesando Lot Splitting...'; errorDiv.classList.add('d-none');
 
             const datos = {
                 lote: document.getElementById('selectLote').value,
@@ -245,6 +820,9 @@
                 sellado: document.getElementById('checkSellado').checked ? 'OK' : 'Falló',
                 color: document.getElementById('checkColor').checked ? 'OK' : 'Falló',
                 consistencia: document.getElementById('checkConsistencia').checked ? 'OK' : 'Falló',
+                brixGrados: parseFloat(document.getElementById('brixGrados').value) || 66.0,
+                phNivel: parseFloat(document.getElementById('phNivel').value) || 3.25,
+                cantidadRechazada: parseInt(document.getElementById('cantidadRechazada').value, 10) || 0,
                 disposicion: document.getElementById('disposicion').value
             };
 
@@ -252,10 +830,139 @@
                 await api.post('/calidad', datos);
                 cerrarModalInspeccion();
                 await cargarCalidad();
+                await cargarSelectLotes();
+                await cargarLotesCuarentena();
             } catch (error) {
                 errorDiv.innerText = error.message; errorDiv.classList.remove('d-none');
             } finally {
-                btn.disabled = false; btn.innerText = 'Guardar Inspección';
+                btn.disabled = false; btn.innerText = 'Ejecutar Dictamen Único';
+            }
+        });
+
+        let loteSeleccionadoCuarentena = null;
+        let lotesCuarentenaGlobal = [];
+
+        async function cargarLotesCuarentena() {
+            const tbody = document.getElementById('tbodyCuarentena');
+            const badge = document.getElementById('badgeTabCuarentena');
+            const kpiCuarentena = document.getElementById('calCountCuarentena');
+            if (!tbody) return;
+            try {
+                const lotes = await api.get('/calidad/cuarentena');
+                lotesCuarentenaGlobal = lotes || [];
+                if (badge) badge.innerText = lotesCuarentenaGlobal.length;
+                if (kpiCuarentena) kpiCuarentena.innerText = lotesCuarentenaGlobal.length;
+
+                const rol = usuarioActual ? obtenerClaveRol(usuarioActual) : '';
+                const esSoloLectura = rol === 'admin' || rol === 'administrador';
+
+                if (lotesCuarentenaGlobal.length === 0) {
+                    tbody.innerHTML = `<tr><td colspan="8" class="text-center text-muted py-4"><i class="bi bi-shield-check text-success fs-4 d-block mb-1"></i>No hay lotes retenidos en cuarentena. Toda la producción está liberada o en flujo regular.</td></tr>`;
+                    return;
+                }
+
+                tbody.innerHTML = lotesCuarentenaGlobal.map(item => {
+                    const fechaStr = item.fecha ? new Date(item.fecha).toLocaleString('es-NI', { day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit' }) : 'Reciente';
+                    return `
+                        <tr>
+                            <td class="small tabular-nums">${fechaStr}</td>
+                            <td><span class="codigo-mono badge bg-warning-subtle text-dark border border-warning fw-bold">${item.lote}</span></td>
+                            <td class="small codigo-mono text-muted">${item.ordenReferencia || '—'}</td>
+                            <td class="fw-semibold text-dark">${item.producto || 'Mermelada'}</td>
+                            <td class="text-end tabular-nums fw-bold text-danger">${item.cantidad} uds</td>
+                            <td><span class="badge bg-light text-dark border"><i class="bi bi-geo-alt-fill text-warning me-1"></i>${item.ubicacion}</span></td>
+                            <td class="small text-muted" style="max-width: 260px;">${item.motivo || 'Retención preventiva'}</td>
+                            <td class="text-center">
+                                ${!esSoloLectura ? `
+                                    <button type="button" class="btn btn-sm btn-fresa" onclick="abrirModalGestionCuarentena('${item.lote}')">
+                                        <i class="bi bi-sliders me-1"></i> Gestionar Retención
+                                    </button>
+                                ` : `
+                                    <span class="badge bg-secondary-subtle text-secondary">Solo Lectura</span>
+                                `}
+                            </td>
+                        </tr>
+                    `;
+                }).join('');
+            } catch (e) {
+                tbody.innerHTML = `<tr><td colspan="8" class="text-center text-danger py-4">Error al cargar cuarentena: ${e.message}</td></tr>`;
+            }
+        }
+
+        function abrirModalGestionCuarentena(codigoLote) {
+            const item = lotesCuarentenaGlobal.find(l => l.lote === codigoLote);
+            if (!item) return;
+
+            loteSeleccionadoCuarentena = item;
+            document.getElementById('modalCuarLote').innerText = item.lote;
+            document.getElementById('modalCuarCantidad').innerText = `${item.cantidad} uds`;
+            document.getElementById('modalCuarProducto').innerText = item.producto;
+            document.getElementById('modalCuarUbicacion').innerText = item.ubicacion;
+            document.getElementById('modalCuarObservaciones').value = '';
+            document.getElementById('errorGestionCuarentena').classList.add('d-none');
+
+            const radios = document.getElementsByName('radioAccionCuarentena');
+            for (const r of radios) {
+                if (r.value === 'LIBERAR') r.checked = true;
+            }
+
+            document.getElementById('modalGestionCuarentena').classList.add('activo');
+        }
+
+        function cerrarModalGestionCuarentena() {
+            document.getElementById('modalGestionCuarentena').classList.remove('activo');
+            loteSeleccionadoCuarentena = null;
+        }
+
+        document.getElementById('modalGestionCuarentena').addEventListener('click', function(e) {
+            if (e.target === this) cerrarModalGestionCuarentena();
+        });
+
+        document.getElementById('formGestionCuarentena').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            if (!loteSeleccionadoCuarentena) return;
+
+            const btn = document.getElementById('btnEjecutarGestionCuarentena');
+            const errorDiv = document.getElementById('errorGestionCuarentena');
+            btn.disabled = true;
+            btn.innerText = 'Procesando resolución...';
+            errorDiv.classList.add('d-none');
+
+            const radios = document.getElementsByName('radioAccionCuarentena');
+            let accion = 'MANTENER';
+            for (const r of radios) {
+                if (r.checked) {
+                    accion = r.value;
+                    break;
+                }
+            }
+
+            if (accion === 'MANTENER') {
+                cerrarModalGestionCuarentena();
+                btn.disabled = false;
+                btn.innerText = 'Confirmar Resolución';
+                return;
+            }
+
+            const payload = {
+                lote: loteSeleccionadoCuarentena.lote,
+                accion,
+                observaciones: document.getElementById('modalCuarObservaciones').value || `Resolución manual de retención: ${accion}`,
+                inspector: usuarioActual ? usuarioActual.nombre : 'Inspector de Calidad'
+            };
+
+            try {
+                await api.post('/calidad/gestionar-cuarentena', payload);
+                cerrarModalGestionCuarentena();
+                await cargarLotesCuarentena();
+                await cargarCalidad();
+                await cargarSelectLotes();
+            } catch (err) {
+                errorDiv.innerText = err.message || 'Error al procesar resolución';
+                errorDiv.classList.remove('d-none');
+            } finally {
+                btn.disabled = false;
+                btn.innerText = 'Confirmar Resolución';
             }
         });
     </script>

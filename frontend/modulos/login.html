@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - Frutitos de Casa ERP</title>
+    <title>Acceso al Sistema - Frutitos de Casa ERP</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <link rel="stylesheet" href="../css/styles.css">
@@ -12,75 +12,61 @@
 
     <div class="container-fluid p-0">
         <div class="row g-0 min-vh-100">
-            
-            <div class="col-md-7 d-none d-md-flex bg-login-image align-items-center justify-content-center">
-                <div class="text-white text-center p-5" style="z-index: 2; position: relative;">
-                    <h1 class="display-4 fw-bold mb-3">Frutitos de Casa</h1>
-                    <p class="lead fs-4">El sabor artesanal, ahora digitalizado.</p>
-                    <p class="text-white-50 mt-4">Sistema de Planificación de Recursos Empresariales (ERP)</p>
+
+            <div class="col-lg-7 d-none d-lg-flex bg-login-image align-items-center justify-content-center p-5">
+                <div class="text-white" style="max-width: 540px; z-index: 2; position: relative;">
+                    <div class="d-inline-flex align-items-center gap-2 px-3 py-1 rounded-pill mb-4" style="background: rgba(255,255,255,0.14); border: 1px solid rgba(255,255,255,0.22);">
+                        <i class="bi bi-shield-lock-fill"></i>
+                        <span class="small fw-semibold">Sistema ERP Local · Manufactura Alimentaria</span>
+                    </div>
+                    <h1 class="display-5 fw-bold mb-3">Frutitos de Casa</h1>
+                    <p class="fs-5 mb-4" style="color: rgba(255,255,255,0.9) !important;">
+                        Control integral de producción artesanal de mermelada de fresa: trazabilidad por lotes, BOM multinivel, telemetría de cocción e inocuidad.
+                    </p>
                 </div>
             </div>
 
-            <div class="col-12 col-md-5 d-flex align-items-center justify-content-center bg-login-form-mobile">
-                <div class="login-card w-100" style="max-width: 420px;">
-                    
+            <div class="col-12 col-lg-5 d-flex align-items-center justify-content-center bg-login-form-mobile p-3 p-sm-4 p-md-5">
+                <div class="login-card w-100" style="max-width: 430px;">
+
                     <div class="text-center mb-4">
-                        <img src="../img/fresa-logo.png" alt="Fresa Frutitos de Casa" class="logo-fresa">
-                        <h2 class="fw-bold mt-2" style="color: var(--mermelada-rojo);">Bienvenido</h2>
-                        <p class="text-muted small">Ingresa tus credenciales para acceder</p>
+                        <img src="../img/fresa-logo.png" alt="Logo Frutitos de Casa" class="logo-fresa">
+                        <h2 class="fw-bold mt-2 mb-1" style="color: var(--mermelada-rojo); font-size: 1.65rem;">Acceso Corporativo</h2>
+                        <p class="text-muted small mb-0">Ingresa con tus credenciales asignadas por Administración</p>
                     </div>
 
-                    <form id="loginForm">
+                    <form id="loginForm" novalidate>
                         <div class="form-floating mb-3">
-                            <input type="text" class="form-control form-control-lg" id="usuario" placeholder="Usuario" required>
-                            <label for="usuario">Usuario</label>
-                        </div>
-                        
-                        <div class="form-floating mb-3 position-relative">
-                            <input type="password" class="form-control form-control-lg" id="password" placeholder="Contraseña" required style="padding-right: 45px;">
-                            <label for="password">Contraseña</label>
-                            <span class="position-absolute top-50 end-0 translate-middle-y me-3" style="cursor: pointer; z-index: 5;" id="togglePassword">
-                                <i class="bi bi-eye-slash text-muted" id="eyeIcon"></i>
-                            </span>
+                            <input type="text" class="form-control" id="usuario" placeholder="Usuario" autocomplete="username" required>
+                            <label for="usuario"><i class="bi bi-person me-1"></i> Usuario de red</label>
                         </div>
 
-                        <div class="d-flex justify-content-between align-items-center mb-4">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" id="recordar">
-                                <label class="form-check-label text-muted small" for="recordar">Recordarme</label>
-                            </div>
-                            <a href="#" class="text-decoration-none small" style="color: var(--mermelada-rojo);">¿Olvidaste tu contraseña?</a>
+                        <div class="form-floating mb-4 position-relative">
+                            <input type="password" class="form-control" id="password" placeholder="Contraseña" autocomplete="current-password" required style="padding-right: 48px;">
+                            <label for="password"><i class="bi bi-key me-1"></i> Contraseña</label>
+                            <button type="button" class="password-toggle-btn" id="togglePassword" aria-label="Mostrar u ocultar contraseña">
+                                <i class="bi bi-eye-slash fs-5" id="eyeIcon"></i>
+                            </button>
                         </div>
 
-                        <button type="submit" id="btnLogin" class="btn btn-fresa w-100 btn-lg py-3 mb-3" style="font-size: 1.1rem;">
+                        <button type="submit" id="btnLogin" class="btn btn-fresa w-100 py-3 mb-3" style="font-size: 1.02rem;">
                             Iniciar Sesión
                         </button>
                     </form>
 
-                    <div class="d-flex align-items-center mb-3">
-                        <hr class="flex-grow-1 text-muted">
-                        <span class="px-3 text-muted small">O</span>
-                        <hr class="flex-grow-1 text-muted">
+                    <div class="p-3 rounded-3 mt-3" style="background-color: var(--crema-superficie); border: 1px solid var(--borde-suave);">
+                        <div class="d-flex align-items-center gap-2 small fw-semibold mb-1" style="color: var(--texto-marron);">
+                            <i class="bi bi-hdd-network" style="color: var(--mermelada-rojo);"></i>
+                            <span>Autenticación Local Segura</span>
+                        </div>
+                        <p class="small text-muted mb-0" style="font-size: 0.78rem;">
+                            Las cuentas son gestionadas internamente según tu rol operativo.
+                        </p>
                     </div>
 
-                    <button type="button" class="btn btn-outline-secondary w-100 btn-lg py-2 d-flex align-items-center justify-content-center bg-white" style="border-radius: 8px; border-color: #ddd; color: #555; font-size: 1rem;">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="24px" height="24px" class="me-2">
-                            <path fill="#FFC107" d="M43.611,20.083H42V20H24v8h11.303c-1.649,4.657-6.08,8-11.303,8c-6.627,0-12-5.373-12-12c0-6.627,5.373-12,12-12c3.059,0,5.842,1.154,7.961,3.039l5.657-5.657C34.046,6.053,29.268,4,24,4C12.955,4,4,12.955,4,24c0,11.045,8.955,20,20,20c11.045,0,20-8.955,20-20C44,22.659,43.862,21.35,43.611,20.083z"/>
-                            <path fill="#FF3D00" d="M6.306,14.691l6.571,4.819C14.655,15.108,18.961,12,24,12c3.059,0,5.842,1.154,7.961,3.039l5.657-5.657C34.046,6.053,29.268,4,24,4C16.318,4,9.656,8.337,6.306,14.691z"/>
-                            <path fill="#4CAF50" d="M24,44c5.166,0,9.86-1.977,13.409-5.192l-6.19-5.238C29.211,35.091,26.715,36,24,36c-5.202,0-9.619-3.317-11.283-7.946l-6.522,5.025C9.505,39.556,16.227,44,24,44z"/>
-                            <path fill="#1976D2" d="M43.611,20.083H42V20H24v8h11.303c-0.792,2.237-2.231,4.166-4.087,5.571c0.001-0.001,0.002-0.001,0.003-0.002l6.19,5.238C36.971,39.205,44,34,44,24C44,22.659,43.862,21.35,43.611,20.083z"/>
-                        </svg>
-                        Continuar con Google
-                    </button>
-
-                    <div class="text-center mt-4">
-                        <span class="text-muted small">¿No tienes una cuenta? </span>
-                        <a href="#" class="text-decoration-none small fw-bold" style="color: var(--mermelada-rojo);">Regístrate aquí</a>
-                    </div>
-
-                    <div class="text-center mt-4">
-                        <a href="../index.html" class="text-decoration-none text-muted small">
-                            <i class="bi bi-arrow-left"></i> Volver a la página principal
+                    <div class="text-center mt-4 pt-2 border-top" style="border-color: var(--borde-suave) !important;">
+                        <a href="../index.html" class="text-decoration-none text-muted small d-inline-flex align-items-center gap-1">
+                            <i class="bi bi-arrow-left"></i> Volver al portal informativo
                         </a>
                     </div>
 
@@ -91,7 +77,6 @@
 
     <script src="../js/api.js"></script>
     <script src="../js/auth.js"></script>
-
     <script>
         const togglePassword = document.querySelector('#togglePassword');
         const password = document.querySelector('#password');
